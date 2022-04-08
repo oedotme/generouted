@@ -8,8 +8,12 @@
   "bugs": "https://github.com/oedotme/generouted/issues",
   "homepage": "https://github.com/oedotme/generouted#readme",
   "keywords": [
-    "file-based",
+    "code-splitting",
+    "file-based-routing",
     "generate",
+    "nested-layouts",
+    "pages",
+    "pre-loading ",
     "react",
     "react-location",
     "router",
