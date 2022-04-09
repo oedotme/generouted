@@ -1,7 +1,7 @@
 {
   "name": "generouted",
   "version": "1.0.0",
-  "description": "Generated file-based routes for React Location and Vite",
+  "description": "Generated routes using React Location and Vite",
   "author": "Omar Elhawary <oedotme@gmail.com> (https://omarelhawary.me)",
   "license": "MIT",
   "repository": "https://github.com/oedotme/generouted",
