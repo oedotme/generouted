@@ -1,0 +1,24 @@
+{
+  "name": "basic",
+  "version": "1.0.0",
+  "description": "Generated file-based routes for React Location and Vite basic example",
+  "author": "Omar Elhawary <oedotme@gmail.com> (https://omarelhawary.me)",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "generouted": "workspace:^1.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-location": "^3.3.4"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@vitejs/plugin-react": "^1.3.0",
+    "typescript": "^4.5.5",
+    "vite": "^2.7.13"
+  }
+}
