@@ -7,7 +7,7 @@
 
 # Generouted
 
-**Gene**rate**d** file-based **route**s using [React Location](https://react-location.tanstack.com) and [Vite](https://vitejs.dev)
+**Gene**rate**d** file-based **route**s for [React Location](https://react-location.tanstack.com) and [Vite](https://vitejs.dev)
 
 <br>
 
