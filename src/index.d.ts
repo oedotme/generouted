@@ -1,1 +1,1 @@
-export declare const Routes: () => JSX.Element;
+export declare const Routes: () => JSX.Element

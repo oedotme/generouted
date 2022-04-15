@@ -25,7 +25,7 @@
   "exports": "./src/index.tsx",
   "types": "./src/index.d.ts",
   "scripts": {
-    "prepublish": "tsc --emitDeclarationOnly",
+    "prepublish": "tsc --emitDeclarationOnly; pnpm format",
     "type-check": "tsc --noEmit",
     "format": "prettier --write 'src/**/*.{ts,tsx}'"
   },
