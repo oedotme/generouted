@@ -141,6 +141,8 @@ export default function Home() {
 ## Examples
 
 - [Basic](./examples/basic)
+- [Data loaders](./examples/data-loaders)
+- [Nested layouts](./examples/nested-layouts)
 
 <br>
 
