@@ -5,7 +5,7 @@ export default function Index() {
     <>
       <h1>Posts Index</h1>
 
-      <ul>
+      <ul style={{ display: 'flex', gap: 24, listStyle: 'none', padding: 0 }}>
         <li>
           <Link to="/posts/1">Post 1</Link>
         </li>

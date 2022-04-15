@@ -21,6 +21,7 @@ export default function Post() {
       <h1>Post @ {data.id}</h1>
 
       <code>
+        Loader data
         <pre>{JSON.stringify(data, null, 2)}</pre>
       </code>
     </>
