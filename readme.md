@@ -1,8 +1,8 @@
 <br>
 <p align="center">
-  <img src="./public/assets/icons/logo.svg" alt="Generouted · Generated Routes" width="120"/>
+  <img src="https://raw.githubusercontent.com/oedotme/generouted/main/public/assets/icons/logo.svg" alt="Generouted · Generated Routes" width="120"/>
 </p>
-<p align="center"><em>Generouted - Generated Routes</em></p>
+<p align="center"><em>Generouted · Generated Routes</em></p>
 <br>
 
 # Generouted
