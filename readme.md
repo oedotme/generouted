@@ -13,7 +13,7 @@
 
 ## Motivation
 
-I enjoyed working with file-based routing since started using it with Next.js. After trying the same concept with Vite, I started a series of blog posts covering [client-side file-based routing with React Router](https://omarelhawary.me/blog/file-based-routing-with-react-router) inspired by [Next.js](https://nextjs.org). Later, in the last two posts, I replaced React Router with React Location to add more features like data loaders and nested layouts that are inspired by [Remix](https://remix.run). The final version covered in the blog posts is now published as `generouted`, see all the [available feature](#features) below.
+I enjoyed working with file-based routing since started using it with Next.js. After trying the same concept with Vite, I started a series of blog posts covering [client-side file-based routing with React Router](https://omarelhawary.me/blog/file-based-routing-with-react-router) inspired by [Next.js](https://nextjs.org). Later, in the last two posts, I replaced React Router with React Location to add more features like data loaders and nested layouts that are inspired by [Remix](https://remix.run). The final version covered in the blog posts is now published as `generouted`, see all the [available features](#features) below.
 
 ## How
 
@@ -29,6 +29,11 @@ I enjoyed working with file-based routing since started using it with Next.js. A
 <br>
 
 ## Features
+
+- [File-based routing](#file-based-routing)
+- [Route-based code-splitting and pre-loading](#route-based-code-splitting-and-pre-loading)
+- [Route-based data loaders](#route-based-data-loaders)
+- [Nested layouts](#nested-layouts)
 
 ### File-based routing
 
