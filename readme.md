@@ -2,7 +2,11 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/oedotme/generouted/main/public/assets/icons/logo.svg" alt="Generouted · Generated Routes" width="120"/>
 </p>
-<p align="center"><em>Generouted · Generated Routes</em></p>
+<p align="center">
+  <a href="https://npmjs.com/package/generouted">
+    <img src="https://img.shields.io/npm/v/generouted.svg" alt="generouted on npm">
+  </a>
+</p>
 <br>
 
 # Generouted
