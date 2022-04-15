@@ -7,8 +7,6 @@ importers:
       '@types/react': ^18.0.5
       '@types/react-dom': ^18.0.1
       prettier: ^2.6.2
-      react: ^18.0.0
-      react-dom: ^18.0.0
       react-location: ^3.3.4
       typescript: ^4.6.3
       vite: ^2.9.5
@@ -16,9 +14,7 @@ importers:
       '@types/react': 18.0.5
       '@types/react-dom': 18.0.1
       prettier: 2.6.2
-      react: 18.0.0
-      react-dom: 18.0.0_react@18.0.0
-      react-location: 3.3.4_react-dom@18.0.0+react@18.0.0
+      react-location: 3.3.4
       typescript: 4.6.3
       vite: 2.9.5
 
@@ -771,6 +767,7 @@ packages:
     hasBin: true
     dependencies:
       js-tokens: 4.0.0
+    dev: false
 
   /ms/2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
@@ -822,6 +819,17 @@ packages:
       loose-envify: 1.4.0
       react: 18.0.0
       scheduler: 0.21.0
+    dev: false
+
+  /react-location/3.3.4:
+    resolution: {integrity: sha512-XA1FLPh8qAO1aMmw80nY+QvLiPnQ1E2nXEWCpTTlqk1kQ+s9LsixMInGgzt/6AC6NnHW6PavpwnCZjs3e/ezow==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+    dependencies:
+      '@babel/runtime': 7.17.9
+    dev: true
 
   /react-location/3.3.4_react-dom@18.0.0+react@18.0.0:
     resolution: {integrity: sha512-XA1FLPh8qAO1aMmw80nY+QvLiPnQ1E2nXEWCpTTlqk1kQ+s9LsixMInGgzt/6AC6NnHW6PavpwnCZjs3e/ezow==}
@@ -833,6 +841,7 @@ packages:
       '@babel/runtime': 7.17.9
       react: 18.0.0
       react-dom: 18.0.0_react@18.0.0
+    dev: false
 
   /react-refresh/0.12.0:
     resolution: {integrity: sha512-suLIhrU2IHKL5JEKR/fAwJv7bbeq4kJ+pJopf77jHwuR+HmJS/HbrPIGsTBUVfw7tXPOmYv7UJ7PCaN49e8x4A==}
@@ -844,6 +853,7 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
+    dev: false
 
   /regenerator-runtime/0.13.9:
     resolution: {integrity: sha512-p3VT+cOEgxFsRRA9X4lkI1E+k2/CtnKtU4gcxyaCUreilL/vqI6CdZ3wxVUx3UOUg+gnUOQQcRI7BmSI656MYA==}
@@ -873,6 +883,7 @@ packages:
     resolution: {integrity: sha512-1r87x5fz9MXqswA2ERLo0EbOAU74DpIUO090gIasYTqlVoJeMcl+Z1Rg7WHz+qtPujhS/hGIt9kxZOYBV3faRQ==}
     dependencies:
       loose-envify: 1.4.0
+    dev: false
 
   /semver/6.3.0:
     resolution: {integrity: sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==}
