@@ -1,5 +1,5 @@
 import { Fragment } from 'react'
-import { LoaderFn, Outlet, ReactLocation, Route, Router } from 'react-location'
+import { LoaderFn, Outlet, ReactLocation, Route, Router, RouterProps } from 'react-location'
 
 type Module = { default: () => JSX.Element; loader: LoaderFn }
 
@@ -67,9 +67,9 @@ const NotFound = preservedRoutes?.['404'] || Fragment
 const location = new ReactLocation()
 const routes = [...regularRoutes, { path: '*', element: <NotFound /> }]
 
-export const Routes = () => {
+export const Routes = (config: Omit<RouterProps, 'location' | 'children' | 'routes'> = {}) => {
   return (
-    <Router location={location} routes={routes}>
+    <Router {...config} location={location} routes={routes}>
       <App>
         <Outlet />
       </App>
