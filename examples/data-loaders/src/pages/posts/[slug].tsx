@@ -13,6 +13,9 @@ export const loader: LoaderFn<Route> = async ({ params }) => {
   return fetch(`https://jsonplaceholder.typicode.com/posts/${params.slug}`).then((response) => response.json())
 }
 
+export const pending = () => <h1>Loading...</h1>
+export const error = () => <h1>Something went wrong...</h1>
+
 export default function Post() {
   const { data } = useMatch<Route>()
 
