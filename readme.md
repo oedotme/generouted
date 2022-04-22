@@ -1,6 +1,6 @@
 <br>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/oedotme/generouted/main/public/assets/icons/logo.svg" alt="Generouted · Generated Routes" width="120"/>
+  <img src="https://raw.githubusercontent.com/oedotme/generouted/main/public/assets/icons/logo.svg" alt="Generouted · Generated Routes" width="180"/>
 </p>
 <p align="center">
   <a href="https://npmjs.com/package/generouted">
