@@ -1,4 +1,4 @@
-import { useMatch } from 'react-location'
+import { useMatch } from '@tanstack/react-location'
 
 export default function Index() {
   const { data } = useMatch()

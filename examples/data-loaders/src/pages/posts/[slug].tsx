@@ -1,4 +1,4 @@
-import { LoaderFn, MakeGenerics, useMatch } from 'react-location'
+import { LoaderFn, MakeGenerics, useMatch } from '@tanstack/react-location'
 
 type Post = {
   id: string

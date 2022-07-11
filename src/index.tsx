@@ -1,5 +1,5 @@
 import { Fragment } from 'react'
-import { LoaderFn, Outlet, ReactLocation, Route, Router, RouterProps } from 'react-location'
+import { LoaderFn, Outlet, ReactLocation, Route, Router, RouterProps } from '@tanstack/react-location'
 
 type Element = () => JSX.Element
 type Module = { default: Element; loader: LoaderFn; pending: Element; error: Element }

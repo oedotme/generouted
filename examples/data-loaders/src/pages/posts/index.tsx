@@ -1,4 +1,4 @@
-import { Link } from 'react-location'
+import { Link } from '@tanstack/react-location'
 
 export default function Index() {
   return (
