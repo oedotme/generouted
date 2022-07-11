@@ -9,10 +9,10 @@
     "build": "vite build"
   },
   "dependencies": {
+    "@tanstack/react-location": "^3.7.4",
     "generouted": "workspace:*",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-location": "^3.3.4"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.15",

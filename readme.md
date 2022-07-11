@@ -113,7 +113,7 @@ npm create vite@latest react-file-based-routing -- --template react-ts   # npm 7
 ## Installation
 
 ```shell
-npm install generouted react-location
+npm install generouted @tanstack/react-location
 ```
 
 ## Usage
