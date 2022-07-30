@@ -4,7 +4,7 @@ import { LoaderFn, Outlet, ReactLocation, Route, Router, RouterProps } from '@ta
 type Element = () => JSX.Element
 type Module = { default: Element; loader: LoaderFn; pending: Element; error: Element }
 
-const PRESERVED = import.meta.globEager<Module>('/src/pages/(_app|404).tsx')
+const PRESERVED = import.meta.glob<Module>('/src/pages/(_app|404).tsx', { eager: true })
 const ROUTES = import.meta.glob<Module>('/src/pages/**/[a-z[]*.tsx')
 
 const preservedRoutes: Partial<Record<string, () => JSX.Element>> = Object.keys(PRESERVED).reduce((routes, key) => {
