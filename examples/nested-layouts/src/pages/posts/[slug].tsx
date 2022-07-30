@@ -9,7 +9,7 @@ type Post = {
 
 type Route = MakeGenerics<{ LoaderData: Post; Params: { slug: string } }>
 
-export const loader: LoaderFn<Route> = async ({ params }) => {
+export const Loader: LoaderFn<Route> = async ({ params }) => {
   return fetch(`https://jsonplaceholder.typicode.com/posts/${params.slug}`).then((response) => response.json())
 }
 

@@ -2,7 +2,7 @@ import { Fragment } from 'react'
 import { LoaderFn, Outlet, ReactLocation, Route, Router, RouterProps } from '@tanstack/react-location'
 
 type Element = () => JSX.Element
-type Module = { default: Element; loader: LoaderFn; pending: Element; error: Element }
+type Module = { default: Element; Loader: LoaderFn; Pending: Element; Failure: Element }
 
 const PRESERVED = import.meta.glob<Module>('/src/pages/(_app|404).tsx', { eager: true })
 const ROUTES = import.meta.glob<Module>('/src/pages/**/[a-z[]*.tsx')
@@ -16,9 +16,9 @@ const regularRoutes = Object.keys(ROUTES).reduce<Route[]>((routes, key) => {
   const module = ROUTES[key]
   const route: Route = {
     element: () => module().then((mod) => (mod?.default ? <mod.default /> : <></>)),
-    loader: (...args) => module().then((mod) => mod?.loader?.(...args)),
-    pendingElement: () => module().then((mod) => (mod?.pending ? <mod.pending /> : null)),
-    errorElement: () => module().then((mod) => (mod?.error ? <mod.error /> : null)),
+    loader: async (...args) => module().then((mod) => mod?.Loader?.(...args)),
+    pendingElement: async () => module().then((mod) => (mod?.Pending ? <mod.Pending /> : null)),
+    errorElement: async () => module().then((mod) => (mod?.Failure ? <mod.Failure /> : null)),
   }
 
   const segments = key

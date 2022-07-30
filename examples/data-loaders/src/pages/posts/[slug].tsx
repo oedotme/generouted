@@ -9,12 +9,12 @@ type Post = {
 
 type Route = MakeGenerics<{ LoaderData: Post; Params: { slug: string } }>
 
-export const loader: LoaderFn<Route> = async ({ params }) => {
+export const Loader: LoaderFn<Route> = async ({ params }) => {
   return fetch(`https://jsonplaceholder.typicode.com/posts/${params.slug}`).then((response) => response.json())
 }
 
-export const pending = () => <h1>Loading...</h1>
-export const error = () => <h1>Something went wrong...</h1>
+export const Pending = () => <h1>Loading...</h1>
+export const Failure = () => <h1>Something went wrong...</h1>
 
 export default function Post() {
   const { data } = useMatch<Route>()

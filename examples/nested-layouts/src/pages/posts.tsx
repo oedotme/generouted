@@ -1,6 +1,6 @@
 import { Link, Outlet } from '@tanstack/react-location'
 
-export const loader = () => {
+export const Loader = () => {
   return Promise.resolve({ source: 'from `src/pages/posts.tsx` layout data loader' })
 }
 

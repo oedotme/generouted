@@ -72,7 +72,7 @@ I enjoyed working with file-based routing since started using it with Next.js. A
 ### Route-based data loaders
 
 - [Remix inspired](https://remix.run/docs/en/v1/guides/data-loading)
-- By exporting a named function `loader` from a page: `export const loader = async () => ({...})`
+- By exporting a named function `Loader` from a page: `export const Loader = async () => ({...})`
 - [React Location's route loaders guide](https://react-location.tanstack.com/guides/route-loaders)
 
 ### Nested layouts
