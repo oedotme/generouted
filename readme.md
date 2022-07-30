@@ -156,7 +156,7 @@ export default function Home() {
 
 ### `<Routes />`
 
-That's the only export at the moment. Could add some customization options in the future.
+`<Routes />` component accepts all [React Location's `RouterProps`](https://react-location.tanstack.com/docs/api#router) except `children`, `location` and `routes` props.
 
 <br>
 

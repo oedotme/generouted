@@ -70,9 +70,9 @@ const NotFound = preservedRoutes?.['404'] || Fragment
 const location = new ReactLocation()
 const routes = [...regularRoutes, { path: '*', element: <NotFound /> }]
 
-export const Routes = (config: Omit<RouterProps, 'location' | 'children' | 'routes'> = {}) => {
+export const Routes = (props: Omit<RouterProps, 'children' | 'location' | 'routes'> = {}) => {
   return (
-    <Router {...config} location={location} routes={routes}>
+    <Router {...props} location={location} routes={routes}>
       <App>
         <Outlet />
       </App>
