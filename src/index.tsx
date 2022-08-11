@@ -1,8 +1,9 @@
-import { Fragment } from 'react'
+import { Fragment, useMemo } from 'react'
 import { LoaderFn, Outlet, ReactLocation, Route, Router, RouterProps } from '@tanstack/react-location'
 
 type Element = () => JSX.Element
 type Module = { default: Element; Loader: LoaderFn; Pending: Element; Failure: Element }
+type RouteAliases = { path: string; alias: string }
 
 const PRESERVED = import.meta.glob<Module>('/src/pages/(_app|404).tsx', { eager: true })
 const ROUTES = import.meta.glob<Module>('/src/pages/**/[a-z[]*.tsx')
@@ -68,9 +69,26 @@ const App = preservedRoutes?.['_app'] || Fragment
 const NotFound = preservedRoutes?.['404'] || Fragment
 
 const location = new ReactLocation()
-const routes = [...regularRoutes, { path: '*', element: <NotFound /> }]
+const fileRoutes = [...regularRoutes, { path: '*', element: <NotFound /> }]
+type Props = Omit<RouterProps, 'children' | 'location'> & { aliases?: RouteAliases[] }
+export const Routes = (props: Props = { routes: [] }) => {
+  const routes = useMemo(() => {
+    const knownRoutes = [...(props.routes || []), ...fileRoutes]
+    // aliases should be used to alias one route to another
+    // for instance, { alias: '/index.html', '/' }
+    if (props.aliases?.length) {
+      props.aliases.forEach((alias) => {
+        const matchingRoute = knownRoutes.find((l) => l.path === alias.path)
+        if (matchingRoute) {
+          const newRoute = { ...matchingRoute }
+          newRoute.path = alias.alias
+          knownRoutes.push(newRoute)
+        }
+      })
+    }
+    return knownRoutes
+  }, [props.routes, props.aliases])
 
-export const Routes = (props: Omit<RouterProps, 'children' | 'location' | 'routes'> = {}) => {
   return (
     <Router {...props} location={location} routes={routes}>
       <App>
