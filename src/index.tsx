@@ -69,7 +69,8 @@ const App = preservedRoutes?.['_app'] || Fragment
 const NotFound = preservedRoutes?.['404'] || Fragment
 
 const location = new ReactLocation()
-const fileRoutes = [...regularRoutes, { path: '*', element: <NotFound /> }]
+const catchAll = { path: '*', element: <NotFound /> }
+const fileRoutes = [...regularRoutes]
 type Props = Omit<RouterProps, 'children' | 'location' | 'routes'> &
   Partial<Pick<RouterProps, 'routes'>> & { aliases?: RouteAliases[] }
 export const Routes = (props: Props = { routes: [] }) => {
@@ -87,6 +88,7 @@ export const Routes = (props: Props = { routes: [] }) => {
         }
       })
     }
+    knownRoutes.push(catchAll)
     return knownRoutes
   }, [props.routes, props.aliases])
 
