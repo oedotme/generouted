@@ -70,7 +70,8 @@ const NotFound = preservedRoutes?.['404'] || Fragment
 
 const location = new ReactLocation()
 const fileRoutes = [...regularRoutes, { path: '*', element: <NotFound /> }]
-type Props = Omit<RouterProps, 'children' | 'location'> & { aliases?: RouteAliases[] }
+type Props = Omit<RouterProps, 'children' | 'location' | 'routes'> &
+  Partial<Pick<RouterProps, 'routes'>> & { aliases?: RouteAliases[] }
 export const Routes = (props: Props = { routes: [] }) => {
   const routes = useMemo(() => {
     const knownRoutes = [...(props.routes || []), ...fileRoutes]
