@@ -5,7 +5,7 @@ type Element = () => JSX.Element
 type Module = { default: Element; Loader: LoaderFn; Pending: Element; Failure: Element }
 
 const PRESERVED = import.meta.glob<Module>('/src/pages/(_app|404).tsx', { eager: true })
-const ROUTES = import.meta.glob<Module>('/src/pages/**/[a-z[]*.tsx')
+const ROUTES = import.meta.glob<Module>('/src/pages/**/[a-z0-9[]*.tsx')
 
 const preservedRoutes: Partial<Record<string, () => JSX.Element>> = Object.keys(PRESERVED).reduce((routes, key) => {
   const path = key.replace(/\/src\/pages\/|\.tsx$/g, '')
