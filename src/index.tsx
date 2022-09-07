@@ -4,11 +4,11 @@ import { LoaderFn, Outlet, ReactLocation, Route, Router, RouterProps } from '@ta
 type Element = () => JSX.Element
 type Module = { default: Element; Loader: LoaderFn; Pending: Element; Failure: Element }
 
-const PRESERVED = import.meta.glob<Module>('/src/pages/(_app|404).tsx', { eager: true })
-const ROUTES = import.meta.glob<Module>('/src/pages/**/[\\w[]*.tsx')
+const PRESERVED = import.meta.glob<Module>('/src/pages/(_app|404).{jsx,tsx}', { eager: true })
+const ROUTES = import.meta.glob<Module>('/src/pages/**/[\\w[]*.{jsx,tsx}')
 
 const preservedRoutes: Partial<Record<string, () => JSX.Element>> = Object.keys(PRESERVED).reduce((routes, key) => {
-  const path = key.replace(/\/src\/pages\/|\.tsx$/g, '')
+  const path = key.replace(/\/src\/pages\/|\.(jsx|tsx)$/g, '')
   return { ...routes, [path]: PRESERVED[key]?.default }
 }, {})
 
@@ -22,7 +22,7 @@ const regularRoutes = Object.keys(ROUTES).reduce<Route[]>((routes, key) => {
   }
 
   const segments = key
-    .replace(/\/src\/pages|\.tsx$/g, '')
+    .replace(/\/src\/pages|\.(jsx|tsx)$/g, '')
     .replace(/\[\.{3}.+\]/, '*')
     .replace(/\[([^\]]+)\]/g, ':$1')
     .split('/')

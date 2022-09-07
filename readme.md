@@ -43,7 +43,7 @@ I enjoyed working with file-based routing since started using it with Next.js. A
 
 - [Next.js inspired](https://nextjs.org/docs/routing/introduction)
 - Files within `src/pages` directory
-- Supports `.tsx` extensions
+- Supports `.jsx` and `.tsx` extensions
 - Renders page's `default` export
 - Custom app at `src/pages/_app.tsx` _(optional)_
 - Custom 404 page at `src/pages/404.tsx` _(optional)_
