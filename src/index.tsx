@@ -1,6 +1,8 @@
 import { Fragment } from 'react'
 import { LoaderFn, Outlet, ReactLocation, Route, Router, RouterProps } from '@tanstack/react-location'
 
+import { patterns } from './utils'
+
 type Element = () => JSX.Element
 type Module = { default: Element; Loader: LoaderFn; Pending: Element; Failure: Element }
 
@@ -8,7 +10,7 @@ const PRESERVED = import.meta.glob<Module>('/src/pages/(_app|404).{jsx,tsx}', { 
 const ROUTES = import.meta.glob<Module>('/src/pages/**/[\\w[]*.{jsx,tsx}')
 
 const preservedRoutes: Partial<Record<string, () => JSX.Element>> = Object.keys(PRESERVED).reduce((routes, key) => {
-  const path = key.replace(/\/src\/pages\/|\.(jsx|tsx)$/g, '')
+  const path = key.replace(...patterns.clean)
   return { ...routes, [path]: PRESERVED[key]?.default }
 }, {})
 
@@ -22,14 +24,14 @@ const regularRoutes = Object.keys(ROUTES).reduce<Route[]>((routes, key) => {
   }
 
   const segments = key
-    .replace(/\/src\/pages|\.(jsx|tsx)$/g, '')
-    .replace(/\[\.{3}.+\]/, '*')
-    .replace(/\[([^\]]+)\]/g, ':$1')
+    .replace(...patterns.clean)
+    .replace(...patterns.catch)
+    .replace(...patterns.param)
     .split('/')
     .filter(Boolean)
 
   segments.reduce((parent, segment, index) => {
-    const path = segment.replace(/index|\./g, '/')
+    const path = segment.replace(...patterns.index)
     const root = index === 0
     const leaf = index === segments.length - 1 && segments.length > 1
     const node = !root && !leaf
