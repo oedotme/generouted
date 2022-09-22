@@ -7,7 +7,7 @@ type Element = () => JSX.Element
 type Module = { default: Element; Loader: LoaderFn; Pending: Element; Failure: Element }
 
 const PRESERVED = import.meta.glob<Module>('/src/pages/(_app|404).{jsx,tsx}', { eager: true })
-const ROUTES = import.meta.glob<Module>('/src/pages/**/[\\w[]*.{jsx,tsx}')
+const ROUTES = import.meta.glob<Module>(['/src/pages/**/[\\w[]*.{jsx,tsx}', '!**/(_app|404).*'])
 
 const preservedRoutes: Partial<Record<string, () => JSX.Element>> = Object.keys(PRESERVED).reduce((routes, key) => {
   const path = key.replace(...patterns.clean)
