@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 import { LoaderFn, Outlet, ReactLocation, Route, Router, RouterProps } from '@tanstack/react-location'
 
-import { patterns } from './utils'
+import { generatePreservedRoutes } from './utils'
 
 type Element = () => JSX.Element
 type Module = { default: Element; Loader: LoaderFn; Pending: Element; Failure: Element }
@@ -9,10 +9,7 @@ type Module = { default: Element; Loader: LoaderFn; Pending: Element; Failure: E
 const PRESERVED = import.meta.glob<Module>('/src/pages/(_app|404).{jsx,tsx}', { eager: true })
 const ROUTES = import.meta.glob<Module>(['/src/pages/**/[\\w[]*.{jsx,tsx}', '!**/(_app|404).*'])
 
-const preservedRoutes: Partial<Record<string, () => JSX.Element>> = Object.keys(PRESERVED).reduce((routes, key) => {
-  const path = key.replace(...patterns.clean)
-  return { ...routes, [path]: PRESERVED[key]?.default }
-}, {})
+const preservedRoutes = generatePreservedRoutes<Element>(PRESERVED)
 
 const regularRoutes = Object.keys(ROUTES).reduce<Route[]>((routes, key) => {
   const module = ROUTES[key]
