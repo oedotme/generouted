@@ -54,7 +54,7 @@ export const generateRegularRoutes = <T, M>(routes: Record<string, any>, buildRo
       }
 
       if (leaf) {
-        parent?.children?.[insert]({ path, ...route })
+        parent?.children?.[insert]('action' in route && path === '/' ? { index: true, ...route } : { path, ...route })
       }
 
       return parent
