@@ -1,7 +1,7 @@
 {
   "name": "generouted",
   "version": "1.5.1",
-  "description": "Generated file-based routes for React Location and Vite",
+  "description": "Generated client-side file-based routes for React and Vite",
   "author": "Omar Elhawary <oedotme@gmail.com> (https://omarelhawary.me)",
   "license": "MIT",
   "repository": "https://github.com/oedotme/generouted",
@@ -16,6 +16,8 @@
     "pre-loading ",
     "react",
     "react-location",
+    "react-router",
+    "react-router-dom",
     "router",
     "routes",
     "vite"
@@ -25,12 +27,19 @@
     "./react-location": {
       "types": "./src/react-location.tsx",
       "import": "./src/react-location.tsx"
+    },
+    "./react-router": {
+      "types": "./src/react-router.tsx",
+      "import": "./src/react-router.tsx"
     }
   },
   "typesVersions": {
     "*": {
       "react-location": [
         "./src/react-location.tsx"
+      ],
+      "react-router": [
+        "./src/react-router.tsx"
       ]
     }
   },
@@ -46,13 +55,11 @@
     "@types/react": "^18.0.20",
     "@types/react-dom": "^18.0.6",
     "prettier": "^2.7.1",
+    "react-router-dom": "^6.4.1",
     "typescript": "^4.8.3",
     "vite": "^3.1.2"
   },
   "peerDependencies": {
-    "@tanstack/react-location": ">=3",
-    "react": ">=17",
-    "react-dom": ">=17",
-    "vite": ">=2"
+    "vite": ">=3"
   }
 }
