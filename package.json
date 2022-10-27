@@ -21,14 +21,23 @@
     "vite"
   ],
   "type": "module",
-  "main": "./src/index.tsx",
-  "exports": "./src/index.tsx",
-  "types": "./src/index.d.ts",
+  "exports": {
+    "./react-location": {
+      "types": "./src/react-location.tsx",
+      "import": "./src/react-location.tsx"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "react-location": [
+        "./src/react-location.tsx"
+      ]
+    }
+  },
   "files": [
     "src"
   ],
   "scripts": {
-    "prepublish": "tsc --emitDeclarationOnly; pnpm format",
     "type-check": "tsc --noEmit",
     "format": "prettier --write 'src/**/*.{ts,tsx}'"
   },
