@@ -1,6 +1,6 @@
 const patterns = {
   clean: [/\/src\/pages\/|\.(jsx|tsx)$/g, ''],
-  catch: [/\[\.{3}.+\]/, '*'],
+  splat: [/\[\.{3}.+\]/, '*'],
   param: [/\[([^\]]+)\]/g, ':$1'],
   index: [/index|\./g, '/'],
 } as const
@@ -22,7 +22,7 @@ export const generateRegularRoutes = <T, M>(routes: Record<string, any>, buildRo
 
     const segments = current
       .replace(...patterns.clean)
-      .replace(...patterns.catch)
+      .replace(...patterns.splat)
       .replace(...patterns.param)
       .split('/')
       .filter(Boolean)
