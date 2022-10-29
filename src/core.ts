@@ -8,7 +8,7 @@ const patterns = {
 type PreservedKey = '_app' | '404'
 type BaseRoute = { path?: string; children?: BaseRoute[] } & Record<string, any>
 
-export const generatePreservedRoutes = <T,>(routes: Record<string, T | any>): Partial<Record<PreservedKey, T>> => {
+export const generatePreservedRoutes = <T>(routes: Record<string, T | any>): Partial<Record<PreservedKey, T>> => {
   return Object.keys(routes).reduce((result, current) => {
     const path = current.replace(...patterns.route)
     return { ...result, [path]: routes[current]?.default }

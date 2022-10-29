@@ -2,7 +2,7 @@ import { Fragment, lazy, Suspense } from 'react'
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom'
 import type { ActionFunction, RouteObject, LoaderFunction } from 'react-router-dom'
 
-import { generatePreservedRoutes, generateRegularRoutes } from './utils'
+import { generatePreservedRoutes, generateRegularRoutes } from './core'
 
 type Element = () => JSX.Element
 type Module = { default: Element; Loader: LoaderFunction; Action: ActionFunction }

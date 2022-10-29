@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 import { LoaderFn, Outlet, ReactLocation, Route, Router, RouterProps } from '@tanstack/react-location'
 
-import { generatePreservedRoutes, generateRegularRoutes } from './utils'
+import { generatePreservedRoutes, generateRegularRoutes } from './core'
 
 type Element = () => JSX.Element
 type Module = { default: Element; Loader: LoaderFn; Pending: Element; Failure: Element }
