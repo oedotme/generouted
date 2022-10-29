@@ -1,5 +1,5 @@
 const patterns = {
-  clean: [/\/src\/pages\/|\.(jsx|tsx)$/g, ''],
+  route: [/\/src\/pages\/|\.(jsx|tsx)$/g, ''],
   splat: [/\[\.{3}.+\]/, '*'],
   param: [/\[([^\]]+)\]/g, ':$1'],
   index: [/index|\./g, '/'],
@@ -10,7 +10,7 @@ type BaseRoute = { path?: string; children?: BaseRoute[] } & Record<string, any>
 
 export const generatePreservedRoutes = <T,>(routes: Record<string, T | any>): Partial<Record<PreservedKey, T>> => {
   return Object.keys(routes).reduce((result, current) => {
-    const path = current.replace(...patterns.clean)
+    const path = current.replace(...patterns.route)
     return { ...result, [path]: routes[current]?.default }
   }, {})
 }
@@ -21,7 +21,7 @@ export const generateRegularRoutes = <T, M>(routes: Record<string, any>, buildRo
     const route = buildRoute(module)
 
     const segments = current
-      .replace(...patterns.clean)
+      .replace(...patterns.route)
       .replace(...patterns.splat)
       .replace(...patterns.param)
       .split('/')
