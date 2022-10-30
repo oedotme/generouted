@@ -35,6 +35,7 @@ export const generateRegularRoutes = <T extends BaseRoute, M>(
       const root = index === 0
       const leaf = index === segments.length - 1 && segments.length > 1
       const node = !root && !leaf
+      const layout = segment === '_layout'
       const insert = /^\w|\//.test(path) ? 'unshift' : 'push'
 
       if (root) {
@@ -54,6 +55,10 @@ export const generateRegularRoutes = <T extends BaseRoute, M>(
         if (found) found.children ??= []
         else current?.[insert]({ path, children: [] })
         return found || (current?.[insert === 'unshift' ? 0 : current.length - 1] as BaseRoute)
+      }
+
+      if (layout) {
+        return Object.assign(parent, route)
       }
 
       if (leaf) {
