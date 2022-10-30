@@ -2,7 +2,7 @@ const patterns = {
   route: [/\/src\/pages\/|\.(jsx|tsx)$/g, ''],
   splat: [/\[\.{3}.+\]/, '*'],
   param: [/\[([^\]]+)\]/g, ':$1'],
-  index: [/index|\./g, '/'],
+  slash: [/index|\./g, '/'],
 } as const
 
 type PreservedKey = '_app' | '404'
@@ -31,7 +31,7 @@ export const generateRegularRoutes = <T extends BaseRoute, M>(
       .filter(Boolean)
 
     segments.reduce((parent, segment, index) => {
-      const path = segment.replace(...patterns.index)
+      const path = segment.replace(...patterns.slash)
       const root = index === 0
       const leaf = index === segments.length - 1 && segments.length > 1
       const node = !root && !leaf
