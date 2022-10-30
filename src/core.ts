@@ -8,19 +8,19 @@ const patterns = {
 type PreservedKey = '_app' | '404'
 type BaseRoute = { path?: string; children?: BaseRoute[] } & Record<string, any>
 
-export const generatePreservedRoutes = <T>(routes: Record<string, T | any>): Partial<Record<PreservedKey, T>> => {
-  return Object.keys(routes).reduce((result, current) => {
-    const path = current.replace(...patterns.route)
-    return { ...result, [path]: routes[current]?.default }
+export const generatePreservedRoutes = <T>(files: Record<string, T | any>): Partial<Record<PreservedKey, T>> => {
+  return Object.keys(files).reduce((routes, key) => {
+    const path = key.replace(...patterns.route)
+    return { ...routes, [path]: files[key]?.default }
   }, {})
 }
 
 export const generateRegularRoutes = <T extends BaseRoute, M>(
-  routes: Record<string, any>,
+  files: Record<string, any>,
   buildRoute: (module: M, key: string) => T
 ) => {
-  return Object.keys(routes).reduce<BaseRoute[]>((result, key) => {
-    const module = routes[key]
+  return Object.keys(files).reduce<T[]>((routes, key) => {
+    const module = files[key]
     const route = buildRoute(module, key)
 
     const segments = key
@@ -44,13 +44,13 @@ export const generateRegularRoutes = <T extends BaseRoute, M>(
 
         const last = segments.length === 1
         if (last) {
-          result.push({ path, ...route })
+          routes.push({ path, ...route })
           return parent
         }
       }
 
       if (root || node) {
-        const current = root ? result : parent.children
+        const current = root ? routes : parent.children
         const found = current?.find((route) => route.path === path)
         if (found) found.children ??= []
         else current?.[insert]({ path, children: [] })
@@ -68,6 +68,6 @@ export const generateRegularRoutes = <T extends BaseRoute, M>(
       return parent
     }, {} as BaseRoute)
 
-    return result
+    return routes
   }, [])
 }
