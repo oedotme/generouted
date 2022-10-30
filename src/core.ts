@@ -15,12 +15,15 @@ export const generatePreservedRoutes = <T>(routes: Record<string, T | any>): Par
   }, {})
 }
 
-export const generateRegularRoutes = <T, M>(routes: Record<string, any>, buildRoute: (module: M) => T) => {
-  return Object.keys(routes).reduce<BaseRoute[]>((result, current) => {
-    const module = routes[current]
-    const route = buildRoute(module)
+export const generateRegularRoutes = <T extends BaseRoute, M>(
+  routes: Record<string, any>,
+  buildRoute: (module: M, key: string) => T
+) => {
+  return Object.keys(routes).reduce<BaseRoute[]>((result, key) => {
+    const module = routes[key]
+    const route = buildRoute(module, key)
 
-    const segments = current
+    const segments = key
       .replace(...patterns.route)
       .replace(...patterns.splat)
       .replace(...patterns.param)
@@ -54,7 +57,7 @@ export const generateRegularRoutes = <T, M>(routes: Record<string, any>, buildRo
       }
 
       if (leaf) {
-        parent?.children?.[insert]('action' in route && path === '/' ? { index: true, ...route } : { path, ...route })
+        parent?.children?.[insert](route?.index ? route : { path, ...route })
       }
 
       return parent

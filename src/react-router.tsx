@@ -12,10 +12,12 @@ const ROUTES = import.meta.glob<Module>(['/src/pages/**/[\\w[]*.{jsx,tsx}', '!**
 
 const preservedRoutes = generatePreservedRoutes<Element>(PRESERVED)
 
-const regularRoutes = generateRegularRoutes<RouteObject, () => Promise<Module>>(ROUTES, (module) => {
+const regularRoutes = generateRegularRoutes<RouteObject, () => Promise<Module>>(ROUTES, (module, key) => {
   const Element = lazy(module)
+  const index = /index\.(jsx|tsx)$/.test(key) ? { index: true } : {}
 
   return {
+    ...index,
     element: <Suspense fallback={null} children={<Element />} />,
     loader: async (...args) => module().then((mod) => mod?.Loader?.(...args)),
     action: async (...args) => module().then((mod) => mod?.Action?.(...args)),
