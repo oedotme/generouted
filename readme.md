@@ -146,10 +146,10 @@ export default function Home() {
 
 ## Examples
 
-- [Basic](./examples/basic)
-- [Data loaders](./examples/data-loaders)
-- [Modals](./examples/modals)
-- [Nested layouts](./examples/nested-layouts)
+- [Basic](./react-location/examples/basic)
+- [Data loaders](./react-location/examples/data-loaders)
+- [Modals](./react-location/examples/modals)
+- [Nested layouts](./react-location/examples/nested-layouts)
 
 <br>
 
