@@ -1,14 +1,16 @@
 {
   "name": "generouted",
   "version": "1.5.1",
-  "description": "Generated client-side file-based routes for React and Vite",
+  "description": "Generated client-side file-based routes for Vite",
   "author": "Omar Elhawary <oedotme@gmail.com> (https://omarelhawary.me)",
   "license": "MIT",
   "repository": "https://github.com/oedotme/generouted",
   "bugs": "https://github.com/oedotme/generouted/issues",
   "homepage": "https://github.com/oedotme/generouted#readme",
   "keywords": [
+    "actions",
     "code-splitting",
+    "data-loaders",
     "file-based-routing",
     "generate",
     "nested-layouts",
@@ -20,6 +22,8 @@
     "react-router-dom",
     "router",
     "routes",
+    "solid",
+    "solid-router",
     "vite"
   ],
   "type": "module",
