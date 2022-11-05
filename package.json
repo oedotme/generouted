@@ -28,6 +28,10 @@
   ],
   "type": "module",
   "exports": {
+    "./": {
+      "types": "./src/react-location.tsx",
+      "import": "./src/react-location.tsx"
+    },
     "./react-location": {
       "types": "./src/react-location.tsx",
       "import": "./src/react-location.tsx"
