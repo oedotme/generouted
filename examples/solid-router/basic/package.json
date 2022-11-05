@@ -1,0 +1,21 @@
+{
+  "name": "basic",
+  "version": "1.0.0",
+  "description": "Generated file-based routes for Solid Router and Vite basic example",
+  "author": "Omar Elhawary <oedotme@gmail.com> (https://omarelhawary.me)",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite dev --port 3000",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@solidjs/router": "^0.5.0",
+    "generouted": "workspace:*",
+    "solid-js": "^1.6.1"
+  },
+  "devDependencies": {
+    "typescript": "^4.8.3",
+    "vite": "^3.1.2",
+    "vite-plugin-solid": "^2.3.10"
+  }
+}
