@@ -59,13 +59,18 @@
   ],
   "scripts": {
     "type-check": "tsc --noEmit",
-    "format": "prettier --write 'src/**/*.{ts,tsx}'"
+    "format": "prettier --write 'src/**/*.{ts,tsx}'",
+    "prepare": "husky install"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.2.0",
+    "@commitlint/config-conventional": "^17.2.0",
     "@solidjs/router": "^0.5.0",
     "@tanstack/react-location": "^3.7.4",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.8",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "react-router-dom": "^6.4.3",
     "solid-js": "^1.6.1",
