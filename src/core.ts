@@ -69,6 +69,6 @@ export const generateRegularRoutes = <T extends BaseRoute, M>(
       return parent
     }, {} as BaseRoute)
 
-    return routes
+    return routes.sort((a, b) => (b.path?.length || 0) - (a.path?.length || 0))
   }, [])
 }
