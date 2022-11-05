@@ -11,7 +11,7 @@
 
 # Generouted
 
-**Gene**rate**d** file-based **route**s for [React Location](https://react-location.tanstack.com) and [Vite](https://vitejs.dev)
+**Gene**rate**d** file-based **route**s for [Vite](https://vitejs.dev)
 
 <br>
 
@@ -29,107 +29,81 @@ I enjoyed working with file-based routing since started using it with Next.js. A
 - **Automatically update routes** by adding/removing/renaming files at the `src/pages` directory
 - Can be used with **any Vite project**
 - **Easier to migrate** when switching from or to Next.js
-
-<br>
-
-## Features
-
-- [File-based routing](#file-based-routing)
-- [Route-based code-splitting and pre-loading](#route-based-code-splitting-and-pre-loading)
+- [Automatic route-based code-splitting and pre-loading](#route-based-code-splitting-and-pre-loading)
 - [Route-based data loaders](#route-based-data-loaders)
-- [Nested layouts](#nested-layouts)
-
-### File-based routing
-
-- [Next.js inspired](https://nextjs.org/docs/routing/introduction)
-- Files within `src/pages` directory
-- Supports `.jsx` and `.tsx` extensions
-- Renders page's `default` export
-- Custom app at `src/pages/_app.tsx` _(optional)_
-- Custom 404 page at `src/pages/404.tsx` _(optional)_
-- Navigation between routes using [React Location's `<Link />` component](https://react-location.tanstack.com/docs/api#link)
-
-#### Conventions
-
-##### Index routes
-
-- `src/pages/index.tsx` **→** `/`
-- `src/pages/posts/index.tsx` **→** `/posts`
-
-##### Nested routes
-
-- `src/pages/posts/2022/index.tsx` **→** `/posts/2022`
-- `src/pages/posts/2022/resolutions.tsx` **→** `/posts/2022/resolutions`
-
-##### Dynamic routes
-
-- `src/pages/posts/[slug].tsx` **→** `/posts/:slug`
-- `src/pages/posts/[slug]/tags.tsx` **→** `/posts/:slug/tags`
-- `src/pages/posts/[...all].tsx` **→** `/posts/*`
-
-### Route-based code-splitting and pre-loading
-
-- Includes routes components and data loaders
-
-### Route-based data loaders
-
-- [Remix inspired](https://remix.run/docs/en/v1/guides/data-loading)
-- By exporting a named function `Loader` from a page: `export const Loader = async () => ({...})`
-- [React Location's route loaders guide](https://react-location.tanstack.com/guides/route-loaders)
-
-### Nested layouts
-
-- [Remix inspired](https://remix.run/docs/en/v1/guides/routing#what-is-nested-routing)
-- Adding a layout for a group of routes by naming a file same as their parent directory
-- Supports data loaders
-- Requires React Location's `<Outlet />` component to render its children
-
-#### Conventions
-
-##### Enable for all directory routes
-
-Add a layout for all the routes within `src/pages/posts` directory by adding `src/pages/posts.tsx` layout:
-
-- `src/pages/posts/index.tsx` **→** `/posts`
-- `src/pages/posts/2022/index.tsx` **→** `/posts/2022`
-- `src/pages/posts/[slug].tsx` **→** `/posts/:slug`
-
-##### Exclude a route - URL nesting without layout nesting
-
-Replace regular file name with directory nesting by adding dots, it will be converted to forward slashes:
-
-- `src/pages/posts.nested.as.url.not.layout.tsx` **→** `/posts/nested/as/url/not/layout`
+- [Route-based actions](#route-based-actions)
 
 <br>
+
+## Framework support
+
+- React with [TanStack's React Location](https://react-location.tanstack.com)
+- React with [React Router](https://reactrouter.com)
+- Solid with [Solid Router](https://github.com/solidjs/solid-router)
 
 ## Getting started
 
-If you have an existing Vite project setup with React you can skip this section and go to the [installation section](#installation).
+In case you don't have a Vite project with React and TypeScript, check [Vite documentation to start a new project](https://vitejs.dev/guide/#scaffolding-your-first-vite-project).
 
-Otherwise you can [scaffold a new Vite project](https://vitejs.dev/guide/#scaffolding-your-first-vite-project) with React and TypeScript:
+### React Location
 
-```shell
-npm create vite@latest react-file-based-routing -- --template react-ts   # npm 7+
-```
-
-## Installation
+#### Installation
 
 ```shell
-npm install generouted @tanstack/react-location
+pnpm add generouted @tanstack/react-location
 ```
 
-## Usage
-
-Render the `<Routes />` component from `generouted` at the app entry _(you'd mostly wrap it with other providers/components)_:
+#### Usage
 
 ```tsx
 // src/main.tsx
 
-import { render } from 'react-dom'
-import { Routes } from 'generouted'
+import { createRoot } from 'react-dom/client'
+import { Routes } from 'generouted/react-location'
 
 const container = document.getElementById('app')!
-render(<Routes />, container)
+createRoot(container).render(<Routes />)
+```
+
+### React Router
+
+#### Installation
+
+```shell
+pnpm add generouted react-router-dom
+```
+
+#### Usage
+
+```tsx
+// src/main.tsx
+
+import { createRoot } from 'react-dom/client'
+import { Routes } from 'generouted/react-router'
+
+const container = document.getElementById('app')!
+createRoot(container).render(<Routes />)
+```
+
+### Solid Router
+
+If you're using Solid, check out their [getting started guide](https://www.solidjs.com/guides/getting-started#try-solid) to start a new project.
+
+#### Installation
+
+```shell
+pnpm add generouted @solidjs/router
+```
+
+#### Usage
+
+```tsx
+// src/main.tsx
+
+import { render } from 'solid-js/web'
+import { Routes } from 'generouted/solid-router'
+
+render(Routes, document.getElementById('app')!)
 ```
 
 ### Adding pages
@@ -142,22 +116,137 @@ export default function Home() {
 }
 ```
 
+See more about `generouted` [routing conventions below](#conventions).
+
 <br>
 
-## Examples
+## Features
 
-- [Basic](./examples/basic)
-- [Data loaders](./examples/data-loaders)
-- [Modals](./examples/modals)
-- [Nested layouts](./examples/nested-layouts)
+- [File-based routing](#file-based-routing)
+- [Route-based code-splitting and pre-loading](#route-based-code-splitting-and-pre-loading)
+- [Route-based data loaders and actions](#route-based-data-loaders)
+- [Route-based actions](#route-based-actions)
+- [Nested layouts](#nested-layouts)
+
+### File-based routing
+
+- [Next.js inspired](https://nextjs.org/docs/routing/introduction)
+- Files within `src/pages` directory
+- Supports `.jsx` and `.tsx` extensions
+- Renders page's `default` export
+- Custom app at `src/pages/_app.tsx` _(optional)_
+- Custom 404 page at `src/pages/404.tsx` _(optional)_
+- Navigation between routes using the routing library `Link` or `A` component
+
+### Route-based code-splitting and pre-loading
+
+- Includes routes components, data loaders and actions
+- Pre-loading is only available for TanStack's React Location
+
+### Route-based data loaders
+
+- [Remix inspired](https://remix.run/docs/en/v1/guides/data-loading)
+- By exporting a named function `Loader` from a page: `export const Loader = async () => ({...})`
+- [React Location's route loaders guide](https://react-location.tanstack.com/guides/route-loaders)
+
+### Route-based actions
+
+- Actions are only available for React Router
+- By exporting a named function `Action` from a page: `export const Action = async () => ({...})`
+
+### Nested layouts
+
+- [Remix inspired](https://remix.run/docs/en/v1/guides/routing#what-is-nested-routing)
+- Adding a layout for a group of routes by naming a file same as their parent directory or using a `_layout.tsx` file inside of the nested directory
+- Supports data loaders
+- Requires `<Outlet />` component to render its children
+
+<br>
+
+## Conventions
+
+### Index routes
+
+- `src/pages/index.tsx` **→** `/`
+- `src/pages/posts/index.tsx` **→** `/posts`
+
+### Nested routes
+
+- `src/pages/posts/2022/index.tsx` **→** `/posts/2022`
+- `src/pages/posts/2022/resolutions.tsx` **→** `/posts/2022/resolutions`
+
+### Dynamic routes
+
+- `src/pages/posts/[slug].tsx` **→** `/posts/:slug`
+- `src/pages/posts/[slug]/tags.tsx` **→** `/posts/:slug/tags`
+- `src/pages/posts/[...all].tsx` **→** `/posts/*`
+
+### Nested layouts
+
+#### Enable for all directory routes
+
+Add a layout for all the routes within `src/pages/posts` directory by adding `src/pages/posts.tsx` or `src/pages/posts/_layout.tsx`:
+
+- `src/pages/posts.tsx` or `src/pages/posts/_layout.tsx`
+  - `src/pages/posts/index.tsx` **→** `/posts`
+  - `src/pages/posts/2022/index.tsx` **→** `/posts/2022`
+  - `src/pages/posts/[slug].tsx` **→** `/posts/:slug`
+
+#### Exclude a route - URL nesting without layout nesting
+
+Add a file outside of the directory with a nested layout, then name the file by adding a dot between each segment, it will be converted to forward slashes:
+
+- `src/pages/posts.nested.as.url.not.layout.tsx` **→** `/posts/nested/as/url/not/layout`
+
+### Ignored routes - co-locating non-pages files inside the pages directory
+
+Any directory or a file starts with `_` will be ignored
+
+- `src/pages/_ignored.tsx`
+- `src/pages/posts/_components/button.tsx`
+- `src/pages/posts/_components/link.tsx`
 
 <br>
 
 ## API
 
-### `<Routes />`
+### React Location
+
+#### `<Routes />`
 
 `<Routes />` component accepts all [React Location's `RouterProps`](https://react-location.tanstack.com/docs/api#router) except `children`, `location` and `routes` props.
+
+### React Router
+
+#### `<Routes />`
+
+No available props.
+
+### Solid Router
+
+#### `<Routes />`
+
+No available props.
+
+<br>
+
+## Examples
+
+### React Location
+
+- [Basic](./examples/react-location/basic)
+- [Data loaders](./examples/react-location/data-loaders)
+- [Modals](./examples/react-location/modals)
+- [Nested layouts](./examples/react-location/nested-layouts)
+
+### React Router
+
+- [Basic](./examples/react-router/basic)
+- [Nested layouts](./examples/react-router/nested-layouts)
+
+### Solid Router
+
+- [Basic](./examples/solid-router/basic)
 
 <br>
 
