@@ -4,7 +4,7 @@ export const Loader = () => {
   return Promise.resolve({ source: 'from `src/pages/posts.tsx` layout data loader' })
 }
 
-export default function Posts() {
+export default function PostsLayout() {
   return (
     <>
       <h1>Posts Layout</h1>

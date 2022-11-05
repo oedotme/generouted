@@ -24,7 +24,7 @@ importers:
       typescript: 4.8.3
       vite: 3.1.2
 
-  examples/basic:
+  examples/react-location/basic:
     specifiers:
       '@tanstack/react-location': ^3.7.4
       '@types/react': ^18.0.20
@@ -37,7 +37,7 @@ importers:
       vite: ^3.1.2
     dependencies:
       '@tanstack/react-location': 3.7.4_biqbaboplfbrettd7655fr4n2y
-      generouted: link:../..
+      generouted: link:../../..
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     devDependencies:
@@ -47,7 +47,7 @@ importers:
       typescript: 4.8.3
       vite: 3.1.2
 
-  examples/data-loaders:
+  examples/react-location/data-loaders:
     specifiers:
       '@tanstack/react-location': ^3.7.4
       '@types/react': ^18.0.20
@@ -60,7 +60,7 @@ importers:
       vite: ^3.1.2
     dependencies:
       '@tanstack/react-location': 3.7.4_biqbaboplfbrettd7655fr4n2y
-      generouted: link:../..
+      generouted: link:../../..
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     devDependencies:
@@ -70,7 +70,7 @@ importers:
       typescript: 4.8.3
       vite: 3.1.2
 
-  examples/modals:
+  examples/react-location/modals:
     specifiers:
       '@tanstack/react-location': ^3.7.4
       '@types/react': ^18.0.20
@@ -83,7 +83,7 @@ importers:
       vite: ^3.1.2
     dependencies:
       '@tanstack/react-location': 3.7.4_biqbaboplfbrettd7655fr4n2y
-      generouted: link:../..
+      generouted: link:../../..
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     devDependencies:
@@ -93,7 +93,7 @@ importers:
       typescript: 4.8.3
       vite: 3.1.2
 
-  examples/nested-layouts:
+  examples/react-location/nested-layouts:
     specifiers:
       '@tanstack/react-location': ^3.7.4
       '@types/react': ^18.0.20
@@ -106,7 +106,7 @@ importers:
       vite: ^3.1.2
     dependencies:
       '@tanstack/react-location': 3.7.4_biqbaboplfbrettd7655fr4n2y
-      generouted: link:../..
+      generouted: link:../../..
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     devDependencies:
