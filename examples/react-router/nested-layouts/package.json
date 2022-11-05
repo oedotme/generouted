@@ -1,0 +1,24 @@
+{
+  "name": "nested-layouts",
+  "version": "1.0.0",
+  "description": "Generated file-based routes for React Router and Vite nested layouts example",
+  "author": "Omar Elhawary <oedotme@gmail.com> (https://omarelhawary.me)",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite dev --port 3000",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "generouted": "workspace:*",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.20",
+    "@types/react-dom": "^18.0.6",
+    "@vitejs/plugin-react": "^2.1.0",
+    "typescript": "^4.8.3",
+    "vite": "^3.1.2"
+  }
+}
