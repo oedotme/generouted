@@ -64,7 +64,7 @@
   "scripts": {
     "type-check": "tsc --noEmit",
     "format": "prettier --write 'src/**/*.{ts,tsx}'",
-    "release": "np --no-cleanup --no-tests",
+    "release": "np --no-cleanup --no-tests --message 'release: %s'",
     "prepare": "husky install"
   },
   "devDependencies": {
