@@ -31,6 +31,10 @@
     "./react-router": {
       "types": "./src/react-router.tsx",
       "import": "./src/react-router.tsx"
+    },
+    "./solid-router": {
+      "types": "./src/solid-router.tsx",
+      "import": "./src/solid-router.tsx"
     }
   },
   "typesVersions": {
@@ -40,6 +44,9 @@
       ],
       "react-router": [
         "./src/react-router.tsx"
+      ],
+      "solid-router": [
+        "./src/solid-router.tsx"
       ]
     }
   },
@@ -51,11 +58,13 @@
     "format": "prettier --write 'src/**/*.{ts,tsx}'"
   },
   "devDependencies": {
+    "@solidjs/router": "^0.5.0",
     "@tanstack/react-location": "^3.7.4",
     "@types/react": "^18.0.20",
     "@types/react-dom": "^18.0.6",
     "prettier": "^2.7.1",
     "react-router-dom": "^6.4.1",
+    "solid-js": "^1.6.1",
     "typescript": "^4.8.3",
     "vite": "^3.1.2"
   },
