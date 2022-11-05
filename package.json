@@ -60,6 +60,7 @@
   "scripts": {
     "type-check": "tsc --noEmit",
     "format": "prettier --write 'src/**/*.{ts,tsx}'",
+    "release": "np --no-cleanup",
     "prepare": "husky install"
   },
   "devDependencies": {
@@ -71,6 +72,7 @@
     "@types/react-dom": "^18.0.8",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
+    "np": "^7.6.2",
     "prettier": "^2.7.1",
     "react-router-dom": "^6.4.3",
     "solid-js": "^1.6.1",
