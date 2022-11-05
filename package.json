@@ -64,13 +64,13 @@
   "devDependencies": {
     "@solidjs/router": "^0.5.0",
     "@tanstack/react-location": "^3.7.4",
-    "@types/react": "^18.0.20",
-    "@types/react-dom": "^18.0.6",
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.8",
     "prettier": "^2.7.1",
-    "react-router-dom": "^6.4.1",
+    "react-router-dom": "^6.4.3",
     "solid-js": "^1.6.1",
-    "typescript": "^4.8.3",
-    "vite": "^3.1.2"
+    "typescript": "^4.8.4",
+    "vite": "^3.2.2"
   },
   "peerDependencies": {
     "vite": ">=3"
