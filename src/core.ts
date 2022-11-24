@@ -2,7 +2,7 @@ const patterns = {
   route: [/\/src\/pages\/|\.(jsx|tsx)$/g, ''],
   splat: [/\[\.{3}.+\]/, '*'],
   param: [/\[([^\]]+)\]/g, ':$1'],
-  slash: [/index|\./g, '/'],
+  slash: [/^index|\./g, '/'],
 } as const
 
 type PreservedKey = '_app' | '404'
