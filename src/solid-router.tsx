@@ -21,7 +21,7 @@ const Fragment = (props: ParentProps) => <>{props.children}</>
 const App = preservedRoutes?.['_app'] || Fragment
 const NotFound = preservedRoutes?.['404'] || Fragment
 
-const routes = [...regularRoutes, { path: '*', component: <NotFound /> }] as RouteDefinition[]
+export const routes = [...regularRoutes, { path: '*', component: <NotFound /> }] as RouteDefinition[]
 
 export const Routes = () => {
   const Routes = useRoutes(routes)
