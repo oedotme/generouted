@@ -1,5 +1,5 @@
 const patterns = {
-  route: [/\/src\/pages\/|\.(jsx|tsx)$/g, ''],
+  route: [/^\/src\/pages\/|^\/pages\/|\.(jsx|tsx)$/g, ''],
   splat: [/\[\.{3}.+\]/, '*'],
   param: [/\[([^\]]+)\]/g, ':$1'],
   slash: [/index|\./g, '/'],
