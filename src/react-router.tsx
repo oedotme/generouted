@@ -1,5 +1,5 @@
 import { Fragment, lazy, Suspense } from 'react'
-import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, Outlet, RouterProvider, useRouteError } from 'react-router-dom'
 import type { ActionFunction, RouteObject, LoaderFunction } from 'react-router-dom'
 
 import { generatePreservedRoutes, generateRegularRoutes } from './core'
@@ -12,9 +12,13 @@ const ROUTES = import.meta.glob<Module>(['/src/pages/**/[\\w[]*.{jsx,tsx}', '!**
 
 const preservedRoutes = generatePreservedRoutes<Element>(PRESERVED)
 
+export function DefaultErrorElement() {
+  throw new Error(`Generouted: Internal Error: ${useRouteError()}`)
+}
+
 const regularRoutes = generateRegularRoutes<RouteObject, () => Promise<Module>>(ROUTES, (module, key) => {
   const Element = lazy(module)
-  const ErrorElement = lazy(() => module().then((module) => ({ default: module.ErrorElement })))
+  const ErrorElement = lazy(() => module().then((module) => ({ default: module.ErrorElement || DefaultErrorElement })))
   const index = /index\.(jsx|tsx)$/.test(key) ? { index: true } : {}
 
   return {
