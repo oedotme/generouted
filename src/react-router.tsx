@@ -20,8 +20,8 @@ const regularRoutes = generateRegularRoutes<RouteObject, () => Promise<Module>>(
   return {
     ...index,
     element: <Suspense fallback={null} children={<Element />} />,
-    loader: async (...args) => module().then((mod) => mod?.Loader?.(...args)),
-    action: async (...args) => module().then((mod) => mod?.Action?.(...args)),
+    loader: async (...args) => module().then((mod) => mod?.Loader?.(...args) || null),
+    action: async (...args) => module().then((mod) => mod?.Action?.(...args) || null),
     errorElement: <Suspense fallback={null} children={<ErrorElement />} />,
   }
 })
