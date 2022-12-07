@@ -15,7 +15,7 @@ const preservedRoutes = generatePreservedRoutes<Element>(PRESERVED)
 const regularRoutes = generateRegularRoutes<RouteObject, () => Promise<Module>>(ROUTES, (module, key) => {
   const Element = lazy(module)
   const ErrorElement = lazy(() => module().then((module) => ({ default: module.ErrorElement })))
-  const index = /index\.(jsx|tsx)$/.test(key) ? { index: true } : {}
+  const index = /(?<!pages\/)index\.(jsx|tsx)$/.test(key) ? { index: true } : {}
 
   return {
     ...index,
