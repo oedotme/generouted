@@ -14,7 +14,7 @@ const preservedRoutes = generatePreservedRoutes<Component>(PRESERVED)
 
 const regularRoutes = generateRegularRoutes<Route, () => Promise<Module>>(ROUTES, (module) => ({
   component: lazy(module),
-  data: async (args: RouteDataFuncArgs) => module().then((mod) => mod?.Loader?.(args)),
+  data: (args: RouteDataFuncArgs) => module().then((mod) => mod?.Loader?.(args) || null),
 }))
 
 const Fragment = (props: ParentProps) => <>{props.children}</>

@@ -14,8 +14,8 @@ const preservedRoutes = generatePreservedRoutes<Element>(PRESERVED)
 const regularRoutes = generateRegularRoutes<Route, () => Promise<Module>>(ROUTES, (module) => ({
   element: () => module().then((mod) => (mod?.default ? <mod.default /> : <></>)),
   loader: async (...args) => module().then((mod) => mod?.Loader?.(...args)),
-  pendingElement: async () => module().then((mod) => (mod?.Pending ? <mod.Pending /> : null)),
-  errorElement: async () => module().then((mod) => (mod?.Failure ? <mod.Failure /> : null)),
+  pendingElement: () => module().then((mod) => (mod?.PendingElement ? <mod.PendingElement /> : null)),
+  errorElement: () => module().then((mod) => (mod?.ErrorElement ? <mod.ErrorElement /> : null)),
 }))
 
 const App = preservedRoutes?.['_app'] || Fragment

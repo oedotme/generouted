@@ -14,14 +14,14 @@ const preservedRoutes = generatePreservedRoutes<Element>(PRESERVED)
 
 const regularRoutes = generateRegularRoutes<RouteObject, () => Promise<Module>>(ROUTES, (module, key) => {
   const Element = lazy(module)
-  const ErrorElement = lazy(() => module().then((module) => ({ default: module.ErrorElement })))
+  const ErrorElement = lazy(() => module().then((module) => ({ default: module.ErrorElement || null })))
   const index = /(?<!pages\/)index\.(jsx|tsx)$/.test(key) ? { index: true } : {}
 
   return {
     ...index,
     element: <Suspense fallback={null} children={<Element />} />,
-    loader: async (...args) => module().then((mod) => mod?.Loader?.(...args)),
-    action: async (...args) => module().then((mod) => mod?.Action?.(...args)),
+    loader: (...args) => module().then((mod) => mod?.Loader?.(...args) || null),
+    action: (...args) => module().then((mod) => mod?.Action?.(...args) || null),
     errorElement: <Suspense fallback={null} children={<ErrorElement />} />,
   }
 })
