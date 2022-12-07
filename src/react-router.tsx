@@ -7,6 +7,7 @@ import { generatePreservedRoutes, generateRegularRoutes } from './core'
 type Element = () => JSX.Element
 type Module = { default: Element; Loader: LoaderFunction; Action: ActionFunction; ErrorElement: Element }
 
+// https://vitejs.dev/guide/features.html#glob-import
 const PRESERVED = import.meta.glob<Module>('/src/pages/(_app|404).{jsx,tsx}', { eager: true })
 const ROUTES = import.meta.glob<Module>(['/src/pages/**/[\\w[]*.{jsx,tsx}', '!**/(_app|404).*'])
 
