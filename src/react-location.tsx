@@ -4,7 +4,7 @@ import { LoaderFn, Outlet, ReactLocation, Route, Router, RouterProps } from '@ta
 import { generatePreservedRoutes, generateRegularRoutes } from './core'
 
 type Element = () => JSX.Element
-type Module = { default: Element; Loader: LoaderFn; Pending: Element; Failure: Element }
+type Module = { default: Element; Loader: LoaderFn; PendingElement: Element; ErrorElement: Element }
 
 const PRESERVED = import.meta.glob<Module>('/src/pages/(_app|404).{jsx,tsx}', { eager: true })
 const ROUTES = import.meta.glob<Module>(['/src/pages/**/[\\w[]*.{jsx,tsx}', '!**/(_app|404).*'])
@@ -12,8 +12,8 @@ const ROUTES = import.meta.glob<Module>(['/src/pages/**/[\\w[]*.{jsx,tsx}', '!**
 const preservedRoutes = generatePreservedRoutes<Element>(PRESERVED)
 
 const regularRoutes = generateRegularRoutes<Route, () => Promise<Module>>(ROUTES, (module) => ({
-  element: () => module().then((mod) => (mod?.default ? <mod.default /> : <></>)),
-  loader: async (...args) => module().then((mod) => mod?.Loader?.(...args)),
+  element: () => module().then((mod) => (mod?.default ? <mod.default /> : null)),
+  loader: (...args) => module().then((mod) => mod?.Loader?.(...args) || null),
   pendingElement: () => module().then((mod) => (mod?.PendingElement ? <mod.PendingElement /> : null)),
   errorElement: () => module().then((mod) => (mod?.ErrorElement ? <mod.ErrorElement /> : null)),
 }))
