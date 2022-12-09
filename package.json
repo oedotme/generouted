@@ -31,6 +31,10 @@
   ],
   "type": "module",
   "exports": {
+    "./core": {
+      "types": "./src/core.ts",
+      "import": "./src/core.ts"
+    },
     "./react-location": {
       "types": "./src/react-location.tsx",
       "import": "./src/react-location.tsx"
@@ -46,6 +50,9 @@
   },
   "typesVersions": {
     "*": {
+      "core": [
+        "./src/core.ts"
+      ],
       "react-location": [
         "./src/react-location.tsx"
       ],

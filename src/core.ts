@@ -1,4 +1,4 @@
-const patterns = {
+export const patterns = {
   route: [/^\/src\/pages\/|^\/pages\/|\.(jsx|tsx)$/g, ''],
   splat: [/\[\.{3}.+\]/, '*'],
   param: [/\[([^\]]+)\]/g, ':$1'],
