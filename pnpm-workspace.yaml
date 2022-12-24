@@ -2,3 +2,5 @@ packages:
   - examples/react-location/*
   - examples/react-router/*
   - examples/solid-router/*
+  - examples/tanstack-react-router/*
+  - plugins/*
