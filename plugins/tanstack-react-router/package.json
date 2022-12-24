@@ -56,7 +56,7 @@
     "fast-glob": "^3.2.12",
     "tsup": "^6.5.0",
     "typescript": "^4.9.4",
-    "vite": "^4.0.0"
+    "vite": "^4.0.3"
   },
   "peerDependencies": {
     "fast-glob": ">=3",
