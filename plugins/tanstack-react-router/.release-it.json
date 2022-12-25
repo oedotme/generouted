@@ -12,6 +12,7 @@
     "web": false
   },
   "hooks": {
-    "before:init": ["pnpm pre-release"]
+    "before:init": ["pnpm pre-release"],
+    "after:bump": ["git add package.json"]
   }
 }
