@@ -1,0 +1,10 @@
+{
+  "changelog": false,
+  "commit": false,
+  "fixed": [["generouted", "@generouted/*"]],
+  "linked": [],
+  "access": "public",
+  "baseBranch": "main",
+  "updateInternalDependencies": "patch",
+  "ignore": ["@examples/*"]
+}

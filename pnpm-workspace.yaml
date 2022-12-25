@@ -3,4 +3,5 @@ packages:
   - examples/react-router/*
   - examples/solid-router/*
   - examples/tanstack-react-router/*
+  - packages/*
   - plugins/*

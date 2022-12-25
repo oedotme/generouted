@@ -1,6 +1,6 @@
 {
-  "name": "data-loaders",
-  "version": "1.0.0",
+  "name": "@examples/react-location-data-loaders",
+  "private": true,
   "description": "Generated file-based routes for React Location and Vite data loaders example",
   "author": "Omar Elhawary <oedotme@gmail.com> (https://omarelhawary.me)",
   "license": "MIT",

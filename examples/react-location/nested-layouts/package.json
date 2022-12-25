@@ -1,6 +1,6 @@
 {
-  "name": "nested-layouts",
-  "version": "1.0.0",
+  "name": "@examples/react-location-nested-layouts",
+  "private": true,
   "description": "Generated file-based routes for React Location and Vite nested layouts example",
   "author": "Omar Elhawary <oedotme@gmail.com> (https://omarelhawary.me)",
   "license": "MIT",

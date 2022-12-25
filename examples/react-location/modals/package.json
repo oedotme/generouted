@@ -1,6 +1,6 @@
 {
-  "name": "modals",
-  "version": "1.0.0",
+  "name": "@examples/react-location-modals",
+  "private": true,
   "description": "Generated file-based routes for React Location and Vite modals example",
   "author": "Omar Elhawary <oedotme@gmail.com> (https://omarelhawary.me)",
   "license": "MIT",

@@ -1,6 +1,6 @@
 {
-  "name": "basic",
-  "version": "1.0.0",
+  "name": "@examples/solid-router-basic",
+  "private": true,
   "description": "Generated file-based routes for Solid Router and Vite basic example",
   "author": "Omar Elhawary <oedotme@gmail.com> (https://omarelhawary.me)",
   "license": "MIT",

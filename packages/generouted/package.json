@@ -1,0 +1,86 @@
+{
+  "name": "generouted",
+  "version": "1.6.4",
+  "description": "Generated client-side file-based routes for Vite",
+  "author": "Omar Elhawary <oedotme@gmail.com> (https://omarelhawary.me)",
+  "license": "MIT",
+  "repository": "https://github.com/oedotme/generouted",
+  "bugs": "https://github.com/oedotme/generouted/issues",
+  "homepage": "https://github.com/oedotme/generouted#readme",
+  "keywords": [
+    "actions",
+    "code-splitting",
+    "data-loaders",
+    "file-based-routing",
+    "generate",
+    "nested-layouts",
+    "nextjs",
+    "pages",
+    "pre-loading ",
+    "react",
+    "react-location",
+    "react-router",
+    "react-router-dom",
+    "remix",
+    "router",
+    "routes",
+    "solid",
+    "solid-router",
+    "typescript",
+    "vite"
+  ],
+  "type": "module",
+  "exports": {
+    "./core": {
+      "types": "./src/core.ts",
+      "import": "./src/core.ts"
+    },
+    "./react-location": {
+      "types": "./src/react-location.tsx",
+      "import": "./src/react-location.tsx"
+    },
+    "./react-router": {
+      "types": "./src/react-router.tsx",
+      "import": "./src/react-router.tsx"
+    },
+    "./solid-router": {
+      "types": "./src/solid-router.tsx",
+      "import": "./src/solid-router.tsx"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "core": [
+        "./src/core.ts"
+      ],
+      "react-location": [
+        "./src/react-location.tsx"
+      ],
+      "react-router": [
+        "./src/react-router.tsx"
+      ],
+      "solid-router": [
+        "./src/solid-router.tsx"
+      ]
+    }
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "type-check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@solidjs/router": "^0.6.0",
+    "@tanstack/react-location": "^3.7.4",
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.10",
+    "react-router-dom": "^6.6.1",
+    "solid-js": "^1.6.6",
+    "typescript": "^4.9.4",
+    "vite": "^4.0.3"
+  },
+  "peerDependencies": {
+    "vite": ">=3"
+  }
+}
