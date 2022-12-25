@@ -1,16 +1,15 @@
 {
   "git": {
+    "tagName": "v${version}",
     "requireCleanWorkingDir": false,
     "commit": true,
     "commitMessage": "release: v${version}",
-    "tagName": "generouted@${version}",
     "push": true
   },
   "github": {
     "release": true,
     "releaseName": "v${version}",
     "autoGenerate": true,
-    "draft": true,
     "web": true
   }
 }
