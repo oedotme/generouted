@@ -1,0 +1,17 @@
+{
+  "git": {
+    "requireCleanWorkingDir": true,
+    "commit": false,
+    "tagName": "@generouted/tanstack-react-router@${version}",
+    "push": false
+  },
+  "github": {
+    "release": false,
+    "autoGenerate": false,
+    "draft": false,
+    "web": false
+  },
+  "hooks": {
+    "before:init": ["pnpm pre-release"]
+  }
+}

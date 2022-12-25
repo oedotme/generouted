@@ -1,0 +1,15 @@
+{
+  "git": {
+    "requireCleanWorkingDir": false,
+    "commit": true,
+    "commitMessage": "release: v${version}",
+    "tagName": "generouted@${version}",
+    "push": false
+  },
+  "github": {
+    "release": true,
+    "autoGenerate": true,
+    "draft": true,
+    "web": true
+  }
+}
