@@ -1,0 +1,30 @@
+{
+  "npm": false,
+  "git": {
+    "tagName": "v${version}",
+    "tagAnnotation": "v${version}",
+    "requireCleanWorkingDir": true,
+    "commit": true,
+    "commitMessage": "release: v${version}",
+    "changelog": "echo '### Commits'; git log --pretty=format:'- %s (%h)' ${from}...${to}; echo; echo 'https://${repo.host}/${repo.repository}/compare/${latestTag}...NEW'",
+    "push": true,
+    "skipChecks": true
+  },
+  "github": {
+    "release": true,
+    "releaseName": "v${version}",
+    "releaseNotes": "echo \"${changelog}\" | sed 's|NEW|v${version}|'",
+    "web": true,
+    "skipChecks": true
+  },
+  "hooks": {
+    "before:init": ["pnpm -r pre-release"]
+  },
+  "plugins": {
+    "@release-it-plugins/workspaces": {
+      "workspaces": ["packages/*", "plugins/*"],
+      "additionalManifests": { "dependencyUpdates": [], "versionUpdates": [] },
+      "skipChecks": true
+    }
+  }
+}

@@ -68,8 +68,7 @@
     "src"
   ],
   "scripts": {
-    "type-check": "tsc --noEmit",
-    "release": "release-it"
+    "type-check": "tsc --noEmit"
   },
   "devDependencies": {
     "@solidjs/router": "^0.6.0",

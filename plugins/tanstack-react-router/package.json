@@ -51,8 +51,7 @@
     "dev": "tsup src/index.ts --dts --format cjs,esm --external prettier --watch",
     "build": "tsup src/index.ts --dts --format cjs,esm --external prettier --minify --clean",
     "type-check": "tsc --noEmit",
-    "pre-release": "pnpm build",
-    "release": "release-it"
+    "pre-release": "pnpm build"
   },
   "devDependencies": {
     "fast-glob": "^3.2.12",
