@@ -6,7 +6,7 @@
     "requireCleanWorkingDir": true,
     "commit": true,
     "commitMessage": "release: v${version}",
-    "changelog": "echo '### Commits'; git log --pretty=format:'- %s (%h)' ${from}...${to}; echo; echo 'https://${repo.host}/${repo.repository}/compare/${latestTag}...NEW'",
+    "changelog": "echo '### Commits'; git log --pretty=format:'- %s (%h)' ${from}...${to}; echo '\n'; echo 'https://${repo.host}/${repo.repository}/compare/${latestTag}...NEW'",
     "push": true,
     "skipChecks": true
   },
