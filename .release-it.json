@@ -6,14 +6,14 @@
     "requireCleanWorkingDir": true,
     "commit": true,
     "commitMessage": "release: v${version}",
-    "changelog": "echo '### Commits'; git log --pretty=format:'- %s (%h)' ${from}...${to}; echo '\n'; echo 'https://${repo.host}/${repo.repository}/compare/${latestTag}...NEW'",
+    "changelog": "echo '## Commits'; git log --pretty=format:'- %s %h by @%cn' ${from}...${to}; echo '\n\n**Changelog**: https://${repo.host}/${repo.repository}/compare/${latestTag}...TAG'",
     "push": true,
     "skipChecks": true
   },
   "github": {
     "release": true,
     "releaseName": "v${version}",
-    "releaseNotes": "echo \"${changelog}\" | sed 's|NEW|v${version}|'",
+    "releaseNotes": "echo \"${changelog}\" | sed 's|TAG|v${version}|'",
     "web": true,
     "skipChecks": true
   },
