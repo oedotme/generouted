@@ -37,6 +37,7 @@ I enjoyed working with file-based routing since started using it with Next.js. A
 
 ## Framework support
 
+- React with [TanStack React Router 🆕](./plugins/tanstack-react-router)
 - React with [TanStack's React Location](https://react-location.tanstack.com)
 - React with [React Router](https://reactrouter.com)
 - Solid with [Solid Router](https://github.com/solidjs/solid-router)
@@ -44,6 +45,10 @@ I enjoyed working with file-based routing since started using it with Next.js. A
 ## Getting started
 
 In case you don't have a Vite project with React and TypeScript, check [Vite documentation to start a new project](https://vitejs.dev/guide/#scaffolding-your-first-vite-project).
+
+### TanStack React Router 🆕
+
+[Check out the docs here](./plugins/tanstack-react-router)
 
 ### React Location
 
@@ -231,6 +236,10 @@ No available props.
 <br>
 
 ## Examples
+
+### TanStack React Router
+
+- [Basic](./examples/tanstack-react-router/basic)
 
 ### React Location
 
