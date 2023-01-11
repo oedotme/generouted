@@ -54,6 +54,7 @@
     "pre-release": "pnpm build"
   },
   "devDependencies": {
+    "@generouted/core": "workspace:*",
     "fast-glob": "^3.2.12",
     "tsup": "^6.5.0",
     "typescript": "^4.9.4",

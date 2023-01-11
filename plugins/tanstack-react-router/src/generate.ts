@@ -1,47 +1,13 @@
-import { writeFileSync, readFileSync } from 'fs'
+import { writeFileSync } from 'fs'
 import fg from 'fast-glob'
+
+import { patterns as corePatterns, getRoutes } from '@generouted/core'
 
 import { format } from './format'
 import { Options } from './options'
+import { template } from './template'
 
-const template = `import { Fragment } from 'react'
-import { createReactRouter, createRouteConfig, lazy, RouterProvider } from '@tanstack/react-router'
-
-// __imports__
-
-// __modules__
-
-const config = root.addChildren([
-  // __routes__,
-  _404,
-])
-
-const router = createReactRouter({ routeConfig: config, defaultPreload: 'intent' })
-
-declare module '@tanstack/react-router' {
-  interface RegisterRouter {
-    router: typeof router
-  }
-}
-
-export const Routes = () => <RouterProvider router={router} />
-`
-const patterns = {
-  route: [/^.?\/src\/pages\/|^\/pages\/|\.(jsx|tsx)$/g, ''],
-  splat: [/\[\.{3}.+\]/, '*'],
-  param: [/\[([^\]]+)\]/g, '$$$1'],
-  slash: [/index|\./g, '/'],
-} as const
-
-type BaseRoute = { path?: string; children?: BaseRoute[] } & Record<string, any>
-
-const getRouteId = (path: string) => path.replace(...patterns.route).replace(/\W/g, '')
-const getRouteExports = (content: string) => ({
-  default: /^export\s+default\s/gm.test(content),
-  loader: /^export\s+(const|function)\s+Loader(\s|\()/gm.test(content),
-  action: /^export\s+(const|function)\s+Action(\s|\()/gm.test(content),
-  errorElement: /^export\s+(const|function)\s+ErrorElement(\s|\()/gm.test(content),
-})
+const patterns = Object.assign(corePatterns, { param: [/\[([^\]]+)\]/g, '$$$1'] })
 
 const generateRoutes = async () => {
   const source = ['./src/pages/**/[\\w[]*.{jsx,tsx}']
@@ -50,109 +16,52 @@ const generateRoutes = async () => {
   const imports: string[] = []
   const modules: string[] = []
 
-  const filteredRoutes = files
-    .filter((key) => !key.includes('/_') || /(_app|_layout)\.(jsx|tsx)$/.test(key))
-    .sort((a, z) => +z.includes('_layout') - +a.includes('_layout'))
-    .sort((a, z) => +z.includes('pages/_app') - +a.includes('pages/_app'))
+  const { routes, preserved, exports, count } = getRoutes(
+    files,
+    (key, exports) => {
+      const { pendingComponent: pending, errorComponent: error, loader, action } = exports
+      const module = `import('./pages/${key.replace(...patterns.route)}')`
 
-  const ids = filteredRoutes.map((route) => getRouteId(route))
+      return {
+        _component: `lazy(() => ${module})`,
+        _pendingComponent: pending ? `lazy(() => ${module}.then((m) => ({ default: m.PendingComponent })))` : '',
+        _errorComponent: error ? `lazy(() => ${module}.then((m) => ({ default: m.ErrorComponent })))` : '',
+        _loader: loader ? `(...args) => ${module}.then((m) => m.Loader.apply(m.Loader, args as any))` : '',
+        _action: action ? `(...args) => ${module}.then((m) => m.Action.apply(m.Action, args as any))` : '',
+      }
+    },
+    patterns
+  )
 
-  if (ids.includes('_app')) {
+  if (preserved._app && exports['_app'].default) {
     imports.push(`import App from './pages/_app'`)
     modules.push(`const root = createRouteConfig({ component: App || Fragment })`)
   } else {
     modules.push(`const root = createRouteConfig({ component: Fragment })`)
   }
 
-  if (ids.includes('404')) {
+  if (preserved._404 && exports['404'].default) {
     imports.push(`import NoMatch from './pages/404'`)
-    const props = [`path: '*'`, 'component: NoMatch || Fragment']
-    modules.push(`const _404 = root.createRoute({ ${props.join(', ')} })`)
+    modules.push(`const _404 = root.createRoute({ path: '*', component: NoMatch || Fragment })`)
   } else {
-    const props = [`path: '*'`, 'component: Fragment']
-    modules.push(`const _404 = root.createRoute({ ${props.join(', ')} })`)
+    modules.push(`const _404 = root.createRoute({ path: '*', component:  Fragment })`)
   }
 
-  const routes = filteredRoutes.reduce((routes, key) => {
-    const id = getRouteId(key)
+  const config = JSON.stringify(routes, function (key, value) {
+    if (key === 'id') {
+      const { id, pid, path, ...properties } = this
 
-    const content = readFileSync(key, { encoding: 'utf-8' })
-    const exports = getRouteExports(content)
+      const options = Object.entries(properties)
+        .filter(([key, value]) => key.startsWith('_') && Boolean(value))
+        .map(([key, value]) => `${key.replace('_', '')}: ${value}`)
 
-    if (!exports.default) return routes
-    if (['_app', '404'].includes(id) || ids.includes(id + '_layout')) return routes
-
-    const route = {
-      component: `lazy(() => import('./pages/${key.replace(...patterns.route)}'))`,
+      const props = [path ? `path: '${path}'` : `id: '${id}'`, ...options].filter(Boolean)
+      modules.push(`const ${id} = ${pid}.createRoute({ ${props.join(', ')} })`)
     }
 
-    const segments = key
-      .replace(...patterns.route)
-      .replace(...patterns.splat)
-      .replace(...patterns.param)
-      .split('/')
-      .filter(Boolean)
-
-    segments.reduce((parent, segment, index) => {
-      const path = segment.replace(...patterns.slash)
-      const root = index === 0
-      const leaf = index === segments.length - 1 && segments.length > 1
-      const node = !root && !leaf
-      const layout = segment === '_layout'
-      const insert = /^\w|\//.test(path) ? 'unshift' : 'push'
-
-      if (root) {
-        const dynamic = path.startsWith(':') || path === '*'
-        if (dynamic) return parent
-
-        const last = segments.length === 1
-        if (last) {
-          routes.push({ id, path })
-          const props = [`path: '${path}'`, `component: ${route.component}`]
-          modules.push(`const ${id} = root.createRoute({ ${props.join(', ')} })`)
-          return parent
-        }
-      }
-
-      if (root || node) {
-        const current = root ? routes : parent.children
-        const found = current?.find((route) => route.path === path)
-        if (found) found.children ??= []
-        else {
-          const _id = segments.slice(0, index + 1).join('')
-          const pid = parent?.id || 'root'
-          const props = [`path: '${path}'`]
-          const route = `const ${_id} = ${pid}.createRoute({ ${props.join(', ')} })`
-          if (!(_id + '_layout' === id) && !modules.includes(route)) modules.push(route)
-          current?.[insert]({ id: _id, path, children: [] })
-        }
-        return found || (current?.[insert === 'unshift' ? 0 : current.length - 1] as BaseRoute)
-      }
-
-      if (layout) {
-        const _id = segments.slice(0, index - 1).join('')
-        const pid = _id || 'root'
-        const props = [`path: '${parent?.path}'`, `component: ${route.component}`]
-        modules.push(`const ${id} = ${pid}.createRoute({ ${props.join(', ')} })`)
-        return Object.assign(parent, { id })
-      }
-
-      if (leaf) {
-        const pid = parent?.id || 'root'
-        const props = [`path: '${path}'`, `component: ${route.component}`]
-        modules.push(`const ${id} = ${pid}.createRoute({ ${props.join(', ')} })`)
-        parent?.children?.[insert]({ id, path })
-      }
-
-      return parent
-    }, {} as BaseRoute)
-
-    return routes
-  }, [] as BaseRoute[])
-
-  const __imports__ = imports.join('\n')
-  const __modules__ = modules.join('\n')
-  const __routes__ = JSON.stringify(routes, (key, value) => (key !== 'path' ? value : undefined))
+    if (['pid', 'path'].includes(key) || key.startsWith('_')) return undefined
+    return value
+  })
     .replace(/"id":"(\w+)"/g, '$1')
     .replace(/^\[|\]$|{|}/g, '')
     .replace(/\[/g, '([')
@@ -160,12 +69,12 @@ const generateRoutes = async () => {
     .replace(/,"children":/g, '.addChildren')
     .replace(/\),/g, '),\n  ')
 
-  const file = template
-    .replace('// __imports__', __imports__)
-    .replace('// __modules__', __modules__)
-    .replace('// __routes__', __routes__)
+  const content = template
+    .replace('// imports', imports.join('\n'))
+    .replace('// modules', modules.join('\n'))
+    .replace('// config', config)
 
-  return { content: file, count: ids.length - 1 }
+  return { content, count }
 }
 
 let latestContent = ''

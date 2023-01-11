@@ -4,7 +4,7 @@ import { generate } from './generate'
 import { defaultOptions } from './options'
 
 export default function Generouted(): Plugin {
-  const resolvedOptions = Object.assign(defaultOptions, {})
+  const resolvedOptions = { ...defaultOptions }
 
   return {
     name: 'generouted/tanstack-react-router',
