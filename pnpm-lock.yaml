@@ -222,13 +222,21 @@ importers:
       typescript: 4.9.4
       vite: 4.0.3
 
+  plugins/core:
+    specifiers:
+      '@types/node': ^18.11.18
+    devDependencies:
+      '@types/node': 18.11.18
+
   plugins/tanstack-react-router:
     specifiers:
+      '@generouted/core': workspace:*
       fast-glob: ^3.2.12
       tsup: ^6.5.0
       typescript: ^4.9.4
       vite: ^4.0.3
     devDependencies:
+      '@generouted/core': link:../core
       fast-glob: 3.2.12
       tsup: 6.5.0_typescript@4.9.4
       typescript: 4.9.4
@@ -1284,6 +1292,10 @@ packages:
 
   /@types/node/14.18.34:
     resolution: {integrity: sha512-hcU9AIQVHmPnmjRK+XUUYlILlr9pQrsqSrwov/JK1pnf3GTQowVBhx54FbvM0AU/VXGH4i3+vgXS5EguR7fysA==}
+    dev: true
+
+  /@types/node/18.11.18:
+    resolution: {integrity: sha512-DHQpWGjyQKSHj3ebjFI/wRKcqQcdR+MoFBygntYOZytCqNfkd2ZC4ARDJ2DQqhjH5p85Nnd3jhUJIXrszFX/JA==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:

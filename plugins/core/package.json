@@ -1,0 +1,20 @@
+{
+  "name": "@generouted/core",
+  "private": true,
+  "description": "Generated file-based routes for TanStack React Router and Vite",
+  "author": "Omar Elhawary <oedotme@gmail.com> (https://omarelhawary.me)",
+  "license": "MIT",
+  "repository": "https://github.com/oedotme/generouted",
+  "bugs": "https://github.com/oedotme/generouted/issues",
+  "homepage": "https://github.com/oedotme/generouted#readme",
+  "keywords": [],
+  "type": "module",
+  "types": "./src/index.ts",
+  "exports": "./src/index.ts",
+  "files": [
+    "src"
+  ],
+  "devDependencies": {
+    "@types/node": "^18.11.18"
+  }
+}
