@@ -48,8 +48,8 @@
     "dist"
   ],
   "scripts": {
-    "dev": "tsup src/index.ts --dts --format cjs,esm --external prettier --watch",
-    "build": "tsup src/index.ts --dts --format cjs,esm --external prettier --minify --clean",
+    "dev": "tsup src/index.ts --dts --format cjs,esm --watch",
+    "build": "tsup src/index.ts --dts --format cjs,esm --minify --clean",
     "type-check": "tsc --noEmit",
     "pre-release": "pnpm build"
   },
