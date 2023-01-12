@@ -1,6 +1,6 @@
 {
   "name": "generouted",
-  "version": "1.6.11",
+  "version": "1.6.12",
   "description": "Generated client-side file-based routes for Vite",
   "author": "Omar Elhawary <oedotme@gmail.com> (https://omarelhawary.me)",
   "license": "MIT",
