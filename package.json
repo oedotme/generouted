@@ -34,12 +34,12 @@
     "prepare": "husky install"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.3.0",
-    "@commitlint/config-conventional": "^17.3.0",
+    "@commitlint/cli": "^17.4.1",
+    "@commitlint/config-conventional": "^17.4.0",
     "@release-it-plugins/workspaces": "^3.2.0",
-    "husky": "^8.0.2",
+    "husky": "^8.0.3",
     "lint-staged": "^13.1.0",
-    "prettier": "^2.8.1",
-    "release-it": "^15.5.1"
+    "prettier": "^2.8.2",
+    "release-it": "^15.6.0"
   }
 }
