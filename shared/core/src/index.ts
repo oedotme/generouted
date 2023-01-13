@@ -60,9 +60,6 @@ export const getRoutes = <T extends BaseRoute>(
       const insert = /^\w|\//.test(path) ? 'unshift' : 'push'
 
       if (root) {
-        const dynamic = path.startsWith(':') || path === '*'
-        if (dynamic) return parent
-
         const last = segments.length === 1
         if (last) {
           routes.push({ id, pid: 'root', path, ...route })
