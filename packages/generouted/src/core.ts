@@ -3,6 +3,7 @@ export const patterns = {
   splat: [/\[\.{3}\w+\]/g, '*'],
   param: [/\[([^\]]+)\]/g, ':$1'],
   slash: [/^index$|\./g, '/'],
+  optional: [/\-(:?\w+)/g, '$1?'],
 } as const
 
 type PreservedKey = '_app' | '404'
@@ -28,6 +29,7 @@ export const generateRegularRoutes = <T extends BaseRoute, M>(
       .replace(...patterns.route)
       .replace(...patterns.splat)
       .replace(...patterns.param)
+      .replace(...patterns.optional)
       .split('/')
       .filter(Boolean)
 
