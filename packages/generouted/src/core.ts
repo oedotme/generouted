@@ -1,6 +1,6 @@
 export const patterns = {
   route: [/^\/src\/pages\/|^\/pages\/|\.(jsx|tsx)$/g, ''],
-  splat: [/\[\.{3}.+\]/, '*'],
+  splat: [/\[\.{3}\w+\]/g, '*'],
   param: [/\[([^\]]+)\]/g, ':$1'],
   slash: [/^index$|\./g, '/'],
 } as const
