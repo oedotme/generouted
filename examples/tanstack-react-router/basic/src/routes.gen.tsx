@@ -9,8 +9,6 @@ const root = createRouteConfig({ component: App || Fragment })
 const _404 = root.createRoute({ path: '*', component: NoMatch || Fragment })
 const posts = root.createRoute({ path: 'posts', component: lazy(() => import('./pages/posts/_layout')) })
 const postsindex = posts.createRoute({ path: '/', component: lazy(() => import('./pages/posts/index')) })
-const postsblog = posts.createRoute({ path: 'blog', component: lazy(() => import('./pages/posts/blog/_layout')) })
-const postsbloglist = postsblog.createRoute({ path: 'list', component: lazy(() => import('./pages/posts/blog/list')) })
 const postsid = posts.createRoute({ path: '$id', component: lazy(() => import('./pages/posts/[id]')) })
 const auth = root.createRoute({ id: 'auth', component: lazy(() => import('./pages/(auth)/_layout')) })
 const authregister = auth.createRoute({ path: 'register', component: lazy(() => import('./pages/(auth)/register')) })
@@ -26,7 +24,7 @@ const index = root.createRoute({
 })
 
 const config = root.addChildren([
-  posts.addChildren([postsindex, postsblog.addChildren([postsbloglist]), postsid]),
+  posts.addChildren([postsindex, postsid]),
   auth.addChildren([authregister, authlogin]),
   about,
   index,
