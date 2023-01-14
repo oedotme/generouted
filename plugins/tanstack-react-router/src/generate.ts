@@ -19,15 +19,15 @@ const generateRoutes = async () => {
   const { routes, preserved, exports, count } = getRoutes(
     files,
     (key, exports) => {
-      const { pendingComponent: pending, errorComponent: error, loader, action } = exports
+      const { loader, action, pending, catch_ } = exports
       const module = `import('./pages/${key.replace(...patterns.route)}')`
 
       return {
         _component: `lazy(() => ${module})`,
-        _pendingComponent: pending ? `lazy(() => ${module}.then((m) => ({ default: m.PendingComponent })))` : '',
-        _errorComponent: error ? `lazy(() => ${module}.then((m) => ({ default: m.ErrorComponent })))` : '',
         _loader: loader ? `(...args) => ${module}.then((m) => m.Loader.apply(m.Loader, args as any))` : '',
         _action: action ? `(...args) => ${module}.then((m) => m.Action.apply(m.Action, args as any))` : '',
+        _pendingComponent: pending ? `lazy(() => ${module}.then((m) => ({ default: m.Pending })))` : '',
+        _errorComponent: catch_ ? `lazy(() => ${module}.then((m) => ({ default: m.Catch })))` : '',
       }
     },
     patterns
