@@ -12,12 +12,11 @@ const config = root.addChildren([
 ])
 
 const router = createReactRouter({ routeConfig: config, defaultPreload: 'intent' })
+export const Routes = () => <RouterProvider router={router} />
 
 declare module '@tanstack/react-router' {
   interface RegisterRouter {
     router: typeof router
   }
 }
-
-export const Routes = () => <RouterProvider router={router} />
 `
