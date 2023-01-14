@@ -7,7 +7,7 @@ export const patterns = {
 } as const
 
 type PreservedKey = '_app' | '404'
-type BaseRoute = { path?: string; children?: BaseRoute[] } & Record<string, any>
+type BaseRoute = { id?: string; path?: string; children?: BaseRoute[] } & Record<string, any>
 
 export const generatePreservedRoutes = <T>(files: Record<string, T | any>): Partial<Record<PreservedKey, T>> => {
   return Object.keys(files).reduce((routes, key) => {
@@ -23,7 +23,7 @@ export const generateRegularRoutes = <T extends BaseRoute, M>(
   const filteredRoutes = Object.keys(files).filter((key) => !key.includes('/_') || /_layout\.(jsx|tsx)$/.test(key))
   return filteredRoutes.reduce<T[]>((routes, key) => {
     const module = files[key]
-    const route = buildRoute(module, key)
+    const route = { id: key.replace(...patterns.route), ...buildRoute(module, key) }
 
     const segments = key
       .replace(...patterns.route)
@@ -39,6 +39,7 @@ export const generateRegularRoutes = <T extends BaseRoute, M>(
       const leaf = index === segments.length - 1 && segments.length > 1
       const node = !root && !leaf
       const layout = segment === '_layout'
+      const group = /\(\w+\)/.test(path)
       const insert = /^\w|\//.test(path) ? 'unshift' : 'push'
 
       if (root) {
@@ -51,14 +52,15 @@ export const generateRegularRoutes = <T extends BaseRoute, M>(
 
       if (root || node) {
         const current = root ? routes : parent.children
-        const found = current?.find((route) => route.path === path)
+        const found = current?.find((route) => route.path === path || route.id === path)
+        const props = group ? { id: path } : { path }
         if (found) found.children ??= []
-        else current?.[insert]({ path, children: [] })
+        else current?.[insert]({ ...props, children: [] })
         return found || (current?.[insert === 'unshift' ? 0 : current.length - 1] as BaseRoute)
       }
 
       if (layout) {
-        return Object.assign(parent, route)
+        return Object.assign(parent, { ...route, id: parent.id || parent.path })
       }
 
       if (leaf) {

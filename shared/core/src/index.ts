@@ -18,7 +18,7 @@ const getRouteExports = (content: string) => ({
   action: /^export\s+(const|function)\s+Action(\s|\()/gm.test(content),
 })
 
-type BaseRoute = { path?: string; children?: BaseRoute[] } & Record<string, any>
+type BaseRoute = { id?: string; path?: string; children?: BaseRoute[] } & Record<string, any>
 type Exports = Record<string, ReturnType<typeof getRouteExports>>
 type Patterns = typeof patterns
 
@@ -59,6 +59,7 @@ export const getRoutes = <T extends BaseRoute>(
       const leaf = index === segments.length - 1 && segments.length > 1
       const node = !root && !leaf
       const layout = segment === '_layout'
+      const group = /\(\w+\)/.test(path)
       const insert = /^\w|\//.test(path) ? 'unshift' : 'push'
 
       if (root) {
@@ -71,18 +72,19 @@ export const getRoutes = <T extends BaseRoute>(
 
       if (root || node) {
         const current = root ? routes : parent.children
-        const found = current?.find((route) => route.path === path)
-        const _id = segments.slice(0, index + 1).join('')
+        const _id = getRouteId(segments.slice(0, index + 1).join(''))
+        const found = current?.find((route) => route.path === path || route.id === _id)
         const pid = parent?.id || 'root'
+        const props = group ? {} : { path }
 
         if (found) found.children ??= []
-        else current?.[insert]({ id: _id, pid, path, children: [] })
+        else current?.[insert]({ ...props, id: _id, pid, children: [] })
         return found || (current?.[insert === 'unshift' ? 0 : current.length - 1] as BaseRoute)
       }
 
       if (layout) {
         const pid = segments.slice(0, index - 1).join('') || 'root'
-        return Object.assign(parent, { id, pid, ...route })
+        return Object.assign(parent, { id: parent.id || parent.path, pid, ...route })
       }
 
       if (leaf) {
