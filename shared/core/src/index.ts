@@ -24,7 +24,7 @@ type Patterns = typeof patterns
 
 export const getRoutes = <T extends BaseRoute>(
   files: string[],
-  buildRoute: (key: string, exports: Exports[string]) => T,
+  buildRoute: (key: string, exports: Exports[string], id?: string) => T,
   patterns: Patterns
 ) => {
   const filteredRoutes = files
@@ -40,11 +40,11 @@ export const getRoutes = <T extends BaseRoute>(
     const id = getRouteId(key)
 
     exports[id] = getRouteExports(content)
-    const route = buildRoute(key, exports[id])
 
     if (!exports[id].default) return routes
     if (['_app', '404'].includes(id) || ids.includes(id + '_layout')) return routes
 
+    const route = buildRoute(key, exports[id], id)
     const segments = key
       .replace(...patterns.route)
       .replace(...patterns.splat)
