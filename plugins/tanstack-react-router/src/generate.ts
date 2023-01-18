@@ -10,7 +10,7 @@ import { template } from './template'
 const patterns = Object.assign(corePatterns, { param: [/\[([^\]]+)\]/g, '$$$1'] })
 
 const generateRoutes = async () => {
-  const source = ['./src/pages/**/[\\w[]*.{jsx,tsx}']
+  const source = ['./src/pages/**/[\\w[-]*.{jsx,tsx}']
   const files = await fg(source, { onlyFiles: true })
 
   const imports: string[] = []
