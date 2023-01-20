@@ -38,6 +38,7 @@ I enjoyed working with file-based routing since started using it with Next.js. A
 ## Framework support
 
 - React with [TanStack React Router 🆕](./plugins/tanstack-react-router)
+- React with [React Router Plugin with Type-safety 🆕](https://reactrouter.com)
 - React with [TanStack's React Location](https://react-location.tanstack.com)
 - React with [React Router](https://reactrouter.com)
 - Solid with [Solid Router](https://github.com/solidjs/solid-router)
