@@ -1,4 +1,4 @@
-# Generouted + React Router
+# Generouted + React Router + Type-safety
 
 ## How
 
@@ -34,6 +34,52 @@ import { Routes } from './routes.gen'
 
 const container = document.getElementById('app')!
 createRoot(container).render(<Routes />)
+```
+
+### Adding pages
+
+Add the home page by creating a new file `src/pages/index.tsx` **→** `/`, then export a default component:
+
+```tsx
+// src/pages/index.tsx
+
+export default function Home() {
+  return <h1>Home</h1>
+}
+```
+
+### Type-safe navigation
+
+Autocompletion for `Link`, `useNavigate` and `useParams` exported from `src/route.gen.tsx`
+
+```tsx
+// src/pages/index.tsx
+import { Link, useNavigate } from '../routes.gen'
+
+export default function Home() {
+  const navigate = useNavigate()
+
+  // typeof params -> { id: string; pid?: string }
+  const params = useParams('/posts/:id/:pid?')
+
+  // typeof params to be passed -> { id: string; pid?: string }
+  const handler = () => navigate('/posts/:id/:pid?', { params: { id: '1', pid: '0' } })
+
+  return (
+    <div>
+      {/** Passes  */}
+      <Link to="/" />
+      <Link to="/posts/:id" params={{ id: '1' }} />
+      <Link to="/posts/:id/:pid?" params={{ id: '1' }} />
+      <Link to="/posts/:id/:pid?" params={{ id: '1', pid: 0 }} />
+      {/** Error for a not defined route  */}
+      <Link to="/this-route-doesnt-exist" />
+      {/** Error for missing required params */}
+      <Link to="/posts/:id" />
+      <h1>Home</h1>
+    </div>
+  )
+}
 ```
 
 ## Examples
