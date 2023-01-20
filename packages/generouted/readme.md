@@ -203,6 +203,45 @@ Add a file outside of the directory with a nested layout, then name the file by 
 
 - `src/pages/posts.nested.as.url.not.layout.tsx` **→** `/posts/nested/as/url/not/layout`
 
+### Pathless layout groups 🆕
+
+By wrapping a directory name with `()`: `src/pages/(app)/...`
+
+```shell
+src/pages/
+├── (app)/
+│   ├── _layout.tsx
+│   ├── dashboard.tsx      →  /dashboard      wrapped by (app)/_layout.tsx
+│   └── item.tsx           →  /item           wrapped by (app)/_layout.tsx
+├── (marketing)/
+│   ├── _layout.tsx
+│   ├── about.tsx          →  /about          wrapped by (marketing)/_layout.tsx
+│   └── testimonials.tsx   →  /testimonials   wrapped by (marketing)/_layout.tsx
+└── admin/
+    ├── _layout.tsx
+    └── index.tsx          →  /admin          wrapped by admin/_layout.tsx
+```
+
+### Optional route segments 🆕
+
+By prefixing a minus sign `-` to a segment; meaning this segment can be subtracted/removed from route url:
+
+- `src/pages/-some/thing.tsx` → `/some?/thing`
+- `src/pages/-[param]/another.tsx` → `/:param?/another`
+
+React Router [v6.5.0+](https://github.com/remix-run/react-router/releases/tag/react-router@6.5.0) supports regular and dynamic optional route segments:
+
+```shell
+src/pages/-en/about.tsx  →  /en?/about            /en/about and /about
+src/pages/-[lang]/about.tsx  →  /:lang?/about     /en/about, /fr/about, /about
+```
+
+However other integration might only support optional dynamic segments:
+
+```shell
+src/pages/-[lang]/about.tsx  →  /:lang?/about     /en/about, /fr/about, /about
+```
+
 ### Ignored routes - co-locating non-pages files inside the pages directory
 
 Any directory or a file starts with `_` will be ignored
