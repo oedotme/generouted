@@ -54,7 +54,7 @@ Autocompletion for `Link`, `useNavigate` and `useParams` exported from `src/rout
 
 ```tsx
 // src/pages/index.tsx
-import { Link, useNavigate } from '../routes.gen'
+import { Link, useNavigate, useParams } from '../routes.gen'
 
 export default function Home() {
   const navigate = useNavigate()
@@ -67,15 +67,18 @@ export default function Home() {
 
   return (
     <div>
-      {/** Passes  */}
+      {/** ✅ Passes  */}
       <Link to="/" />
       <Link to="/posts/:id" params={{ id: '1' }} />
       <Link to="/posts/:id/:pid?" params={{ id: '1' }} />
       <Link to="/posts/:id/:pid?" params={{ id: '1', pid: 0 }} />
-      {/** Error for a not defined route  */}
-      <Link to="/this-route-doesnt-exist" />
-      {/** Error for missing required params */}
+
+      {/** 🔴 Error: not defined route  */}
+      <Link to="/not-defined-route" />
+
+      {/** 🔴 Error: missing required params */}
       <Link to="/posts/:id" />
+
       <h1>Home</h1>
     </div>
   )
