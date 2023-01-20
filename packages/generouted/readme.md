@@ -50,6 +50,10 @@ In case you don't have a Vite project with React and TypeScript, check [Vite doc
 
 [Check out the docs here](./plugins/tanstack-react-router)
 
+### React Router plugin with navigation type-safety 🆕
+
+[Check out the docs here](./plugins/react-router)
+
 ### React Location
 
 #### Installation
@@ -276,7 +280,7 @@ No available props.
 
 ## Examples
 
-### TanStack React Router
+### TanStack React Router 🆕
 
 - [Basic](./examples/tanstack-react-router/basic)
 
@@ -291,6 +295,7 @@ No available props.
 
 - [Basic](./examples/react-router/basic)
 - [Nested layouts](./examples/react-router/nested-layouts)
+- [Plugin](./examples/react-router/plugin) 🆕
 
 ### Solid Router
 
