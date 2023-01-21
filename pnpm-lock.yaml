@@ -185,14 +185,14 @@ importers:
 
   examples/solid-router/basic:
     specifiers:
-      '@solidjs/router': ^0.6.0
+      '@solidjs/router': ^0.7.0
       generouted: workspace:*
       solid-js: ^1.6.9
       typescript: ^4.9.4
       vite: ^4.0.4
       vite-plugin-solid: ^2.5.0
     dependencies:
-      '@solidjs/router': 0.6.0_solid-js@1.6.9
+      '@solidjs/router': 0.7.0_solid-js@1.6.9
       generouted: link:../../../packages/generouted
       solid-js: 1.6.9
     devDependencies:
@@ -229,7 +229,7 @@ importers:
 
   packages/generouted:
     specifiers:
-      '@solidjs/router': ^0.6.0
+      '@solidjs/router': ^0.7.0
       '@tanstack/react-location': ^3.7.4
       '@types/react': ^18.0.27
       '@types/react-dom': ^18.0.10
@@ -238,7 +238,7 @@ importers:
       typescript: ^4.9.4
       vite: ^4.0.4
     devDependencies:
-      '@solidjs/router': 0.6.0_solid-js@1.6.9
+      '@solidjs/router': 0.7.0_solid-js@1.6.9
       '@tanstack/react-location': 3.7.4
       '@types/react': 18.0.27
       '@types/react-dom': 18.0.10
@@ -1293,8 +1293,8 @@ packages:
     engines: {node: '>=14.16'}
     dev: true
 
-  /@solidjs/router/0.6.0_solid-js@1.6.9:
-    resolution: {integrity: sha512-7ug2fzXXhvvDBL4CQyMvMM9o3dgBE6PoRh38T8UTmMnYz4rcCfROqSZc9yq+YEC96qWt5OvJgZ1Uj/4EAQXlfA==}
+  /@solidjs/router/0.7.0_solid-js@1.6.9:
+    resolution: {integrity: sha512-8HI84twe5FjYRebSLMAhtkL9bRuTDIlxJK56kjfjU9WKGoUCTaWpCnkuj8Hqde1bWZ0X+GOZxKDfNkn1CjtjxA==}
     peerDependencies:
       solid-js: ^1.5.3
     dependencies:
