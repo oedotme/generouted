@@ -250,13 +250,17 @@ importers:
   plugins/react-router:
     specifiers:
       '@generouted/core': workspace:*
+      '@types/react': ^18.0.27
       fast-glob: ^3.2.12
+      react-router-dom: ^6.7.0
       tsup: ^6.5.0
       typescript: ^4.9.4
       vite: ^4.0.4
     devDependencies:
       '@generouted/core': link:../../shared/core
+      '@types/react': 18.0.27
       fast-glob: 3.2.12
+      react-router-dom: 6.7.0
       tsup: 6.5.0_typescript@4.9.4
       typescript: 4.9.4
       vite: 4.0.4

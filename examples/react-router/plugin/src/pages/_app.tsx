@@ -8,7 +8,7 @@ export default function App() {
 
   const a = () => navigate('/posts/:id', { params: { id: 'a' } })
   const b = () => navigate('/posts/:id', { params: { id: '' } })
-  const c = () => navigate(-1, null)
+  const c = () => navigate(-1)
   const d = () => navigate('/posts/:id/deep', { params: { id: 'd' } })
   const e = () => navigate('/posts/:id/deep', { params: { id: 'e' } })
 
