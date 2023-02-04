@@ -3,7 +3,7 @@ export const patterns = {
   splat: [/\[\.{3}\w+\]/g, '*'],
   param: [/\[([^\]]+)\]/g, ':$1'],
   slash: [/^index$|\./g, '/'],
-  optional: [/\-(:?\w+)/g, '$1?'],
+  optional: [/^-(:?[\w-]+)/g, '$1?'],
 } as const
 
 type PreservedKey = '_app' | '404'
