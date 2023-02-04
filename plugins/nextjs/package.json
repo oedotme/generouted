@@ -1,0 +1,41 @@
+{
+  "name": "@generouted/next-js",
+  "version": "0.0.1",
+  "description": "Generated file-based routes for NextJs and Webpack",
+  "author": "",
+  "license": "MIT",
+  "repository": "https://github.com/oedotme/generouted",
+  "bugs": "https://github.com/oedotme/generouted/issues",
+  "homepage": "https://github.com/oedotme/generouted#readme",
+  "keywords": [],
+  "type": "commonjs",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "typesVersions": {
+    "*": {
+      ".": [
+        "./dist/index.d.ts"
+      ],
+      "client": [
+        "./src/client/index.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist",
+    "src/client"
+  ],
+  "scripts": {
+    "pre-release": "pnpm build"
+  },
+  "devDependencies": {
+    "@generouted/core": "workspace:*",
+    "@types/react": "^18.0.27",
+    "fast-glob": "^3.2.12",
+    "zod": "^3.20.2"
+  },
+  "peerDependencies": {
+    "fast-glob": ">=3",
+    "zod": "^3.20.2"
+  }
+}
