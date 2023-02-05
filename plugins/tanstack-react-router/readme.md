@@ -12,6 +12,12 @@ This integration is based on a Vite plugin to generate routes config for TanStac
 pnpm add @generouted/tanstack-react-router @tanstack/react-router@beta
 ```
 
+Optional additional packages for actions and/or loaders:
+
+```shell
+pnpm add @tanstack/react-actions@beta @tanstack/react-loaders@beta
+```
+
 ### Setup
 
 ```ts
