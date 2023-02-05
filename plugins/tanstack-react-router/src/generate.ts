@@ -15,17 +15,31 @@ const generateRoutes = async () => {
 
   const imports: string[] = []
   const modules: string[] = []
+  const actions: Record<'id' | 'export', string>[] = []
+  const loaders: Record<'id' | 'export', string>[] = []
 
   const { routes, preserved, exports, count } = getRoutes(
     files,
-    (key, exports) => {
+    (key, exports, id = '') => {
       const { loader, action, pending, catch_ } = exports
       const module = `import('./pages/${key.replace(...patterns.route)}')`
 
+      if (action) {
+        actions.push({
+          id,
+          export: `const ${id}Action = new Action({ key: '${id}', action: (...args) => ${module}.then((m) => m.Action.apply(m.Action, args as any)) })`,
+        })
+      }
+
+      if (loader) {
+        loaders.push({
+          id,
+          export: `const ${id}Loader = new Loader({ key: '${id}', loader: (...args) => ${module}.then((m) => m.Loader.apply(m.Loader, args as any)) })`,
+        })
+      }
+
       return {
         _component: `lazy(() => ${module})`,
-        _loader: loader ? `(...args) => ${module}.then((m) => m.Loader.apply(m.Loader, args as any))` : '',
-        _action: action ? `(...args) => ${module}.then((m) => m.Action.apply(m.Action, args as any))` : '',
         _pendingComponent: pending ? `lazy(() => ${module}.then((m) => ({ default: m.Pending })))` : '',
         _errorComponent: catch_ ? `lazy(() => ${module}.then((m) => ({ default: m.Catch })))` : '',
       }
@@ -35,16 +49,16 @@ const generateRoutes = async () => {
 
   if (preserved._app && exports['_app'].default) {
     imports.push(`import App from './pages/_app'`)
-    modules.push(`const root = createRouteConfig({ component: App || Fragment })`)
+    modules.push(`const root = new RootRoute({ component: App || Fragment })`)
   } else {
-    modules.push(`const root = createRouteConfig({ component: Fragment })`)
+    modules.push(`const root = new RootRoute({ component: Fragment })`)
   }
 
   if (preserved._404 && exports['404'].default) {
     imports.push(`import NoMatch from './pages/404'`)
-    modules.push(`const _404 = root.createRoute({ path: '*', component: NoMatch || Fragment })`)
+    modules.push(`const _404 = new Route({ getParentRoute: () => root, path: '*', component: NoMatch || Fragment })`)
   } else {
-    modules.push(`const _404 = root.createRoute({ path: '*', component:  Fragment })`)
+    modules.push(`const _404 = new Route({ getParentRoute: () => root, path: '*', component:  Fragment })`)
   }
 
   const config = JSON.stringify(routes, function (key, value) {
@@ -56,7 +70,7 @@ const generateRoutes = async () => {
         .map(([key, value]) => `${key.replace('_', '')}: ${value}`)
 
       const props = [path ? `path: '${path}'` : `id: '${id}'`, ...options].filter(Boolean)
-      modules.push(`const ${id} = ${pid}.createRoute({ ${props.join(', ')} })`)
+      modules.push(`const ${id} = new Route({ getParentRoute: () => ${pid}, ${props.join(', ')} })`)
     }
 
     if (['pid', 'path'].includes(key) || key.startsWith('_')) return undefined
@@ -73,6 +87,44 @@ const generateRoutes = async () => {
     .replace('// imports', imports.join('\n'))
     .replace('// modules', modules.join('\n'))
     .replace('// config', config)
+    .replace(
+      '// actions-imports',
+      actions.length ? `\nimport { Action, ActionClient } from '@tanstack/react-actions'` : ''
+    )
+    .replace('// actions', '\n\n' + actions.map((action) => action.export).join('\n'))
+    .replace(
+      '// actions-client',
+      actions.length
+        ? `export const actionClient = new ActionClient({ getActions: () => [${actions
+            .map(({ id }) => `${id}Action`)
+            .join(', ')}] })`
+        : ''
+    )
+    .replace(
+      '// actions-type',
+      actions.length
+        ? `\n\ndeclare module '@tanstack/react-actions' { \n  interface Register { \n    actionClient: typeof actionClient \n  } \n}`
+        : ''
+    )
+    .replace(
+      '// loaders-imports',
+      actions.length ? `\nimport { Loader, LoaderClient } from '@tanstack/react-loaders'` : ''
+    )
+    .replace('// loaders', '\n\n' + loaders.map((loader) => loader.export).join('\n'))
+    .replace(
+      '// loaders-client',
+      actions.length
+        ? `export const loaderClient = new LoaderClient({ getLoaders: () => [${loaders
+            .map(({ id }) => `${id}Loader`)
+            .join(', ')}] })`
+        : ''
+    )
+    .replace(
+      '// loaders-type',
+      actions.length
+        ? `\n\ndeclare module '@tanstack/react-loaders' { \n  interface Register { \n    loaderClient: typeof loaderClient \n  } \n}`
+        : ''
+    )
 
   return { content, count }
 }
