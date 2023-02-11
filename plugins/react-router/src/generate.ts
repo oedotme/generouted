@@ -1,7 +1,7 @@
-import fg from 'fast-glob'
 import { writeFileSync } from 'fs'
+import fg from 'fast-glob'
 
-import { getRoutes, patterns } from '@generouted/core'
+import { patterns, getRoutes } from '@generouted/core'
 
 import { format } from './format'
 import { Options } from './options'
