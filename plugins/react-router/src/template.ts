@@ -1,6 +1,6 @@
 export const template = `// Generouted, changes to this file will be overriden
 import { Fragment, lazy, Suspense } from 'react'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
 import { components, hooks } from '@generouted/react-router/client'
 
 // imports
