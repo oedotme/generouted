@@ -10,7 +10,7 @@ import { components, hooks } from '@generouted/react-router/client'
 const config = // config
 
 export const routes = [...config, { path: '*', element: <NoMatch /> }]
-const router = createBrowserRouter([{ element: <App />, children: routes }])
+const router = createBrowserRouter([{ element: <App children={<Outlet />} />, children: routes }])
 
 // types
 
