@@ -7,7 +7,10 @@ import { format } from './format'
 import { Options } from './options'
 import { template } from './template'
 
-const patterns = Object.assign(corePatterns, { param: [/\[([^\]]+)\]/g, '$$$1'], optional: [/^-(\$?[\w-]+)/g, '$1?'] })
+const patterns = Object.assign(corePatterns, {
+  param: [/\[([^\]]+)\]/g, '$$$1'],
+  optional: [/\/-(\$?[\w-]+)/g, '/$1?'],
+})
 
 const generateRoutes = async () => {
   const source = ['./src/pages/**/[\\w[-]*.{jsx,tsx}']
