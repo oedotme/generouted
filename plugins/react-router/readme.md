@@ -6,6 +6,8 @@ This integration is based on a Vite plugin to generate routes config for React R
 
 ## Getting started
 
+In case you don't have a Vite project with React and TypeScript, check [Vite documentation to start a new project](https://vitejs.dev/guide/#scaffolding-your-first-vite-project).
+
 ### Installation
 
 ```shell
@@ -45,6 +47,28 @@ Add the home page by creating a new file `src/pages/index.tsx` **→** `/`, then
 
 export default function Home() {
   return <h1>Home</h1>
+}
+```
+
+### Optional root layout at `pages/_app.tsx`
+
+```tsx
+// src/pages/_app.tsx
+
+import { Outlet } from 'react-router-dom'
+
+export default function App() {
+  return (
+    <section>
+      <header>
+        <nav>...</nav>
+      </header>
+
+      <main>
+        <Outlet />
+      </main>
+    </section>
+  )
 }
 ```
 

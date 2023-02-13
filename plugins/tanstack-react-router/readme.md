@@ -6,6 +6,8 @@ This integration is based on a Vite plugin to generate routes config for TanStac
 
 ## Getting started
 
+In case you don't have a Vite project with React and TypeScript, check [Vite documentation to start a new project](https://vitejs.dev/guide/#scaffolding-your-first-vite-project).
+
 ### Installation
 
 ```shell
@@ -40,6 +42,40 @@ import { Routes } from './routes.gen'
 
 const container = document.getElementById('app')!
 createRoot(container).render(<Routes />)
+```
+
+### Adding pages
+
+Add the home page by creating a new file `src/pages/index.tsx` **→** `/`, then export a default component:
+
+```tsx
+// src/pages/index.tsx
+
+export default function Home() {
+  return <h1>Home</h1>
+}
+```
+
+### Optional root layout at `pages/_app.tsx`
+
+```tsx
+// src/pages/_app.tsx
+
+import { Outlet } from '@tanstack/react-router'
+
+export default function App() {
+  return (
+    <section>
+      <header>
+        <nav>...</nav>
+      </header>
+
+      <main>
+        <Outlet />
+      </main>
+    </section>
+  )
+}
 ```
 
 ## Examples
