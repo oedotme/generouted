@@ -49,8 +49,8 @@ const generateRoutes = async () => {
       return {
         index,
         element: `#_<Suspense fallback={null} children={<${capitalize(id)} />} />_#`,
-        loader: loader ? `#_(args: any) => ${module}.then((m) => m.Loader.call(m.Loader, args as any))_#` : '',
-        action: action ? `#_(args: any) => ${module}.then((m) => m.Action.call(m.Action, args as any))_#` : '',
+        loader: loader ? `#_(args: any) => ${module}.then((m) => m.Loader.apply(m.Loader, [args] as any))_#` : '',
+        action: action ? `#_(args: any) => ${module}.then((m) => m.Action.apply(m.Action, [args] as any))_#` : '',
         errorElement: errorElement ? `#_<Suspense fallback={null} children={<${capitalize(id)}Error />} />_#` : '',
       }
     },
