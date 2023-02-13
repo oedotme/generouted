@@ -1,6 +1,6 @@
 // Generouted, changes to this file will be overriden
 import { Fragment, lazy, Suspense } from 'react'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom'
 import { components, hooks } from '@generouted/react-router/client'
 
 import app from './pages/_app'
@@ -17,7 +17,7 @@ const Postsiddeep = lazy(() => import('./pages/posts/[id].deep'))
 const Postsid = lazy(() => import('./pages/posts/[id]'))
 const Postsindex = lazy(() => import('./pages/posts/index'))
 const Postsidpid = lazy(() => import('./pages/posts/[id]/-[pid]'))
-const App = app || Fragment
+const App = app || Outlet
 const NoMatch = noMatch || Fragment
 
 const config = [
@@ -51,8 +51,8 @@ const config = [
     id: 'index',
     path: '/',
     element: <Suspense fallback={null} children={<Index />} />,
-    loader: (args: any) => import('./pages/index').then((m) => m.Loader.apply(m.Loader, args as any)),
-    action: (args: any) => import('./pages/index').then((m) => m.Action.apply(m.Action, args as any)),
+    loader: (args: any) => import('./pages/index').then((m) => m.Loader.apply(m.Loader, [args] as any)),
+    action: (args: any) => import('./pages/index').then((m) => m.Action.apply(m.Action, [args] as any)),
     errorElement: <Suspense fallback={null} children={<IndexError />} />,
   },
 ]
