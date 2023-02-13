@@ -20,6 +20,12 @@ Optional additional packages for actions and/or loaders:
 pnpm add @tanstack/react-actions@beta @tanstack/react-loaders@beta
 ```
 
+Optionally install `prettier` as a dev dependency so `generouted` formats the generated `src/routes.gen.tsx` file automatically:
+
+```shell
+pnpm add --save-dev prettier
+```
+
 ### Setup
 
 ```ts

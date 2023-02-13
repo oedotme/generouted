@@ -14,6 +14,12 @@ In case you don't have a Vite project with React and TypeScript, check [Vite doc
 pnpm add @generouted/react-router react-router-dom
 ```
 
+Optionally install `prettier` as a dev dependency so `generouted` formats the generated `src/routes.gen.tsx` file automatically:
+
+```shell
+pnpm add --save-dev prettier
+```
+
 ### Setup
 
 ```ts
