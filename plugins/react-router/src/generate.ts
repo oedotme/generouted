@@ -39,7 +39,10 @@ const generateRoutes = async () => {
 
       modules.push(`const ${capitalize(id)} = ${element}`)
       if (errorElement) modules.push(`const ${capitalize(id)}Error = ${errorElement}`)
-      if (path) paths.push(path.length > 1 ? `/${path}` : path)
+      if (path) {
+        if (path.includes('*')) paths.push('/' + path.replace(/\*/g, '${string}'))
+        else paths.push(path.length > 1 ? `/${path}` : path)
+      }
 
       const param = path.split('/').filter((segment) => segment.startsWith(':'))
       if (param.length) {
@@ -81,7 +84,7 @@ const generateRoutes = async () => {
   }).replace(/"#_|_#"/g, '')
 
   const types =
-    `type Path = "${[...new Set(paths)].sort().join('" | "')}"`.replace(/"/g, "'") +
+    `type Path = "${[...new Set(paths)].sort().join('" | "')}"`.replace(/"/g, '`') +
     '\n\n' +
     `type Params = { ${params.join('; ')} }`
 

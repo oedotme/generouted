@@ -18,11 +18,17 @@ const Authregister = lazy(() => import('./pages/(auth)/register'))
 const Postsiddeep = lazy(() => import('./pages/posts/[id].deep'))
 const Postsid = lazy(() => import('./pages/posts/[id]'))
 const Postsindex = lazy(() => import('./pages/posts/index'))
+const Splatall = lazy(() => import('./pages/splat/[...all]'))
 const Postsidpid = lazy(() => import('./pages/posts/[id]/-[pid]'))
 const App = app || Outlet
 const NoMatch = noMatch || Fragment
 
 const config = [
+  {
+    path: 'splat',
+    id: 'splat',
+    children: [{ id: 'splatall', path: '*', element: <Suspense fallback={null} children={<Splatall />} /> }],
+  },
   {
     path: 'posts',
     id: 'posts',
@@ -62,7 +68,16 @@ const config = [
 export const routes = [...config, { path: '*', element: <NoMatch /> }]
 const router = createBrowserRouter([{ element: <App />, children: routes }])
 
-type Path = '/' | '/about' | '/login' | '/posts' | '/posts/:id' | '/posts/:id/:pid?' | '/posts/:id/deep' | '/register'
+type Path =
+  | `/`
+  | `/about`
+  | `/login`
+  | `/posts`
+  | `/posts/:id`
+  | `/posts/:id/:pid?`
+  | `/posts/:id/deep`
+  | `/register`
+  | `/splat/${string}`
 
 type Params = {
   '/posts/:id/deep': { id: string }
