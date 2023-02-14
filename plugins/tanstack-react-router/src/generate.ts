@@ -52,9 +52,9 @@ const generateRoutes = async () => {
 
   if (preserved._app && exports['_app'].default) {
     imports.push(`import App from './pages/_app'`)
-    modules.push(`const root = new RootRoute({ component: App || Fragment })`)
+    modules.push(`const root = new RootRoute({ component: App || Outlet })`)
   } else {
-    modules.push(`const root = new RootRoute({ component: Fragment })`)
+    modules.push(`const root = new RootRoute({ component: Outlet })`)
   }
 
   if (preserved._404 && exports['404'].default) {

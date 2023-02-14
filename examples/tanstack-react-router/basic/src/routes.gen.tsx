@@ -2,12 +2,12 @@
 import { Fragment } from 'react'
 import { Action, ActionClient } from '@tanstack/react-actions'
 import { Loader, LoaderClient } from '@tanstack/react-loaders'
-import { lazy, ReactRouter, RootRoute, Route, RouterProvider } from '@tanstack/react-router'
+import { lazy, Outlet, ReactRouter, RootRoute, Route, RouterProvider } from '@tanstack/react-router'
 
 import App from './pages/_app'
 import NoMatch from './pages/404'
 
-const root = new RootRoute({ component: App || Fragment })
+const root = new RootRoute({ component: App || Outlet })
 const _404 = new Route({ getParentRoute: () => root, path: '*', component: NoMatch || Fragment })
 const posts = new Route({
   getParentRoute: () => root,
