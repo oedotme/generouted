@@ -1,4 +1,6 @@
 // Generouted, changes to this file will be overriden
+/* eslint-disable react/no-children-prop */
+
 import { Fragment, lazy, Suspense } from 'react'
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom'
 import { components, hooks } from '@generouted/react-router/client'
