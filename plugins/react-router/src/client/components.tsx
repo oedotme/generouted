@@ -1,3 +1,4 @@
+import React from 'react'
 import { generatePath, Link, LinkProps, Navigate } from 'react-router-dom'
 
 export const components = <Path extends string, Params extends Record<string, any>>() => {
