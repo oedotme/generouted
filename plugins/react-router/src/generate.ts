@@ -108,5 +108,5 @@ export const generate = async (options: Options) => {
   latestContent = content
 
   writeFileSync(`./src/${options.output}`, content)
-  format(`./src/${options.output}`)
+  if (options.format) format(`./src/${options.output}`)
 }
