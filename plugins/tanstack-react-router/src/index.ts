@@ -1,10 +1,10 @@
 import { Plugin } from 'vite'
 
 import { generate } from './generate'
-import { defaultOptions } from './options'
+import { defaultOptions, Options } from './options'
 
-export default function Generouted(): Plugin {
-  const resolvedOptions = { ...defaultOptions }
+export default function Generouted(options?: Partial<Options>): Plugin {
+  const resolvedOptions = { ...defaultOptions, ...options }
 
   return {
     name: 'generouted/tanstack-react-router',
