@@ -1,6 +1,6 @@
 {
   "name": "@generouted/tanstack-react-router",
-  "version": "1.7.15",
+  "version": "1.7.16",
   "description": "Generated file-based routes for TanStack React Router and Vite",
   "author": "Omar Elhawary <oedotme@gmail.com> (https://omarelhawary.me)",
   "license": "MIT",
