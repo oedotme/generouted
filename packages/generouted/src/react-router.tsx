@@ -19,7 +19,7 @@ const DefaultErrorElement = () => {
 const regularRoutes = generateRegularRoutes<RouteObject, () => Promise<Module>>(ROUTES, (module, key) => {
   const Element = lazy(module)
   const ErrorElement = lazy(() => module().then((module) => ({ default: module.ErrorElement || DefaultErrorElement })))
-  const index = /(?<!pages\/)index\.(jsx|tsx)$/.test(key) ? { index: true } : {}
+  const index = /index\.(jsx|tsx)$/.test(key) && !key.includes('pages/index') ? { index: true } : {}
 
   return {
     ...index,

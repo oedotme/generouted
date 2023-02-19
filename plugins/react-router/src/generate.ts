@@ -23,7 +23,7 @@ const generateRoutes = async () => {
     (key, exports, _id = '') => {
       const { loader, action, catch_ } = exports
       const id = _id.replace('_layout', '')
-      const index = /(?<!pages\/)index\.(jsx|tsx)$/.test(key)
+      const index = /index\.(jsx|tsx)$/.test(key) && !key.includes('pages/index')
       const module = `import('./pages/${key.replace(...patterns.route)}')`
       const path = key
         .replace(...patterns.route)
