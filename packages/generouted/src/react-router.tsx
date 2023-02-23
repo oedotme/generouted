@@ -33,9 +33,7 @@ const regularRoutes = generateRegularRoutes<RouteObject, () => Promise<Module>>(
 const App = preservedRoutes?.['_app'] || Fragment
 const NotFound = preservedRoutes?.['404'] || Fragment
 
-export const routes = [...regularRoutes, { path: '*', element: <NotFound /> }]
-const router = createBrowserRouter([{ element: <App children={<Outlet />} />, children: routes }])
-
-export const Routes = () => {
-  return <RouterProvider router={router} />
-}
+export const routes = [
+  { element: <App children={<Outlet />} />, children: [...regularRoutes, { path: '*', element: <NotFound /> }] },
+]
+export const Routes = () => <RouterProvider router={createBrowserRouter(routes)} />

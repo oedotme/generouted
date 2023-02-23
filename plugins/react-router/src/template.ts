@@ -11,12 +11,10 @@ import { components, hooks } from '@generouted/react-router/client'
 
 const config = // config
 
-export const routes = [...config, { path: '*', element: <NoMatch /> }]
-const router = createBrowserRouter([{ element: <App />, children: routes }])
-
 // types
 
-export const Routes = () => <RouterProvider router={router} />
+export const routes = [{ element: <App />, children: [...config, { path: '*', element: <NoMatch /> }] }]
+export const Routes = () => <RouterProvider router={createBrowserRouter(routes)} />
 export const { Link, Navigate } = components<Path, Params>()
 export const { useNavigate, useParams } = hooks<Path, Params>()
 `
