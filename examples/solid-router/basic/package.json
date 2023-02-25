@@ -11,11 +11,11 @@
   "dependencies": {
     "@solidjs/router": "^0.7.0",
     "generouted": "workspace:*",
-    "solid-js": "^1.6.10"
+    "solid-js": "^1.6.11"
   },
   "devDependencies": {
     "typescript": "^4.9.5",
-    "vite": "^4.1.1",
+    "vite": "^4.1.4",
     "vite-plugin-solid": "^2.5.0"
   }
 }

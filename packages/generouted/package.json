@@ -73,14 +73,14 @@
   "devDependencies": {
     "@solidjs/router": "^0.7.0",
     "@tanstack/react-location": "^3.7.4",
-    "@types/react": "^18.0.27",
-    "@types/react-dom": "^18.0.10",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-router-dom": "^6.8.0",
-    "solid-js": "^1.6.10",
+    "react-router-dom": "^6.8.1",
+    "solid-js": "^1.6.11",
     "typescript": "^4.9.5",
-    "vite": "^4.1.1"
+    "vite": "^4.1.4"
   },
   "peerDependencies": {
     "vite": ">=3"
