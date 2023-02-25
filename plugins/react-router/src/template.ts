@@ -3,7 +3,7 @@ export const template = `// Generouted, changes to this file will be overriden
 
 import { Fragment, lazy, Suspense } from 'react'
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom'
-import { components, hooks } from '@generouted/react-router/client'
+import { components, hooks, utils } from '@generouted/react-router/client'
 
 // imports
 
@@ -17,4 +17,5 @@ export const routes = [{ element: <App />, children: [...config, { path: '*', el
 export const Routes = () => <RouterProvider router={createBrowserRouter(routes)} />
 export const { Link, Navigate } = components<Path, Params>()
 export const { useNavigate, useParams } = hooks<Path, Params>()
+export const { rediect } = utils<Path, Params>()
 `
