@@ -9,17 +9,17 @@ import app from './pages/_app'
 import noMatch from './pages/404'
 
 const Auth = lazy(() => import('./pages/(auth)/_layout'))
-const Posts = lazy(() => import('./pages/posts/_layout'))
+const Authlogin = lazy(() => import('./pages/(auth)/login'))
+const Authregister = lazy(() => import('./pages/(auth)/register'))
 const About = lazy(() => import('./pages/about'))
 const Index = lazy(() => import('./pages/index'))
 const IndexError = lazy(() => import('./pages/index').then((m) => ({ default: m.Catch })))
-const Authlogin = lazy(() => import('./pages/(auth)/login'))
-const Authregister = lazy(() => import('./pages/(auth)/register'))
+const Posts = lazy(() => import('./pages/posts/_layout'))
 const Postsiddeep = lazy(() => import('./pages/posts/[id].deep'))
 const Postsid = lazy(() => import('./pages/posts/[id]'))
+const Postsidpid = lazy(() => import('./pages/posts/[id]/-[pid]'))
 const Postsindex = lazy(() => import('./pages/posts/index'))
 const Splatall = lazy(() => import('./pages/splat/[...all]'))
-const Postsidpid = lazy(() => import('./pages/posts/[id]/-[pid]'))
 const App = app || Outlet
 const NoMatch = noMatch || Fragment
 
