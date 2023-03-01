@@ -60,6 +60,8 @@ const generateRoutes = async () => {
     patterns
   )
 
+  modules.sort((a, b) => a.localeCompare(b))
+
   if (preserved._app && exports['_app'].default) {
     imports.push(`import app from './pages/_app'`)
     modules.push(`const App = app || Outlet`)
