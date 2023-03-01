@@ -12,9 +12,9 @@ const getRouteId = (path: string) => path.replace(...patterns.route).replace(/\W
 
 const getRouteExports = (content: string) => ({
   default: /^export\s+default\s/gm.test(content),
-  loader: /^export\s+(const|function|let)\s+Loader\W/gm.test(content),
-  action: /^export\s+(const|function|let)\s+Action\W/gm.test(content),
-  pending: /^export\s+(const|function|let)\s+Pending\W/gm.test(content),
+  loader: /^export\s+(const|function|async function|let)\s+Loader\W/gm.test(content),
+  action: /^export\s+(const|function|async function|let)\s+Action\W/gm.test(content),
+  pending: /^export\s+(const|function|async function|let)\s+Pending\W/gm.test(content),
   catch_: /^export\s+(const|function|let)\s+Catch\W/gm.test(content),
 })
 
