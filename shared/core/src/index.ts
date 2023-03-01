@@ -29,8 +29,7 @@ export const getRoutes = <T extends BaseRoute>(
 ) => {
   const filteredRoutes = files
     .filter((key) => !key.includes('/_') || /(_app|_layout)\.(jsx|tsx)$/.test(key))
-    .sort((a, z) => +z.includes('_layout') - +a.includes('_layout'))
-    .sort((a, z) => +z.includes('pages/_app') - +a.includes('pages/_app'))
+    .sort((a, b) => a.localeCompare(b))
 
   const ids = filteredRoutes.map((route) => getRouteId(route))
   const exports: Record<string, ReturnType<typeof getRouteExports>> = {}
