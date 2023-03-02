@@ -1,6 +1,6 @@
 {
   "name": "@generouted/react-router",
-  "version": "1.7.19",
+  "version": "1.7.20",
   "description": "Generated file-based routes for React Router and Vite",
   "author": "Omar Elhawary <oedotme@gmail.com> (https://omarelhawary.me)",
   "license": "MIT",
