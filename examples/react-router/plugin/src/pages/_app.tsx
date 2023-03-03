@@ -1,9 +1,10 @@
 import { Outlet } from 'react-router-dom'
 
-import { Link, useNavigate, useParams } from '../routes.gen'
+import { Link, Modals, useModals, useNavigate, useParams } from '../routes.gen'
 
 export default function App() {
   const navigate = useNavigate()
+  const modals = useModals()
   const { id, pid } = useParams('/posts/:id/:pid?')
 
   const a = () => navigate('/posts/:id', { params: { id: 'a' } })
@@ -24,12 +25,16 @@ export default function App() {
         <Link to="/posts/:id" params={{ id: 'id' }}>
           Posts by id
         </Link>
+        <button onClick={() => modals.open('/modal')}>Global modal at current route</button>
+        <button onClick={() => modals.open('/modal', { at: '/about' })}>Global modal at /about</button>
         <button onClick={e}>navigate to</button>
       </header>
 
       <main>
         <Outlet />
       </main>
+
+      <Modals />
     </section>
   )
 }

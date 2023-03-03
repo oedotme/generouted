@@ -3,7 +3,7 @@
 
 import { Fragment, lazy, Suspense } from 'react'
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom'
-import { components, hooks, utils } from '@generouted/react-router/client'
+import { components, hooks, modals, utils } from '@generouted/react-router/client'
 
 import app from './pages/_app'
 import noMatch from './pages/404'
@@ -82,8 +82,13 @@ type Params = {
   '/posts/:id/:pid?': { id: string; pid?: string }
 }
 
+type ModalPath = `/modal`
+
 export const routes = [{ element: <App />, children: [...config, { path: '*', element: <NoMatch /> }] }]
 export const Routes = () => <RouterProvider router={createBrowserRouter(routes)} />
+
+export { Modals } from '@generouted/react-router/client'
 export const { Link, Navigate } = components<Path, Params>()
 export const { useNavigate, useParams } = hooks<Path, Params>()
+export const { useModals } = modals<ModalPath, Path, Params>()
 export const { rediect } = utils<Path, Params>()

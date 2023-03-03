@@ -12,6 +12,7 @@ const capitalize = (id: string) => id.replace(/\b[\w]/, (character) => character
 const generateRoutes = async () => {
   const source = ['./src/pages/**/[\\w[-]*.{jsx,tsx}']
   const files = await fg(source, { onlyFiles: true })
+  const modal = await fg('./src/pages/**/[+]*.{jsx,tsx}', { onlyFiles: true })
 
   const imports: string[] = []
   const modules: string[] = []
@@ -83,10 +84,21 @@ const generateRoutes = async () => {
     return value
   }).replace(/"#_|_#"/g, '')
 
+  const modals = modal.map(
+    (path) =>
+      `/${path
+        .replace(...patterns.route)
+        .replace(/\+/g, '')
+        .replace(/(\/)?index/g, '')
+        .replace(/\./g, '/')}`
+  )
+
   const types =
     `type Path = "${[...new Set(paths)].sort().join('" | "')}"`.replace(/"/g, '`') +
     '\n\n' +
-    `type Params = { ${params.join('; ')} }`
+    `type Params = { ${params.join('; ')} }` +
+    '\n\n' +
+    `type ModalPath = "${modals.sort().join('" | "') || 'never'}"`.replace(/"/g, modals.length ? '`' : '')
 
   const content = template
     .replace('// imports', imports.join('\n'))
