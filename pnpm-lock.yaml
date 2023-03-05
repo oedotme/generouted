@@ -164,6 +164,7 @@ importers:
       '@types/react': ^18.0.28
       '@types/react-dom': ^18.0.11
       '@vitejs/plugin-react': ^3.1.0
+      generouted: workspace:*
       prettier: ^2.8.4
       react: ^18.2.0
       react-dom: ^18.2.0
@@ -172,6 +173,7 @@ importers:
       vite: ^4.1.4
     dependencies:
       '@generouted/react-router': link:../../../plugins/react-router
+      generouted: link:../../../packages/generouted
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-router-dom: 6.8.2_biqbaboplfbrettd7655fr4n2y

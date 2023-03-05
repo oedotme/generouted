@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom'
 
-import { useModals } from '@/routes.gen'
+import { useModals } from '@/router'
 
 export default function Welcome() {
   const location = useLocation()

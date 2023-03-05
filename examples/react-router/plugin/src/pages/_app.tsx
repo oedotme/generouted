@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom'
+import { Modals } from 'generouted/react-router'
 
-import { Link, Modals, useModals, useNavigate, useParams } from '../routes.gen'
+import { Link, useModals, useNavigate, useParams } from '../router'
 
 export default function App() {
   const navigate = useNavigate()

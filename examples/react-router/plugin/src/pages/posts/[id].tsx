@@ -1,5 +1,6 @@
 import { useMatch } from 'react-router-dom'
-import { useParams } from '@/routes.gen'
+
+import { useParams } from '@/router'
 
 export default function Id() {
   // const { params } = useMatch('/posts/$id')

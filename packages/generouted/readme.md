@@ -37,23 +37,55 @@ I enjoyed working with file-based routing since started using it with Next.js. A
 
 ## Framework support
 
+- React with [React Router w/ type-safe navigation 🆕](https://reactrouter.com)
 - React with [TanStack React Router 🆕](./plugins/tanstack-react-router)
-- React with [React Router Plugin with Type-safety 🆕](https://reactrouter.com)
 - React with [TanStack's React Location](https://react-location.tanstack.com)
-- React with [React Router](https://reactrouter.com)
 - Solid with [Solid Router](https://github.com/solidjs/solid-router)
 
 ## Getting started
 
 In case you don't have a Vite project with React and TypeScript, check [Vite documentation to start a new project](https://vitejs.dev/guide/#scaffolding-your-first-vite-project).
 
+### React Router w/ type-safe navigation 🆕
+
+#### Installation
+
+```shell
+pnpm add @generouted/react-router generouted react-router-dom
+```
+
+- `generouted` provides the file-based routes
+- `@generouted/react-router` optional but recommended plugin to generates types and type-safe router component/hooks/utils
+
+#### Setup
+
+```ts
+// vite.config.ts
+
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import generouted from '@generouted/react-router'
+
+export default defineConfig({ plugins: [react(), generouted()] })
+```
+
+#### Usage
+
+```tsx
+// src/main.tsx
+
+import { createRoot } from 'react-dom/client'
+import { Routes } from 'generouted/react-router'
+
+const container = document.getElementById('app')!
+createRoot(container).render(<Routes />)
+```
+
+🚀 Check more about type-safe navigation and global modals [in the plugin docs](./plugins/react-router).
+
 ### TanStack React Router 🆕
 
 [Check out the docs here](./plugins/tanstack-react-router)
-
-### React Router plugin with navigation type-safety 🆕
-
-[Check out the docs here](./plugins/react-router)
 
 ### React Location
 
@@ -70,26 +102,6 @@ pnpm add generouted @tanstack/react-location
 
 import { createRoot } from 'react-dom/client'
 import { Routes } from 'generouted/react-location'
-
-const container = document.getElementById('app')!
-createRoot(container).render(<Routes />)
-```
-
-### React Router
-
-#### Installation
-
-```shell
-pnpm add generouted react-router-dom
-```
-
-#### Usage
-
-```tsx
-// src/main.tsx
-
-import { createRoot } from 'react-dom/client'
-import { Routes } from 'generouted/react-router'
 
 const container = document.getElementById('app')!
 createRoot(container).render(<Routes />)
@@ -281,22 +293,22 @@ No available props.
 
 ## Examples
 
+### React Router
+
+- [Basic](./examples/react-router/basic)
+- [Nested layouts](./examples/react-router/nested-layouts)
+- [Plugin w/ type-safe navigation](./examples/react-router/plugin) 🆕
+
 ### TanStack React Router 🆕
 
 - [Basic](./examples/tanstack-react-router/basic)
 
-### React Location
+### TanStack React Location
 
 - [Basic](./examples/react-location/basic)
 - [Data loaders](./examples/react-location/data-loaders)
 - [Modals](./examples/react-location/modals)
 - [Nested layouts](./examples/react-location/nested-layouts)
-
-### React Router
-
-- [Basic](./examples/react-router/basic)
-- [Nested layouts](./examples/react-router/nested-layouts)
-- [Plugin](./examples/react-router/plugin) 🆕
 
 ### Solid Router
 

@@ -1,6 +1,5 @@
 export const defaultOptions = {
-  output: 'routes.gen.tsx',
-  format: true,
+  output: 'router.ts',
 }
 
 export type Options = typeof defaultOptions

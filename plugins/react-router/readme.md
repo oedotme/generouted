@@ -2,7 +2,7 @@
 
 ## How
 
-This integration is based on a Vite plugin to generate routes config for React Router with `generouted` conventions. The output is saved at `src/routes.gen.tsx` and gets updated by the add/change/delete at `src/pages/*`.
+This integration is based on a Vite plugin to generate routes types for React Router with `generouted` conventions. The output is saved by default at `src/router.ts` and gets updated by the add/change/delete at `src/pages/*`.
 
 ## Getting started
 
@@ -11,14 +11,11 @@ In case you don't have a Vite project with React and TypeScript, check [Vite doc
 ### Installation
 
 ```shell
-pnpm add @generouted/react-router react-router-dom
+pnpm add @generouted/react-router generouted react-router-dom
 ```
 
-Optionally install `prettier` as a dev dependency so `generouted` formats the generated `src/routes.gen.tsx` file automatically:
-
-```shell
-pnpm add --save-dev prettier
-```
+- `generouted` provides the file-based routes
+- `@generouted/react-router` generates types and type-safe router component/hooks/utils
 
 ### Setup
 
@@ -38,7 +35,7 @@ export default defineConfig({ plugins: [react(), generouted()] })
 // src/main.tsx
 
 import { createRoot } from 'react-dom/client'
-import { Routes } from './routes.gen'
+import { Routes } from 'generouted/react-router'
 
 const container = document.getElementById('app')!
 createRoot(container).render(<Routes />)
@@ -80,11 +77,11 @@ export default function App() {
 
 ### Type-safe navigation
 
-Autocompletion for `Link`, `useNavigate` and `useParams` exported from `src/route.gen.tsx`
+Autocompletion for `Link`, `useNavigate`, `useParams` and more exported from `src/router.ts`
 
 ```tsx
 // src/pages/index.tsx
-import { Link, useNavigate, useParams } from '../routes.gen'
+import { Link, useNavigate, useParams } from '../router'
 
 export default function Home() {
   const navigate = useNavigate()
@@ -131,14 +128,15 @@ export default function Login() {
 }
 ```
 
-Then render the `<Modals>` component in `src/pages/_app.tsx`, this component renders the current/opened modal component. To navigate to a modal use `useModals` hook exported from `routes.gen.tsx`:
+Then render the `<Modals>` component in `src/pages/_app.tsx`, this component renders the current/opened modal component. To navigate to a modal use `useModals` hook exported from `src/router.ts`:
 
 ```tsx
 // src/pages/_app.tsx
 
 import { Outlet } from 'react-router-dom'
+import { Modals } from 'generouted/react-router'
 
-import { Modals, useModals } from '../routes.gen'
+import { useModals } from '../routes.gen'
 
 export default function App() {
   const modals = useModals()
