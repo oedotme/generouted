@@ -39,9 +39,17 @@
       "types": "./src/react-location.tsx",
       "import": "./src/react-location.tsx"
     },
+    "./react-router-lazy": {
+      "types": "./src/react-router-lazy.tsx",
+      "import": "./src/react-router-lazy.tsx"
+    },
     "./react-router": {
       "types": "./src/react-router.tsx",
       "import": "./src/react-router.tsx"
+    },
+    "./solid-router-lazy": {
+      "types": "./src/solid-router-lazy.tsx",
+      "import": "./src/solid-router-lazy.tsx"
     },
     "./solid-router": {
       "types": "./src/solid-router.tsx",
@@ -56,8 +64,14 @@
       "react-location": [
         "./src/react-location.tsx"
       ],
+      "react-router-lazy": [
+        "./src/react-router-lazy.tsx"
+      ],
       "react-router": [
         "./src/react-router.tsx"
+      ],
+      "solid-router-lazy": [
+        "./src/solid-router-lazy.tsx"
       ],
       "solid-router": [
         "./src/solid-router.tsx"
