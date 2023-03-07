@@ -7,7 +7,7 @@ type Element = () => JSX.Element
 type Module = { default: Element; Loader: LoaderFn; Pending: Element; Catch: Element }
 
 const PRESERVED = import.meta.glob<Module>('/src/pages/(_app|404).{jsx,tsx}', { eager: true })
-const ROUTES = import.meta.glob<Module>(['/src/pages/**/[\\w[]*.{jsx,tsx}', '!**/(_app|404).*'])
+const ROUTES = import.meta.glob<Module>(['/src/pages/**/[\\w[-]*.{jsx,tsx}', '!**/(_app|404).*'])
 
 const preservedRoutes = generatePreservedRoutes<Element>(PRESERVED)
 
