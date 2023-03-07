@@ -187,6 +187,7 @@ importers:
 
   examples/solid-router:
     specifiers:
+      '@generouted/solid-router': workspace:*
       '@solidjs/router': ^0.7.0
       generouted: workspace:*
       solid-js: ^1.6.11
@@ -194,6 +195,7 @@ importers:
       vite: ^4.1.4
       vite-plugin-solid: ^2.6.1
     dependencies:
+      '@generouted/solid-router': link:../../plugins/solid-router
       '@solidjs/router': 0.7.0_solid-js@1.6.11
       generouted: link:../../packages/generouted
       solid-js: 1.6.11

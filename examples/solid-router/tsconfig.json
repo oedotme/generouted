@@ -15,6 +15,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
+    "paths": { "@/*": ["src/*"] },
     "types": ["vite/client"]
   },
   "include": ["./src"]
