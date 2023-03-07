@@ -1,0 +1,78 @@
+{
+  "name": "@generouted/solid-router",
+  "version": "1.10.0",
+  "description": "Generated file-based routes for Solid Router and Vite",
+  "author": "Omar Elhawary <oedotme@gmail.com> (https://omarelhawary.me)",
+  "license": "MIT",
+  "repository": "https://github.com/oedotme/generouted",
+  "bugs": "https://github.com/oedotme/generouted/issues",
+  "homepage": "https://github.com/oedotme/generouted#readme",
+  "keywords": [
+    "actions",
+    "code-splitting",
+    "data-loaders",
+    "file-based-routing",
+    "generate",
+    "nested-layouts",
+    "nextjs",
+    "pages",
+    "pre-loading ",
+    "react",
+    "react-location",
+    "react-router",
+    "react-router-dom",
+    "remix",
+    "router",
+    "routes",
+    "solid",
+    "solid-router",
+    "typescript",
+    "vite"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
+    },
+    "./client": {
+      "types": "./src/client/index.ts",
+      "import": "./src/client/index.ts"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/index.d.ts"
+      ],
+      "client": [
+        "./src/client/index.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist",
+    "src/client"
+  ],
+  "scripts": {
+    "dev": "tsup src/index.ts --dts --format cjs,esm --watch",
+    "build": "tsup src/index.ts --dts --format cjs,esm --minify --clean",
+    "type-check": "tsc --noEmit",
+    "pre-release": "pnpm build"
+  },
+  "dependencies": {
+    "fast-glob": "^3.2.12"
+  },
+  "devDependencies": {
+    "@generouted/core": "workspace:*",
+    "@solidjs/router": "^0.7.0",
+    "solid-js": "^1.6.11",
+    "tsup": "^6.6.3",
+    "typescript": "^4.9.5",
+    "vite": "^4.1.4"
+  },
+  "peerDependencies": {
+    "vite": ">=3"
+  }
+}
