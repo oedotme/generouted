@@ -74,7 +74,7 @@ export default function App(props: ParentProps) {
 
 ### Type-safe navigation
 
-Autocompletion for `Link`, `useNavigate`, `useParams` and more exported from `src/router.ts`
+Auto-completion for `A`, `useNavigate`, `useParams` and more exported from `src/router.ts`
 
 ```tsx
 // src/pages/index.tsx
