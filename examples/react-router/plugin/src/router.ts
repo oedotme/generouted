@@ -15,9 +15,9 @@ type Path =
   | `/splat/${string}`
 
 type Params = {
-  '/posts/:id/deep': { id: string }
   '/posts/:id': { id: string }
   '/posts/:id/:pid?': { id: string; pid?: string }
+  '/posts/:id/deep': { id: string }
 }
 
 type ModalPath = `/modal`
