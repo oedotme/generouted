@@ -5,7 +5,7 @@ export const patterns = {
   splat: [/\[\.{3}\w+\]/g, '*'],
   param: [/\[([^\]]+)\]/g, ':$1'],
   slash: [/^index$|\./g, '/'],
-  optional: [/\/-(:?[\w-]+)/g, '/$1?'],
+  optional: [/^-(:?[\w-]+)/, '$1?'],
 } as Record<string, [RegExp, string]>
 
 const getRouteId = (path: string) => path.replace(...patterns.route).replace(/\W/g, '')
@@ -48,12 +48,11 @@ export const getRoutes = <T extends BaseRoute>(
       .replace(...patterns.route)
       .replace(...patterns.splat)
       .replace(...patterns.param)
-      .replace(...patterns.optional)
       .split('/')
       .filter(Boolean)
 
     segments.reduce((parent, segment, index) => {
-      const path = segment.replace(...patterns.slash)
+      const path = segment.replace(...patterns.slash).replace(...patterns.optional)
       const root = index === 0
       const leaf = index === segments.length - 1 && segments.length > 1
       const node = !root && !leaf

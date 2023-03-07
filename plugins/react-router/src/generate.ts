@@ -17,10 +17,12 @@ const generateRouteTypes = async () => {
       .replace(...patterns.route)
       .replace(...patterns.splat)
       .replace(...patterns.param)
-      .replace(...patterns.optional)
       .replace(/\(\w+\)\/|\/?_layout/g, '')
       .replace(/\/?index|\./g, '/')
       .replace(/(\w)\/$/g, '$1')
+      .split('/')
+      .map((segment) => segment.replace(...patterns.optional))
+      .join('/')
 
     if (['_app', '404'].includes(path)) return
 
@@ -48,7 +50,7 @@ const generateRouteTypes = async () => {
   const types =
     `type Path =\n  | "${[...new Set(paths.filter(Boolean))].sort().join('"\n  | "')}"`.replace(/"/g, '`') +
     '\n\n' +
-    `type Params = {\n  ${params.join('\n  ')}\n}` +
+    `type Params = {\n  ${params.sort().join('\n  ')}\n}` +
     '\n\n' +
     `type ModalPath = "${modalPaths.sort().join('" | "') || 'never'}"`.replace(/"/g, modalPaths.length ? '`' : '')
 
