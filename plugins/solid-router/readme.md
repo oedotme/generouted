@@ -6,7 +6,7 @@ This integration is based on a Vite plugin to generate routes types for Solid Ro
 
 ## Getting started
 
-In case you don't have a Vite project with React and TypeScript, check [Vite documentation to start a new project](https://vitejs.dev/guide/#scaffolding-your-first-vite-project).
+In case you don't have a Vite project with Solid and TypeScript, check out this [getting started guide](https://www.solidjs.com/guides/getting-started#try-solid) to start a new project.
 
 ### Installation
 
@@ -23,10 +23,10 @@ pnpm add @generouted/solid-router generouted @solidjs/router
 // vite.config.ts
 
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import solid from 'vite-plugin-solid'
 import generouted from '@generouted/solid-router'
 
-export default defineConfig({ plugins: [react(), generouted()] })
+export default defineConfig({ plugins: [solid(), generouted()] })
 ```
 
 ### Usage

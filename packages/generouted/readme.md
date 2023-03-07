@@ -40,7 +40,7 @@ I enjoyed working with file-based routing since started using it with Next.js. A
 - React with [React Router w/ type-safe navigation 🆕](https://reactrouter.com)
 - React with [TanStack React Router 🆕](./plugins/tanstack-react-router)
 - React with [TanStack's React Location](https://react-location.tanstack.com)
-- Solid with [Solid Router](https://github.com/solidjs/solid-router)
+- Solid with [Solid Router w/ type-safe navigation 🆕](https://github.com/solidjs/solid-router)
 
 ## Getting started
 
@@ -107,14 +107,29 @@ const container = document.getElementById('app')!
 createRoot(container).render(<Routes />)
 ```
 
-### Solid Router
+### Solid Router w/ type-safe navigation 🆕
 
-If you're using Solid, check out their [getting started guide](https://www.solidjs.com/guides/getting-started#try-solid) to start a new project.
+In case you don't have a Vite project with Solid and TypeScript, check out this [getting started guide](https://www.solidjs.com/guides/getting-started#try-solid) to start a new project.
 
 #### Installation
 
 ```shell
-pnpm add generouted @solidjs/router
+pnpm add @generouted/solid-router generouted @solidjs/router
+```
+
+- `generouted` provides the file-based routes
+- `@generouted/solid-router` optional but recommended plugin to generates types and type-safe router component/hooks
+
+#### Setup
+
+```ts
+// vite.config.ts
+
+import { defineConfig } from 'vite'
+import solid from 'vite-plugin-solid'
+import generouted from '@generouted/solid-router'
+
+export default defineConfig({ plugins: [solid(), generouted()] })
 ```
 
 #### Usage
@@ -127,6 +142,8 @@ import { Routes } from 'generouted/solid-router'
 
 render(Routes, document.getElementById('app')!)
 ```
+
+🚀 Check more about type-safe navigation and global modals [in the plugin docs](./plugins/solid-router).
 
 ### Adding pages
 
@@ -297,7 +314,7 @@ No available props.
 
 - [Basic](./examples/react-router/basic)
 - [Nested layouts](./examples/react-router/nested-layouts)
-- [Plugin w/ type-safe navigation](./examples/react-router/plugin) 🆕
+- [w/ type-safe navigation plugin](./examples/react-router/plugin) 🆕
 
 ### TanStack React Router 🆕
 
@@ -312,7 +329,7 @@ No available props.
 
 ### Solid Router
 
-- [Basic](./examples/solid-router/basic)
+- [w/ type-safe navigation plugin](./examples/solid-router)
 
 <br>
 
