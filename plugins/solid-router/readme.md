@@ -152,7 +152,7 @@ export default function App(props: ParentProps) {
 
 With `useModals` you can use `modals.open('/modal-path')` and `modals.close()`, and by default it opens/closes the modal on the current active route.
 
-Both methods come with React Router's `navigate()` options with one prop added `at`, for optionally navigating to a route while opening/closing a modal, and it's also type-safe!
+Both methods come with Solid Router's `navigate()` options with one prop added `at`, for optionally navigating to a route while opening/closing a modal, and it's also type-safe!
 
 - `modals.open(path, options)`
 - `modals.close(options)`
