@@ -38,7 +38,7 @@ I enjoyed working with file-based routing since started using it with Next.js. A
 ## Framework support
 
 - React with [React Router w/ type-safe navigation 🆕](https://reactrouter.com)
-- React with [TanStack React Router 🆕](./plugins/tanstack-react-router)
+- React with [TanStack React Router](./plugins/tanstack-react-router)
 - React with [TanStack's React Location](https://react-location.tanstack.com)
 - Solid with [Solid Router w/ type-safe navigation 🆕](https://github.com/solidjs/solid-router)
 
@@ -83,7 +83,7 @@ createRoot(container).render(<Routes />)
 
 🚀 Check more about type-safe navigation and global modals [in the plugin docs](./plugins/react-router).
 
-### TanStack React Router 🆕
+### TanStack React Router
 
 [Check out the docs here](./plugins/tanstack-react-router)
 
@@ -316,7 +316,7 @@ No available props.
 - [Nested layouts](./examples/react-router/nested-layouts)
 - [w/ type-safe navigation plugin](./examples/react-router/plugin) 🆕
 
-### TanStack React Router 🆕
+### TanStack React Router
 
 - [Basic](./examples/tanstack-react-router/basic)
 
@@ -329,7 +329,7 @@ No available props.
 
 ### Solid Router
 
-- [w/ type-safe navigation plugin](./examples/solid-router)
+- [w/ type-safe navigation plugin](./examples/solid-router) 🆕
 
 <br>
 
