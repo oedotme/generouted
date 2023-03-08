@@ -12,7 +12,7 @@ type Params = {
   '/posts/:id/deep': { id: string }
 }
 
-type ModalPath = never
+type ModalPath = `/modal`
 
 export const { A, Navigate } = components<Path, Params>()
 export const { useMatch, useModals, useNavigate, useParams } = hooks<Path, Params, ModalPath>()

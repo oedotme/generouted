@@ -109,6 +109,60 @@ export default function Home() {
 }
 ```
 
+### Type-safe global modals
+
+Although all modals are global, it's nice to co-locate modals with relevant routes.
+
+Create modal routes by prefixing a valid route file name with a plus sign `+`. Why `+`? You can think of it as an extra route, as the modal overlays the current route:
+
+```tsx
+// src/pages/+login.tsx
+
+import { Modal } from '@/ui'
+
+export default function Login() {
+  return <Modal>Content</Modal>
+}
+```
+
+To navigate to a modal use `useModals` hook exported from `src/router.ts`:
+
+```tsx
+// src/pages/_app.tsx
+
+import { ParentProps } from 'solid-js'
+
+import { useModals } from '../router'
+
+export default function App(props: ParentProps) {
+  const modals = useModals()
+
+  return (
+    <section>
+      <header>
+        <nav>...</nav>
+        <button onClick={() => modals.open('/login')}>Open modal</button>
+      </header>
+
+      <main>{props.children}</main>
+    </section>
+  )
+}
+```
+
+With `useModals` you can use `modals.open('/modal-path')` and `modals.close()`, and by default it opens/closes the modal on the current active route.
+
+Both methods come with React Router's `navigate()` options with one prop added `at`, for optionally navigating to a route while opening/closing a modal, and it's also type-safe!
+
+- `modals.open(path, options)`
+- `modals.close(options)`
+
+`at` should be also a valid route path, here are some usage examples:
+
+- `modals.open('/login', { at: '/auth', replace: true })`
+- `modals.open('/info', { at: '/invoice/:id', { params: { id: 'xyz' } } })`
+- `modals.close({ at: '/', replace: false })`
+
 ## Examples
 
 - [Plugin](../../examples/solid-router)

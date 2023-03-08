@@ -136,7 +136,7 @@ Then render the `<Modals>` component in `src/pages/_app.tsx`, this component ren
 import { Outlet } from 'react-router-dom'
 import { Modals } from 'generouted/react-router'
 
-import { useModals } from '../routes.gen'
+import { useModals } from '../router'
 
 export default function App() {
   const modals = useModals()

@@ -1,9 +1,10 @@
 import { ParentProps } from 'solid-js'
 
-import { A, useNavigate } from '../router'
+import { A, useModals, useNavigate } from '@/router'
 
 export default function App(props: ParentProps) {
   const navigate = useNavigate()
+  const modals = useModals()
 
   const a = () => navigate('/about')
   const b = () => navigate('/posts/:id/:pid?', { params: { id: 'xyz' } })
@@ -16,6 +17,7 @@ export default function App(props: ParentProps) {
         <A href="/posts/:id" params={{ id: 'xyz' }}>
           Post by Id
         </A>
+        <button onClick={() => modals.open('/modal', { at: '/posts' })}>Open global modal</button>
       </header>
 
       <main>{props.children}</main>
