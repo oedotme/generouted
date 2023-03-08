@@ -12,7 +12,7 @@
     "@generouted/solid-router": "workspace:*",
     "@solidjs/router": "^0.7.0",
     "generouted": "workspace:*",
-    "solid-js": "^1.6.11"
+    "solid-js": "^1.6.12"
   },
   "devDependencies": {
     "typescript": "^4.9.5",
