@@ -7,5 +7,5 @@ import { components, hooks, utils } from '@generouted/react-router/client'
 
 export const { Link, Navigate } = components<Path, Params>()
 export const { useModals, useNavigate, useParams } = hooks<Path, Params, ModalPath>()
-export const { rediect } = utils<Path, Params>()
+export const { redirect } = utils<Path, Params>()
 `

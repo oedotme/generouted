@@ -24,4 +24,4 @@ type ModalPath = `/modal`
 
 export const { Link, Navigate } = components<Path, Params>()
 export const { useModals, useNavigate, useParams } = hooks<Path, Params, ModalPath>()
-export const { rediect } = utils<Path, Params>()
+export const { redirect } = utils<Path, Params>()
