@@ -10,9 +10,10 @@ const generateRouteTypes = async () => {
   const files = await fg('./src/pages/**/[\\w[-]*.{jsx,tsx}', { onlyFiles: true })
   const modal = await fg('./src/pages/**/[+]*.{jsx,tsx}', { onlyFiles: true })
 
+  const filtered = files.filter((key) => !key.includes('/_') && !key.includes('/404'))
   const params: string[] = []
 
-  const paths = files.map((key) => {
+  const paths = filtered.map((key) => {
     const path = key
       .replace(...patterns.route)
       .replace(...patterns.splat)
@@ -23,8 +24,6 @@ const generateRouteTypes = async () => {
       .split('/')
       .map((segment) => segment.replace(...patterns.optional))
       .join('/')
-
-    if (['_app', '404'].includes(path)) return
 
     if (path) {
       const param = path.split('/').filter((segment) => segment.startsWith(':'))
