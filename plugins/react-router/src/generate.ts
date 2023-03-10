@@ -47,11 +47,14 @@ const generateRouteTypes = async () => {
   )
 
   const types =
-    `type Path =\n  | "${[...new Set(paths.filter(Boolean))].sort().join('"\n  | "')}"`.replace(/"/g, '`') +
+    `export type Path =\n  | "${[...new Set(paths.filter(Boolean))].sort().join('"\n  | "')}"`.replace(/"/g, '`') +
     '\n\n' +
-    `type Params = {\n  ${params.sort().join('\n  ')}\n}` +
+    `export type Params = {\n  ${params.sort().join('\n  ')}\n}` +
     '\n\n' +
-    `type ModalPath = "${modalPaths.sort().join('" | "') || 'never'}"`.replace(/"/g, modalPaths.length ? '`' : '')
+    `export type ModalPath = "${modalPaths.sort().join('" | "') || 'never'}"`.replace(
+      /"/g,
+      modalPaths.length ? '`' : ''
+    )
 
   const content = template.replace('// types', types)
   const count = paths.length + modalPaths.length
