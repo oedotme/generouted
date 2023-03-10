@@ -1,5 +1,9 @@
-export const defaultOptions = {
-  output: 'router.ts',
+export type Options = {
+  source: string | string[]
+  output: string
 }
 
-export type Options = typeof defaultOptions
+export const defaultOptions: Options = {
+  source: './src/pages/**/[\\w[-]*.{jsx,tsx}',
+  output: 'router.ts',
+}

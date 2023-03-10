@@ -6,8 +6,8 @@ import { patterns } from '@generouted/core'
 import { Options } from './options'
 import { template } from './template'
 
-const generateRouteTypes = async () => {
-  const files = await fg('./src/pages/**/[\\w[-]*.{jsx,tsx}', { onlyFiles: true })
+const generateRouteTypes = async (options: Options) => {
+  const files = await fg(options.source || './src/pages/**/[\\w[-]*.{jsx,tsx}', { onlyFiles: true })
   const modal = await fg('./src/pages/**/[+]*.{jsx,tsx}', { onlyFiles: true })
 
   const filtered = files.filter((key) => !key.includes('/_') && !key.includes('/404'))
@@ -63,7 +63,7 @@ let latestContent = ''
 
 export const generate = async (options: Options) => {
   const start = Date.now()
-  const { content, count } = await generateRouteTypes()
+  const { content, count } = await generateRouteTypes(options)
   console.log(`${new Date().toLocaleTimeString()} [generouted] scanned ${count} routes in ${Date.now() - start} ms`)
 
   if (latestContent === content) return
