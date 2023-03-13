@@ -37,7 +37,7 @@ const generateRouteTypes = async (options: Options) => {
     }
   })
 
-  const modalPaths = modal.map(
+  const modals = modal.map(
     (path) =>
       `/${path
         .replace(...patterns.route)
@@ -47,14 +47,14 @@ const generateRouteTypes = async (options: Options) => {
   )
 
   const types =
-    `type Path =\n  | "${[...new Set(paths.filter(Boolean))].sort().join('"\n  | "')}"`.replace(/"/g, '`') +
+    `export type Path =\n  | "${[...new Set(paths.filter(Boolean))].sort().join('"\n  | "')}"`.replace(/"/g, '`') +
     '\n\n' +
-    `type Params = {\n  ${params.sort().join('\n  ')}\n}` +
+    `export type Params = {\n  ${params.sort().join('\n  ')}\n}` +
     '\n\n' +
-    `type ModalPath = "${modalPaths.sort().join('" | "') || 'never'}"`.replace(/"/g, modalPaths.length ? '`' : '')
+    `export type ModalPath = "${modals.sort().join('" | "') || 'never'}"`.replace(/"/g, modals.length ? '`' : '')
 
   const content = template.replace('// types', types)
-  const count = paths.length + modalPaths.length
+  const count = paths.length + modals.length
 
   return { content, count }
 }

@@ -3,7 +3,7 @@
 
 import { components, hooks, utils } from '@generouted/react-router/client'
 
-type Path =
+export type Path =
   | `/`
   | `/about`
   | `/login`
@@ -14,13 +14,13 @@ type Path =
   | `/register`
   | `/splat/${string}`
 
-type Params = {
+export type Params = {
   '/posts/:id': { id: string }
   '/posts/:id/:pid?': { id: string; pid?: string }
   '/posts/:id/deep': { id: string }
 }
 
-type ModalPath = `/modal`
+export type ModalPath = `/modal`
 
 export const { Link, Navigate } = components<Path, Params>()
 export const { useModals, useNavigate, useParams } = hooks<Path, Params, ModalPath>()
