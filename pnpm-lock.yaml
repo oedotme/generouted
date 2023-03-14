@@ -314,9 +314,9 @@ importers:
 
   shared/core:
     specifiers:
-      '@types/node': ^18.15.0
+      '@types/node': ^18.15.3
     devDependencies:
-      '@types/node': 18.15.0
+      '@types/node': 18.15.3
 
 packages:
 
@@ -1688,6 +1688,10 @@ packages:
 
   /@types/node/18.15.0:
     resolution: {integrity: sha512-z6nr0TTEOBGkzLGmbypWOGnpSpSIBorEhC4L+4HeQ2iezKCi4f77kyslRwvHeNitymGQ+oFyIWGP96l/DPSV9w==}
+    dev: true
+
+  /@types/node/18.15.3:
+    resolution: {integrity: sha512-p6ua9zBxz5otCmbpb5D3U4B5Nanw6Pk3PPyX05xnxbB/fRv71N7CPmORg7uAD5P70T0xmx1pzAx/FUfa5X+3cw==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
