@@ -1,5 +1,5 @@
-import { Fragment, lazy, Suspense } from 'react'
-import { createBrowserRouter, Outlet, RouterProvider, useLocation, useRouteError } from 'react-router-dom'
+import { Fragment } from 'react'
+import { createBrowserRouter, Outlet, RouterProvider, useLocation } from 'react-router-dom'
 import type { ActionFunction, RouteObject, LoaderFunction } from 'react-router-dom'
 
 import { generateModalRoutes, generatePreservedRoutes, generateRegularRoutes } from './core'
@@ -14,21 +14,19 @@ const ROUTES = import.meta.glob<Module>(['/src/pages/**/[\\w[-]*.{jsx,tsx}', '!*
 const preservedRoutes = generatePreservedRoutes<Element>(PRESERVED)
 const modalRoutes = generateModalRoutes<Element>(MODALS)
 
-const DefaultCatch = () => {
-  throw useRouteError()
-}
-
-const regularRoutes = generateRegularRoutes<RouteObject, () => Promise<Module>>(ROUTES, (module, key) => {
-  const Element = lazy(module)
-  const Catch = lazy(() => module().then((module) => ({ default: module.Catch || DefaultCatch })))
+const regularRoutes = generateRegularRoutes<RouteObject, () => Promise<Partial<Module>>>(ROUTES, (module, key) => {
   const index = /index\.(jsx|tsx)$/.test(key) && !key.includes('pages/index') ? { index: true } : {}
 
   return {
     ...index,
-    element: <Suspense fallback={null} children={<Element />} />,
-    loader: (...args) => module().then((mod) => mod?.Loader?.(...args) || null),
-    action: (...args) => module().then((mod) => mod?.Action?.(...args) || null),
-    errorElement: <Suspense fallback={null} children={<Catch />} />,
+    lazy: async () => {
+      return {
+        Component: (await module())?.default,
+        ErrorBoundary: (await module())?.Catch,
+        loader: (await module())?.Loader,
+        action: (await module())?.Action,
+      }
+    },
   }
 })
 

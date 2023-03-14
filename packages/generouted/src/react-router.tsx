@@ -1,5 +1,5 @@
 import { Fragment } from 'react'
-import { createBrowserRouter, Outlet, RouterProvider, useLocation, useRouteError } from 'react-router-dom'
+import { createBrowserRouter, Outlet, RouterProvider, useLocation } from 'react-router-dom'
 import type { ActionFunction, RouteObject, LoaderFunction } from 'react-router-dom'
 
 import { generateModalRoutes, generatePreservedRoutes, generateRegularRoutes } from './core'
@@ -14,21 +14,15 @@ const ROUTES = import.meta.glob<Module>(['/src/pages/**/[\\w[-]*.{jsx,tsx}', '!*
 const preservedRoutes = generatePreservedRoutes<Element>(PRESERVED)
 const modalRoutes = generateModalRoutes<Element>(MODALS)
 
-const DefaultCatch = () => {
-  throw useRouteError()
-}
-
-const regularRoutes = generateRegularRoutes<RouteObject, Module>(ROUTES, (module, key) => {
-  const Element = module?.default || Fragment
-  const Catch = module?.Catch || DefaultCatch
+const regularRoutes = generateRegularRoutes<RouteObject, Partial<Module>>(ROUTES, (module, key) => {
   const index = /index\.(jsx|tsx)$/.test(key) && !key.includes('pages/index') ? { index: true } : {}
 
   return {
     ...index,
-    element: <Element />,
-    loader: (...args) => module?.Loader?.(...args) || null,
-    action: (...args) => module?.Action?.(...args) || null,
-    errorElement: <Catch />,
+    Component: module?.default,
+    ErrorBoundary: module?.Catch,
+    loader: module?.Loader,
+    action: module?.Action,
   }
 })
 
