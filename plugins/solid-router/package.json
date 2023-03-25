@@ -66,11 +66,11 @@
   },
   "devDependencies": {
     "@generouted/core": "workspace:*",
-    "@solidjs/router": "^0.8.0",
-    "solid-js": "^1.6.14",
-    "tsup": "^6.6.3",
-    "typescript": "^4.9.5",
-    "vite": "^4.1.4"
+    "@solidjs/router": "^0.8.2",
+    "solid-js": "^1.6.15",
+    "tsup": "^6.7.0",
+    "typescript": "^5.0.2",
+    "vite": "^4.2.1"
   },
   "peerDependencies": {
     "vite": ">=3"

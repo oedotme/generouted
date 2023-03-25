@@ -10,13 +10,13 @@
   },
   "dependencies": {
     "@generouted/solid-router": "workspace:*",
-    "@solidjs/router": "^0.8.0",
+    "@solidjs/router": "^0.8.2",
     "generouted": "workspace:*",
-    "solid-js": "^1.6.14"
+    "solid-js": "^1.6.15"
   },
   "devDependencies": {
-    "typescript": "^4.9.5",
-    "vite": "^4.1.4",
+    "typescript": "^5.0.2",
+    "vite": "^4.2.1",
     "vite-plugin-solid": "^2.6.1"
   }
 }
