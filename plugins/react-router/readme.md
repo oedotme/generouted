@@ -11,11 +11,8 @@ In case you don't have a Vite project with React and TypeScript, check [Vite doc
 ### Installation
 
 ```shell
-pnpm add @generouted/react-router generouted react-router-dom
+pnpm add @generouted/react-router react-router-dom
 ```
-
-- `generouted` provides the file-based routes
-- `@generouted/react-router` generates types and type-safe router component/hooks/utils
 
 ### Setup
 
@@ -24,7 +21,7 @@ pnpm add @generouted/react-router generouted react-router-dom
 
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import generouted from '@generouted/react-router'
+import generouted from '@generouted/react-router/plugin'
 
 export default defineConfig({ plugins: [react(), generouted()] })
 ```
@@ -35,7 +32,7 @@ export default defineConfig({ plugins: [react(), generouted()] })
 // src/main.tsx
 
 import { createRoot } from 'react-dom/client'
-import { Routes } from 'generouted/react-router'
+import { Routes } from '@generouted/react-router'
 
 const container = document.getElementById('app')!
 createRoot(container).render(<Routes />)
@@ -134,7 +131,7 @@ Then render the `<Modals>` component in `src/pages/_app.tsx`, this component ren
 // src/pages/_app.tsx
 
 import { Outlet } from 'react-router-dom'
-import { Modals } from 'generouted/react-router'
+import { Modals } from '@generouted/react-router'
 
 import { useModals } from '../router'
 

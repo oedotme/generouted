@@ -33,12 +33,20 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "require": "./dist/index.cjs",
       "import": "./dist/index.js"
     },
+    "./lazy": {
+      "types": "./dist/index-lazy.d.ts",
+      "import": "./dist/index-lazy.js"
+    },
     "./client": {
-      "types": "./src/client/index.ts",
-      "import": "./src/client/index.ts"
+      "types": "./dist/client/index.d.ts",
+      "import": "./dist/client/index.js"
+    },
+    "./plugin": {
+      "types": "./dist/plugin/index.d.ts",
+      "require": "./dist/plugin/index.cjs",
+      "import": "./dist/plugin/index.js"
     }
   },
   "typesVersions": {
@@ -46,33 +54,42 @@
       "*": [
         "./dist/index.d.ts"
       ],
+      "lazy": [
+        "./dist/index-lazy.d.ts"
+      ],
       "client": [
-        "./src/client/index.ts"
+        "./dist/client/index.d.ts"
+      ],
+      "plugin": [
+        "./dist/plugin/index.d.ts"
       ]
     }
   },
   "files": [
-    "dist",
-    "src/client"
+    "dist"
   ],
   "scripts": {
-    "dev": "tsup src/index.ts --dts --format cjs,esm --watch",
-    "build": "tsup src/index.ts --dts --format cjs,esm --minify --clean",
+    "dev": "tsup --watch",
+    "build": "tsup --clean",
     "type-check": "tsc --noEmit",
     "pre-release": "pnpm build"
   },
   "dependencies": {
-    "fast-glob": "^3.2.12"
+    "fast-glob": "^3.2.12",
+    "generouted": "workspace:*"
   },
   "devDependencies": {
     "@generouted/core": "workspace:*",
     "@solidjs/router": "^0.8.2",
+    "esbuild-plugin-solid": "^0.5.0",
     "solid-js": "^1.6.15",
     "tsup": "^6.7.0",
     "typescript": "^5.0.2",
     "vite": "^4.2.1"
   },
   "peerDependencies": {
+    "@solidjs/router": ">=0.8",
+    "solid-js": ">=1",
     "vite": ">=3"
   }
 }

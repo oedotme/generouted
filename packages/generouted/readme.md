@@ -51,11 +51,8 @@ In case you don't have a Vite project with React and TypeScript, check [Vite doc
 #### Installation
 
 ```shell
-pnpm add @generouted/react-router generouted react-router-dom
+pnpm add @generouted/react-router react-router-dom
 ```
-
-- `generouted` provides the file-based routes
-- `@generouted/react-router` optional but recommended plugin to generates types and type-safe router component/hooks/utils
 
 #### Setup
 
@@ -64,7 +61,7 @@ pnpm add @generouted/react-router generouted react-router-dom
 
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import generouted from '@generouted/react-router'
+import generouted from '@generouted/react-router/plugin'
 
 export default defineConfig({ plugins: [react(), generouted()] })
 ```
@@ -75,7 +72,7 @@ export default defineConfig({ plugins: [react(), generouted()] })
 // src/main.tsx
 
 import { createRoot } from 'react-dom/client'
-import { Routes } from 'generouted/react-router'
+import { Routes } from '@generouted/react-router'
 
 const container = document.getElementById('app')!
 createRoot(container).render(<Routes />)
@@ -114,11 +111,8 @@ In case you don't have a Vite project with Solid and TypeScript, check out this 
 #### Installation
 
 ```shell
-pnpm add @generouted/solid-router generouted @solidjs/router
+pnpm add @generouted/solid-router @solidjs/router
 ```
-
-- `generouted` provides the file-based routes
-- `@generouted/solid-router` optional but recommended plugin to generates types and type-safe router component/hooks
 
 #### Setup
 
@@ -127,7 +121,7 @@ pnpm add @generouted/solid-router generouted @solidjs/router
 
 import { defineConfig } from 'vite'
 import solid from 'vite-plugin-solid'
-import generouted from '@generouted/solid-router'
+import generouted from '@generouted/solid-router/plugin'
 
 export default defineConfig({ plugins: [solid(), generouted()] })
 ```
@@ -138,7 +132,7 @@ export default defineConfig({ plugins: [solid(), generouted()] })
 // src/main.tsx
 
 import { render } from 'solid-js/web'
-import { Routes } from 'generouted/solid-router'
+import { Routes } from '@generouted/solid-router'
 
 render(Routes, document.getElementById('app')!)
 ```
