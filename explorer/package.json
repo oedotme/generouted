@@ -1,0 +1,30 @@
+{
+  "name": "@generouted/explorer",
+  "private": true,
+  "description": "Generated file-based routes for React Router and Vite example",
+  "author": "Omar Elhawary <oedotme@gmail.com> (https://omarelhawary.me)",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite dev --port 3000",
+    "build": "vite build",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@generouted/react-router": "^1.12.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.9.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.29",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react": "^3.1.0",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.21",
+    "prettier": "^2.8.7",
+    "prettier-plugin-tailwindcss": "^0.2.6",
+    "tailwindcss": "^3.3.1",
+    "typescript": "^5.0.2",
+    "vite": "^4.2.1"
+  }
+}

@@ -1,5 +1,6 @@
 packages:
   - examples/*
+  - explorer
   - examples/*/*
   - packages/*
   - plugins/*

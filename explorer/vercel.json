@@ -1,0 +1,5 @@
+{
+  "cleanUrls": true,
+  "github": { "autoJobCancelation": true, "silent": true },
+  "rewrites": [{ "source": "/([^.]+)", "destination": "/index" }]
+}
