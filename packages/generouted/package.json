@@ -82,6 +82,7 @@
     "src"
   ],
   "scripts": {
+    "build": "tsc --emitDeclarationOnly --noEmit false --outDir dist",
     "type-check": "tsc --noEmit"
   },
   "devDependencies": {

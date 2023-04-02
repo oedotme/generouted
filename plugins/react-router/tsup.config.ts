@@ -2,9 +2,16 @@ import { defineConfig } from 'tsup'
 
 export default defineConfig([
   {
-    entry: ['src/index*', 'src/client'],
+    entry: ['src/core.ts', 'src/index*', 'src/client'],
     format: ['esm'],
-    dts: true,
+    dts: {
+      entry: {
+        core: './node_modules/generouted/dist/core.d.ts',
+        index: './node_modules/generouted/dist/react-router.d.ts',
+        'index-lazy': './node_modules/generouted/dist/react-router-lazy.d.ts',
+        'client/index': 'src/client/index.ts',
+      },
+    },
     external: ['react', 'react-router-dom'],
     noExternal: ['generouted'],
     inject: ['./src/react.js'],
@@ -13,6 +20,6 @@ export default defineConfig([
     entry: ['src/plugin'],
     outDir: 'dist/plugin',
     format: ['cjs', 'esm'],
-    dts: true,
+    dts: { entry: 'src/plugin/index.ts' },
   },
 ])
