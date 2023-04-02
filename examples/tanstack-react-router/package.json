@@ -1,7 +1,7 @@
 {
-  "name": "@examples/tanstack-react-router-basic",
+  "name": "@examples/tanstack-react-router",
   "private": true,
-  "description": "Generated file-based routes for TanStack React Router and Vite basic example",
+  "description": "Generated file-based routes for TanStack React Router and Vite example",
   "author": "Omar Elhawary <oedotme@gmail.com> (https://omarelhawary.me)",
   "license": "MIT",
   "scripts": {
@@ -10,10 +10,10 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@generouted/tanstack-react-router": "workspace:*",
-    "@tanstack/react-actions": "0.0.1-beta.64",
-    "@tanstack/react-loaders": "0.0.1-beta.73",
-    "@tanstack/react-router": "0.0.1-beta.74",
+    "@generouted/tanstack-react-router": "^1.12.0",
+    "@tanstack/react-actions": "^0.0.1-beta.64",
+    "@tanstack/react-loaders": "^0.0.1-beta.73",
+    "@tanstack/react-router": "^0.0.1-beta.74",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
