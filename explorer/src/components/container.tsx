@@ -6,7 +6,7 @@ import { classNames } from '@/utils'
 type Props = { children?: React.ReactNode; source: string }
 
 export const Container = ({ children, source = '' }: Props) => {
-  const file = source.match(/\d{4}\/(.+)\?t=/)?.[1]
+  const file = source.match(/(src\/pages\/.+\.tsx)/)?.[1]
 
   return (
     <section
