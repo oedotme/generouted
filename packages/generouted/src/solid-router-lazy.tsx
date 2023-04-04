@@ -2,7 +2,7 @@
 import { Component, createMemo, lazy, ParentProps } from 'solid-js'
 import { RouteDataFunc, RouteDataFuncArgs, RouteDefinition, Router, useLocation, useRoutes } from '@solidjs/router'
 
-import { generateModalRoutes, generatePreservedRoutes, generateRegularRoutes } from './core'
+import { generateModalRoutes, generatePreservedRoutes, generateRegularRoutes, generatePathForGroup } from './core'
 
 type Module = { default: Component; Loader: RouteDataFunc }
 type Route = { path?: string; component?: Component; children?: Route[] }
@@ -18,6 +18,7 @@ const regularRoutes = generateRegularRoutes<Route, () => Promise<Module>>(ROUTES
   component: lazy(module),
   data: (args: RouteDataFuncArgs) => module().then((mod) => mod?.Loader?.(args) || null),
 }))
+regularRoutes.forEach((route) => generatePathForGroup(route))
 
 const Fragment = (props: ParentProps) => props?.children
 const App = preservedRoutes?.['_app'] || Fragment

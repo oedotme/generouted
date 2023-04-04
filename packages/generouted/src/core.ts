@@ -84,3 +84,10 @@ export const generateModalRoutes = <T>(files: Record<string, T | any>): Record<s
     return { ...modals, [`/${path}`]: files[key]?.default }
   }, {})
 }
+
+export const generatePathForGroup = <T extends BaseRoute>(route: T, base = '/') => {
+  if (route.id?.startsWith('(') && route.id?.endsWith(')')) {
+    route.path || (route.path = base)
+  }
+  if (route.children) route.children.forEach((sub) => generatePathForGroup(sub, base))
+}

@@ -3,7 +3,17 @@
 
 import { components, hooks } from '@generouted/solid-router/client'
 
-export type Path = `/` | `/:lang?/lang` | `/about` | `/posts` | `/posts/:id` | `/posts/:id/:pid?` | `/posts/:id/deep`
+export type Path =
+  | `/`
+  | `/:lang?/lang`
+  | `/about`
+  | `/amazing`
+  | `/posts`
+  | `/posts/:id`
+  | `/posts/:id/:pid?`
+  | `/posts/:id/deep`
+  | `/some/result`
+  | `/wow`
 
 export type Params = {
   '/:lang?/lang': { lang?: string }
