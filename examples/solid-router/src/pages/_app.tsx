@@ -17,6 +17,7 @@ export default function App(props: ParentProps) {
         <A href="/posts/:id" params={{ id: 'xyz' }}>
           Post by Id
         </A>
+        <A href="/wow">Wow</A>
         <button onClick={() => modals.open('/modal', { at: '/posts' })}>Open global modal</button>
       </header>
 
