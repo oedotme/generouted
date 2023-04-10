@@ -22,7 +22,7 @@ const regularRoutes = generateRegularRoutes<Route, () => Promise<Module>>(ROUTES
 const Fragment = (props: ParentProps) => props?.children
 const App = preservedRoutes?.['_app'] || Fragment
 const NotFound = preservedRoutes?.['404'] || Fragment
-const Modals = () => createMemo(() => modalRoutes[useLocation<{ modal: string }>().state?.modal || ''] || Fragment)
+const Modals = () => createMemo(() => modalRoutes[useLocation<any>().state?.modal || ''] || Fragment) as any
 
 export const routes = [...regularRoutes, { path: '*', component: NotFound }] as RouteDefinition[]
 

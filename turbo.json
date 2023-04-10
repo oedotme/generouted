@@ -1,0 +1,17 @@
+{
+  "pipeline": {
+    "dev": {
+      "cache": false
+    },
+    "build": {
+      "dependsOn": ["^type-check"],
+      "outputs": ["dist/**"]
+    },
+    "type-check": {
+      "outputs": []
+    },
+    "pre-release": {
+      "dependsOn": ["^build"]
+    }
+  }
+}

@@ -18,7 +18,7 @@
     "skipChecks": true
   },
   "hooks": {
-    "before:init": ["pnpm -r pre-release"]
+    "before:init": ["pnpm pre-release"]
   },
   "plugins": {
     "@release-it-plugins/workspaces": {
