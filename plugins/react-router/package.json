@@ -78,8 +78,7 @@
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup --clean",
-    "type-check": "tsc --noEmit",
-    "pre-release": "pnpm build"
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "fast-glob": "^3.2.12",

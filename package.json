@@ -31,7 +31,7 @@
   "scripts": {
     "build": "turbo build",
     "type-check": "turbo type-check",
-    "pre-release": "turbo pre-release",
+    "pre-release": "turbo build --filter './packages/*' --filter './plugins/*'",
     "release": "release-it",
     "prepare": "husky install"
   },

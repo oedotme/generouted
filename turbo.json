@@ -9,9 +9,6 @@
     },
     "type-check": {
       "outputs": []
-    },
-    "pre-release": {
-      "dependsOn": ["^build"]
     }
   }
 }

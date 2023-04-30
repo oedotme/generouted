@@ -83,8 +83,7 @@
   ],
   "scripts": {
     "build": "tsc --emitDeclarationOnly --noEmit false --outDir dist",
-    "type-check": "tsc --noEmit",
-    "pre-release": "pnpm build"
+    "type-check": "tsc --noEmit"
   },
   "devDependencies": {
     "@solidjs/router": "^0.8.2",
