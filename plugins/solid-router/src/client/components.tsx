@@ -7,11 +7,11 @@ export const components = <Path extends string, Params extends Record<string, an
   type Props<P> = AnchorProps & (P extends ParamPath ? { href: P; params: Params[P] } : { href: P; params?: never })
 
   return {
-    A: <P extends Path>({ href, params, ...props }: Props<P>) => {
-      return <A {...props} href={params ? generatePath(href, params) : href} />
+    A: <P extends Path>(props: Props<P>) => {
+      return <A {...props} href={props.params ? generatePath(props.href, props.params) : props.href} />
     },
-    Navigate: <P extends Path>({ href, params, ...props }: Props<P>) => {
-      return <Navigate {...props} href={params ? generatePath(href, params) : href} />
+    Navigate: <P extends Path>(props: Props<P>) => {
+      return <Navigate {...props} href={props.params ? generatePath(props.href, props.params) : props.href} />
     },
   }
 }
