@@ -1,6 +1,6 @@
 {
   "name": "@generouted/react-router",
-  "version": "1.12.8",
+  "version": "1.12.9",
   "description": "Generated file-based routes for React Router and Vite",
   "author": "Omar Elhawary <oedotme@gmail.com> (https://omarelhawary.me)",
   "license": "MIT",
@@ -82,7 +82,7 @@
   },
   "dependencies": {
     "fast-glob": "^3.2.12",
-    "generouted": "^1.12.8"
+    "generouted": "^1.12.9"
   },
   "devDependencies": {
     "@generouted/core": "workspace:*",
