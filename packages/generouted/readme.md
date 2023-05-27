@@ -29,7 +29,7 @@ I enjoyed working with file-based routing since started using it with Next.js. A
 - **Automatically update routes** by adding/removing/renaming files at the `src/pages` directory
 - Can be used with **any Vite project**
 - **Easier to migrate** when switching from or to Next.js
-- [Automatic route-based code-splitting and pre-loading](#route-based-code-splitting-and-pre-loading)
+- [Route-based code-splitting and pre-loading](#route-based-code-splitting-and-pre-loading)
 - [Route-based data loaders](#route-based-data-loaders)
 - [Route-based actions](#route-based-actions)
 
@@ -173,6 +173,8 @@ See more about `generouted` [routing conventions below](#conventions).
 
 ### Route-based code-splitting and pre-loading
 
+- Enable code-splitting with React Router by using `import { Routes } from '@generouted/react-router/lazy'`
+- Enable code-splitting with Solid Router by using `import { Routes } from '@generouted/solid-router/lazy'`
 - Includes routes components, data loaders and actions
 - Pre-loading is only available for TanStack's React Location
 
