@@ -82,7 +82,9 @@
     "src"
   ],
   "scripts": {
+    "dev": "vitest watch",
     "build": "tsc --emitDeclarationOnly --noEmit false --outDir dist",
+    "test": "vitest run",
     "type-check": "tsc --noEmit"
   },
   "devDependencies": {
@@ -95,7 +97,8 @@
     "react-router-dom": "^6.11.2",
     "solid-js": "^1.7.5",
     "typescript": "^5.0.4",
-    "vite": "^4.3.9"
+    "vite": "^4.3.9",
+    "vitest": "^0.31.2"
   },
   "peerDependencies": {
     "vite": ">=3"

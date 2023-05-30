@@ -30,6 +30,7 @@
   ],
   "scripts": {
     "build": "turbo build",
+    "test": "turbo test",
     "type-check": "turbo type-check",
     "pre-release": "turbo build --filter './packages/*' --filter './plugins/*'",
     "release": "release-it",

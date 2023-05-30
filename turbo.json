@@ -4,8 +4,11 @@
       "cache": false
     },
     "build": {
-      "dependsOn": ["^type-check"],
+      "dependsOn": ["^test", "^type-check"],
       "outputs": ["dist/**"]
+    },
+    "test": {
+      "outputs": []
     },
     "type-check": {
       "outputs": []
