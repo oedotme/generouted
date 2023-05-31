@@ -35,6 +35,8 @@ test('regular routes generation', () => {
     '/src/pages/(auth)/_layout.tsx': {},
     '/src/pages/(auth)/login.tsx': {},
     '/src/pages/(auth)/register.tsx': {},
+    '/src/pages/_ignored-directory/components.tsx': {},
+    '/src/pages/_ignored-path.tsx': {},
     '/src/pages/about.tsx': {},
     '/src/pages/blog.w.o.layout.tsx': {},
     '/src/pages/blog/[slug].tsx': {},
@@ -43,6 +45,7 @@ test('regular routes generation', () => {
     '/src/pages/blog/tags.tsx': {},
     '/src/pages/docs/-[lang]/index.tsx': {},
     '/src/pages/docs/-[lang]/resources.tsx': {},
+    '/src/pages/docs/-en/support.tsx': {},
     '/src/pages/index.tsx': {},
   }
 
@@ -50,6 +53,10 @@ test('regular routes generation', () => {
     {
       path: 'docs',
       children: [
+        {
+          path: 'en?',
+          children: [{ path: 'support', id: 'docs/-en/support' }],
+        },
         {
           path: ':lang?',
           children: [
