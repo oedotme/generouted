@@ -4,7 +4,7 @@
       "cache": false
     },
     "build": {
-      "dependsOn": ["^test", "^type-check"],
+      "dependsOn": ["^build", "^test", "^type-check"],
       "outputs": ["dist/**"]
     },
     "test": {
