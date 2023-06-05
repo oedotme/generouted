@@ -1,14 +1,16 @@
-import { writeFileSync } from 'fs'
-import fg from 'fast-glob'
+import { exec } from 'child_process'
+import fs from 'fs'
 
+import { createLogger } from 'vite'
 import { patterns } from '@generouted/core'
+import fg from 'fast-glob'
 
 import { Options } from './options'
 import { template } from './template'
 
 const generateRouteTypes = async (options: Options) => {
-  const files = await fg(options.source || './src/pages/**/[\\w[-]*.{jsx,tsx}', { onlyFiles: true })
-  const modal = await fg('./src/pages/**/[+]*.{jsx,tsx}', { onlyFiles: true })
+  const files = await fg(options.source.routes || './src/pages/**/[\\w[-]*.{jsx,tsx}', { onlyFiles: true })
+  const modal = await fg(options.source.modals || './src/pages/**/[+]*.{jsx,tsx}', { onlyFiles: true })
 
   const filtered = files.filter((key) => !key.includes('/_') && !key.includes('/404'))
   const params: string[] = []
@@ -59,15 +61,16 @@ const generateRouteTypes = async (options: Options) => {
   return { content, count }
 }
 
+const logger = createLogger('info', { prefix: '[generouted]' })
 let latestContent = ''
 
 export const generate = async (options: Options) => {
   const start = Date.now()
   const { content, count } = await generateRouteTypes(options)
-  console.log(`${new Date().toLocaleTimeString()} [generouted] scanned ${count} routes in ${Date.now() - start} ms`)
+  logger.info(`scanned ${count} routes in ${Date.now() - start} ms`, { timestamp: true })
 
   if (latestContent === content) return
   latestContent = content
 
-  writeFileSync(`./src/${options.output}`, content)
+  await fs.promises.writeFile(options.output, content)
 }
