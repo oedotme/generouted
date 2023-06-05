@@ -76,5 +76,5 @@ export const generate = async (options: Options) => {
 
   if (!options.format) return
   const prettier = './node_modules/.bin/prettier'
-  if (fs.existsSync(prettier)) exec(`${prettier} --write ${options.output}`)
+  if (fs.existsSync(prettier)) exec(`${prettier} --write --cache ${options.output}`)
 }
