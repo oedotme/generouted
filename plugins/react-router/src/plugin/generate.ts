@@ -73,4 +73,8 @@ export const generate = async (options: Options) => {
   latestContent = content
 
   await fs.promises.writeFile(options.output, content)
+
+  if (!options.format) return
+  const prettier = './node_modules/.bin/prettier'
+  if (fs.existsSync(prettier)) exec(`${prettier} --write ${options.output}`)
 }
