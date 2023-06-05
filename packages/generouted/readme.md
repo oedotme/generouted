@@ -37,16 +37,16 @@ I enjoyed working with file-based routing since started using it with Next.js. A
 
 ## Framework support
 
-- React with [React Router w/ type-safe navigation 🆕](https://reactrouter.com)
+- React with [React Router](https://reactrouter.com) with type-safe navigation + global modals 🆕
 - React with [TanStack React Router](./plugins/tanstack-react-router)
-- React with [TanStack's React Location](https://react-location.tanstack.com)
-- Solid with [Solid Router w/ type-safe navigation 🆕](https://github.com/solidjs/solid-router)
+- React with [TanStack's React Location](https://react-location.tanstack.com) _(deprecated)_
+- Solid with [Solid Router](https://github.com/solidjs/solid-router) with type-safe navigation + global modals 🆕
 
 ## Getting started
 
 In case you don't have a Vite project with React and TypeScript, check [Vite documentation to start a new project](https://vitejs.dev/guide/#scaffolding-your-first-vite-project).
 
-### React Router w/ type-safe navigation 🆕
+### React Router with type-safe navigation + global modals 🆕
 
 #### Installation
 
@@ -84,7 +84,7 @@ createRoot(container).render(<Routes />)
 
 [Check out the docs here](./plugins/tanstack-react-router)
 
-### React Location
+### React Location _(deprecated)_
 
 #### Installation
 
@@ -104,7 +104,7 @@ const container = document.getElementById('app')!
 createRoot(container).render(<Routes />)
 ```
 
-### Solid Router w/ type-safe navigation 🆕
+### Solid Router with type-safe navigation + global modals 🆕
 
 In case you don't have a Vite project with Solid and TypeScript, check out this [getting started guide](https://www.solidjs.com/guides/getting-started#try-solid) to start a new project.
 
@@ -308,13 +308,12 @@ No available props.
 
 ### React Router
 
-- [Basic](./examples/react-router/basic)
-- [Nested layouts](./examples/react-router/nested-layouts)
-- [w/ type-safe navigation plugin](./examples/react-router/plugin) 🆕
+- [Type-safe navigation + Global modals](./examples/react-router) 🆕
+- [Custom integration](./examples/react-router-custom) 🆕
 
 ### TanStack React Router
 
-- [Basic](./examples/tanstack-react-router/basic)
+- [Basic](./examples/tanstack-react-router)
 
 ### TanStack React Location
 
@@ -325,7 +324,7 @@ No available props.
 
 ### Solid Router
 
-- [w/ type-safe navigation plugin](./examples/solid-router) 🆕
+- [Type-safe navigation + Global modals](./examples/solid-router) 🆕
 
 <br>
 
