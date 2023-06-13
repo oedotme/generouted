@@ -24,7 +24,7 @@ export const hooks = <Path extends string, Params extends Record<string, any>, M
       const location = useLocation<any>()
       const navigate = useNavigate()
 
-      type Options<P> = Partial<NavigateOptions<{ modal: string }>> &
+      type Options<P> = Partial<NavigateOptions<any>> &
         (P extends ParamPath ? { at?: P; params: Params[P] } : { at?: P; params?: never })
 
       return {
