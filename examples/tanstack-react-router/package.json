@@ -10,7 +10,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@generouted/tanstack-react-router": "^1.13.1",
+    "@generouted/tanstack-react-router": "^1.13.2",
     "@tanstack/react-actions": "^0.0.1-beta.64",
     "@tanstack/react-loaders": "^0.0.1-beta.73",
     "@tanstack/react-router": "^0.0.1-beta.74",
