@@ -21,7 +21,7 @@ export const hooks = <Path extends string, Params extends Record<string, any>, M
       return useMatch(path, matchFilters)
     },
     useModals: () => {
-      const location = useLocation<{ modal: string }>()
+      const location = useLocation<any>()
       const navigate = useNavigate()
 
       type Options<P> = Partial<NavigateOptions<{ modal: string }>> &
