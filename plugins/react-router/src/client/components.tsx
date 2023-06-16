@@ -9,12 +9,26 @@ export const components = <Path extends string, Params extends Record<string, an
 
   return {
     Link: <P extends To>({ to, params, ...props }: PropsWithParams<P>) => {
-      const path = typeof to === 'string' ? to : to?.pathname || ''
-      return <Link {...props} to={params ? generatePath(path, params || {}) : to} />
+      const path =
+        typeof to === 'string'
+          ? generatePath(to, params)
+          : {
+              pathname: generatePath(to?.pathname || '', params),
+              search: to?.search || '',
+              hash: to?.hash || '',
+            }
+      return <Link {...props} to={path} />
     },
     Navigate: <P extends To>({ to, params, ...props }: PropsWithParams<P>) => {
-      const path = typeof to === 'string' ? to : to?.pathname || ''
-      return <Navigate {...props} to={params ? generatePath(path, params || {}) : to} />
+      const path =
+        typeof to === 'string'
+          ? generatePath(to, params)
+          : {
+              pathname: generatePath(to?.pathname || '', params),
+              search: to?.search || '',
+              hash: to?.hash || '',
+            }
+      return <Navigate {...props} to={path} />
     },
   }
 }
