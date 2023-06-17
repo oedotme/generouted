@@ -16,8 +16,15 @@ export const hooks = <Path extends string, Params extends Record<string, any>, M
       const navigate = useNavigate()
       return <P extends To | number>(to: P, ...[options]: NavigateOptionsWithParams<P>) => {
         if (typeof to === 'number') return navigate(to)
-        const path = typeof to === 'string' ? to : to?.pathname || ''
-        navigate(options?.params ? generatePath(path, options.params || {}) : to, options)
+        const path =
+          typeof to === 'string'
+            ? generatePath(to as string, options?.params || {})
+            : {
+                pathname: generatePath(to?.pathname || '', options?.params || {}),
+                search: to?.search || '',
+                hash: to?.hash || '',
+              }
+        navigate(path, options)
       }
     },
     useModals: () => {
