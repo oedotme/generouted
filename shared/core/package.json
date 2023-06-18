@@ -15,6 +15,6 @@
     "src"
   ],
   "devDependencies": {
-    "@types/node": "^20.2.5"
+    "@types/node": "^20.3.1"
   }
 }

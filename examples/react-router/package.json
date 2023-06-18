@@ -1,5 +1,5 @@
 {
-  "name": "@examples/react-router-plugin",
+  "name": "@examples/react-router",
   "private": true,
   "description": "Generated file-based routes for React Router and Vite plugin example",
   "author": "Omar Elhawary <oedotme@gmail.com> (https://omarelhawary.me)",
@@ -13,11 +13,11 @@
     "@generouted/react-router": "^1.13.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "6.11.2"
+    "react-router-dom": "6.13.0"
   },
   "devDependencies": {
-    "@types/react": "^18.2.8",
-    "@types/react-dom": "^18.2.4",
+    "@types/react": "^18.2.12",
+    "@types/react-dom": "^18.2.5",
     "@vitejs/plugin-react": "^4.0.0",
     "prettier": "^2.8.8",
     "typescript": "^5.1.3",
