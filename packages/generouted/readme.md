@@ -309,7 +309,7 @@ No available props.
 ### React Router
 
 - [Type-safe navigation + Global modals](./examples/react-router) 🆕
-- [Custom integration](./examples/react-router-custom) 🆕
+- [Custom integration with custom path](./examples/react-router-custom-path) 🆕
 
 ### TanStack React Router
 

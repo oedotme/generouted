@@ -1,7 +1,7 @@
 {
-  "name": "@examples/react-router-custom",
+  "name": "@examples/react-router-custom-path",
   "private": true,
-  "description": "Generated file-based routes for React Router and Vite custom example",
+  "description": "Generated file-based routes for React Router and Vite custom path example",
   "author": "Omar Elhawary <oedotme@gmail.com> (https://omarelhawary.me)",
   "license": "MIT",
   "scripts": {
