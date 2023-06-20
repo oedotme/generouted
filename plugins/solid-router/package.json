@@ -1,6 +1,6 @@
 {
   "name": "@generouted/solid-router",
-  "version": "1.13.4",
+  "version": "1.13.5",
   "description": "Generated file-based routes for Solid Router and Vite",
   "author": "Omar Elhawary <oedotme@gmail.com> (https://omarelhawary.me)",
   "license": "MIT",
@@ -82,7 +82,7 @@
   },
   "dependencies": {
     "fast-glob": "^3.2.12",
-    "generouted": "^1.13.4"
+    "generouted": "^1.13.5"
   },
   "devDependencies": {
     "@generouted/core": "workspace:*",
