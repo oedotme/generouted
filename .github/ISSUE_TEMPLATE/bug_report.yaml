@@ -1,0 +1,86 @@
+name: Bug Report
+description: Submit a bug report
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the Bug
+      description: Provide a clear and concise description of the challenge you are running into
+    validations:
+      required: true
+
+  - type: input
+    id: generouted
+    attributes:
+      label: Generouted Version
+    validations:
+      required: true
+
+  - type: input
+    id: link
+    attributes:
+      label: Your Example Website or App or Reproduction
+      description: |
+        Which website or app were you using when the bug happened?
+
+        - Your bug will may get fixed much faster if we can run your code and it doesn't have dependencies other than generouted and the router
+        - To create a shareable code example you can use Stackblitz (https://stackblitz.com/) — Please avoid localhost URLs
+        - Please read these tips for providing a minimal example: https://stackoverflow.com/help/mcve
+      placeholder: |
+        https://stackblitz.com/edit/......
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce the Bug or Issue
+      description: Describe the steps we have to take to reproduce the behavior
+      placeholder: |
+        1. Go to '...'
+        2. Click on '....'
+        3. Scroll down to '....'
+        4. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: Provide a clear and concise description of what you expected to happen.
+      placeholder: |
+        As a user, I expected ___ behavior but i am seeing ___
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots_or_videos
+    attributes:
+      label: Screenshots or Videos
+      description: |
+        If applicable, add screenshots or a video to help explain your problem — For more information on the supported file image/file types and the file size limits, please refer to the following link: https://docs.github.com/en/github/writing-on-github/working-with-advanced-formatting/attaching-files
+      placeholder: |
+        You can drag your video or image files inside of this editor ↓
+
+  - type: textarea
+    id: platform
+    attributes:
+      label: Platform
+      value: |
+        - OS: [e.g. macOS, Windows, Linux]
+        - Browser: [e.g. Chrome, Safari, Firefox]
+        - Browser version: [e.g. 91.1]
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Add any other context about the problem here
