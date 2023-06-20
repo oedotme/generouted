@@ -197,6 +197,40 @@ importers:
         specifier: ^4.3.9
         version: 4.3.9(@types/node@20.3.1)
 
+  examples/react-router-custom:
+    dependencies:
+      '@generouted/react-router':
+        specifier: workspace:*
+        version: link:../../plugins/react-router
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
+      react-router-dom:
+        specifier: 6.13.0
+        version: 6.13.0(react-dom@18.2.0)(react@18.2.0)
+    devDependencies:
+      '@types/react':
+        specifier: ^18.2.12
+        version: 18.2.12
+      '@types/react-dom':
+        specifier: ^18.2.5
+        version: 18.2.5
+      '@vitejs/plugin-react':
+        specifier: ^4.0.0
+        version: 4.0.0(vite@4.3.9)
+      prettier:
+        specifier: ^2.8.8
+        version: 2.8.8
+      typescript:
+        specifier: ^5.1.3
+        version: 5.1.3
+      vite:
+        specifier: ^4.3.9
+        version: 4.3.9(@types/node@20.3.1)
+
   examples/react-router-custom-path:
     dependencies:
       '@generouted/react-router':
