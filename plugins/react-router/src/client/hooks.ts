@@ -2,29 +2,26 @@ import { generatePath, NavigateOptions, useLocation, useNavigate, useParams } fr
 
 export const hooks = <Path extends string, Params extends Record<string, any>, ModalPath extends string>() => {
   type ParamPath = keyof Params
-  type To = Path | Partial<{ pathname: Path | string; search: string; hash: string }>
+  type To = { pathname: Path; search?: string; hash?: string }
 
-  type NavigateOptionsWithParams<P> = P extends number
+  type NavigateOptionsWithParams<P extends Path | To | number> = P extends number
     ? []
     : P extends ParamPath
     ? [NavigateOptions & { params: Params[P] }]
+    : P extends To
+    ? P['pathname'] extends ParamPath
+      ? [NavigateOptions & { params: Params[P['pathname']] }]
+      : [NavigateOptions & { params?: never }]
     : [NavigateOptions & { params?: never }] | []
 
   return {
     useParams: <P extends ParamPath>(path: P) => useParams<Params[typeof path]>() as Params[P],
     useNavigate: () => {
       const navigate = useNavigate()
-      return <P extends To | number>(to: P, ...[options]: NavigateOptionsWithParams<P>) => {
+      return <P extends Path | To | number>(to: P, ...[options]: NavigateOptionsWithParams<P>) => {
         if (typeof to === 'number') return navigate(to)
-        const path =
-          typeof to === 'string'
-            ? generatePath(to as string, options?.params || {})
-            : {
-                pathname: generatePath(to?.pathname || '', options?.params || {}),
-                search: to?.search || '',
-                hash: to?.hash || '',
-              }
-        navigate(path, options)
+        const path = generatePath(typeof to === 'string' ? to : to.pathname, options?.params || ({} as any))
+        navigate(typeof to === 'string' ? path : { pathname: path, search: to.search, hash: to.hash }, options)
       }
     },
     useModals: () => {
