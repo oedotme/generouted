@@ -1,5 +1,5 @@
 <br>
-<p align="center"><img src="https://raw.githubusercontent.com/oedotme/generouted/main/logo.svg" alt="generouted" width="300"/></p>
+<p align="center"><img src="https://raw.githubusercontent.com/oedotme/generouted/main/logo.svg" alt="generouted" width="280"/></p>
 <p align="center">
   <a href="https://npmjs.com/package/generouted"><img src="https://img.shields.io/npm/v/generouted.svg"/></a>
   <a href="https://stackblitz.com/github.com/oedotme/generouted/tree/main/explorer"><img src="https://img.shields.io/badge/generouted/explorer-StackBlitz-blue"/></a>
@@ -378,28 +378,28 @@ src/pages
 
 <br>
 
-| File                                          | Path                     | Convention                                   |
-| --------------------------------------------- | ------------------------ | -------------------------------------------- |
-| ` src/pages/` `(auth)/_layout.tsx`            |                          | Pathless Layout group                        |
-| ` src/pages/` `(auth)/login.tsx`              | `/login`                 | Regular route                                |
-| ` src/pages/` `(auth)/register.tsx`           | `/register`              | Regular route                                |
-| ` src/pages/` `blog/_components/button.tsx`   |                          | Ignored route by an ignored parent directory |
-| ` src/pages/` `blog/_components/comments.tsx` |                          | Ignored route by an ignored parent directory |
-| ` src/pages/` `blog/[...all].tsx`             | `/blog/*`                | Dynamic catch-all route                      |
-| ` src/pages/` `blog/[slug].tsx`               | `/blog/:slug`            | Dynamic route                                |
-| ` src/pages/` `blog/_layout.tsx`              |                          | Layout for `/blog` routes                    |
-| ` src/pages/` `blog/index.tsx`                | `/blog`                  | Index route                                  |
-| ` src/pages/` `blog/tags.tsx`                 | `/blog/tags`             | Regular route                                |
-| ` src/pages/` `docs/-[lang]/index.tsx`        | `/docs/:lang?/index`     | Optional dynamic route segment               |
-| ` src/pages/` `docs/-[lang]/resources.tsx`    | `/docs/:lang?/resources` | Optional dynamic route segment               |
-| ` src/pages/` `docs/-en/contributors.tsx`     | `/docs/en?/contributors` | Optional static route segment                |
-| ` src/pages/` `+info.tsx`                     | `/info`                  | Modal route                                  |
-| ` src/pages/` `404.tsx`                       | `*`                      | Custom `404` _(optional)_                    |
-| ` src/pages/` `_app.tsx`                      |                          | Custom `app` layout _(optional)_             |
-| ` src/pages/` `_ignored.tsx`                  |                          | Ignored route                                |
-| ` src/pages/` `about.tsx`                     | `/about`                 | Regular route                                |
-| ` src/pages/` `blog.w.o.layout.tsx`           | `/blog/w/o/layout`       | Route without `/blog` layout                 |
-| ` src/pages/` `index.tsx`                     | `/`                      | Index route                                  |
+| File                            | Path                     | Convention                            |
+| :------------------------------ | :----------------------- | :------------------------------------ |
+| `(auth)/_layout.tsx`            |                          | Pathless Layout group                 |
+| `(auth)/login.tsx`              | `/login`                 | Regular route                         |
+| `(auth)/register.tsx`           | `/register`              | Regular route                         |
+| `blog/_components/button.tsx`   |                          | Ignored route by an ignored directory |
+| `blog/_components/comments.tsx` |                          | Ignored route by an ignored directory |
+| `blog/[...all].tsx`             | `/blog/*`                | Dynamic catch-all route               |
+| `blog/[slug].tsx`               | `/blog/:slug`            | Dynamic route                         |
+| `blog/_layout.tsx`              |                          | Layout for `/blog` routes             |
+| `blog/index.tsx`                | `/blog`                  | Index route                           |
+| `blog/tags.tsx`                 | `/blog/tags`             | Regular route                         |
+| `docs/-[lang]/index.tsx`        | `/docs/:lang?/index`     | Optional dynamic route segment        |
+| `docs/-[lang]/resources.tsx`    | `/docs/:lang?/resources` | Optional dynamic route segment        |
+| `docs/-en/contributors.tsx`     | `/docs/en?/contributors` | Optional static route segment         |
+| `+info.tsx`                     | `/info`                  | Modal route                           |
+| `404.tsx`                       | `*`                      | Custom `404` _(optional)_             |
+| `_app.tsx`                      |                          | Custom `app` layout _(optional)_      |
+| `_ignored.tsx`                  |                          | Ignored route                         |
+| `about.tsx`                     | `/about`                 | Regular route                         |
+| `blog.w.o.layout.tsx`           | `/blog/w/o/layout`       | Route without `/blog` layout          |
+| `index.tsx`                     | `/`                      | Index route                           |
 
 </details>
 
