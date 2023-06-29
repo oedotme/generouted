@@ -1,52 +1,82 @@
 <br>
+<p align="center"><img src="https://raw.githubusercontent.com/oedotme/generouted/main/logo.svg" alt="generouted" width="180"/></p>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/oedotme/generouted/main/logo.svg" alt="Generouted · Generated Routes" width="180"/>
+  <a href="https://npmjs.com/package/generouted"><img src="https://img.shields.io/npm/v/generouted.svg"/></a>
+  <a href="https://stackblitz.com/github.com/oedotme/generouted/tree/main/explorer"><img src="https://img.shields.io/badge/generouted/explorer-StackBlitz-blue"/></a>
 </p>
 <p align="center">
-  <a href="https://npmjs.com/package/generouted">
-    <img src="https://img.shields.io/npm/v/generouted.svg" alt="generouted on npm">
-  </a>
+  <a href="https://npmjs.com/package/generouted"><img src="https://img.shields.io/npm/dm/generouted.svg"/></a>
+  <a href="https://npmjs.com/package/generouted"><img src="https://img.shields.io/npm/l/generouted.svg?color=blue"/></a>
 </p>
 <br>
 
 # Generouted
 
-**Gene**rate**d** file-based **route**s for [Vite](https://vitejs.dev)
+Generated file-based routes for [Vite](https://vitejs.dev)
+
+<details>
+<summary><b>Motivation</b></summary>
 
 <br>
 
-## Motivation
+I enjoyed using file-based routing since I tried Next.js (pages directory). After applying the same concept with Vite and client-side applications, I started writing blog posts covering the implementation of [client-side file-based routing with React Router](https://omarelhawary.me/blog/file-based-routing-with-react-router) which was packaged later as `generouted`.
 
-I enjoyed working with file-based routing since started using it with Next.js. After trying the same concept with Vite, I started a series of blog posts covering [client-side file-based routing with React Router](https://omarelhawary.me/blog/file-based-routing-with-react-router) inspired by [Next.js](https://nextjs.org). Later, in the last two posts, I replaced React Router with React Location to add more features like data loaders and nested layouts that are inspired by [Remix](https://remix.run). The final version covered in the blog posts is now published as `generouted`, see all the [available features](#features) below.
-
-## How
-
-`generouted` is only one _source code_ file, with **no dependencies or build step**. It uses [Vite's glob import API](https://vitejs.dev/guide/features.html#glob-import) to list the modules within `src/pages` directory to be used as React Location's routes.
-
-## Why
-
-- **Declarative and universal file-based routing** system
-- **Automatically update routes** by adding/removing/renaming files at the `src/pages` directory
-- Can be used with **any Vite project**
-- **Easier to migrate** when switching from or to Next.js
-- [Route-based code-splitting and pre-loading](#route-based-code-splitting-and-pre-loading)
-- [Route-based data loaders](#route-based-data-loaders)
-- [Route-based actions](#route-based-actions)
+Today `generouted` brings many features, supports multiple frameworks and routers, and inspires ideas and conventions from Next.js, Remix, Expo, Docusaurus, SvelteKit and more.
 
 <br>
 
-## Framework support
+</details>
 
-- React with [React Router](https://reactrouter.com) with type-safe navigation + global modals 🆕
-- React with [TanStack React Router](./plugins/tanstack-react-router)
-- React with [TanStack's React Location](https://react-location.tanstack.com) _(deprecated)_
-- Solid with [Solid Router](https://github.com/solidjs/solid-router) with type-safe navigation + global modals 🆕
+<details>
+<summary><b>How does it work?</b></summary>
+
+<br>
+
+`generouted` uses [Vite's glob import API](https://vitejs.dev/guide/features.html#glob-import) to list the routes within the `src/pages` directory and generates the routes tree and modals based on `generouted`'s conventions.
+
+There are also Vite plugins available for some integrations to provide type-safe components/hooks/utils through code-generation.
+
+<br>
+
+</details>
+
+<br>
+
+## Features
+
+- 📁 Client-side file-based routing
+- ⚡ Powered by [Vite](https://vitejs.dev)
+- ✨ React support with [`react-router-dom`](https://github.com/remix-run/react-router) or [`@tanstack/router`](https://github.com/tanstack/router) 🧪 or [`@tanstack/react-location`](https://github.com/tanstack/router/tree/9c8eb043e4ac350fc1d28655542e01defb0c82e5) 🚨
+- ✨ Solid support with [`@solidjs/router`](https://github.com/solidjs/solid-router)
+- 🔐 Type-safe navigation
+- 🚀 Type-safe global modals
+- 💤 Route-based code-splitting and lazy-loading
+- 📄 Route-based data loaders and actions
+- 💣 Route-based error boundary
+- 📂 Nested layouts
+- 🫙 Pathless layout groups
+- ❓ Optional static and dynamic routes
+- 💭 Ignored routes per file or directory
+
+<br>
+
+## Online explorer
+
+- ⚡ Visit [`generouted`'s interactive playground via StackBlitz](https://stackblitz.com/github.com/oedotme/generouted/tree/main/explorer)
+- 🧩 Explore file-based routing patterns and conventions
+- 🔎 Visualize the routes layouts and the resolved routes paths
+- 📝 Update `src/pages/` files and see your changes reflecting
+
+<br>
 
 ## Getting started
 
-In case you don't have a Vite project with React and TypeScript, check [Vite documentation to start a new project](https://vitejs.dev/guide/#scaffolding-your-first-vite-project).
+<details open="true">
+<summary><b>React Router</b></summary>
 
-### React Router with type-safe navigation + global modals 🆕
+### React Router
+
+In case you don't have a Vite project with React and TypeScript, check [Vite documentation to start a new project](https://vitejs.dev/guide/#scaffolding-your-first-vite-project).
 
 #### Installation
 
@@ -74,17 +104,57 @@ export default defineConfig({ plugins: [react(), generouted()] })
 import { createRoot } from 'react-dom/client'
 import { Routes } from '@generouted/react-router'
 
-const container = document.getElementById('app')!
-createRoot(container).render(<Routes />)
+const app = document.getElementById('app')
+createRoot(app).render(<Routes />)
 ```
 
-🚀 Check more about type-safe navigation and global modals [in the plugin docs](./plugins/react-router).
+#### Adding pages
 
-### TanStack React Router
+Add the home page by creating a new file `src/pages/index.tsx` → `/`, then export a default component:
 
-[Check out the docs here](./plugins/tanstack-react-router)
+```tsx
+export default function Home() {
+  return <h1>Home</h1>
+}
+```
 
-### React Location _(deprecated)_
+Check the [routing conventions section below](#conventions).
+
+#### Docs
+
+You can find more details about type-safe navigation and global modals at [`@generouted/react-router` docs](/plugins/react-router).
+
+#### Examples
+
+- [Type-safe navigation + global modals](/examples/react-router)
+- [Custom integration](/examples/react-router-custom)
+- [Custom integration with custom path](/examples/react-router-custom-path)
+
+<br>
+
+</details>
+
+<details>
+<summary><b>TanStack React Router — In-progress experimental support 🧪</b></summary>
+
+### TanStack React Router — In-progress experimental support 🧪
+
+[Check out the docs here](/plugins/tanstack-react-router)
+
+#### Examples
+
+- [Basic](/examples/tanstack-react-router)
+
+<br>
+
+</details>
+
+<details>
+<summary><b>React Location — Deprecated 🚨</b></summary>
+
+### React Location — Deprecated 🚨
+
+In case you don't have a Vite project with React and TypeScript, check [Vite documentation to start a new project](https://vitejs.dev/guide/#scaffolding-your-first-vite-project).
 
 #### Installation
 
@@ -100,13 +170,37 @@ pnpm add generouted @tanstack/react-location
 import { createRoot } from 'react-dom/client'
 import { Routes } from 'generouted/react-location'
 
-const container = document.getElementById('app')!
-createRoot(container).render(<Routes />)
+const app = document.getElementById('app')
+createRoot(app).render(<Routes />)
 ```
 
-### Solid Router with type-safe navigation + global modals 🆕
+#### Adding pages
 
-In case you don't have a Vite project with Solid and TypeScript, check out this [getting started guide](https://www.solidjs.com/guides/getting-started#try-solid) to start a new project.
+Add the home page by creating a new file `src/pages/index.tsx` → `/`, then export a default component:
+
+```tsx
+export default function Home() {
+  return <h1>Home</h1>
+}
+```
+
+#### Examples
+
+- [Basic](/examples/react-location/basic)
+- [Data loaders](/examples/react-location/data-loaders)
+- [Modals](/examples/react-location/modals)
+- [Nested layouts](/examples/react-location/nested-layouts)
+
+<br>
+
+</details>
+
+<details open="true">
+<summary><b>Solid Router</b></summary>
+
+### Solid Router
+
+In case you don't have a Vite project with Solid and TypeScript, check out [Solid's getting started guide](https://www.solidjs.com/guides/getting-started#try-solid) to start a new project.
 
 #### Installation
 
@@ -134,14 +228,12 @@ export default defineConfig({ plugins: [solid(), generouted()] })
 import { render } from 'solid-js/web'
 import { Routes } from '@generouted/solid-router'
 
-render(Routes, document.getElementById('app')!)
+render(Routes, document.getElementById('app'))
 ```
 
-🚀 Check more about type-safe navigation and global modals [in the plugin docs](./plugins/solid-router).
+#### Adding pages
 
-### Adding pages
-
-Add the home page by creating a new file `src/pages/index.tsx` **→** `/`, then export a default component:
+Add the home page by creating a new file `src/pages/index.tsx` → `/`, then export a default component:
 
 ```tsx
 export default function Home() {
@@ -151,181 +243,200 @@ export default function Home() {
 
 See more about `generouted` [routing conventions below](#conventions).
 
+#### Docs
+
+You can find more details about type-safe navigation and global modals at [`@generouted/solid-router` docs](/plugins/solid-router).
+
+#### Examples
+
+- [Type-safe navigation + global modals](/examples/solid-router)
+
 <br>
 
-## Features
-
-- [File-based routing](#file-based-routing)
-- [Route-based code-splitting and pre-loading](#route-based-code-splitting-and-pre-loading)
-- [Route-based data loaders and actions](#route-based-data-loaders)
-- [Route-based actions](#route-based-actions)
-- [Nested layouts](#nested-layouts)
-
-### File-based routing
-
-- [Next.js inspired](https://nextjs.org/docs/routing/introduction)
-- Files within `src/pages` directory
-- Supports `.jsx` and `.tsx` extensions
-- Renders page's `default` export
-- Custom app at `src/pages/_app.tsx` _(optional)_
-- Custom 404 page at `src/pages/404.tsx` _(optional)_
-- Navigation between routes using the routing library `Link` or `A` component
-
-### Route-based code-splitting and pre-loading
-
-- Enable code-splitting with React Router by using `import { Routes } from '@generouted/react-router/lazy'`
-- Enable code-splitting with Solid Router by using `import { Routes } from '@generouted/solid-router/lazy'`
-- Includes routes components, data loaders and actions
-- Pre-loading is only available for TanStack's React Location
-
-### Route-based data loaders
-
-- [Remix inspired](https://remix.run/docs/en/v1/guides/data-loading)
-- By exporting a named function `Loader` from a page: `export const Loader = async () => ({...})`
-- [React Location's route loaders guide](https://react-location.tanstack.com/guides/route-loaders)
-
-### Route-based actions
-
-- Actions are only available for React Router
-- By exporting a named function `Action` from a page: `export const Action = async () => ({...})`
-
-### Nested layouts
-
-- [Remix inspired](https://remix.run/docs/en/v1/guides/routing#what-is-nested-routing)
-- Adding a layout for a group of routes by naming a file same as their parent directory or using a `_layout.tsx` file inside of the nested directory
-- Supports data loaders
-- Requires `<Outlet />` component to render its children
+</details>
 
 <br>
 
 ## Conventions
 
-### Index routes
+### File and directories naming and conventions
 
-- `src/pages/index.tsx` **→** `/`
-- `src/pages/posts/index.tsx` **→** `/posts`
+- Routes declaration at `src/pages`
+- Supports `.tsx` or `.jsx` extensions
+- Optional `src/pages/_app.tsx` for an **app level layout**
+- Optional `src/pages/404.tsx` for a **custom not-found page**
 
-### Nested routes
+#### Index routes
 
-- `src/pages/posts/2022/index.tsx` **→** `/posts/2022`
-- `src/pages/posts/2022/resolutions.tsx` **→** `/posts/2022/resolutions`
+- `src/pages/index.tsx` → `/`
+- `src/pages/posts/index.tsx` → `/posts`
 
-### Dynamic routes
+#### Nested routes
 
-- `src/pages/posts/[slug].tsx` **→** `/posts/:slug`
-- `src/pages/posts/[slug]/tags.tsx` **→** `/posts/:slug/tags`
-- `src/pages/posts/[...all].tsx` **→** `/posts/*`
+- `src/pages/posts/2022/index.tsx` → `/posts/2022`
+- `src/pages/posts/2022/resolutions.tsx` → `/posts/2022/resolutions`
 
-### Nested layouts
+#### Dynamic routes
 
-#### Enable for all directory routes
+- `src/pages/posts/[slug].tsx` → `/posts/:slug`
+- `src/pages/posts/[slug]/tags.tsx` → `/posts/:slug/tags`
+- `src/pages/posts/[...all].tsx` → `/posts/*`
 
-Add a layout for all the routes within `src/pages/posts` directory by adding `src/pages/posts.tsx` or `src/pages/posts/_layout.tsx`:
+#### Nested layouts
 
-- `src/pages/posts.tsx` or `src/pages/posts/_layout.tsx`
-  - `src/pages/posts/index.tsx` **→** `/posts`
-  - `src/pages/posts/2022/index.tsx` **→** `/posts/2022`
-  - `src/pages/posts/[slug].tsx` **→** `/posts/:slug`
+- By defining `_layout.tsx` in any nested directory → `src/pages/posts/_layout.tsx`
+- **Requires** using an `<Outlet />` component to render layout children
+- All the files within the `src/pages/posts/` directory in this case, will be wrapped with that layout
 
-#### Exclude a route - URL nesting without layout nesting
+#### Nested URLs without nested layouts
 
-Add a file outside of the directory with a nested layout, then name the file by adding a dot between each segment, it will be converted to forward slashes:
+- Route file should be outside of the nested layout directory
+- Include **dots** `.` between the segments to be converted to forward slashes
+- `src/pages/posts.nested.as.url.not.layout.tsx` → `/posts/nested/as/url/not/layout`
 
-- `src/pages/posts.nested.as.url.not.layout.tsx` **→** `/posts/nested/as/url/not/layout`
+#### Pathless layouts
 
-### Pathless layout groups 🆕
+- Similar to nested layouts for layout definition
+- By wrapping the parent directory with **parentheses** `()`
+- `src/pages/(auth)/_layout.tsx`
+- `src/pages/(auth)/login.tsx` → `/login`
+- Layout parent directory name is not included in the routes paths
 
-By wrapping a directory name with `()`: `src/pages/(app)/...`
+#### Global modals
 
-```shell
-src/pages/
-├── (app)/
-│   ├── _layout.tsx
-│   ├── dashboard.tsx      →  /dashboard      wrapped by (app)/_layout.tsx
-│   └── item.tsx           →  /item           wrapped by (app)/_layout.tsx
-├── (marketing)/
-│   ├── _layout.tsx
-│   ├── about.tsx          →  /about          wrapped by (marketing)/_layout.tsx
-│   └── testimonials.tsx   →  /testimonials   wrapped by (marketing)/_layout.tsx
-└── admin/
-    ├── _layout.tsx
-    └── index.tsx          →  /admin          wrapped by admin/_layout.tsx
-```
+- By **prefixing** the file name with a **plus sign** `+` _(thinking the modal is an extra route overlaying the current route)_
+- Modals navigation available via the `useModals()` hook
+- `src/pages/+info.tsx` → `/info`
+- `src/pages/+checkout/+details.tsx` → `/checkout/details`
+- `src/pages/+checkout/+payment.tsx` → `/checkout/payment`
 
-### Optional route segments 🆕
+#### Optional segments
 
-By prefixing a minus sign `-` to a segment; meaning this segment can be subtracted/removed from route url:
+- By **prefixing** a route segment with a **minus sign** `-` _(thinking the segment can be subtracted or removed from the route path)_
+- `src/pages/-en/about.tsx` → `/en?/about` → `/en/about`, `/about`
+- `src/pages/-[lang]/about.tsx` → `/:lang?/about` → `/en/about`, `/fr/about`, `/about`
 
-- `src/pages/-some/thing.tsx` → `/some?/thing`
-- `src/pages/-[param]/another.tsx` → `/:param?/another`
+#### Ignored routes
 
-React Router [v6.5.0+](https://github.com/remix-run/react-router/releases/tag/react-router@6.5.0) supports regular and dynamic optional route segments:
-
-```shell
-src/pages/-en/about.tsx  →  /en?/about            /en/about and /about
-src/pages/-[lang]/about.tsx  →  /:lang?/about     /en/about, /fr/about, /about
-```
-
-However other integration might only support optional dynamic segments:
-
-```shell
-src/pages/-[lang]/about.tsx  →  /:lang?/about     /en/about, /fr/about, /about
-```
-
-### Ignored routes - co-locating non-pages files inside the pages directory
-
-Any directory or a file starts with `_` will be ignored
-
+- Any directory or file starts with an **underscore** `_` will be **ignored**
 - `src/pages/_ignored.tsx`
 - `src/pages/posts/_components/button.tsx`
 - `src/pages/posts/_components/link.tsx`
 
 <br>
 
-## API
+### Page exports
 
-### React Location
-
-#### `<Routes />`
-
-`<Routes />` component accepts all [React Location's `RouterProps`](https://react-location.tanstack.com/docs/api#router) except `children`, `location` and `routes` props.
-
-### React Router
-
-#### `<Routes />`
-
-No available props.
-
-### Solid Router
-
-#### `<Routes />`
-
-No available props.
+- **Required** page component `export default Component() {...}`
+- Optional page loader function `export const Loader = () => {...}`
+- Optional page action function `export const Action = () => {...}`
+- Optional error boundary component `export const Catch = () => {...}`
 
 <br>
 
-## Examples
+### Example
 
-### React Router
+<details>
+<summary><b>Directory structure</b></summary>
 
-- [Type-safe navigation + Global modals](./examples/react-router) 🆕
-- [Custom integration](./examples/react-router-custom) 🆕
-- [Custom integration with custom path](./examples/react-router-custom-path) 🆕
+<br>
 
-### TanStack React Router
+```shell
+src/pages
+├── (auth)
+│   ├── _layout.tsx
+│   ├── login.tsx
+│   └── register.tsx
+├── blog
+│   ├── _components
+│   │   ├── button.tsx
+│   │   └── comments.tsx
+│   ├── [...all].tsx
+│   ├── [slug].tsx
+│   ├── _layout.tsx
+│   ├── index.tsx
+│   └── tags.tsx
+├── docs
+│   ├── -[lang]
+│   │   ├── index.tsx
+│   │   └── resources.tsx
+│   └── -en
+│       └── contributors.tsx
+├── +info.tsx
+├── 404.tsx
+├── _app.tsx
+├── _ignored.tsx
+├── about.tsx
+├── blog.w.o.layout.tsx
+└── index.tsx
+```
 
-- [Basic](./examples/tanstack-react-router)
+</details>
 
-### TanStack React Location
+<details open="true">
+<summary><b>Overview</b></summary>
 
-- [Basic](./examples/react-location/basic)
-- [Data loaders](./examples/react-location/data-loaders)
-- [Modals](./examples/react-location/modals)
-- [Nested layouts](./examples/react-location/nested-layouts)
+<br>
 
-### Solid Router
+| File                                          | Path                     | Convention                                   |
+| --------------------------------------------- | ------------------------ | -------------------------------------------- |
+| ` src/pages/` `(auth)/_layout.tsx`            |                          | Pathless Layout group                        |
+| ` src/pages/` `(auth)/login.tsx`              | `/login`                 | Regular route                                |
+| ` src/pages/` `(auth)/register.tsx`           | `/register`              | Regular route                                |
+| ` src/pages/` `blog/_components/button.tsx`   |                          | Ignored route by an ignored parent directory |
+| ` src/pages/` `blog/_components/comments.tsx` |                          | Ignored route by an ignored parent directory |
+| ` src/pages/` `blog/[...all].tsx`             | `/blog/*`                | Dynamic catch-all route                      |
+| ` src/pages/` `blog/[slug].tsx`               | `/blog/:slug`            | Dynamic route                                |
+| ` src/pages/` `blog/_layout.tsx`              |                          | Layout for `/blog` routes                    |
+| ` src/pages/` `blog/index.tsx`                | `/blog`                  | Index route                                  |
+| ` src/pages/` `blog/tags.tsx`                 | `/blog/tags`             | Regular route                                |
+| ` src/pages/` `docs/-[lang]/index.tsx`        | `/docs/:lang?/index`     | Optional dynamic route segment               |
+| ` src/pages/` `docs/-[lang]/resources.tsx`    | `/docs/:lang?/resources` | Optional dynamic route segment               |
+| ` src/pages/` `docs/-en/contributors.tsx`     | `/docs/en?/contributors` | Optional static route segment                |
+| ` src/pages/` `+info.tsx`                     | `/info`                  | Modal route                                  |
+| ` src/pages/` `404.tsx`                       | `*`                      | Custom `404` _(optional)_                    |
+| ` src/pages/` `_app.tsx`                      |                          | Custom `app` layout _(optional)_             |
+| ` src/pages/` `_ignored.tsx`                  |                          | Ignored route                                |
+| ` src/pages/` `about.tsx`                     | `/about`                 | Regular route                                |
+| ` src/pages/` `blog.w.o.layout.tsx`           | `/blog/w/o/layout`       | Route without `/blog` layout                 |
+| ` src/pages/` `index.tsx`                     | `/`                      | Index route                                  |
 
-- [Type-safe navigation + Global modals](./examples/solid-router) 🆕
+</details>
+
+<br>
+
+## API
+
+### Routing
+
+Via [`@generouted/react-router`](/plugins/react-router) or [`@generouted/solid-router`](/plugins/solid-router)
+
+- `<Routes />` — file-based routing component to be render in the app entry
+- `<Modals />` — optional file-based modals component to be render in the `_app.tsx` layout
+- `routes` — file-based routes tree/object used by default at `<Routes />` component
+
+### Routing + code-splitting and lazy-loading
+
+Via `@generouted/react-router/lazy` or `@generouted/solid-router/lazy`
+
+- Used instead of`@generouted/react-router` or `@generouted/solid-router` to enable lazy-loading
+- Provides the same `<Routes />`, `<Modals />` and `routes` exports
+
+### Plugins
+
+Via `@generouted/react-router/plugin` or `@generouted/solid-router/plugin`
+
+- Vite plugin for type generation and initializing type-safe components/hooks/utils
+- Generates `src/router.ts` file
+- Exports type-safe `<Link>`, `<Navigate>`, `useModals()`, `useNavigate()`, `useParams()`, `redirect()`, etc.
+- Check out [`@generouted/react-router` docs](/plugins/react-router) or [`@generouted/solid-router` docs](/plugins/solid-router) for more details
+
+### Core
+
+Via `@generouted/react-router/core` or `@generouted/solid-router/core`
+
+- Available for customization, however it's recommended to use the available integrations directory via the `<Routes/>` component
+- Check out the [custom integration example](/examples/react-router-custom)
 
 <br>
 
