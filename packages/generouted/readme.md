@@ -134,6 +134,66 @@ You can find more details about type-safe navigation and global modals at [`@gen
 
 </details>
 
+<details open="true">
+<summary><b>Solid Router</b></summary>
+
+### Solid Router
+
+In case you don't have a Vite project with Solid and TypeScript, check out [Solid's getting started guide](https://www.solidjs.com/guides/getting-started#try-solid) to start a new project.
+
+#### Installation
+
+```shell
+pnpm add @generouted/solid-router @solidjs/router
+```
+
+#### Setup
+
+```ts
+// vite.config.ts
+
+import { defineConfig } from 'vite'
+import solid from 'vite-plugin-solid'
+import generouted from '@generouted/solid-router/plugin'
+
+export default defineConfig({ plugins: [solid(), generouted()] })
+```
+
+#### Usage
+
+```tsx
+// src/main.tsx
+
+import { render } from 'solid-js/web'
+import { Routes } from '@generouted/solid-router'
+
+render(Routes, document.getElementById('app'))
+```
+
+#### Adding pages
+
+Add the home page by creating a new file `src/pages/index.tsx` → `/`, then export a default component:
+
+```tsx
+export default function Home() {
+  return <h1>Home</h1>
+}
+```
+
+See more about `generouted` [routing conventions below](#conventions).
+
+#### Docs
+
+You can find more details about type-safe navigation and global modals at [`@generouted/solid-router` docs](/plugins/solid-router).
+
+#### Examples
+
+- [Type-safe navigation + global modals](/examples/solid-router)
+
+<br>
+
+</details>
+
 <details>
 <summary><b>TanStack React Router — In-progress experimental support 🧪</b></summary>
 
@@ -190,66 +250,6 @@ export default function Home() {
 - [Data loaders](/examples/react-location/data-loaders)
 - [Modals](/examples/react-location/modals)
 - [Nested layouts](/examples/react-location/nested-layouts)
-
-<br>
-
-</details>
-
-<details open="true">
-<summary><b>Solid Router</b></summary>
-
-### Solid Router
-
-In case you don't have a Vite project with Solid and TypeScript, check out [Solid's getting started guide](https://www.solidjs.com/guides/getting-started#try-solid) to start a new project.
-
-#### Installation
-
-```shell
-pnpm add @generouted/solid-router @solidjs/router
-```
-
-#### Setup
-
-```ts
-// vite.config.ts
-
-import { defineConfig } from 'vite'
-import solid from 'vite-plugin-solid'
-import generouted from '@generouted/solid-router/plugin'
-
-export default defineConfig({ plugins: [solid(), generouted()] })
-```
-
-#### Usage
-
-```tsx
-// src/main.tsx
-
-import { render } from 'solid-js/web'
-import { Routes } from '@generouted/solid-router'
-
-render(Routes, document.getElementById('app'))
-```
-
-#### Adding pages
-
-Add the home page by creating a new file `src/pages/index.tsx` → `/`, then export a default component:
-
-```tsx
-export default function Home() {
-  return <h1>Home</h1>
-}
-```
-
-See more about `generouted` [routing conventions below](#conventions).
-
-#### Docs
-
-You can find more details about type-safe navigation and global modals at [`@generouted/solid-router` docs](/plugins/solid-router).
-
-#### Examples
-
-- [Type-safe navigation + global modals](/examples/solid-router)
 
 <br>
 
