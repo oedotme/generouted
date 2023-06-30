@@ -11,7 +11,7 @@ const PRESERVED = import.meta.glob<Module>('/src/pages/(_app|404).{jsx,tsx}', { 
 const MODALS = import.meta.glob<Pick<Module, 'default'>>('/src/pages/**/[+]*.{jsx,tsx}', { eager: true })
 const ROUTES = import.meta.glob<Module>(['/src/pages/**/[\\w[-]*.{jsx,tsx}', '!**/(_app|404).*'])
 
-const preservedRoutes = generatePreservedRoutes<Element>(PRESERVED)
+const preservedRoutes = generatePreservedRoutes<Omit<Module, 'Action'>>(PRESERVED)
 const modalRoutes = generateModalRoutes<Element>(MODALS)
 
 const regularRoutes = generateRegularRoutes<RouteObject, () => Promise<Partial<Module>>>(ROUTES, (module, key) => {
@@ -30,10 +30,13 @@ const regularRoutes = generateRegularRoutes<RouteObject, () => Promise<Partial<M
   }
 })
 
-const App = preservedRoutes?.['_app'] || Outlet
-const NotFound = preservedRoutes?.['404'] || Fragment
+const _app = preservedRoutes?.['_app']
+const _404 = preservedRoutes?.['404']
 
-export const routes = [{ element: <App />, children: [...regularRoutes, { path: '*', element: <NotFound /> }] }]
+const app = { Component: _app?.default || Outlet, ErrorBoundary: _app?.Catch, loader: _app?.Loader }
+const fallback = { path: '*', Component: _404?.default || Fragment }
+
+export const routes: RouteObject[] = [{ ...app, children: [...regularRoutes, fallback] }]
 export const Routes = () => <RouterProvider router={createBrowserRouter(routes)} />
 
 export const Modals = () => {

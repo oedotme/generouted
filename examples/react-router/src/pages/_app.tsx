@@ -3,6 +3,10 @@ import { Modals } from '@generouted/react-router'
 
 import { Link, useModals, useNavigate, useParams } from '../router'
 
+export const Catch = () => {
+  return <div>Something went wrong... Caught at _app error boundary</div>
+}
+
 export default function App() {
   const navigate = useNavigate()
   const modals = useModals()

@@ -2,6 +2,16 @@ import { ParentProps } from 'solid-js'
 
 import { A, useModals, useNavigate } from '@/router'
 
+export const Catch = (props: { error: Error; reset: () => void }) => {
+  return (
+    <div>
+      Something went wrong: {props.error.message}
+      Caught at _app error boundary
+      <button onClick={props.reset}>reset</button>
+    </div>
+  )
+}
+
 export default function App(props: ParentProps) {
   const navigate = useNavigate()
   const modals = useModals()

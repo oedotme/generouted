@@ -11,7 +11,7 @@ const PRESERVED = import.meta.glob<Module>('/src/pages/(_app|404).{jsx,tsx}', { 
 const MODALS = import.meta.glob<Pick<Module, 'default'>>('/src/pages/**/[+]*.{jsx,tsx}', { eager: true })
 const ROUTES = import.meta.glob<Module>(['/src/pages/**/[\\w[-]*.{jsx,tsx}', '!**/(_app|404).*'])
 
-const preservedRoutes = generatePreservedRoutes<Component>(PRESERVED)
+const preservedRoutes = generatePreservedRoutes<Module>(PRESERVED)
 const modalRoutes = generateModalRoutes<Element>(MODALS)
 
 const regularRoutes = generateRegularRoutes<Route, () => Promise<Module>>(ROUTES, (module) => {
@@ -26,9 +26,11 @@ const regularRoutes = generateRegularRoutes<Route, () => Promise<Module>>(ROUTES
 })
 
 const Fragment = (props: ParentProps) => props?.children
-const App = preservedRoutes?.['_app'] || Fragment
-const NotFound = preservedRoutes?.['404'] || Fragment
 const Modals = () => createMemo(() => modalRoutes[useLocation<any>().state?.modal || ''] || Fragment) as any
+
+const App = preservedRoutes?.['_app']?.default || Fragment
+const Catch = preservedRoutes?.['_app']?.Catch
+const NotFound = preservedRoutes?.['404']?.default || Fragment
 
 export const routes = [...regularRoutes, { path: '*', component: NotFound }] as RouteDefinition[]
 
@@ -37,10 +39,12 @@ export const Routes = () => {
 
   return (
     <Router>
-      <App>
-        <Routes />
-        <Modals />
-      </App>
+      <ErrorBoundary fallback={(error, reset) => Catch?.({ error, reset })}>
+        <App>
+          <Routes />
+          <Modals />
+        </App>
+      </ErrorBoundary>
     </Router>
   )
 }

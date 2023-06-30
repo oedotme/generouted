@@ -25,8 +25,8 @@ test('preserved routes generation', () => {
   }
 
   expect(generatePreservedRoutes(modules)).toStrictEqual({
-    '404': undefined,
-    _app: undefined,
+    '404': {},
+    _app: {},
   })
 })
 

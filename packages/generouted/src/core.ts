@@ -12,7 +12,7 @@ type BaseRoute = { id?: string; path?: string; children?: BaseRoute[] } & Record
 export const generatePreservedRoutes = <T>(files: Record<string, T | any>): Partial<Record<PreservedKey, T>> => {
   return Object.keys(files).reduce((routes, key) => {
     const path = key.replace(...patterns.route)
-    return { ...routes, [path]: files[key]?.default }
+    return { ...routes, [path]: files[key] }
   }, {})
 }
 

@@ -9,7 +9,7 @@ type Module = { default: Element; Loader: LoaderFn; Pending: Element; Catch: Ele
 const PRESERVED = import.meta.glob<Module>('/src/pages/(_app|404).{jsx,tsx}', { eager: true })
 const ROUTES = import.meta.glob<Module>(['/src/pages/**/[\\w[-]*.{jsx,tsx}', '!**/(_app|404).*'])
 
-const preservedRoutes = generatePreservedRoutes<Element>(PRESERVED)
+const preservedRoutes = generatePreservedRoutes<Module>(PRESERVED)
 
 const regularRoutes = generateRegularRoutes<Route, () => Promise<Module>>(ROUTES, (module) => ({
   element: () => module().then((mod) => (mod?.default ? <mod.default /> : null)),
@@ -18,8 +18,8 @@ const regularRoutes = generateRegularRoutes<Route, () => Promise<Module>>(ROUTES
   errorElement: () => module().then((mod) => (mod?.Catch ? <mod.Catch /> : null)),
 }))
 
-const App = preservedRoutes?.['_app'] || Fragment
-const NotFound = preservedRoutes?.['404'] || Fragment
+const App = preservedRoutes?.['_app']?.default || Fragment
+const NotFound = preservedRoutes?.['404']?.default || Fragment
 
 const location = new ReactLocation()
 export const routes = [...regularRoutes, { path: '*', element: <NotFound /> }]
