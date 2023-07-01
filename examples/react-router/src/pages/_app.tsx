@@ -7,6 +7,8 @@ export const Catch = () => {
   return <div>Something went wrong... Caught at _app error boundary</div>
 }
 
+export const Pending = () => <div>Loading from _app...</div>
+
 export default function App() {
   const navigate = useNavigate()
   const modals = useModals()

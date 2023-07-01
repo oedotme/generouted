@@ -5,6 +5,8 @@ export const Catch = (props: { error: Error; reset: () => void }) => (
   </div>
 )
 
+export const Pending = () => <div>Loading...</div>
+
 export default function Home() {
   return <h1>Home - Basic</h1>
 }

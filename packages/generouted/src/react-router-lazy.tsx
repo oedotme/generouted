@@ -1,11 +1,11 @@
-import { Fragment } from 'react'
+import { Fragment, Suspense } from 'react'
 import { createBrowserRouter, Outlet, RouterProvider, useLocation } from 'react-router-dom'
 import type { ActionFunction, RouteObject, LoaderFunction } from 'react-router-dom'
 
 import { generateModalRoutes, generatePreservedRoutes, generateRegularRoutes } from './core'
 
 type Element = () => JSX.Element
-type Module = { default: Element; Loader: LoaderFunction; Action: ActionFunction; Catch: Element }
+type Module = { default: Element; Loader?: LoaderFunction; Action?: ActionFunction; Catch?: Element; Pending?: Element }
 
 const PRESERVED = import.meta.glob<Module>('/src/pages/(_app|404).{jsx,tsx}', { eager: true })
 const MODALS = import.meta.glob<Pick<Module, 'default'>>('/src/pages/**/[+]*.{jsx,tsx}', { eager: true })
@@ -20,8 +20,12 @@ const regularRoutes = generateRegularRoutes<RouteObject, () => Promise<Partial<M
   return {
     ...index,
     lazy: async () => {
+      const Element = (await module())?.default || Fragment
+      const Pending = (await module())?.Pending
+      const Page = () => (Pending ? <Suspense fallback={<Pending />} children={<Element />} /> : <Element />)
+
       return {
-        Component: (await module())?.default,
+        Component: Page,
         ErrorBoundary: (await module())?.Catch,
         loader: (await module())?.Loader,
         action: (await module())?.Action,
@@ -33,14 +37,16 @@ const regularRoutes = generateRegularRoutes<RouteObject, () => Promise<Partial<M
 const _app = preservedRoutes?.['_app']
 const _404 = preservedRoutes?.['404']
 
-const app = { Component: _app?.default || Outlet, ErrorBoundary: _app?.Catch, loader: _app?.Loader }
+const Element = _app?.default || Fragment
+const App = () => (_app?.Pending ? <Suspense fallback={<_app.Pending />} children={<Element />} /> : <Element />)
+
+const app = { Component: _app?.default ? App : Outlet, ErrorBoundary: _app?.Catch, loader: _app?.Loader }
 const fallback = { path: '*', Component: _404?.default || Fragment }
 
 export const routes: RouteObject[] = [{ ...app, children: [...regularRoutes, fallback] }]
 export const Routes = () => <RouterProvider router={createBrowserRouter(routes)} />
 
 export const Modals = () => {
-  const current = useLocation().state?.modal
-  const Modal = modalRoutes[current] || Fragment
+  const Modal = modalRoutes[useLocation().state?.modal] || Fragment
   return <Modal />
 }

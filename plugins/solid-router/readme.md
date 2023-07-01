@@ -55,16 +55,18 @@ export default function Home() {
 ```tsx
 // src/pages/_app.tsx
 
-import { ParentProps } from 'solid-js'
+import { Outlet } from '@solidjs/router'
 
-export default function App(props: ParentProps) {
+export default function App() {
   return (
     <section>
       <header>
         <nav>...</nav>
       </header>
 
-      <main>{props.children}</main>
+      <main>
+        <Outlet />
+      </main>
     </section>
   )
 }
@@ -128,7 +130,8 @@ To navigate to a modal use `useModals` hook exported from `src/router.ts`:
 ```tsx
 // src/pages/_app.tsx
 
-import { ParentProps } from 'solid-js'
+import { Outlet } from '@solidjs/router'
+import { Modals } from '@generouted/solid-router'
 
 import { useModals } from '../router'
 
@@ -142,7 +145,11 @@ export default function App(props: ParentProps) {
         <button onClick={() => modals.open('/login')}>Open modal</button>
       </header>
 
-      <main>{props.children}</main>
+      <main>
+        <Outlet />
+      </main>
+
+      <Modals />
     </section>
   )
 }
@@ -163,7 +170,7 @@ Both methods come with Solid Router's `navigate()` options with one prop added `
 
 ## Examples
 
-- [Plugin](../../examples/solid-router)
+- [Plugin](/examples/solid-router)
 
 ## License
 

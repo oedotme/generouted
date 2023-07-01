@@ -1,4 +1,5 @@
-import { ParentProps } from 'solid-js'
+import { Outlet } from '@solidjs/router'
+import { Modals } from '@generouted/solid-router'
 
 import { A, useModals, useNavigate } from '@/router'
 
@@ -12,7 +13,9 @@ export const Catch = (props: { error: Error; reset: () => void }) => {
   )
 }
 
-export default function App(props: ParentProps) {
+export const Pending = () => <div>Loading from _app...</div>
+
+export default function App() {
   const navigate = useNavigate()
   const modals = useModals()
 
@@ -30,7 +33,11 @@ export default function App(props: ParentProps) {
         <button onClick={() => modals.open('/modal', { at: '/posts' })}>Open global modal</button>
       </header>
 
-      <main>{props.children}</main>
+      <main>
+        <Outlet />
+      </main>
+
+      <Modals />
     </section>
   )
 }

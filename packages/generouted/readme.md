@@ -419,7 +419,8 @@ Via [`@generouted/react-router`](/plugins/react-router) or [`@generouted/solid-r
 
 Via `@generouted/react-router/lazy` or `@generouted/solid-router/lazy`
 
-- Used instead of`@generouted/react-router` or `@generouted/solid-router` to enable lazy-loading
+- Used instead of `@generouted/react-router` or `@generouted/solid-router` to enable lazy-loading
+- Make sure to replace all imports to lazy imports — namely at app entry and `src/pages/_app.tsx`
 - Provides the same `<Routes />`, `<Modals />` and `routes` exports
 
 ### Plugins
