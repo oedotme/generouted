@@ -1,6 +1,6 @@
 export const template = `// Generouted, changes to this file will be overriden
 import { Fragment } from 'react'// actions-imports// loaders-imports
-import { lazy, Outlet, ReactRouter, RootRoute, Route, RouterProvider } from '@tanstack/react-router'
+import { lazy, Outlet, Router, RootRoute, Route, RouterProvider } from '@tanstack/router'
 
 // imports
 
@@ -11,10 +11,10 @@ const config = root.addChildren([
   _404,
 ])
 
-const router = new ReactRouter({ routeTree: config })
+const router = new Router({ routeTree: config })
 export const Routes = () => <RouterProvider router={router} />
 
-declare module '@tanstack/react-router' {
+declare module '@tanstack/router' {
   interface Register {
     router: typeof router
   }

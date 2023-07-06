@@ -11,7 +11,7 @@ In case you don't have a Vite project with React and TypeScript, check [Vite doc
 ### Installation
 
 ```shell
-pnpm add @generouted/tanstack-react-router @tanstack/react-router@beta
+pnpm add @generouted/tanstack-react-router @tanstack/router@beta
 ```
 
 Optional additional packages for actions and/or loaders:
@@ -67,7 +67,7 @@ export default function Home() {
 ```tsx
 // src/pages/_app.tsx
 
-import { Outlet } from '@tanstack/react-router'
+import { Outlet } from '@tanstack/router'
 
 export default function App() {
   return (

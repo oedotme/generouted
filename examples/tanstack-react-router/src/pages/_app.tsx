@@ -1,4 +1,4 @@
-import { Link, Outlet } from '@tanstack/react-router'
+import { Link, Outlet } from '@tanstack/router'
 
 export default function App() {
   return (
