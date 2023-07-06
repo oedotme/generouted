@@ -1,4 +1,4 @@
-import { Outlet } from '@tanstack/react-router'
+import { Outlet } from '@tanstack/router'
 
 export default function About() {
   return (

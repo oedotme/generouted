@@ -2,7 +2,7 @@
 import { Fragment } from 'react'
 import { Action, ActionClient } from '@tanstack/react-actions'
 import { Loader, LoaderClient } from '@tanstack/react-loaders'
-import { lazy, Outlet, ReactRouter, RootRoute, Route, RouterProvider } from '@tanstack/react-router'
+import { lazy, Outlet, Router, RootRoute, Route, RouterProvider } from '@tanstack/router'
 
 import App from './pages/_app'
 import NoMatch from './pages/404'
@@ -66,10 +66,10 @@ const config = root.addChildren([
   _404,
 ])
 
-const router = new ReactRouter({ routeTree: config })
+const router = new Router({ routeTree: config })
 export const Routes = () => <RouterProvider router={router} />
 
-declare module '@tanstack/react-router' {
+declare module '@tanstack/router' {
   interface Register {
     router: typeof router
   }
