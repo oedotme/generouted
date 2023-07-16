@@ -39,12 +39,12 @@
   "devDependencies": {
     "@commitlint/cli": "^17.6.6",
     "@commitlint/config-conventional": "^17.6.6",
-    "@release-it-plugins/workspaces": "^3.2.0",
+    "@release-it-plugins/workspaces": "^4.0.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.3",
-    "prettier": "^2.8.8",
-    "release-it": "^15.11.0",
-    "turbo": "^1.10.6"
+    "prettier": "^3.0.0",
+    "release-it": "^16.1.2",
+    "turbo": "^1.10.7"
   },
   "pnpm": {
     "overrides": {

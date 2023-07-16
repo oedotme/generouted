@@ -53,13 +53,13 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "fast-glob": "^3.2.12"
+    "fast-glob": "^3.3.0"
   },
   "devDependencies": {
     "@generouted/core": "workspace:*",
     "tsup": "^7.1.0",
     "typescript": "^5.1.6",
-    "vite": "^4.3.9"
+    "vite": "^4.4.4"
   },
   "peerDependencies": {
     "vite": ">=3"
