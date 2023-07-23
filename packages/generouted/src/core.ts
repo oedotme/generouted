@@ -77,7 +77,7 @@ export const generateModalRoutes = <T>(files: Record<string, T | any>): Record<s
   return Object.keys(files).reduce((modals, key) => {
     const path = key
       .replace(...patterns.route)
-      .replace(/\+/g, '')
+      .replace(/\+|\(\w+\)\//g, '')
       .replace(/(\/)?index/g, '')
       .replace(/\./g, '/')
 

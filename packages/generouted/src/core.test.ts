@@ -4,6 +4,7 @@ import { generateModalRoutes, generatePreservedRoutes, generateRegularRoutes } f
 
 test('modal routes generation', () => {
   const modules = {
+    '/src/pages/(auth)/+login.tsx': {},
     '/src/pages/+info.tsx': {},
     '/src/pages/+index.tsx': {},
     '/src/pages/+checkout/+index.tsx': {},
@@ -11,6 +12,7 @@ test('modal routes generation', () => {
   }
 
   expect(generateModalRoutes(modules)).toStrictEqual({
+    '/login': undefined,
     '/info': undefined,
     '/': undefined,
     '/checkout': undefined,
