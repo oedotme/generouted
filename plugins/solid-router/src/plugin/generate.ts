@@ -1,5 +1,6 @@
 import { exec } from 'child_process'
 import fs from 'fs'
+import path from 'path'
 
 import { createLogger } from 'vite'
 import { patterns } from '@generouted/core'
@@ -75,6 +76,6 @@ export const generate = async (options: Options) => {
   await fs.promises.writeFile(options.output, content)
 
   if (!options.format) return
-  const prettier = './node_modules/.bin/prettier'
+  const prettier = path.resolve('./node_modules/.bin/prettier')
   if (fs.existsSync(prettier)) exec(`${prettier} --write --cache ${options.output}`)
 }

@@ -1,7 +1,8 @@
 import { exec } from 'child_process'
 import { existsSync } from 'fs'
+import path from 'path'
 
-const prettier = './node_modules/.bin/prettier'
+const prettier = path.resolve('./node_modules/.bin/prettier')
 
 export const format = (file: string) => {
   if (!existsSync(prettier) || !existsSync(file)) return
