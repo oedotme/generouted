@@ -47,7 +47,7 @@ const generateRoutes = async () => {
         _errorComponent: catch_ ? `lazy(() => ${module}.then((m) => ({ default: m.Catch })))` : '',
       }
     },
-    patterns
+    patterns,
   )
 
   if (preserved._app && exports['_app'].default) {
@@ -92,7 +92,7 @@ const generateRoutes = async () => {
     .replace('// config', config)
     .replace(
       '// actions-imports',
-      actions.length ? `\nimport { Action, ActionClient } from '@tanstack/react-actions'` : ''
+      actions.length ? `\nimport { Action, ActionClient } from '@tanstack/react-actions'` : '',
     )
     .replace('// actions', '\n\n' + actions.map((action) => action.export).join('\n'))
     .replace(
@@ -101,17 +101,17 @@ const generateRoutes = async () => {
         ? `export const actionClient = new ActionClient({ getActions: () => [${actions
             .map(({ id }) => `${id}Action`)
             .join(', ')}] })`
-        : ''
+        : '',
     )
     .replace(
       '// actions-type',
       actions.length
         ? `\n\ndeclare module '@tanstack/react-actions' { \n  interface Register { \n    actionClient: typeof actionClient \n  } \n}`
-        : ''
+        : '',
     )
     .replace(
       '// loaders-imports',
-      actions.length ? `\nimport { Loader, LoaderClient } from '@tanstack/react-loaders'` : ''
+      actions.length ? `\nimport { Loader, LoaderClient } from '@tanstack/react-loaders'` : '',
     )
     .replace('// loaders', '\n\n' + loaders.map((loader) => loader.export).join('\n'))
     .replace(
@@ -120,13 +120,13 @@ const generateRoutes = async () => {
         ? `export const loaderClient = new LoaderClient({ getLoaders: () => [${loaders
             .map(({ id }) => `${id}Loader`)
             .join(', ')}] })`
-        : ''
+        : '',
     )
     .replace(
       '// loaders-type',
       actions.length
         ? `\n\ndeclare module '@tanstack/react-loaders' { \n  interface Register { \n    loaderClient: typeof loaderClient \n  } \n}`
-        : ''
+        : '',
     )
 
   return { content, count }

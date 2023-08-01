@@ -46,7 +46,7 @@ const generateRouteTypes = async (options: Options) => {
         .replace(...patterns.route)
         .replace(/\+|\(\w+\)\//g, '')
         .replace(/(\/)?index/g, '')
-        .replace(/\./g, '/')}`
+        .replace(/\./g, '/')}`,
   )
 
   const types =

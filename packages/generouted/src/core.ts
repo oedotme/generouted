@@ -18,7 +18,7 @@ export const generatePreservedRoutes = <T>(files: Record<string, T | any>): Part
 
 export const generateRegularRoutes = <T extends BaseRoute, M>(
   files: Record<string, any>,
-  buildRoute: (module: M, key: string) => T
+  buildRoute: (module: M, key: string) => T,
 ) => {
   const filteredRoutes = Object.keys(files).filter((key) => !key.includes('/_') || /_layout\.(jsx|tsx)$/.test(key))
   return filteredRoutes.reduce<T[]>((routes, key) => {

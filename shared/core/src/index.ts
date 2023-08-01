@@ -25,7 +25,7 @@ type Patterns = typeof patterns
 export const getRoutes = <T extends BaseRoute>(
   files: string[],
   buildRoute: (key: string, exports: Exports[string], id?: string) => T,
-  patterns: Patterns
+  patterns: Patterns,
 ) => {
   const filteredRoutes = files
     .filter((key) => !key.includes('/_') || /(_app|_layout)\.(jsx|tsx)$/.test(key))
