@@ -1,5 +1,9 @@
 # Generouted + React Router + Type-safety
 
+## Docs
+
+Check out `generouted`'s main [docs](/) for the [features](/#features), [conventions](/#conventions) and more.
+
 ## How
 
 This integration is based on a Vite plugin to generate routes types for React Router with `generouted` conventions. The output is saved by default at `src/router.ts` and gets updated by the add/change/delete at `src/pages/*`.

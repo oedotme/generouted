@@ -139,7 +139,7 @@ You can find more details about type-safe navigation and global modals at [`@gen
 
 ### Solid Router
 
-In case you don't have a Vite project with Solid and TypeScript, check out [Solid's getting started guide](https://www.solidjs.com/guides/getting-started#try-solid) to start a new project.
+In case you don't have a Vite project with Solid and TypeScript, check [Vite documentation to start a new project](https://vitejs.dev/guide/#scaffolding-your-first-vite-project).
 
 #### Installation
 

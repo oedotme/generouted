@@ -1,12 +1,16 @@
 # Generouted + Solid Router + Type-safety
 
+## Docs
+
+Check out `generouted`'s main [docs](/) for the [features](/#features), [conventions](/#conventions) and more.
+
 ## How
 
 This integration is based on a Vite plugin to generate routes types for Solid Router with `generouted` conventions. The output is saved by default at `src/router.ts` and gets updated by the add/change/delete at `src/pages/*`.
 
 ## Getting started
 
-In case you don't have a Vite project with Solid and TypeScript, check out this [getting started guide](https://www.solidjs.com/guides/getting-started#try-solid) to start a new project.
+In case you don't have a Vite project with Solid and TypeScript, check [Vite documentation to start a new project](https://vitejs.dev/guide/#scaffolding-your-first-vite-project).
 
 ### Installation
 
