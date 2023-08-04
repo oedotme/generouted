@@ -1,3 +1,4 @@
+import path from 'path'
 import { Plugin } from 'vite'
 
 import { generate } from './generate'
@@ -10,7 +11,7 @@ export default function Generouted(options?: Partial<Options>): Plugin {
     name: 'generouted/solid-router',
     enforce: 'pre',
     configureServer(server) {
-      const listener = (path: string) => (path.includes('/src/pages/') ? generate(resolvedOptions) : null)
+      const listener = (file = '') => (file.includes(path.normalize('/src/pages/')) ? generate(resolvedOptions) : null)
       server.watcher.on('add', listener)
       server.watcher.on('change', listener)
       server.watcher.on('unlink', listener)

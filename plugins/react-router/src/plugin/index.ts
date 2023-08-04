@@ -11,8 +11,7 @@ export default function Generouted(options?: Partial<Options>): Plugin {
     name: 'generouted/react-router',
     enforce: 'pre',
     configureServer(server) {
-      const pagesDir = path.normalize('/src/pages/')
-      const listener = (path: string) => (path.includes(pagesDir) ? generate(resolvedOptions) : null)
+      const listener = (file = '') => (file.includes(path.normalize('/src/pages/')) ? generate(resolvedOptions) : null)
       server.watcher.on('add', listener)
       server.watcher.on('change', listener)
       server.watcher.on('unlink', listener)
