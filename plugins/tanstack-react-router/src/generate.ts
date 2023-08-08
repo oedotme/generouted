@@ -12,9 +12,8 @@ const patterns = Object.assign(corePatterns, {
   optional: [/^-(\$?[\w-]+)/, '$1?'],
 })
 
-const generateRoutes = async () => {
-  const source = ['./src/pages/**/[\\w[-]*.{jsx,tsx}']
-  const files = await fg(source, { onlyFiles: true })
+const generateRoutes = async (options: Options) => {
+  const files = await fg(options.source, { onlyFiles: true })
 
   const imports: string[] = []
   const modules: string[] = []
@@ -136,7 +135,7 @@ let latestContent = ''
 
 export const generate = async (options: Options) => {
   const start = Date.now()
-  const { content, count } = await generateRoutes()
+  const { content, count } = await generateRoutes(options)
   console.log(`${new Date().toLocaleTimeString()} [generouted] ${count} routes in ${Date.now() - start} ms`)
 
   if (latestContent === content) return
