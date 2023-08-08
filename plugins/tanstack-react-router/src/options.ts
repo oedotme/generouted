@@ -1,5 +1,5 @@
 export const defaultOptions = {
-  output: 'routes.gen.tsx',
+  output: './src/routes.gen.tsx',
   source: ['./src/pages/**/[\\w[-]*.{jsx,tsx}'],
   format: true,
 }
