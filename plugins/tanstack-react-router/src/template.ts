@@ -1,6 +1,6 @@
 export const template = `// Generouted, changes to this file will be overriden
 import { Fragment } from 'react'// actions-imports// loaders-imports
-import { lazy, Outlet, Router, RootRoute, Route, RouterProvider } from '@tanstack/router'
+import { lazyRouteComponent, Outlet, Router, RootRoute, Route, RouterProvider } from '@tanstack/router'
 
 // imports
 

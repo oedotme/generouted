@@ -42,9 +42,9 @@ const generateRoutes = async () => {
       }
 
       return {
-        _component: `lazy(() => ${module})`,
-        _pendingComponent: pending ? `lazy(() => ${module}.then((m) => ({ default: m.Pending })))` : '',
-        _errorComponent: catch_ ? `lazy(() => ${module}.then((m) => ({ default: m.Catch })))` : '',
+        _component: `lazyRouteComponent(() => ${module})`,
+        _pendingComponent: pending ? `lazyRouteComponent(() => ${module}.then((m) => ({ default: m.Pending })))` : '',
+        _errorComponent: catch_ ? `lazyRouteComponent(() => ${module}.then((m) => ({ default: m.Catch })))` : '',
       }
     },
     patterns,

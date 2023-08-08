@@ -2,7 +2,7 @@
 import { Fragment } from 'react'
 import { Action, ActionClient } from '@tanstack/react-actions'
 import { Loader, LoaderClient } from '@tanstack/react-loaders'
-import { lazy, Outlet, Router, RootRoute, Route, RouterProvider } from '@tanstack/router'
+import { lazyRouteComponent, Outlet, Router, RootRoute, Route, RouterProvider } from '@tanstack/router'
 
 import App from './pages/_app'
 import NoMatch from './pages/404'
@@ -12,40 +12,44 @@ const _404 = new Route({ getParentRoute: () => root, path: '*', component: NoMat
 const posts = new Route({
   getParentRoute: () => root,
   path: 'posts',
-  component: lazy(() => import('./pages/posts/_layout')),
+  component: lazyRouteComponent(() => import('./pages/posts/_layout')),
 })
 const postsindex = new Route({
   getParentRoute: () => posts,
   path: '/',
-  component: lazy(() => import('./pages/posts/index')),
+  component: lazyRouteComponent(() => import('./pages/posts/index')),
 })
 const postsid = new Route({
   getParentRoute: () => posts,
   path: '$id',
-  component: lazy(() => import('./pages/posts/[id]')),
+  component: lazyRouteComponent(() => import('./pages/posts/[id]')),
 })
 const auth = new Route({
   getParentRoute: () => root,
   id: 'auth',
-  component: lazy(() => import('./pages/(auth)/_layout')),
+  component: lazyRouteComponent(() => import('./pages/(auth)/_layout')),
 })
 const authregister = new Route({
   getParentRoute: () => auth,
   path: 'register',
-  component: lazy(() => import('./pages/(auth)/register')),
+  component: lazyRouteComponent(() => import('./pages/(auth)/register')),
 })
 const authlogin = new Route({
   getParentRoute: () => auth,
   path: 'login',
-  component: lazy(() => import('./pages/(auth)/login')),
+  component: lazyRouteComponent(() => import('./pages/(auth)/login')),
 })
-const about = new Route({ getParentRoute: () => root, path: 'about', component: lazy(() => import('./pages/about')) })
+const about = new Route({
+  getParentRoute: () => root,
+  path: 'about',
+  component: lazyRouteComponent(() => import('./pages/about')),
+})
 const index = new Route({
   getParentRoute: () => root,
   path: '/',
-  component: lazy(() => import('./pages/index')),
-  pendingComponent: lazy(() => import('./pages/index').then((m) => ({ default: m.Pending }))),
-  errorComponent: lazy(() => import('./pages/index').then((m) => ({ default: m.Catch }))),
+  component: lazyRouteComponent(() => import('./pages/index')),
+  pendingComponent: lazyRouteComponent(() => import('./pages/index').then((m) => ({ default: m.Pending }))),
+  errorComponent: lazyRouteComponent(() => import('./pages/index').then((m) => ({ default: m.Catch }))),
 })
 
 const indexAction = new Action({
