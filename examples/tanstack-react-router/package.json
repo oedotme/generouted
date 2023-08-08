@@ -13,7 +13,7 @@
     "@generouted/tanstack-react-router": "^1.15.3",
     "@tanstack/react-actions": "^0.0.1-beta.64",
     "@tanstack/react-loaders": "^0.0.1-beta.73",
-    "@tanstack/router": "^0.0.1-beta.89",
+    "@tanstack/router": "^0.0.1-beta.142",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
