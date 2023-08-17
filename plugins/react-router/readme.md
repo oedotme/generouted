@@ -170,7 +170,7 @@ Both methods come with React Router's `navigate()` options with one prop added `
 `at` should be also a valid route path, here are some usage examples:
 
 - `modals.open('/login', { at: '/auth', replace: true })`
-- `modals.open('/info', { at: '/invoice/:id', { params: { id: 'xyz' } } })`
+- `modals.open('/info', { at: '/invoice/:id', params: { id: 'xyz' } })`
 - `modals.close({ at: '/', replace: false })`
 
 ## Examples
