@@ -32,7 +32,6 @@
     "build": "turbo build",
     "test": "turbo test",
     "type-check": "turbo type-check",
-    "pre-release": "turbo build --filter './packages/*'",
     "release": "release-it",
     "prepare": "husky install"
   },

@@ -18,11 +18,11 @@
     "skipChecks": true
   },
   "hooks": {
-    "before:init": ["pnpm pre-release"]
+    "before:init": ["pnpm build --filter './packages/*'"]
   },
   "plugins": {
     "@release-it-plugins/workspaces": {
-      "workspaces": ["packages/*", "plugins/*"],
+      "workspaces": ["packages/*"],
       "additionalManifests": { "dependencyUpdates": ["examples/*/package.json"], "versionUpdates": [] },
       "skipChecks": true
     }
