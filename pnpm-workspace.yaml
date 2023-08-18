@@ -1,7 +1,6 @@
 packages:
   - examples/*
+  - examples/react-location/*
   - explorer
-  - examples/*/*
   - packages/*
-  - plugins/*
   - shared/*

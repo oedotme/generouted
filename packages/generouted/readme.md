@@ -122,7 +122,7 @@ Check the [routing conventions section below](#conventions).
 
 #### Docs
 
-You can find more details about type-safe navigation and global modals at [`@generouted/react-router` docs](/plugins/react-router).
+You can find more details about type-safe navigation and global modals at [`@generouted/react-router` docs](/packages/react-router).
 
 #### Examples
 
@@ -184,7 +184,7 @@ See more about `generouted` [routing conventions below](#conventions).
 
 #### Docs
 
-You can find more details about type-safe navigation and global modals at [`@generouted/solid-router` docs](/plugins/solid-router).
+You can find more details about type-safe navigation and global modals at [`@generouted/solid-router` docs](/packages/solid-router).
 
 #### Examples
 
@@ -199,7 +199,7 @@ You can find more details about type-safe navigation and global modals at [`@gen
 
 ### TanStack React Router — In-progress experimental support 🧪
 
-[Check out the docs here](/plugins/tanstack-react-router)
+[Check out the docs here](/packages/tanstack-react-router)
 
 #### Examples
 
@@ -409,7 +409,7 @@ src/pages
 
 ### Routing
 
-Via [`@generouted/react-router`](/plugins/react-router) or [`@generouted/solid-router`](/plugins/solid-router)
+Via [`@generouted/react-router`](/packages/react-router) or [`@generouted/solid-router`](/packages/solid-router)
 
 - `<Routes />` — file-based routing component to be render in the app entry
 - `<Modals />` — optional file-based modals component to be render in the `_app.tsx` layout
@@ -430,7 +430,7 @@ Via `@generouted/react-router/plugin` or `@generouted/solid-router/plugin`
 - Vite plugin for type generation and initializing type-safe components/hooks/utils
 - Generates `src/router.ts` file
 - Exports type-safe `<Link>`, `<Navigate>`, `useModals()`, `useNavigate()`, `useParams()`, `redirect()`, etc.
-- Check out [`@generouted/react-router` docs](/plugins/react-router) or [`@generouted/solid-router` docs](/plugins/solid-router) for more details
+- Check out [`@generouted/react-router` docs](/packages/react-router) or [`@generouted/solid-router` docs](/packages/solid-router) for more details
 
 ### Core
 
