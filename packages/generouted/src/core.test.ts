@@ -41,6 +41,7 @@ test('regular routes generation', () => {
     '/src/pages/_ignored-path.tsx': {},
     '/src/pages/about.tsx': {},
     '/src/pages/blog.w.o.layout.tsx': {},
+    '/src/pages/blog/-[...all].tsx': {},
     '/src/pages/blog/[slug].tsx': {},
     '/src/pages/blog/_layout.tsx': {},
     '/src/pages/blog/index.tsx': {},
@@ -74,6 +75,7 @@ test('regular routes generation', () => {
       children: [
         { path: 'tags', id: 'blog/tags' },
         { path: '/', id: 'blog/index' },
+        { path: '*?', id: 'blog/-[...all]' },
         { path: ':slug', id: 'blog/[slug]' },
       ],
     },

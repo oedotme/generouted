@@ -5,7 +5,7 @@ export const patterns = {
   splat: [/\[\.{3}\w+\]/g, '*'],
   param: [/\[([^\]]+)\]/g, ':$1'],
   slash: [/^index$|\./g, '/'],
-  optional: [/^-(:?[\w-]+)/, '$1?'],
+  optional: [/^-(:?[\w-]+|\*)/, '$1?'],
 } as Record<string, [RegExp, string]>
 
 const getRouteId = (path: string) => path.replace(...patterns.route).replace(/\W/g, '')
