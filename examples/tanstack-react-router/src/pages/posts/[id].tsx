@@ -1,4 +1,4 @@
-import { useMatch } from '@tanstack/router'
+import { useMatch } from '@tanstack/react-router'
 
 export default function Id() {
   const { params } = useMatch({ from: '/posts/$id' })

@@ -298,9 +298,9 @@ importers:
       '@tanstack/react-loaders':
         specifier: ^0.0.1-beta.73
         version: 0.0.1-beta.73(react-dom@18.2.0)(react@18.2.0)
-      '@tanstack/router':
-        specifier: ^0.0.1-beta.142
-        version: 0.0.1-beta.142(react-dom@18.2.0)(react@18.2.0)
+      '@tanstack/react-router':
+        specifier: ^0.0.1-beta.145
+        version: 0.0.1-beta.145(react-dom@18.2.0)(react@18.2.0)
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -491,7 +491,7 @@ importers:
         version: 5.1.6
       vite:
         specifier: ^4.4.9
-        version: 4.4.9(@types/node@20.4.8)
+        version: 4.4.9(@types/node@20.4.7)
 
   shared/core:
     devDependencies:
@@ -1981,6 +1981,23 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
+  /@tanstack/react-router@0.0.1-beta.145(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-RXU8Wy2GDvg+EoTSx/lhROFAhn56x/qJMGEE1r/eFAj3krvQFSerJu74vqETcx8qftJ3X0qEhnG/YVRq9Eje9w==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+    dependencies:
+      '@babel/runtime': 7.18.6
+      '@gisatcz/cross-package-react-context': 0.2.0(react@18.2.0)
+      '@tanstack/react-store': 0.0.1-beta.134(react-dom@18.2.0)(react@18.2.0)
+      '@tanstack/router-core': 0.0.1-beta.145(react-dom@18.2.0)(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      tiny-invariant: 1.3.1
+      tiny-warning: 1.0.3
+    dev: false
+
   /@tanstack/react-store@0.0.1-beta.134(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-sdd78TYYp2uye6QTRMCafREkummomQPILI8egKgquu3/Cww/QbEIu+BVAssWw5At94j7ZXpVEyHGHXt0Iyuliw==}
     engines: {node: '>=12'}
@@ -2007,8 +2024,8 @@ packages:
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
 
-  /@tanstack/router@0.0.1-beta.142(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-l2wjuhToj5OKXRjdwTkxhmtmXqPsjp9Tu2GwfUDN2PMNveel8EG8SKVvknQnGRNke9+wlumOMPTMe8T+VbFPKw==}
+  /@tanstack/router-core@0.0.1-beta.145(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-PS+Obc8bvH0wggS6umD8Z9W6ZJOmuSGU1TUqt5IUqIFegvHA+f9CEWy/63xdIM73hQ9AdBY6nr71BFPjAsfPLQ==}
     engines: {node: '>=12'}
     peerDependencies:
       react: '>=16'
@@ -2106,10 +2123,6 @@ packages:
 
   /@types/node@20.4.7:
     resolution: {integrity: sha512-bUBrPjEry2QUTsnuEjzjbS7voGWCc30W0qzgMf90GPeDGFRakvrz47ju+oqDAKCXLUCe39u57/ORMl/O/04/9g==}
-    dev: true
-
-  /@types/node@20.4.8:
-    resolution: {integrity: sha512-0mHckf6D2DiIAzh8fM8f3HQCvMKDpK94YQ0DSVkfWTG9BZleYIWudw9cJxX8oCk9bM+vAkDyujDV6dmKHbvQpg==}
     dev: true
 
   /@types/node@20.5.0:
@@ -6417,42 +6430,6 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vite@4.4.9(@types/node@20.4.8):
-    resolution: {integrity: sha512-2mbUn2LlUmNASWwSCNSJ/EG2HuSRTnVNaydp6vMCm5VIqJsjMfbIWtbH2kDuwUVW5mMUKKZvGPX/rqeqVvv1XA==}
-    engines: {node: ^14.18.0 || >=16.0.0}
-    hasBin: true
-    peerDependencies:
-      '@types/node': '>= 14'
-      less: '*'
-      lightningcss: ^1.21.0
-      sass: '*'
-      stylus: '*'
-      sugarss: '*'
-      terser: ^5.4.0
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
-      less:
-        optional: true
-      lightningcss:
-        optional: true
-      sass:
-        optional: true
-      stylus:
-        optional: true
-      sugarss:
-        optional: true
-      terser:
-        optional: true
-    dependencies:
-      '@types/node': 20.4.8
-      esbuild: 0.18.20
-      postcss: 8.4.27
-      rollup: 3.27.2
-    optionalDependencies:
-      fsevents: 2.3.2
-    dev: true
-
   /vite@4.4.9(@types/node@20.5.0):
     resolution: {integrity: sha512-2mbUn2LlUmNASWwSCNSJ/EG2HuSRTnVNaydp6vMCm5VIqJsjMfbIWtbH2kDuwUVW5mMUKKZvGPX/rqeqVvv1XA==}
     engines: {node: ^14.18.0 || >=16.0.0}
@@ -6483,7 +6460,7 @@ packages:
     dependencies:
       '@types/node': 20.5.0
       esbuild: 0.18.20
-      postcss: 8.4.28
+      postcss: 8.4.27
       rollup: 3.27.2
     optionalDependencies:
       fsevents: 2.3.2

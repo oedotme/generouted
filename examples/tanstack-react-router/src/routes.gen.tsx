@@ -2,7 +2,7 @@
 import { Fragment } from 'react'
 import { Action, ActionClient } from '@tanstack/react-actions'
 import { Loader, LoaderClient } from '@tanstack/react-loaders'
-import { lazyRouteComponent, Outlet, Router, RootRoute, Route, RouterProvider } from '@tanstack/router'
+import { lazyRouteComponent, Outlet, Router, RootRoute, Route, RouterProvider } from '@tanstack/react-router'
 
 import App from './pages/_app'
 import NoMatch from './pages/404'
@@ -49,7 +49,6 @@ const index = new Route({
   path: '/',
   component: lazyRouteComponent(() => import('./pages/index')),
   pendingComponent: lazyRouteComponent(() => import('./pages/index').then((m) => ({ default: m.Pending }))),
-  errorComponent: lazyRouteComponent(() => import('./pages/index').then((m) => ({ default: m.Catch }))),
 })
 
 const indexAction = new Action({
@@ -73,7 +72,7 @@ const config = root.addChildren([
 const router = new Router({ routeTree: config })
 export const Routes = () => <RouterProvider router={router} />
 
-declare module '@tanstack/router' {
+declare module '@tanstack/react-router' {
   interface Register {
     router: typeof router
   }
