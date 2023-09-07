@@ -1,3 +1,4 @@
+import { Accessor } from 'solid-js'
 import { NavigateOptions, useLocation, useMatch, useNavigate, useParams } from '@solidjs/router'
 import { MatchFilters } from '@solidjs/router/dist/types'
 
@@ -18,7 +19,7 @@ export const hooks = <Path extends string, Params extends Record<string, any>, M
       }
     },
     useMatch: <P extends Path>(path: () => P, matchFilters?: MatchFilters<P>) => {
-      return useMatch(path, matchFilters)
+      return useMatch(path, matchFilters) as Accessor<{ path: P; params: Params[P] } | undefined>
     },
     useModals: () => {
       const location = useLocation<any>()
