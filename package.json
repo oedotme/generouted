@@ -41,9 +41,9 @@
     "@release-it-plugins/workspaces": "^4.0.0",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
-    "prettier": "^3.0.2",
+    "prettier": "^3.0.3",
     "release-it": "^16.1.5",
-    "turbo": "^1.10.12"
+    "turbo": "^1.10.13"
   },
   "pnpm": {
     "overrides": {
