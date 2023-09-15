@@ -1,4 +1,4 @@
-# Generouted + React Router Example
+# Generouted + React Router Custom Integration Example
 
 ## What's different from the default integrations
 

@@ -1,4 +1,4 @@
-# Generouted + React Router Custom Integration Example
+# Generouted + React Router Custom Integration + Custom Path Example
 
 Although it's recommended to use the default integrations, in some cases, full stack projects or monorepo tooling like Nx might require certain project structure. This example uses `src/pages` inside a `client` directory in the project root.
 
