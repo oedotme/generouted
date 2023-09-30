@@ -101,11 +101,15 @@ export default defineConfig({ plugins: [react(), generouted()] })
 ```tsx
 // src/main.tsx
 
-import { createRoot } from 'react-dom/client'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
 import { Routes } from '@generouted/react-router'
 
-const app = document.getElementById('app')
-createRoot(app).render(<Routes />)
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <Routes />
+  </React.StrictMode>,
+)
 ```
 
 #### Adding pages
