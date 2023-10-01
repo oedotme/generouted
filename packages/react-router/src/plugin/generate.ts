@@ -35,7 +35,10 @@ const generateRouteTypes = async (options: Options) => {
         params.push(`'/${path}': { ${param.map((p) => p.replace(/:(.+)(\?)?/, '$1$2:') + ' string').join('; ')} }`)
       }
 
-      if (path.includes('*')) return '/' + path.replace(/\*/g, '${string}')
+      if (path.includes('*')) {
+        params.push(`'/${path}': { '*': string }`)
+        return '/' + path.replace(/\*/g, '${string}')
+      }
       return path.length > 1 ? `/${path}` : path
     }
   })
