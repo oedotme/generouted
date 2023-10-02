@@ -71,7 +71,7 @@ test('regular routes generation', () => {
     },
     {
       path: 'blog',
-      id: 'blog@blog/_layout',
+      id: 'blog/_layout',
       children: [
         { path: 'tags', id: 'blog/tags' },
         { path: '/', id: 'blog/index' },
@@ -80,7 +80,7 @@ test('regular routes generation', () => {
       ],
     },
     {
-      id: '(auth)@(auth)/_layout',
+      id: '(auth)/_layout',
       children: [
         { path: 'register', id: '(auth)/register' },
         { path: 'login', id: '(auth)/login' },
