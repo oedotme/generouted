@@ -39,7 +39,7 @@ import { render } from 'solid-js/web'
 import { Routes } from '@generouted/solid-router'
 // import { Routes } from '@generouted/solid-router/lazy' // route-based code-splitting
 
-render(Routes, document.getElementById('app') as HTMLElement)
+render(Routes, document.getElementById('root')!)
 ```
 
 ### Adding pages

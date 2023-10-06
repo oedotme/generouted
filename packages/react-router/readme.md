@@ -39,8 +39,7 @@ import { createRoot } from 'react-dom/client'
 import { Routes } from '@generouted/react-router'
 // import { Routes } from '@generouted/react-router/lazy' // route-based code-splitting
 
-const container = document.getElementById('app')!
-createRoot(container).render(<Routes />)
+createRoot(document.getElementById('root')!).render(<Routes />)
 ```
 
 ### Adding pages

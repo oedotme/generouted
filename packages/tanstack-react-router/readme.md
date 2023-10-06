@@ -46,8 +46,7 @@ export default defineConfig({ plugins: [react(), generouted()] })
 import { createRoot } from 'react-dom/client'
 import { Routes } from './routes.gen'
 
-const container = document.getElementById('app')!
-createRoot(container).render(<Routes />)
+createRoot(document.getElementById('root')!).render(<Routes />)
 ```
 
 ### Adding pages

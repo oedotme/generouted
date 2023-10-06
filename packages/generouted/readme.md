@@ -104,8 +104,7 @@ export default defineConfig({ plugins: [react(), generouted()] })
 import { createRoot } from 'react-dom/client'
 import { Routes } from '@generouted/react-router'
 
-const app = document.getElementById('app')
-createRoot(app).render(<Routes />)
+createRoot(document.getElementById('root')!).render(<Routes />)
 ```
 
 #### Adding pages
@@ -167,7 +166,7 @@ export default defineConfig({ plugins: [solid(), generouted()] })
 import { render } from 'solid-js/web'
 import { Routes } from '@generouted/solid-router'
 
-render(Routes, document.getElementById('app'))
+render(Routes, document.getElementById('root')!)
 ```
 
 #### Adding pages
@@ -230,8 +229,7 @@ pnpm add generouted @tanstack/react-location
 import { createRoot } from 'react-dom/client'
 import { Routes } from 'generouted/react-location'
 
-const app = document.getElementById('app')
-createRoot(app).render(<Routes />)
+createRoot(document.getElementById('root')!).render(<Routes />)
 ```
 
 #### Adding pages
