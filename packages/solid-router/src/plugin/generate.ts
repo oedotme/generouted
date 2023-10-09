@@ -29,13 +29,14 @@ const generateRouteTypes = async (options: Options) => {
       .join('/')
 
     if (path) {
-      const param = path.split('/').filter((segment) => segment.startsWith(':') || segment.includes('*'))
+      const param = path.split('/').filter((segment) => segment.startsWith(':'))
 
-      if (param.length) {
-        params.push(`'/${path}': { ${param.map((p) => p.replace(/:(.+)(\?)?/, '$1$2:').replace(/(\*)(\?)?/, "'$1$2':") + ' string').join('; ')} }`)
+      if (param.length || path.includes('*')) {
+        const dynamic = param.length ? param.map((p) => p.replace(/:(.+)(\?)?/, '$1$2:') + ' string') : []
+        const splat = path.includes('*') ? ["'*': string"] : []
+        params.push(`'/${path}': { ${[...dynamic, ...splat].join('; ')} }`)
       }
 
-      if (path.includes('*')) return '/' + path.replace(/\*/g, '${string}')
       return path.length > 1 ? `/${path}` : path
     }
   })
