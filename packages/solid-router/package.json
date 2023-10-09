@@ -91,7 +91,7 @@
     "solid-js": "^1.7.12",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2",
-    "vite": "^4.4.9"
+    "vite": "^4.4.11"
   },
   "peerDependencies": {
     "@solidjs/router": ">=0.8",
