@@ -111,12 +111,12 @@ const generateRoutes = async () => {
     )
     .replace(
       '// loaders-imports',
-      actions.length ? `\nimport { Loader, LoaderClient } from '@tanstack/react-loaders'` : '',
+      loaders.length ? `\nimport { Loader, LoaderClient } from '@tanstack/react-loaders'` : '',
     )
     .replace('// loaders', '\n\n' + loaders.map((loader) => loader.export).join('\n'))
     .replace(
       '// loaders-client',
-      actions.length
+      loaders.length
         ? `export const loaderClient = new LoaderClient({ getLoaders: () => [${loaders
             .map(({ id }) => `${id}Loader`)
             .join(', ')}] })`
@@ -124,7 +124,7 @@ const generateRoutes = async () => {
     )
     .replace(
       '// loaders-type',
-      actions.length
+      loaders.length
         ? `\n\ndeclare module '@tanstack/react-loaders' { \n  interface Register { \n    loaderClient: typeof loaderClient \n  } \n}`
         : '',
     )
