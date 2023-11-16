@@ -36,14 +36,14 @@
     "prepare": "husky install"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.8.0",
-    "@commitlint/config-conventional": "^17.8.0",
+    "@commitlint/cli": "^18.4.2",
+    "@commitlint/config-conventional": "^18.4.2",
     "@release-it-plugins/workspaces": "^4.0.0",
     "husky": "^8.0.3",
-    "lint-staged": "^15.0.1",
-    "prettier": "^3.0.3",
-    "release-it": "^16.2.1",
-    "turbo": "^1.10.15"
+    "lint-staged": "^15.1.0",
+    "prettier": "^3.1.0",
+    "release-it": "^17.0.0",
+    "turbo": "^1.10.16"
   },
   "pnpm": {
     "overrides": {

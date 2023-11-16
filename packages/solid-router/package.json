@@ -81,17 +81,17 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "fast-glob": "^3.3.1",
+    "fast-glob": "^3.3.2",
     "generouted": "^1.16.1"
   },
   "devDependencies": {
     "@generouted/core": "workspace:*",
-    "@solidjs/router": "^0.8.3",
+    "@solidjs/router": "^0.9.1",
     "esbuild-plugin-solid": "^0.5.0",
-    "solid-js": "^1.8.1",
+    "solid-js": "^1.8.5",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2",
-    "vite": "^4.4.11"
+    "vite": "^5.0.0"
   },
   "peerDependencies": {
     "@solidjs/router": ">=0.8",

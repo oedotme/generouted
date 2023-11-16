@@ -10,12 +10,12 @@
   },
   "dependencies": {
     "@generouted/solid-router": "^1.16.1",
-    "@solidjs/router": "^0.8.3",
-    "solid-js": "^1.8.1"
+    "@solidjs/router": "^0.9.1",
+    "solid-js": "^1.8.5"
   },
   "devDependencies": {
     "typescript": "^5.2.2",
-    "vite": "^4.4.11",
-    "vite-plugin-solid": "^2.7.1"
+    "vite": "^5.0.0",
+    "vite-plugin-solid": "^2.7.2"
   }
 }
