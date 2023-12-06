@@ -86,11 +86,11 @@
   },
   "devDependencies": {
     "@generouted/core": "workspace:*",
-    "@types/react": "^18.2.37",
-    "react-router-dom": "^6.18.0",
-    "tsup": "^7.2.0",
-    "typescript": "^5.2.2",
-    "vite": "^5.0.0"
+    "@types/react": "^18.2.42",
+    "react-router-dom": "^6.20.1",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.2",
+    "vite": "^5.0.6"
   },
   "peerDependencies": {
     "react": ">=18",

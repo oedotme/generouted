@@ -88,10 +88,10 @@
     "@generouted/core": "workspace:*",
     "@solidjs/router": "^0.9.1",
     "esbuild-plugin-solid": "^0.5.0",
-    "solid-js": "^1.8.5",
-    "tsup": "^7.2.0",
-    "typescript": "^5.2.2",
-    "vite": "^5.0.0"
+    "solid-js": "^1.8.7",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.2",
+    "vite": "^5.0.6"
   },
   "peerDependencies": {
     "@solidjs/router": ">=0.8",
