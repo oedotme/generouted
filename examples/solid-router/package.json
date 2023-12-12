@@ -9,7 +9,7 @@
     "build": "vite build"
   },
   "dependencies": {
-    "@generouted/solid-router": "^1.16.1",
+    "@generouted/solid-router": "^1.17.0",
     "@solidjs/router": "^0.10.1",
     "solid-js": "^1.8.7"
   },
