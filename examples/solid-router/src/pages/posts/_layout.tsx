@@ -1,10 +1,12 @@
-import { Outlet } from '@solidjs/router'
+import { ParentProps } from 'solid-js'
 
-export default function About() {
+export const Catch = () => 'Error'
+
+export default function Posts(props: ParentProps) {
   return (
     <div>
       <h1>Posts Layout</h1>
-      <Outlet />
+      {props.children}
     </div>
   )
 }

@@ -88,7 +88,7 @@
     "type-check": "tsc --noEmit"
   },
   "devDependencies": {
-    "@solidjs/router": "^0.9.1",
+    "@solidjs/router": "^0.10.1",
     "@tanstack/react-location": "^3.7.4",
     "@types/react": "^18.2.42",
     "@types/react-dom": "^18.2.17",

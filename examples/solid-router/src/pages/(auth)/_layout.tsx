@@ -1,10 +1,10 @@
-import { Outlet } from '@solidjs/router'
+import { ParentProps } from 'solid-js'
 
-export default function Layout() {
+export default function Layout(props: ParentProps) {
   return (
     <div>
       <h1>Auth Layout</h1>
-      <Outlet />
+      {props.children}
     </div>
   )
 }
