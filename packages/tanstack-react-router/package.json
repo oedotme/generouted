@@ -58,8 +58,8 @@
   "devDependencies": {
     "@generouted/core": "workspace:*",
     "tsup": "^8.0.1",
-    "typescript": "^5.3.2",
-    "vite": "^5.0.6"
+    "typescript": "^5.3.3",
+    "vite": "^5.0.8"
   },
   "peerDependencies": {
     "vite": ">=3"
