@@ -79,7 +79,7 @@ const generateRoutes = async () => {
     if (['pid', 'path'].includes(key) || key.startsWith('_')) return undefined
     return value
   })
-    .replace(/"id":"(\w+)"/g, '$1')
+    .replace(/"id":"([\w-]+)"/g, '$1')
     .replace(/^\[|\]$|{|}/g, '')
     .replace(/\[/g, '([')
     .replace(/\]/g, '])')

@@ -1,5 +1,5 @@
 import { ParentProps } from 'solid-js'
-import { Modals } from '@generouted/solid-router/lazy'
+import { Modals } from '@generouted/solid-router'
 
 import { A, useModals, useNavigate } from '@/router'
 

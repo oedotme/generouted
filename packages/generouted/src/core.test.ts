@@ -37,6 +37,7 @@ test('regular routes generation', () => {
     '/src/pages/(auth)/_layout.tsx': {},
     '/src/pages/(auth)/login.tsx': {},
     '/src/pages/(auth)/register.tsx': {},
+    '/src/pages/(external-auth)/sso.tsx': {},
     '/src/pages/_ignored-directory/components.tsx': {},
     '/src/pages/_ignored-path.tsx': {},
     '/src/pages/about.tsx': {},
@@ -85,6 +86,10 @@ test('regular routes generation', () => {
         { path: 'register', id: '(auth)/register' },
         { path: 'login', id: '(auth)/login' },
       ],
+    },
+    {
+      id: '(external-auth)',
+      children: [{ path: 'sso', id: '(external-auth)/sso' }],
     },
     { path: 'about', id: 'about' },
     { path: 'blog/w/o/layout', id: 'blog.w.o.layout' },

@@ -38,7 +38,7 @@ export const Container = ({ children, source = '' }: Props) => {
                 .split('/')
                 .map((segment, index) => {
                   const result = segment
-                    .replace(/^\(\w+\)$/g, '')
+                    .replace(/^\([\w-]+\)$/g, '')
                     .replace(...patterns.splat)
                     .replace(...patterns.param)
                     .replace(...patterns.slash)
@@ -83,9 +83,9 @@ export const Container = ({ children, source = '' }: Props) => {
               .split('/')
               .map(
                 (segment) =>
-                  (segment === 'index' || /^\(\w+\)$/.test(segment) ? '' : '/') +
+                  (segment === 'index' || /^\([\w-]+\)$/.test(segment) ? '' : '/') +
                   segment
-                    .replace(/^\(\w+\)$/g, '')
+                    .replace(/^\([\w-]+\)$/g, '')
                     .replace(...patterns.splat)
                     .replace(...patterns.param)
                     .replace(...patterns.slash)

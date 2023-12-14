@@ -41,7 +41,7 @@ const Tree = ({ routes, depth, location }: { routes: Route[]; depth: number; loc
     <ul className="flex select-none flex-col text-sm font-medium">
       {routes?.map((route) => {
         const pathname = route.pathname?.startsWith('/') ? route.pathname : `/${route.pathname}`
-        const path = pathname!.replace(/\(\w+\)\/|\/?_layout/g, '').replace('?', '')
+        const path = pathname!.replace(/\([\w-]+\)\/|\/?_layout/g, '').replace('?', '')
         const paddingLeft = depth * 20
         const disabled = preserved.includes(route?.id!) || route.id?.includes('_layout')
 

@@ -57,7 +57,7 @@ export const getRoutes = <T extends BaseRoute>(
       const leaf = index === segments.length - 1 && segments.length > 1
       const node = !root && !leaf
       const layout = segment === '_layout'
-      const group = /\(\w+\)/.test(path)
+      const group = /\([\w-]+\)/.test(path)
       const insert = /^\w|\//.test(path) ? 'unshift' : 'push'
 
       if (root) {

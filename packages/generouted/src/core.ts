@@ -38,7 +38,7 @@ export const generateRegularRoutes = <T extends BaseRoute, M>(
       const leaf = index === segments.length - 1 && segments.length > 1
       const node = !root && !leaf
       const layout = segment === '_layout'
-      const group = /\(\w+\)/.test(path)
+      const group = /\([\w-]+\)/.test(path)
       const insert = /^\w|\//.test(path) ? 'unshift' : 'push'
 
       if (root) {
@@ -77,7 +77,7 @@ export const generateModalRoutes = <T>(files: Record<string, T | any>): Record<s
   return Object.keys(files).reduce((modals, key) => {
     const path = key
       .replace(...patterns.route)
-      .replace(/\+|\(\w+\)\//g, '')
+      .replace(/\+|\([\w-]+\)\//g, '')
       .replace(/(\/)?index/g, '')
       .replace(/\./g, '/')
 
