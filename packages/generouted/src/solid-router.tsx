@@ -45,6 +45,6 @@ const App = (props: any) => (
 const app: RouteDefinition = { path: '', component: _app?.default ? App : Fragment, load: _app?.Loader || undefined }
 const fallback: RouteDefinition = { path: '*', component: _404?.default || Fragment }
 
-export const routes: RouteDefinition[] = [{ ...app, children: [...regularRoutes, fallback] }] // @ts-expect-error
+export const routes: RouteDefinition[] = [{ ...app, children: [...regularRoutes, fallback] }]
 export const Routes = () => <Router>{routes}</Router>
 export const Modals = () => createMemo(() => modalRoutes[useLocation<any>().state?.modal || ''] || Fragment) as any

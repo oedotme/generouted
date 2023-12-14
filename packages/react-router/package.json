@@ -86,8 +86,8 @@
   },
   "devDependencies": {
     "@generouted/core": "workspace:*",
-    "@types/react": "^18.2.43",
-    "react-router-dom": "^6.20.1",
+    "@types/react": "^18.2.45",
+    "react-router-dom": "^6.21.0",
     "tsup": "^8.0.1",
     "typescript": "^5.3.3",
     "vite": "^5.0.8"
