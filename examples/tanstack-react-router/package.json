@@ -10,7 +10,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@generouted/tanstack-react-router": "^1.17.1",
+    "@generouted/tanstack-react-router": "workspace:*",
     "@tanstack/react-actions": "^0.0.1-beta.64",
     "@tanstack/react-loaders": "^0.0.1-beta.73",
     "@tanstack/react-router": "^0.0.1-beta.145",
@@ -18,12 +18,12 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@types/react": "^18.2.45",
-    "@types/react-dom": "^18.2.17",
+    "@types/react": "^18.2.48",
+    "@types/react-dom": "^18.2.18",
     "@vitejs/plugin-react": "^4.2.1",
     "fast-glob": "^3.3.2",
-    "prettier": "^3.1.1",
+    "prettier": "^3.2.2",
     "typescript": "^5.3.3",
-    "vite": "^5.0.8"
+    "vite": "^5.0.11"
   }
 }

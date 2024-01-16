@@ -82,15 +82,15 @@
   },
   "dependencies": {
     "fast-glob": "^3.3.2",
-    "generouted": "^1.17.1"
+    "generouted": "workspace:*"
   },
   "devDependencies": {
     "@generouted/core": "workspace:*",
-    "@types/react": "^18.2.45",
-    "react-router-dom": "^6.21.0",
+    "@types/react": "^18.2.48",
+    "react-router-dom": "^6.21.2",
     "tsup": "^8.0.1",
     "typescript": "^5.3.3",
-    "vite": "^5.0.8"
+    "vite": "^5.0.11"
   },
   "peerDependencies": {
     "react": ">=18",
