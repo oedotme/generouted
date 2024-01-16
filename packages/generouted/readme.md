@@ -48,7 +48,7 @@ There are also Vite plugins available for some integrations to provide type-safe
 - ⚡ Powered by [Vite](https://vitejs.dev)
 - ✨ React support with [`react-router-dom`](https://github.com/remix-run/react-router) or [`@tanstack/router`](https://github.com/tanstack/router) 🧪 or [`@tanstack/react-location`](https://github.com/tanstack/router/tree/9c8eb043e4ac350fc1d28655542e01defb0c82e5) 🚨
 - ✨ Solid support with [`@solidjs/router`](https://github.com/solidjs/solid-router)
-- ✨ File-based MDX routes with React or Solid using [`@mdx-js/rollup`](https://mdxjs.com/packages/rollup)
+- ✨ File-based MDX routes with React or Solid, requires [`@mdx-js/rollup`](https://mdxjs.com/packages/rollup) [installation and setup](/examples/react-router-mdx)
 - 🔐 Type-safe navigation
 - 🚀 Type-safe global modals
 - 💤 Route-based code-splitting and lazy-loading
@@ -129,6 +129,7 @@ You can find more details about type-safe navigation and global modals at [`@gen
 - [Type-safe navigation + global modals](/examples/react-router)
 - [Custom integration](/examples/react-router-custom)
 - [Custom integration with custom path](/examples/react-router-custom-path)
+- [MDX routes](/examples/react-router-mdx)
 
 <br>
 
