@@ -82,7 +82,7 @@
   },
   "dependencies": {
     "fast-glob": "^3.3.2",
-    "generouted": "workspace:*"
+    "generouted": "^1.18.1"
   },
   "devDependencies": {
     "@generouted/core": "workspace:*",
