@@ -5,7 +5,7 @@ export type Options = {
 }
 
 export const defaultOptions: Options = {
-  source: { routes: './src/pages/**/[\\w[-]*.{jsx,tsx}', modals: './src/pages/**/[+]*.{jsx,tsx}' },
+  source: { routes: './src/pages/**/[\\w[-]*.{jsx,tsx,mdx}', modals: './src/pages/**/[+]*.{jsx,tsx,mdx}' },
   output: './src/router.ts',
   format: true,
 }

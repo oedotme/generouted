@@ -1,0 +1,28 @@
+{
+  "name": "@examples/react-router-mdx",
+  "private": true,
+  "description": "Generated file-based routes for React Router + MDX and Vite plugin example",
+  "author": "Omar Elhawary <oedotme@gmail.com> (https://omarelhawary.me)",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev --port 3000",
+    "build": "vite build",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@generouted/react-router": "workspace:*",
+    "@mdx-js/rollup": "^3.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "6.21.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.48",
+    "@types/react-dom": "^18.2.18",
+    "@vitejs/plugin-react": "^4.2.1",
+    "prettier": "^3.2.2",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.11"
+  }
+}

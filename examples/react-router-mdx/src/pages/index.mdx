@@ -1,0 +1,30 @@
+### MDX content support
+
+Some `MDX` content from `./src/pages/content.mdx` file.
+
+#### Setup
+
+- Install `@mdx-js/rollup`
+- Set `enforce: 'pre'` to `mdx` plugin at `vite.config.ts`
+
+```tsx
+// vite.config.ts
+
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import generouted from '@generouted/react-router/plugin'
+import mdx from '@mdx-js/rollup'
+
+export default defineConfig({
+  plugins: [{ enforce: 'pre', ...mdx() }, , react(), generouted()],
+  resolve: { alias: { '@': '/src' } },
+})
+```
+
+#### Adding pages
+
+Add the home page by creating a new file `src/pages/index.mdx` → `/`:
+
+```mdx
+### Home + MDX
+```

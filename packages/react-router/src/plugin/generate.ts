@@ -10,8 +10,8 @@ import { Options } from './options'
 import { template } from './template'
 
 const generateRouteTypes = async (options: Options) => {
-  const files = await fg(options.source.routes || './src/pages/**/[\\w[-]*.{jsx,tsx}', { onlyFiles: true })
-  const modal = await fg(options.source.modals || './src/pages/**/[+]*.{jsx,tsx}', { onlyFiles: true })
+  const files = await fg(options.source.routes || './src/pages/**/[\\w[-]*.{jsx,tsx,mdx}', { onlyFiles: true })
+  const modal = await fg(options.source.modals || './src/pages/**/[+]*.{jsx,tsx,mdx}', { onlyFiles: true })
 
   const filtered = files.filter((key) => !key.includes('/_') && !key.includes('/404'))
   const params: string[] = []

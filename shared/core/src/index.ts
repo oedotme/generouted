@@ -1,7 +1,7 @@
 import { readFileSync } from 'fs'
 
 export const patterns = {
-  route: [/^.*\/src\/pages\/|^\/pages\/|\.(jsx|tsx)$/g, ''],
+  route: [/^.*\/src\/pages\/|^\/pages\/|\.(jsx|tsx|mdx)$/g, ''],
   splat: [/\[\.{3}\w+\]/g, '*'],
   param: [/\[([^\]]+)\]/g, ':$1'],
   slash: [/^index$|\./g, '/'],

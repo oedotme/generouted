@@ -47,6 +47,7 @@ test('regular routes generation', () => {
     '/src/pages/blog/_layout.tsx': {},
     '/src/pages/blog/index.tsx': {},
     '/src/pages/blog/tags.tsx': {},
+    '/src/pages/content.mdx': {},
     '/src/pages/docs/-[lang]/index.tsx': {},
     '/src/pages/docs/-[lang]/resources.tsx': {},
     '/src/pages/docs/-en/support.tsx': {},
@@ -93,6 +94,7 @@ test('regular routes generation', () => {
     },
     { path: 'about', id: 'about' },
     { path: 'blog/w/o/layout', id: 'blog.w.o.layout' },
+    { path: 'content', id: 'content' },
     { path: '/', id: 'index' },
   ])
 })

@@ -48,6 +48,7 @@ There are also Vite plugins available for some integrations to provide type-safe
 - ⚡ Powered by [Vite](https://vitejs.dev)
 - ✨ React support with [`react-router-dom`](https://github.com/remix-run/react-router) or [`@tanstack/router`](https://github.com/tanstack/router) 🧪 or [`@tanstack/react-location`](https://github.com/tanstack/router/tree/9c8eb043e4ac350fc1d28655542e01defb0c82e5) 🚨
 - ✨ Solid support with [`@solidjs/router`](https://github.com/solidjs/solid-router)
+- ✨ File-based MDX routes with React or Solid using [`@mdx-js/rollup`](https://mdxjs.com/packages/rollup)
 - 🔐 Type-safe navigation
 - 🚀 Type-safe global modals
 - 💤 Route-based code-splitting and lazy-loading
@@ -260,7 +261,7 @@ export default function Home() {
 ### File and directories naming and conventions
 
 - Routes declaration at `src/pages`
-- Supports `.tsx` or `.jsx` extensions
+- Supports `.tsx`, `.jsx` and `.mdx` file extensions
 - Optional `src/pages/_app.tsx` for an **app level layout**
 - Optional `src/pages/404.tsx` for a **custom not-found page**
 
