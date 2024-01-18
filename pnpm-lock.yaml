@@ -4,12 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-overrides:
-  generouted: workspace:*
-  '@generouted/react-router': workspace:*
-  '@generouted/solid-router': workspace:*
-  '@generouted/tanstack-react-router': workspace:*
-
 importers:
 
   .:
@@ -166,7 +160,7 @@ importers:
   examples/react-router:
     dependencies:
       '@generouted/react-router':
-        specifier: workspace:*
+        specifier: ^1.18.2
         version: link:../../packages/react-router
       react:
         specifier: ^18.2.0
@@ -200,7 +194,7 @@ importers:
   examples/react-router-custom:
     dependencies:
       '@generouted/react-router':
-        specifier: workspace:*
+        specifier: ^1.18.2
         version: link:../../packages/react-router
       react:
         specifier: ^18.2.0
@@ -234,7 +228,7 @@ importers:
   examples/react-router-custom-path:
     dependencies:
       '@generouted/react-router':
-        specifier: workspace:*
+        specifier: ^1.18.2
         version: link:../../packages/react-router
       react:
         specifier: ^18.2.0
@@ -268,7 +262,7 @@ importers:
   examples/react-router-mdx:
     dependencies:
       '@generouted/react-router':
-        specifier: workspace:*
+        specifier: ^1.18.2
         version: link:../../packages/react-router
       '@mdx-js/rollup':
         specifier: ^3.0.0
@@ -305,7 +299,7 @@ importers:
   examples/react-router-route-modals:
     dependencies:
       '@generouted/react-router':
-        specifier: workspace:*
+        specifier: ^1.18.2
         version: link:../../packages/react-router
       react:
         specifier: ^18.2.0
@@ -339,7 +333,7 @@ importers:
   examples/solid-router:
     dependencies:
       '@generouted/solid-router':
-        specifier: workspace:*
+        specifier: ^1.18.2
         version: link:../../packages/solid-router
       '@solidjs/router':
         specifier: ^0.10.9
@@ -361,7 +355,7 @@ importers:
   examples/tanstack-react-router:
     dependencies:
       '@generouted/tanstack-react-router':
-        specifier: workspace:*
+        specifier: ^1.18.2
         version: link:../../packages/tanstack-react-router
       '@tanstack/react-actions':
         specifier: ^0.0.1-beta.64
@@ -489,7 +483,7 @@ importers:
         specifier: ^3.3.2
         version: 3.3.2
       generouted:
-        specifier: workspace:*
+        specifier: ^1.18.2
         version: link:../generouted
       react:
         specifier: '>=18'
@@ -520,7 +514,7 @@ importers:
         specifier: ^3.3.2
         version: 3.3.2
       generouted:
-        specifier: workspace:*
+        specifier: ^1.18.2
         version: link:../generouted
     devDependencies:
       '@generouted/core':

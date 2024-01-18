@@ -44,13 +44,5 @@
     "prettier": "^3.2.2",
     "release-it": "^17.0.1",
     "turbo": "^1.11.3"
-  },
-  "pnpm": {
-    "overrides": {
-      "generouted": "workspace:*",
-      "@generouted/react-router": "workspace:*",
-      "@generouted/solid-router": "workspace:*",
-      "@generouted/tanstack-react-router": "workspace:*"
-    }
   }
 }
