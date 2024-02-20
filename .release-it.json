@@ -23,7 +23,10 @@
   "plugins": {
     "@release-it-plugins/workspaces": {
       "workspaces": ["packages/*"],
-      "additionalManifests": { "dependencyUpdates": ["examples/*/package.json"], "versionUpdates": [] },
+      "additionalManifests": {
+        "dependencyUpdates": ["examples/*/package.json", "explorer/package.json"],
+        "versionUpdates": []
+      },
       "skipChecks": true
     }
   }

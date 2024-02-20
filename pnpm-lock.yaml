@@ -398,7 +398,7 @@ importers:
   explorer:
     dependencies:
       '@generouted/react-router':
-        specifier: workspace:*
+        specifier: ^1.18.2
         version: link:../packages/react-router
       react:
         specifier: ^18.2.0
