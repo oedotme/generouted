@@ -16,8 +16,8 @@ export default function Generouted(options?: Partial<Options>): Plugin {
       server.watcher.on('change', listener)
       server.watcher.on('unlink', listener)
     },
-    buildStart() {
-      generate(resolvedOptions)
+    buildStart(): Promise<void> {
+      return generate(resolvedOptions)
     },
   }
 }
