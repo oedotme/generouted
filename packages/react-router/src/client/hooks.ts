@@ -1,3 +1,4 @@
+import { useCallback, useMemo } from 'react';
 import { generatePath, NavigateOptions, useLocation, useNavigate, useParams } from 'react-router-dom'
 
 export const hooks = <Path extends string, Params extends Record<string, any>, ModalPath extends string>() => {
@@ -18,11 +19,11 @@ export const hooks = <Path extends string, Params extends Record<string, any>, M
     useParams: <P extends ParamPath>(path: P) => useParams<Params[typeof path]>() as Params[P],
     useNavigate: () => {
       const navigate = useNavigate()
-      return <P extends Path | To | number>(to: P, ...[options]: NavigateOptionsWithParams<P>) => {
+      return useCallback(<P extends Path | To | number>(to: P, ...[options]: NavigateOptionsWithParams<P>) => {
         if (typeof to === 'number') return navigate(to)
         const path = generatePath(typeof to === 'string' ? to : to.pathname, options?.params || ({} as any))
         navigate(typeof to === 'string' ? path : { pathname: path, search: to.search, hash: to.hash }, options)
-      }
+      }, [navigate])
     },
     useModals: () => {
       const location = useLocation()
@@ -31,17 +32,19 @@ export const hooks = <Path extends string, Params extends Record<string, any>, M
       type Options<P> = NavigateOptions &
         (P extends ParamPath ? { at?: P; params: Params[P] } : { at?: P; params?: never })
 
-      return {
-        current: location.state?.modal || '',
-        open: <P extends Path>(path: ModalPath, options?: Options<P>) => {
-          const { at, state, ...opts } = options || {}
-          navigate(at || location.pathname, { ...opts, state: { ...location.state, ...state, modal: path } })
-        },
-        close: <P extends Path>(options?: Options<P>) => {
-          const { at, state, ...opts } = options || {}
-          navigate(at || location.pathname, { ...opts, state: { ...location.state, ...state, modal: '' } })
-        },
-      }
+      return useMemo(() => {
+        return {
+          current: location.state?.modal || '',
+          open: <P extends Path>(path: ModalPath, options?: Options<P>) => {
+            const { at, state, ...opts } = options || {}
+            navigate(at || location.pathname, { ...opts, state: { ...location.state, ...state, modal: path } })
+          },
+          close: <P extends Path>(options?: Options<P>) => {
+            const { at, state, ...opts } = options || {}
+            navigate(at || location.pathname, { ...opts, state: { ...location.state, ...state, modal: '' } })
+          },
+        }
+      }, [location, navigate])
     },
   }
 }
