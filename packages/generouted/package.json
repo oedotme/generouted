@@ -90,7 +90,7 @@
   "devDependencies": {
     "@solidjs/router": "^0.12.4",
     "@tanstack/react-location": "^3.7.4",
-    "@types/react": "^18.2.58",
+    "@types/react": "^18.2.60",
     "@types/react-dom": "^18.2.19",
     "react": "18.2.0",
     "react-dom": "18.2.0",
