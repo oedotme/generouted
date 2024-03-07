@@ -176,7 +176,7 @@ Both methods come with React Router's `navigate()` options with one prop added `
 
 ### React Router
 
-- [Plugin](/examples/react-router/plugin)
+- [Plugin](/examples/react-router/readme.md)
 
 ## License
 
