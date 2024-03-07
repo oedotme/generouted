@@ -36,13 +36,13 @@
     "prepare": "husky"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.0.0",
-    "@commitlint/config-conventional": "^19.0.0",
+    "@commitlint/cli": "^19.0.3",
+    "@commitlint/config-conventional": "^19.0.3",
     "@release-it-plugins/workspaces": "^4.2.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
     "release-it": "^17.1.1",
-    "turbo": "^1.12.4"
+    "turbo": "^1.12.5"
   }
 }
