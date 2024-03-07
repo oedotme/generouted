@@ -1,16 +1,14 @@
-import { A, AnchorProps, Navigate } from '@solidjs/router'
+import { A, Navigate } from '@solidjs/router'
 
+import { AnchorProps, NavigateProps } from './types'
 import { generatePath } from './utils'
 
 export const components = <Path extends string, Params extends Record<string, any>>() => {
-  type ParamPath = keyof Params
-  type Props<P> = AnchorProps & (P extends ParamPath ? { href: P; params: Params[P] } : { href: P; params?: never })
-
   return {
-    A: <P extends Path>(props: Props<P>) => {
+    A: <P extends Path>(props: AnchorProps<P, Params>) => {
       return <A {...props} href={props.params ? generatePath(props.href, props.params) : props.href} />
     },
-    Navigate: <P extends Path>(props: Props<P>) => {
+    Navigate: <P extends Path>(props: NavigateProps<P, Params>) => {
       return <Navigate {...props} href={props.params ? generatePath(props.href, props.params) : props.href} />
     },
   }

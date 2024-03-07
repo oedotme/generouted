@@ -1,20 +1,16 @@
 import { Accessor } from 'solid-js'
-import { NavigateOptions, useLocation, useMatch, useNavigate, useParams } from '@solidjs/router'
+import { NavigateOptions as NavOptions, useLocation, useMatch, useNavigate, useParams } from '@solidjs/router'
 import { MatchFilters } from '@solidjs/router/dist/types'
 
 import { generatePath } from './utils'
+import { NavigateOptions } from './types'
 
 export const hooks = <Path extends string, Params extends Record<string, any>, ModalPath extends string>() => {
-  type ParamPath = keyof Params
-  type Options<P> = P extends ParamPath
-    ? [Partial<NavigateOptions> & { params: Params[P] }]
-    : [Partial<NavigateOptions> & { params?: never }] | []
-
   return {
-    useParams: <P extends ParamPath>(path: P) => useParams<Params[typeof path]>() as Params[P],
+    useParams: <P extends keyof Params>(path: P) => useParams<Params[typeof path]>() as Params[P],
     useNavigate: () => {
       const navigate = useNavigate()
-      return <P extends Path>(href: P, ...[options]: Options<P>) => {
+      return <P extends Path>(href: P, ...[options]: NavigateOptions<P, Params>) => {
         navigate(options?.params ? generatePath(href, options.params) : href, options)
       }
     },
@@ -25,8 +21,8 @@ export const hooks = <Path extends string, Params extends Record<string, any>, M
       const location = useLocation<any>()
       const navigate = useNavigate()
 
-      type Options<P> = Partial<NavigateOptions<any>> &
-        (P extends ParamPath ? { at?: P; params: Params[P] } : { at?: P; params?: never })
+      type Options<P> = Partial<NavOptions<any>> &
+        (P extends keyof Params ? { at?: P; params: Params[P] } : { at?: P; params?: never })
 
       return {
         current: location.state?.modal || '',

@@ -1,36 +1,28 @@
-import { useCallback, useMemo } from 'react';
-import { generatePath, NavigateOptions, useLocation, useNavigate, useParams } from 'react-router-dom'
+import { useCallback, useMemo } from 'react'
+import { generatePath, NavigateOptions as NavOptions, useLocation, useNavigate, useParams } from 'react-router-dom'
+import { NavigateOptions, To } from './types'
 
 export const hooks = <Path extends string, Params extends Record<string, any>, ModalPath extends string>() => {
-  type ParamPath = keyof Params
-  type To = { pathname: Path; search?: string; hash?: string }
-
-  type NavigateOptionsWithParams<P extends Path | To | number> = P extends number
-    ? []
-    : P extends ParamPath
-    ? [NavigateOptions & { params: Params[P] }]
-    : P extends To
-    ? P['pathname'] extends ParamPath
-      ? [NavigateOptions & { params: Params[P['pathname']] }]
-      : [NavigateOptions & { params?: never }]
-    : [NavigateOptions & { params?: never }] | []
-
   return {
-    useParams: <P extends ParamPath>(path: P) => useParams<Params[typeof path]>() as Params[P],
+    useParams: <P extends keyof Params>(path: P) => useParams<Params[typeof path]>() as Params[P],
     useNavigate: () => {
       const navigate = useNavigate()
-      return useCallback(<P extends Path | To | number>(to: P, ...[options]: NavigateOptionsWithParams<P>) => {
-        if (typeof to === 'number') return navigate(to)
-        const path = generatePath(typeof to === 'string' ? to : to.pathname, options?.params || ({} as any))
-        navigate(typeof to === 'string' ? path : { pathname: path, search: to.search, hash: to.hash }, options)
-      }, [navigate])
+
+      return useCallback(
+        <P extends Path | To<Path> | number>(to: P, ...[options]: NavigateOptions<P, Params>) => {
+          if (typeof to === 'number') return navigate(to)
+          const path = generatePath(typeof to === 'string' ? to : to.pathname, options?.params || ({} as any))
+          return navigate(typeof to === 'string' ? path : { pathname: path, search: to.search, hash: to.hash }, options)
+        },
+        [navigate],
+      )
     },
     useModals: () => {
       const location = useLocation()
       const navigate = useNavigate()
 
-      type Options<P> = NavigateOptions &
-        (P extends ParamPath ? { at?: P; params: Params[P] } : { at?: P; params?: never })
+      type Options<P> = NavOptions &
+        (P extends keyof Params ? { at?: P; params: Params[P] } : { at?: P; params?: never })
 
       return useMemo(() => {
         return {
