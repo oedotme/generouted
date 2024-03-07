@@ -1,4 +1,4 @@
-import { exec } from 'child_process'
+import { execSync } from 'child_process'
 import fs from 'fs'
 import path from 'path'
 
@@ -78,5 +78,5 @@ export const generate = async (options: Options) => {
 
   if (!options.format) return
   const prettier = path.resolve('./node_modules/.bin/prettier')
-  if (fs.existsSync(prettier)) exec(`${prettier} --write --cache ${options.output}`)
+  if (fs.existsSync(prettier)) execSync(`${prettier} --write --cache ${options.output}`)
 }
