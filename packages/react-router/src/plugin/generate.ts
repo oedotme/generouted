@@ -5,6 +5,7 @@ import path from 'path'
 import { createLogger } from 'vite'
 import { patterns } from '@generouted/core'
 import fg from 'fast-glob'
+import ts from 'typescript'
 
 import { Options } from './options'
 import { template } from './template'
@@ -57,7 +58,9 @@ const generateRouteTypes = async (options: Options) => {
     '\n\n' +
     `export type ModalPath = "${modals.sort().join('" | "') || 'never'}"`.replace(/"/g, modals.length ? '`' : '')
 
-  const content = template.replace('// types', types)
+  let content = template.replace('// types', types)
+  if (options.transpile) content = ts.transpile(content, { target: ts.ScriptTarget.ESNext })
+
   const count = paths.length + modals.length
 
   return { content, count }
