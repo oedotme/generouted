@@ -28,11 +28,13 @@ export const hooks = <Path extends string, Params extends Record<string, any>, M
         current: location.state?.modal || '',
         open: <P extends Path>(path: ModalPath, options?: Options<P>) => {
           const { at, state, ...opts } = options || {}
-          navigate(at || location.pathname, { ...opts, state: { ...location.state, ...state, modal: path } })
+          const pathname = options?.params ? generatePath(at || '', options.params || {}) : at
+          navigate(pathname || location.pathname, { ...opts, state: { ...location.state, ...state, modal: path } })
         },
         close: <P extends Path>(options?: Options<P>) => {
           const { at, state, ...opts } = options || {}
-          navigate(at || location.pathname, { ...opts, state: { ...location.state, ...state, modal: '' } })
+          const pathname = options?.params ? generatePath(at || '', options.params || {}) : at
+          navigate(pathname || location.pathname, { ...opts, state: { ...location.state, ...state, modal: '' } })
         },
       }
     },
