@@ -18,7 +18,8 @@
     "skipChecks": true
   },
   "hooks": {
-    "before:init": ["pnpm build --filter './packages/*'"]
+    "before:init": ["pnpm build --filter './packages/*'"],
+    "after:bump": ["pnpm install"]
   },
   "plugins": {
     "@release-it-plugins/workspaces": {
