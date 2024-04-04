@@ -4,9 +4,16 @@ export const patterns = {
   route: [/^.*\/src\/pages\/|^\/pages\/|\.(jsx|tsx|mdx)$/g, ''],
   splat: [/\[\.{3}\w+\]/g, '*'],
   param: [/\[([^\]]+)\]/g, ':$1'],
+  // replace parameterized segments with a template literal type that allows for defining a parameter value
+  parameterizedParam: [/\[([^\]]+)\]/g, '${string}'],
+  // replace splat segments with a template literal type that allows for defining a parameter value
+  parameterizedSplat: [/\[\.{3}\w+\]/g, '${string}'],
   slash: [/^index$|\./g, '/'],
   optional: [/^-(:?[\w-]+|\*)/, '$1?'],
-} as Record<string, [RegExp, string]>
+  // replaces optional parameters with a template literal type that allows for defining a parameter value, or not
+  optionalParameterized: [/(\/-\${string})/g, '${`/${string}` | ""}'],
+  trailingSlash: [/\/$/g, ''],
+} satisfies Record<string, [RegExp, string]>
 
 const getRouteId = (path: string) => path.replace(...patterns.route).replace(/\W/g, '')
 

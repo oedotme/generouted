@@ -15,6 +15,7 @@ const generateRouteTypes = async (options: Options) => {
 
   const filtered = files.filter((key) => !key.includes('/_') && !key.includes('/404'))
   const params: string[] = []
+  const paramsWithString: string[] = []
 
   const paths = filtered.map((key) => {
     const path = key
@@ -28,6 +29,19 @@ const generateRouteTypes = async (options: Options) => {
       .map((segment) => segment.replace(...patterns.optional))
       .join('/')
 
+    const parameterizedPath = key
+      .replace(...patterns.route)
+      .replace(...patterns.parameterizedSplat)
+      .replace(...patterns.parameterizedParam)
+      .replace(/\([\w-]+\)\/|\/?_layout/g, '')
+      .replace(/\/?index|\./g, '/')
+      .replace(/(\w)\/$/g, '$1')
+      .split('/')
+      .map((segment) => segment.replace(...patterns.optional))
+      .join('/')
+      .replace(...patterns.optionalParameterized)
+      .replace(...patterns.trailingSlash)
+
     if (path) {
       const param = path.split('/').filter((segment) => segment.startsWith(':'))
 
@@ -35,6 +49,8 @@ const generateRouteTypes = async (options: Options) => {
         const dynamic = param.length ? param.map((p) => p.replace(/:(.+)(\?)?/, '$1$2:') + ' string') : []
         const splat = path.includes('*') ? ["'*': string"] : []
         params.push(`'/${path}': { ${[...dynamic, ...splat].join('; ')} }`)
+
+        paramsWithString.push(`'/${path}': \`/${parameterizedPath}\``)
       }
 
       return path.length > 1 ? `/${path}` : path
@@ -52,6 +68,8 @@ const generateRouteTypes = async (options: Options) => {
 
   const types =
     `export type Path =\n  | "${[...new Set(paths.filter(Boolean))].sort().join('"\n  | "')}"`.replace(/"/g, '`') +
+    '\n\n' +
+    `export type ParameterizedPaths = {\n  ${paramsWithString.sort().join('\n  ')}\n}` +
     '\n\n' +
     `export type Params = {\n  ${params.sort().join('\n  ')}\n}` +
     '\n\n' +

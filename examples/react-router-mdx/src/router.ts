@@ -15,6 +15,13 @@ export type Path =
   | `/register`
   | `/splat/*`
 
+export type ParameterizedPaths = {
+  '/posts/:id': `/posts/${string}`
+  '/posts/:id/:pid?': `/posts/${string}${`/${string}` | ''}`
+  '/posts/:id/deep': `/posts/${string}/deep`
+  '/splat/*': `/splat/${string}`
+}
+
 export type Params = {
   '/posts/:id': { id: string }
   '/posts/:id/:pid?': { id: string; pid?: string }
