@@ -99,6 +99,8 @@ export default defineConfig({ plugins: [react(), generouted()] })
 
 #### Usage
 
+##### `<Routes />` for browser routing
+
 ```tsx
 // src/main.tsx
 
@@ -106,6 +108,28 @@ import { createRoot } from 'react-dom/client'
 import { Routes } from '@generouted/react-router'
 
 createRoot(document.getElementById('root')!).render(<Routes />)
+```
+
+##### `<HashRoutes />` for browser routing
+
+```tsx
+// src/main.tsx
+
+import { createRoot } from 'react-dom/client'
+import { HashRoutes } from '@generouted/react-router'
+
+createRoot(document.getElementById('root')!).render(<HashRoutes />)
+```
+
+##### `<MemoryRoutes />` for browser routing
+
+```tsx
+// src/main.tsx
+
+import { createRoot } from 'react-dom/client'
+import { MemoryRoutes } from '@generouted/react-router'
+
+createRoot(document.getElementById('root')!).render(<MemoryRoutes />)
 ```
 
 #### Adding pages
@@ -411,7 +435,7 @@ src/pages
 
 Via [`@generouted/react-router`](/packages/react-router) or [`@generouted/solid-router`](/packages/solid-router)
 
-- `<Routes />` — file-based routing component to be render in the app entry
+- `<Routes />`, `<HashRoutes />`, `<MemoryRoutes />` — file-based routing component to be render in the app entry
 - `<Modals />` — optional file-based modals component to be render in the `_app.tsx` layout
 - `routes` — file-based routes tree/object used by default at `<Routes />` component
 
@@ -421,7 +445,7 @@ Via `@generouted/react-router/lazy` or `@generouted/solid-router/lazy`
 
 - Used instead of `@generouted/react-router` or `@generouted/solid-router` to enable lazy-loading
 - Make sure to replace all imports to lazy imports — namely at app entry and `src/pages/_app.tsx`
-- Provides the same `<Routes />`, `<Modals />` and `routes` exports
+- Provides the same `<Routes />`, `<HashRoutes />`, `<MemoryRoutes />`, `<Modals />` and `routes` exports
 
 ### Plugins
 

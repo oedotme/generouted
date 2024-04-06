@@ -1,5 +1,12 @@
 import { Fragment, Suspense } from 'react'
-import { createBrowserRouter, Outlet, RouterProvider, useLocation } from 'react-router-dom'
+import {
+  createBrowserRouter,
+  createHashRouter,
+  createMemoryRouter,
+  Outlet,
+  RouterProvider,
+  useLocation,
+} from 'react-router-dom'
 import type { ActionFunction, RouteObject, LoaderFunction } from 'react-router-dom'
 
 import { generateModalRoutes, generatePreservedRoutes, generateRegularRoutes } from './core'
@@ -32,6 +39,8 @@ const fallback = { path: '*', Component: _404?.default || Fragment }
 
 export const routes: RouteObject[] = [{ ...app, children: [...regularRoutes, fallback] }]
 export const Routes = () => <RouterProvider router={createBrowserRouter(routes)} />
+export const MemoryRoutes = () => <RouterProvider router={createMemoryRouter(routes)} />
+export const HashRoutes = () => <RouterProvider router={createHashRouter(routes)} />
 
 export const Modals = () => {
   const Modal = modalRoutes[useLocation().state?.modal] || Fragment
