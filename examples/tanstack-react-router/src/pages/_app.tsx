@@ -6,7 +6,9 @@ export default function App() {
       <header style={{ display: 'flex', gap: 24 }}>
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
-        <Link to="/posts">Posts</Link>
+        <Link to="/posts/$id" params={{ id: 'xyz' }}>
+          Posts
+        </Link>
       </header>
 
       <main>

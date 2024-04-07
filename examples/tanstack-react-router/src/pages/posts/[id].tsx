@@ -1,4 +1,9 @@
-import { useMatch } from '@tanstack/react-router'
+import { LoaderFnContext, useMatch } from '@tanstack/react-router'
+
+export const Loader = (context: LoaderFnContext) => {
+  console.log({ params: context.params })
+  return context.params
+}
 
 export default function Id() {
   const { params } = useMatch({ from: '/posts/$id' })

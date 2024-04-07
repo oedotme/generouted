@@ -11,9 +11,7 @@
   },
   "dependencies": {
     "@generouted/tanstack-react-router": "^1.18.7",
-    "@tanstack/react-actions": "^0.0.1-beta.64",
-    "@tanstack/react-loaders": "^0.0.1-beta.73",
-    "@tanstack/react-router": "^0.0.1-beta.145",
+    "@tanstack/react-router": "^1.26.12",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
