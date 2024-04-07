@@ -31,7 +31,8 @@ const app = { Component: _app?.default ? App : Outlet, ErrorBoundary: _app?.Catc
 const fallback = { path: '*', Component: _404?.default || Fragment }
 
 export const routes: RouteObject[] = [{ ...app, children: [...regularRoutes, fallback] }]
-export const Routes = () => <RouterProvider router={createBrowserRouter(routes)} />
+const router = createBrowserRouter(routes)
+export const Routes = () => <RouterProvider router={router} />
 
 export const Modals = () => {
   const Modal = modalRoutes[useLocation().state?.modal] || Fragment
