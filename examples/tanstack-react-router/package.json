@@ -11,17 +11,17 @@
   },
   "dependencies": {
     "@generouted/tanstack-react-router": "^1.18.8",
-    "@tanstack/react-router": "^1.26.12",
+    "@tanstack/react-router": "^1.26.19",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@types/react": "^18.2.74",
+    "@types/react": "^18.2.75",
     "@types/react-dom": "^18.2.24",
     "@vitejs/plugin-react": "^4.2.1",
     "fast-glob": "^3.3.2",
     "prettier": "^3.2.5",
-    "typescript": "^5.4.4",
+    "typescript": "^5.4.5",
     "vite": "^5.2.8"
   }
 }
