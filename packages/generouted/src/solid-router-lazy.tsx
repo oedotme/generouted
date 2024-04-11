@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Component, createMemo, ErrorBoundary, lazy, ParentProps, Suspense } from 'solid-js'
+import { Component, createMemo, ErrorBoundary, lazy, ParentProps, Show, Suspense } from 'solid-js'
 import { RouteDefinition, RouteLoadFunc, RouteLoadFuncArgs, Router, useLocation } from '@solidjs/router'
 
 import { generateModalRoutes, generatePreservedRoutes, generateRegularRoutes } from './core'
@@ -16,10 +16,10 @@ const preservedRoutes = generatePreservedRoutes<Module>(PRESERVED)
 const modalRoutes = generateModalRoutes<Element>(MODALS)
 
 const regularRoutes = generateRegularRoutes<Route, () => Promise<Module>>(ROUTES, (module) => {
-  const Element = lazy(module)
+  const Default = lazy(module)
   const Pending = lazy(() => module().then((module) => ({ default: module?.Pending || Fragment })))
   const Catch = lazy(() => module().then((module) => ({ default: module?.Catch || Fragment })))
-  const Page = (props: any) => <Suspense fallback={<Pending />} children={<Element {...props} />} />
+  const Page = (props: any) => <Suspense fallback={<Pending />} children={<Default {...props} />} />
   const Component = (props: any) => (
     <ErrorBoundary fallback={(error, reset) => Catch({ error, reset })} children={<Page {...props} />} />
   )
@@ -33,19 +33,27 @@ const _app = preservedRoutes?.['_app']
 const _404 = preservedRoutes?.['404']
 
 const Fragment = (props: ParentProps) => props?.children
-const Element = _app?.default || Fragment
+const Default = _app?.default || Fragment
 const Pending = _app?.Pending || Fragment
 const Catch = preservedRoutes?.['_app']?.Catch
+const Modals = () => createMemo(() => modalRoutes[useLocation<any>().state?.modal || ''] || Fragment) as any
+
+const Layout = (props: any) => (
+  <>
+    <Default {...props} /> <Modals />
+  </>
+)
 
 const App = (props: any) => (
   <ErrorBoundary fallback={(error, reset) => Catch?.({ error, reset })}>
-    {_app?.Pending ? <Suspense fallback={<Pending />} children={<Element {...props} />} /> : <Element {...props} />}
+    <Show when={_app?.Pending} fallback={<Layout {...props} />}>
+      <Suspense fallback={<Pending />} children={<Layout {...props} />} />
+    </Show>
   </ErrorBoundary>
 )
 
 const app: RouteDefinition = { path: '', component: _app?.default ? App : Fragment, load: _app?.Loader || undefined }
 const fallback: RouteDefinition = { path: '*', component: _404?.default || Fragment }
 
-export const routes = [{ ...app, children: [...regularRoutes, fallback] }] as RouteDefinition[]
-export const Routes = () => <Router children={routes} />
-export const Modals = () => createMemo(() => modalRoutes[useLocation<any>().state?.modal || ''] || Fragment) as any
+export const routes: RouteDefinition[] = [{ ...app, children: [...regularRoutes, fallback] }]
+export const Routes = () => <Router>{routes}</Router>

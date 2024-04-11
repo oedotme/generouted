@@ -1,5 +1,4 @@
 import { ParentProps } from 'solid-js'
-import { Modals } from '@generouted/solid-router'
 
 import { A, useModals, useNavigate } from '@/router'
 
@@ -34,8 +33,6 @@ export default function App(props: ParentProps) {
       </header>
 
       <main>{props.children}</main>
-
-      <Modals />
     </section>
   )
 }

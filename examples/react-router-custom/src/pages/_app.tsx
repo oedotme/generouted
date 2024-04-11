@@ -1,7 +1,5 @@
 import { Outlet } from 'react-router-dom'
 
-import { Modals } from '../routes'
-
 import { Link, useModals, useNavigate, useParams } from '../router'
 
 export default function App() {
@@ -35,8 +33,6 @@ export default function App() {
       <main>
         <Outlet />
       </main>
-
-      <Modals />
     </section>
   )
 }

@@ -133,7 +133,6 @@ To navigate to a modal use `useModals` hook exported from `src/router.ts`:
 // src/pages/_app.tsx
 
 import { ParentProps } from 'solid-js'
-import { Modals } from '@generouted/solid-router'
 
 import { useModals } from '../router'
 
@@ -148,8 +147,6 @@ export default function App(props: ParentProps) {
       </header>
 
       <main>{props.children}</main>
-
-      <Modals />
     </section>
   )
 }

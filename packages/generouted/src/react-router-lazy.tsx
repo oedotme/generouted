@@ -20,9 +20,9 @@ const regularRoutes = generateRegularRoutes<RouteObject, () => Promise<Partial<M
   return {
     ...index,
     lazy: async () => {
-      const Element = (await module())?.default || Fragment
+      const Default = (await module())?.default || Fragment
       const Pending = (await module())?.Pending
-      const Page = () => (Pending ? <Suspense fallback={<Pending />} children={<Element />} /> : <Element />)
+      const Page = () => (Pending ? <Suspense fallback={<Pending />} children={<Default />} /> : <Default />)
 
       return {
         Component: Page,
@@ -37,8 +37,20 @@ const regularRoutes = generateRegularRoutes<RouteObject, () => Promise<Partial<M
 const _app = preservedRoutes?.['_app']
 const _404 = preservedRoutes?.['404']
 
-const Element = _app?.default || Fragment
-const App = () => (_app?.Pending ? <Suspense fallback={<_app.Pending />} children={<Element />} /> : <Element />)
+const Default = _app?.default || Fragment
+
+const Modals = () => {
+  const Modal = modalRoutes[useLocation().state?.modal] || Fragment
+  return <Modal />
+}
+
+const Layout = () => (
+  <>
+    <Default /> <Modals />
+  </>
+)
+
+const App = () => (_app?.Pending ? <Suspense fallback={<_app.Pending />} children={<Layout />} /> : <Layout />)
 
 const app = { Component: _app?.default ? App : Outlet, ErrorBoundary: _app?.Catch, loader: _app?.Loader }
 const fallback = { path: '*', Component: _404?.default || Fragment }
@@ -46,8 +58,3 @@ const fallback = { path: '*', Component: _404?.default || Fragment }
 export const routes: RouteObject[] = [{ ...app, children: [...regularRoutes, fallback] }]
 const router = createBrowserRouter(routes)
 export const Routes = () => <RouterProvider router={router} />
-
-export const Modals = () => {
-  const Modal = modalRoutes[useLocation().state?.modal] || Fragment
-  return <Modal />
-}

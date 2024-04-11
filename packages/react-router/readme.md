@@ -129,13 +129,12 @@ export default function Login() {
 }
 ```
 
-Then render the `<Modals>` component in `src/pages/_app.tsx`, this component renders the current/opened modal component. To navigate to a modal use `useModals` hook exported from `src/router.ts`:
+To navigate to a modal use `useModals` hook exported from `src/router.ts`:
 
 ```tsx
 // src/pages/_app.tsx
 
 import { Outlet } from 'react-router-dom'
-import { Modals } from '@generouted/react-router'
 
 import { useModals } from '../router'
 
@@ -152,8 +151,6 @@ export default function App() {
       <main>
         <Outlet />
       </main>
-
-      <Modals />
     </section>
   )
 }
@@ -176,7 +173,7 @@ Both methods come with React Router's `navigate()` options with one prop added `
 
 ### React Router
 
-- [Plugin](/examples/react-router/readme.md)
+- [Plugin](/examples/react-router)
 
 ## License
 

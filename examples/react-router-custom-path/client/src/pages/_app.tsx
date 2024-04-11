@@ -1,7 +1,6 @@
 import { Outlet } from 'react-router-dom'
 
 import { Link, useModals, useNavigate, useParams } from '../router'
-import { Modals } from '../routes'
 
 export default function App() {
   const navigate = useNavigate()
@@ -34,8 +33,6 @@ export default function App() {
       <main>
         <Outlet />
       </main>
-
-      <Modals />
     </section>
   )
 }

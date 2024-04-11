@@ -1,5 +1,4 @@
 import { Outlet } from 'react-router-dom'
-import { Modals } from '@generouted/react-router'
 
 import { Routes, Container } from '@/components'
 
@@ -14,8 +13,6 @@ export default function App() {
           <Outlet />
         </Container>
       </main>
-
-      <Modals />
     </section>
   )
 }
