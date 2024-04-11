@@ -26,7 +26,7 @@ const regularRoutes = generateRegularRoutes<RouteObject, Partial<Module>>(ROUTES
 const _app = preservedRoutes?.['_app']
 const _404 = preservedRoutes?.['404']
 
-const Default = _app?.default || Fragment
+const Default = _app?.default || Outlet
 
 const Modals = () => {
   const Modal = modalRoutes[useLocation().state?.modal] || Fragment
@@ -41,7 +41,7 @@ const Layout = () => (
 
 const App = () => (_app?.Pending ? <Suspense fallback={<_app.Pending />} children={<Layout />} /> : <Layout />)
 
-const app = { Component: _app?.default ? App : Outlet, ErrorBoundary: _app?.Catch, loader: _app?.Loader }
+const app = { Component: _app?.default ? App : Layout, ErrorBoundary: _app?.Catch, loader: _app?.Loader }
 const fallback = { path: '*', Component: _404?.default || Fragment }
 
 export const routes: RouteObject[] = [{ ...app, children: [...regularRoutes, fallback] }]

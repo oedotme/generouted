@@ -37,13 +37,13 @@ const Pending = _app?.Pending || Fragment
 const Catch = preservedRoutes?.['_app']?.Catch
 const Modals = () => createMemo(() => modalRoutes[useLocation<any>().state?.modal || ''] || Fragment) as any
 
-const Layout = (props: any) => (
+const Layout = (props: ParentProps) => (
   <>
     <Default {...props} /> <Modals />
   </>
 )
 
-const App = (props: any) => (
+const App = (props: ParentProps) => (
   <ErrorBoundary fallback={(error, reset) => Catch?.({ error, reset })}>
     <Show when={_app?.Pending} fallback={<Layout {...props} />}>
       <Suspense fallback={<Pending />} children={<Layout {...props} />} />
@@ -51,7 +51,7 @@ const App = (props: any) => (
   </ErrorBoundary>
 )
 
-const app: RouteDefinition = { path: '', component: _app?.default ? App : Fragment, load: _app?.Loader || undefined }
+const app: RouteDefinition = { path: '', component: _app?.default ? App : Layout, load: _app?.Loader || undefined }
 const fallback: RouteDefinition = { path: '*', component: _404?.default || Fragment }
 
 export const routes: RouteDefinition[] = [{ ...app, children: [...regularRoutes, fallback] }]
