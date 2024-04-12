@@ -441,6 +441,96 @@ Via `@generouted/react-router/core` or `@generouted/solid-router/core`
 
 <br>
 
+## FAQ
+
+<details>
+<summary><b>How to implement protected or guarded routes?</b></summary>
+
+<br>
+
+There are multiple approaches to achieve that. If you prefer handling the logic in one place, you can define the protected routes with redirection handling within a component:
+
+```tsx
+// src/config/redirects.tsx
+
+import { Navigate, useLocation } from 'react-router-dom'
+
+import { useAuth } from '../context/auth'
+import { Path } from '../router'
+
+const PRIVATE: Path[] = ['/logout']
+const PUBLIC: Path[] = ['/login']
+
+export const Redirects = ({ children }: { children: React.ReactNode }) => {
+  const auth = useAuth()
+  const location = useLocation()
+
+  const authenticatedOnPublicPath = auth.active && PUBLIC.includes(location.pathname as Path)
+  const unAuthenticatedOnPrivatePath = !auth.active && PRIVATE.includes(location.pathname as Path)
+
+  if (authenticatedOnPublicPath) return <Navigate to="/" replace />
+  if (unAuthenticatedOnPrivatePath) return <Navigate to="/login" replace />
+
+  return children
+}
+```
+
+Then use that component (`<Redirects>` ) at the root-level layout `src/pages/_app.tsx` to wrap the `<Outlet>` component:
+
+```tsx
+// src/pages/_app.tsx
+
+import { Outlet } from 'react-router-dom'
+
+import { Redirects } from '../config/redirects'
+
+export default function App() {
+  return (
+    <section>
+      <header>
+        <nav>...</nav>
+      </header>
+
+      <main>
+        <Redirects>
+          <Outlet />
+        </Redirects>
+      </main>
+    </section>
+  )
+}
+```
+
+You can find a full example of this approach at [Render template](https://github.com/oedotme/render/blob/main/src/config/redirects.tsx)
+
+<br>
+
+</details>
+
+<details>
+<summary><b>How to use with Hash or Memory Routers?</b></summary>
+
+<br>
+
+You can use the exported `routes` object to customize the router or to use hash/memory routers:
+
+```tsx
+import { createRoot } from 'react-dom/client'
+import { RouterProvider, createHashRouter } from 'react-router-dom'
+import { routes } from '@generouted/react-router'
+
+const router = createHashRouter(routes)
+const Routes = () => <RouterProvider router={router} />
+
+createRoot(document.getElementById('root')!).render(<Routes />)
+```
+
+<br>
+
+</details>
+
+<br>
+
 ## License
 
 MIT
