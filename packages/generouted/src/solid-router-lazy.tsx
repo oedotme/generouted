@@ -36,11 +36,11 @@ const Fragment = (props: ParentProps) => props?.children
 const Default = _app?.default || Fragment
 const Pending = _app?.Pending || Fragment
 const Catch = preservedRoutes?.['_app']?.Catch
-const Modals = () => createMemo(() => modalRoutes[useLocation<any>().state?.modal || ''] || Fragment) as any
+const Modals_ = () => createMemo(() => modalRoutes[useLocation<any>().state?.modal || ''] || Fragment) as any
 
 const Layout = (props: ParentProps) => (
   <>
-    <Default {...props} /> <Modals />
+    <Default {...props} /> <Modals_ />
   </>
 )
 
@@ -57,3 +57,6 @@ const fallback: RouteDefinition = { path: '*', component: _404?.default || Fragm
 
 export const routes: RouteDefinition[] = [{ ...app, children: [...regularRoutes, fallback] }]
 export const Routes = () => <Router>{routes}</Router>
+
+/** @deprecated `<Modals />` is no longer needed, it will be removed in future releases */
+export const Modals = () => (console.warn('[generouted] `<Modals />` will be removed in future releases'), null)

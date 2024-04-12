@@ -39,14 +39,14 @@ const _404 = preservedRoutes?.['404']
 
 const Default = _app?.default || Outlet
 
-const Modals = () => {
+const Modals_ = () => {
   const Modal = modalRoutes[useLocation().state?.modal] || Fragment
   return <Modal />
 }
 
 const Layout = () => (
   <>
-    <Default /> <Modals />
+    <Default /> <Modals_ />
   </>
 )
 
@@ -58,3 +58,6 @@ const fallback = { path: '*', Component: _404?.default || Fragment }
 export const routes: RouteObject[] = [{ ...app, children: [...regularRoutes, fallback] }]
 const router = createBrowserRouter(routes)
 export const Routes = () => <RouterProvider router={router} />
+
+/** @deprecated `<Modals />` is no longer needed, it will be removed in future releases */
+export const Modals = () => (console.warn('[generouted] `<Modals />` will be removed in future releases'), null)
