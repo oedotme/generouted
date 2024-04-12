@@ -330,6 +330,7 @@ export default function Home() {
 - **Required** page component `export default Component() {...}`
 - Optional page loader function `export const Loader = () => {...}`
 - Optional page action function `export const Action = () => {...}`
+- Optional suspense-based pending component `export const Pending = () => {...}`
 - Optional error boundary component `export const Catch = () => {...}`
 
 <br>
@@ -412,7 +413,6 @@ src/pages
 Via [`@generouted/react-router`](/packages/react-router) or [`@generouted/solid-router`](/packages/solid-router)
 
 - `<Routes />` — file-based routing component to be render in the app entry
-- `<Modals />` — optional file-based modals component to be render in the `_app.tsx` layout
 - `routes` — file-based routes tree/object used by default at `<Routes />` component
 
 ### Routing + code-splitting and lazy-loading
@@ -421,7 +421,7 @@ Via `@generouted/react-router/lazy` or `@generouted/solid-router/lazy`
 
 - Used instead of `@generouted/react-router` or `@generouted/solid-router` to enable lazy-loading
 - Make sure to replace all imports to lazy imports — namely at app entry and `src/pages/_app.tsx`
-- Provides the same `<Routes />`, `<Modals />` and `routes` exports
+- Provides the same `<Routes />` and `routes` exports
 
 ### Plugins
 

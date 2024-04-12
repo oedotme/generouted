@@ -4,7 +4,8 @@
 
 - Custom integration added at [`./src/routes.tsx`](./src/routes.tsx)
   - Based on one of [`packages/generouted/src`](/packages/generouted/src) integrations
-  - Copied from [`packages/generouted/src/react-router.tsx`](/packages/generouted/src/react-router.tsx)
+    - Copied from [`packages/generouted/src/react-router.tsx`](/packages/generouted/src/react-router.tsx)
+    - Exports `<Routes />` component that's imported at app entry [`./src/main.tsx`](./src/main.tsx)
 
 ## Preview
 

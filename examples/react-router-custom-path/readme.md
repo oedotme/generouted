@@ -11,9 +11,9 @@ Although it's recommended to use the default integrations, in some cases, full s
 
 - Custom integration added at [`./client/src/routes.tsx`](./client/src/routes.tsx)
   - Based on one of [`packages/generouted/src`](/packages/generouted/src) integrations
-  - Copied from [`packages/generouted/src/react-router.tsx`](/packages/generouted/src/react-router.tsx)
-  - Only `import.meta.glob` patterns for routes, preserved routes and modals are updated to be prefixed with `/client`
-  - Used to import `<Routes />` at [`./client/src/main.tsx`](./client/src/main.tsx) and `<Modals />` at [`./client/src/pages/_app.tsx`](./client/src/pages/_app.tsx)
+    - Copied from [`packages/generouted/src/react-router.tsx`](/packages/generouted/src/react-router.tsx)
+    - Only `import.meta.glob` patterns for routes, preserved routes and modals are updated to be prefixed with `/client`
+    - Exports `<Routes />` component that's imported at app entry [`./client/src/main.tsx`](./client/src/main.tsx)
 
 <br>
 
