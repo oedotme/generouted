@@ -59,7 +59,7 @@
     "@generouted/core": "workspace:*",
     "tsup": "^8.0.2",
     "typescript": "^5.4.5",
-    "vite": "^5.2.8"
+    "vite": "^5.2.11"
   },
   "peerDependencies": {
     "vite": ">=3"
