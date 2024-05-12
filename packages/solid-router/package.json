@@ -87,7 +87,7 @@
   "devDependencies": {
     "@generouted/core": "workspace:*",
     "@solidjs/router": "^0.13.3",
-    "esbuild-plugin-solid": "^0.5.0",
+    "esbuild-plugin-solid": "^0.6.0",
     "solid-js": "^1.8.17",
     "tsup": "^8.0.2",
     "typescript": "^5.4.5",
