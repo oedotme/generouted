@@ -10,7 +10,10 @@ type Route = { path?: string; component?: Component; children?: Route[] }
 
 const PRESERVED = import.meta.glob<Module>('/src/pages/(_app|404).{jsx,tsx}', { eager: true })
 const MODALS = import.meta.glob<Pick<Module, 'default'>>('/src/pages/**/[+]*.{jsx,tsx}', { eager: true })
-const ROUTES = import.meta.glob<Module>(['/src/pages/**/[\\w[-]*.{jsx,tsx,mdx}', '!**/(_!(layout)*(/*)?|_app|404)*'])
+const ROUTES = import.meta.glob<Module>([
+  '/src/pages/**/[\\w[-]*.{jsx,tsx,mdx}',
+  '!/src/pages/**/(_!(layout)*(/*)?|_app|404)*',
+])
 
 const preservedRoutes = generatePreservedRoutes<Module>(PRESERVED)
 const modalRoutes = generateModalRoutes<Element>(MODALS)

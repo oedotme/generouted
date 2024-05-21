@@ -6,7 +6,7 @@ import { classNames } from '@/utils'
 
 const PRESERVED = import.meta.glob('/src/pages/(_app|404).{jsx,tsx}', { eager: true })
 const MODALS = import.meta.glob('/src/pages/**/[+]*.{jsx,tsx}', { eager: true })
-const ROUTES = import.meta.glob(['/src/pages/**/[\\w[-]*.{jsx,tsx}', '!**/(_!(layout)*(/*)?|_app|404)*'], {
+const ROUTES = import.meta.glob(['/src/pages/**/[\\w[-]*.{jsx,tsx}', '!/src/pages/**/(_!(layout)*(/*)?|_app|404)*'], {
   eager: true,
 })
 
