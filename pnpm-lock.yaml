@@ -160,7 +160,7 @@ importers:
   examples/react-router:
     dependencies:
       '@generouted/react-router':
-        specifier: ^1.19.4
+        specifier: ^1.19.5
         version: link:../../packages/react-router
       react:
         specifier: ^18.3.1
@@ -194,7 +194,7 @@ importers:
   examples/react-router-custom:
     dependencies:
       '@generouted/react-router':
-        specifier: ^1.19.4
+        specifier: ^1.19.5
         version: link:../../packages/react-router
       react:
         specifier: ^18.3.1
@@ -228,7 +228,7 @@ importers:
   examples/react-router-custom-path:
     dependencies:
       '@generouted/react-router':
-        specifier: ^1.19.4
+        specifier: ^1.19.5
         version: link:../../packages/react-router
       react:
         specifier: ^18.3.1
@@ -262,7 +262,7 @@ importers:
   examples/react-router-mdx:
     dependencies:
       '@generouted/react-router':
-        specifier: ^1.19.4
+        specifier: ^1.19.5
         version: link:../../packages/react-router
       '@mdx-js/rollup':
         specifier: ^3.0.1
@@ -299,7 +299,7 @@ importers:
   examples/react-router-route-modals:
     dependencies:
       '@generouted/react-router':
-        specifier: ^1.19.4
+        specifier: ^1.19.5
         version: link:../../packages/react-router
       react:
         specifier: ^18.3.1
@@ -333,7 +333,7 @@ importers:
   examples/solid-router:
     dependencies:
       '@generouted/solid-router':
-        specifier: ^1.19.4
+        specifier: ^1.19.5
         version: link:../../packages/solid-router
       '@solidjs/router':
         specifier: ^0.13.3
@@ -355,7 +355,7 @@ importers:
   examples/tanstack-react-router:
     dependencies:
       '@generouted/tanstack-react-router':
-        specifier: ^1.19.4
+        specifier: ^1.19.5
         version: link:../../packages/tanstack-react-router
       '@tanstack/react-router':
         specifier: ^1.32.0
@@ -392,7 +392,7 @@ importers:
   explorer:
     dependencies:
       '@generouted/react-router':
-        specifier: ^1.19.4
+        specifier: ^1.19.5
         version: link:../packages/react-router
       react:
         specifier: ^18.3.1
@@ -477,7 +477,7 @@ importers:
         specifier: ^3.3.2
         version: 3.3.2
       generouted:
-        specifier: ^1.19.4
+        specifier: ^1.19.5
         version: link:../generouted
       react:
         specifier: '>=18'
@@ -508,7 +508,7 @@ importers:
         specifier: ^3.3.2
         version: 3.3.2
       generouted:
-        specifier: ^1.19.4
+        specifier: ^1.19.5
         version: link:../generouted
     devDependencies:
       '@generouted/core':
