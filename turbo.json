@@ -1,5 +1,6 @@
 {
-  "pipeline": {
+  "ui": "stream",
+  "tasks": {
     "dev": {
       "cache": false
     },
@@ -7,11 +8,7 @@
       "dependsOn": ["^build", "^test", "^type-check"],
       "outputs": ["dist/**"]
     },
-    "test": {
-      "outputs": []
-    },
-    "type-check": {
-      "outputs": []
-    }
+    "test": {},
+    "type-check": {}
   }
 }
