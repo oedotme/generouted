@@ -86,12 +86,12 @@
   },
   "devDependencies": {
     "@generouted/core": "workspace:*",
-    "@solidjs/router": "^0.13.3",
+    "@solidjs/router": "^0.13.6",
     "esbuild-plugin-solid": "^0.6.0",
     "solid-js": "^1.8.17",
-    "tsup": "^8.0.2",
-    "typescript": "^5.4.5",
-    "vite": "^5.2.11"
+    "tsup": "^8.1.0",
+    "typescript": "^5.5.2",
+    "vite": "^5.3.1"
   },
   "peerDependencies": {
     "@solidjs/router": ">=0.8",

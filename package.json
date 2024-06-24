@@ -40,9 +40,9 @@
     "@commitlint/config-conventional": "^19.2.2",
     "@release-it-plugins/workspaces": "^4.2.0",
     "husky": "^9.0.11",
-    "lint-staged": "^15.2.4",
-    "prettier": "^3.2.5",
-    "release-it": "^17.3.0",
-    "turbo": "^1.13.3"
+    "lint-staged": "^15.2.7",
+    "prettier": "^3.3.2",
+    "release-it": "^17.4.0",
+    "turbo": "^2.0.4"
   }
 }
