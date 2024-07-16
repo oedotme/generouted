@@ -2,11 +2,12 @@
 <p align="center"><img src="https://raw.githubusercontent.com/oedotme/generouted/main/logo.svg" alt="generouted" width="280"/></p>
 <p align="center">
   <a href="https://npmjs.com/package/generouted"><img src="https://img.shields.io/npm/v/generouted.svg"/></a>
+  <a href="https://npmjs.com/package/generouted"><img src="https://img.shields.io/npm/l/generouted.svg?color=blue"/></a>
   <a href="https://stackblitz.com/github.com/oedotme/generouted/tree/main/explorer"><img src="https://img.shields.io/badge/generouted/explorer-StackBlitz-blue"/></a>
 </p>
 <p align="center">
   <a href="https://npmjs.com/package/generouted"><img src="https://img.shields.io/npm/dm/generouted.svg"/></a>
-  <a href="https://npmjs.com/package/generouted"><img src="https://img.shields.io/npm/l/generouted.svg?color=blue"/></a>
+  <a href="https://npmjs.com/package/generouted"><img src="https://img.shields.io/npm/dt/generouted.svg"/></a>
 </p>
 <br>
 
