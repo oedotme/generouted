@@ -87,7 +87,7 @@ export default function App() {
 
 ### TanStack React Router
 
-- [Basic](../../examples/tanstack-react-router/basic)
+- [Basic](../../examples/tanstack-react-router/)
 
 ## License
 
