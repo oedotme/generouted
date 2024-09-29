@@ -6,6 +6,7 @@ type LinkRef = React.ForwardedRef<HTMLAnchorElement>
 
 export const components = <Path extends string, Params extends Record<string, any>>() => {
   return {
+    // @ts-expect-error
     Link: forwardRef(<P extends Path | To<Path>>({ to, params, ...props }: LinkProps<P, Params>, ref: LinkRef) => {
       const path = generatePath(typeof to === 'string' ? to : to.pathname, params || ({} as any))
       return (
