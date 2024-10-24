@@ -46,8 +46,9 @@ const app = { Component: _app?.default ? App : Layout, ErrorBoundary: _app?.Catc
 const fallback = { path: '*', Component: _404?.default || Fragment }
 
 export const routes: RouteObject[] = [{ ...app, children: [...regularRoutes, fallback] }]
-const router = () => createBrowserRouter(routes)
-export const Routes = () => <RouterProvider router={router()} />
+let router: ReturnType<typeof createBrowserRouter>
+const createRouter = () => ((router ??= createBrowserRouter(routes)), router)
+export const Routes = () => <RouterProvider router={createRouter()} />
 
 /** @deprecated `<Modals />` is no longer needed, it will be removed in future releases */
 export const Modals = () => (console.warn('[generouted] `<Modals />` will be removed in future releases'), null)
