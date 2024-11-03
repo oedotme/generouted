@@ -1,4 +1,4 @@
-export const template = `// Generouted, changes to this file will be overriden
+export const template = `// Generouted, changes to this file will be overridden
 import { Fragment } from 'react'
 import { Outlet, RouterProvider, createLazyRoute, createRootRoute, createRoute, createRouter } from '@tanstack/react-router'
 
