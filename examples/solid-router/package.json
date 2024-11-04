@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@generouted/solid-router": "^1.19.8",
-    "@solidjs/router": "^0.14.10",
+    "@solidjs/router": "^0.15.0",
     "solid-js": "^1.9.3"
   },
   "devDependencies": {
