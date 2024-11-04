@@ -1,4 +1,4 @@
-// Generouted, changes to this file will be overriden
+// Generouted, changes to this file will be overridden
 import { Fragment } from 'react'
 import {
   Outlet,
