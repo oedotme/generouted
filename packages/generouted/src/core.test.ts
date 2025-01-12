@@ -35,7 +35,10 @@ test('preserved routes generation', () => {
 test('regular routes generation', () => {
   const modules = {
     '/src/pages/(auth)/_layout.tsx': {},
-    '/src/pages/(auth)/login.tsx': {},
+    '/src/pages/(auth)/login/_layout.tsx': {},
+    '/src/pages/(auth)/login/index.tsx': {},
+    '/src/pages/(auth)/in/_layout.tsx': {},
+    '/src/pages/(auth)/in/index.tsx': {},
     '/src/pages/(auth)/register.tsx': {},
     '/src/pages/(external-auth)/sso.tsx': {},
     '/src/pages/_ignored-directory/components.tsx': {},
@@ -85,7 +88,8 @@ test('regular routes generation', () => {
       id: '(auth)/_layout',
       children: [
         { path: 'register', id: '(auth)/register' },
-        { path: 'login', id: '(auth)/login' },
+        { path: 'in', id: '(auth)/in/_layout', children: [{ path: '/', id: '(auth)/in/index' }] },
+        { path: 'login', id: '(auth)/login/_layout', children: [{ path: '/', id: '(auth)/login/index' }] },
       ],
     },
     {
