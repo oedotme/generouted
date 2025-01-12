@@ -81,16 +81,16 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "fast-glob": "^3.3.2",
+    "fast-glob": "^3.3.3",
     "generouted": "^1.19.9"
   },
   "devDependencies": {
     "@generouted/core": "workspace:*",
-    "@types/react": "^18.3.12",
+    "@types/react": "^19.0.5",
     "react-router-dom": "^6.27.0",
     "tsup": "^8.3.5",
-    "typescript": "^5.6.3",
-    "vite": "^5.4.10"
+    "typescript": "^5.7.3",
+    "vite": "^6.0.7"
   },
   "peerDependencies": {
     "react": ">=18",
