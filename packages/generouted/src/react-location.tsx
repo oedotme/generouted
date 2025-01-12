@@ -1,4 +1,4 @@
-import { Fragment } from 'react'
+import { Fragment, JSX } from 'react'
 import { LoaderFn, Outlet, ReactLocation, Route, Router, RouterProps } from '@tanstack/react-location'
 
 import { generatePreservedRoutes, generateRegularRoutes } from './core'

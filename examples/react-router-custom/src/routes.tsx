@@ -1,4 +1,4 @@
-import { Fragment, Suspense } from 'react'
+import { Fragment, JSX, Suspense } from 'react'
 import { createBrowserRouter, Outlet, RouterProvider, useLocation } from 'react-router-dom'
 import type { ActionFunction, RouteObject, LoaderFunction } from 'react-router-dom'
 
