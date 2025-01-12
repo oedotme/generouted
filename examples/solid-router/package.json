@@ -10,7 +10,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@generouted/solid-router": "^1.19.9",
+    "@generouted/solid-router": "^1.19.10",
     "@solidjs/router": "^0.15.2",
     "solid-js": "^1.9.4"
   },

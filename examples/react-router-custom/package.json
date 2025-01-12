@@ -10,7 +10,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@generouted/react-router": "^1.19.9",
+    "@generouted/react-router": "^1.19.10",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "6.27.0"
