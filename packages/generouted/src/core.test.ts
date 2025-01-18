@@ -54,10 +54,25 @@ test('regular routes generation', () => {
     '/src/pages/docs/-[lang]/index.tsx': {},
     '/src/pages/docs/-[lang]/resources.tsx': {},
     '/src/pages/docs/-en/support.tsx': {},
+    '/src/pages/catchall/folder/[...all]/index.tsx': {},
+    '/src/pages/catchall/file/[...all].tsx': {},
     '/src/pages/index.tsx': {},
   }
 
   expect(generateRegularRoutes(modules, () => ({}))).toStrictEqual([
+    {
+      path: 'catchall',
+      children: [
+        {
+          path: 'file',
+          children: [{ path: '*', id: 'catchall/file/[...all]' }],
+        },
+        {
+          path: 'folder',
+          children: [{ path: '*', id: 'catchall/folder/[...all]/index' }],
+        },
+      ],
+    },
     {
       path: 'docs',
       children: [
