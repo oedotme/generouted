@@ -94,8 +94,8 @@
     "vite": "^6.1.0"
   },
   "peerDependencies": {
-    "@solidjs/router": ">=0.8",
+    "@solidjs/router": ">=0.14",
     "solid-js": ">=1",
-    "vite": ">=3"
+    "vite": ">=5"
   }
 }
