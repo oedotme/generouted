@@ -73,9 +73,9 @@ const generateRoutes = async () => {
       const module = `const ${id} = createRoute({ getParentRoute: () => ${pid}, ${options.join(', ')} })`
 
       modules.push(
-        meta._module ? `${module}.lazy(() =>
-           ${meta._module}.then((m) => createLazyRoute('${meta._path}')({ ${components.join(', ')} }))
-         )` : module,
+        meta._module
+          ? `${module}.lazy(() =>\n  ${meta._module}.then((m) => createLazyRoute('${meta._path}')({ ${components.join(', ')} }))\n)`
+          : module,
       )
     }
 
