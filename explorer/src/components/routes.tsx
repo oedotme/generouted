@@ -1,5 +1,5 @@
 import { generateRegularRoutes, patterns } from '@generouted/react-router/core'
-import { Link, Location, RouteObject, useLocation } from 'react-router-dom'
+import { Link, Location, RouteObject, useLocation } from 'react-router'
 
 import { Arrow, Directory, File } from '@/icons'
 import { classNames } from '@/utils'

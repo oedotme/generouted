@@ -1,5 +1,5 @@
 import { useCallback, useMemo } from 'react'
-import { generatePath, NavigateOptions as NavOptions, useLocation, useNavigate, useParams } from 'react-router-dom'
+import { generatePath, NavigateOptions as NavOptions, useLocation, useNavigate, useParams } from 'react-router'
 import { NavigateOptions, To } from './types'
 
 export const hooks = <Path extends string, Params extends Record<string, any>, ModalPath extends string>() => {

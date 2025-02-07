@@ -12,7 +12,7 @@ export default defineConfig([
         'client/index': 'src/client/index.ts',
       },
     },
-    external: ['react', 'react-router-dom'],
+    external: ['react', 'react-router'],
     noExternal: ['generouted'],
     inject: ['./src/react.js'],
   },

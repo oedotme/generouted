@@ -1,5 +1,5 @@
 import { Link } from '@/router'
-import { Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router'
 
 const timestamps = [...Array(8)].map((_, index) => index + 1)
 

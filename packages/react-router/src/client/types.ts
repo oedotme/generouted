@@ -1,4 +1,4 @@
-import { LinkProps as _LinkProps, NavigateOptions as NavOptions, NavigateProps as NavProps } from 'react-router-dom'
+import { LinkProps as _LinkProps, NavigateOptions as NavOptions, NavigateProps as NavProps } from 'react-router'
 
 export type To<Pathname = string> = { pathname: Pathname; search?: string; hash?: string }
 

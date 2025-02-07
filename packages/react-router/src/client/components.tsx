@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react'
-import { generatePath, Link, Navigate } from 'react-router-dom'
+import { generatePath, Link, Navigate } from 'react-router'
 import { LinkProps, To } from './types'
 
 type LinkRef = React.ForwardedRef<HTMLAnchorElement>

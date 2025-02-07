@@ -1,6 +1,6 @@
 import { Fragment, JSX, Suspense } from 'react'
-import { createBrowserRouter, Outlet, RouterProvider, useLocation } from 'react-router-dom'
-import type { ActionFunction, RouteObject, LoaderFunction } from 'react-router-dom'
+import { createBrowserRouter, Outlet, RouterProvider, useLocation } from 'react-router'
+import type { ActionFunction, RouteObject, LoaderFunction } from 'react-router'
 
 import { generateModalRoutes, generatePreservedRoutes, generateRegularRoutes } from './core'
 

@@ -47,7 +47,7 @@ There are also Vite plugins available for some integrations to provide type-safe
 
 - 📁 Client-side file-based routing
 - ⚡ Powered by [Vite](https://vitejs.dev)
-- ✨ React support with [`react-router-dom`](https://github.com/remix-run/react-router) or [`@tanstack/router`](https://github.com/tanstack/router) 🧪 or [`@tanstack/react-location`](https://github.com/tanstack/router/tree/9c8eb043e4ac350fc1d28655542e01defb0c82e5) 🚨
+- ✨ React support with [`react-router`](https://github.com/remix-run/react-router) or [`@tanstack/router`](https://github.com/tanstack/router) 🧪 or [`@tanstack/react-location`](https://github.com/tanstack/router/tree/9c8eb043e4ac350fc1d28655542e01defb0c82e5) 🚨
 - ✨ Solid support with [`@solidjs/router`](https://github.com/solidjs/solid-router)
 - ✨ File-based MDX routes with React or Solid, requires [`@mdx-js/rollup`](https://mdxjs.com/packages/rollup) [installation and setup](/examples/react-router-mdx)
 - 🔐 Type-safe navigation
@@ -83,7 +83,7 @@ In case you don't have a Vite project with React and TypeScript, check [Vite doc
 #### Installation
 
 ```shell
-pnpm add @generouted/react-router react-router-dom
+pnpm add @generouted/react-router react-router
 ```
 
 #### Setup
@@ -454,7 +454,7 @@ There are multiple approaches to achieve that. If you prefer handling the logic 
 ```tsx
 // src/config/redirects.tsx
 
-import { Navigate, useLocation } from 'react-router-dom'
+import { Navigate, useLocation } from 'react-router'
 
 import { useAuth } from '../context/auth'
 import { Path } from '../router'
@@ -481,7 +481,7 @@ Then use that component (`<Redirects>` ) at the root-level layout `src/pages/_ap
 ```tsx
 // src/pages/_app.tsx
 
-import { Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router'
 
 import { Redirects } from '../config/redirects'
 
@@ -517,7 +517,7 @@ You can use the exported `routes` object to customize the router or to use hash/
 
 ```tsx
 import { createRoot } from 'react-dom/client'
-import { RouterProvider, createHashRouter } from 'react-router-dom'
+import { RouterProvider, createHashRouter } from 'react-router'
 import { routes } from '@generouted/react-router'
 
 const router = createHashRouter(routes)

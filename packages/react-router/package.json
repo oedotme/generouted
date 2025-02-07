@@ -87,14 +87,14 @@
   "devDependencies": {
     "@generouted/core": "workspace:*",
     "@types/react": "^19.0.8",
-    "react-router-dom": "^7.1.5",
+    "react-router": "^7.1.5",
     "tsup": "^8.3.6",
     "typescript": "^5.7.3",
     "vite": "^6.1.0"
   },
   "peerDependencies": {
     "react": ">=18",
-    "react-router-dom": ">=6",
+    "react-router": ">=7",
     "vite": ">=5"
   }
 }

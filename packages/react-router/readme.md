@@ -15,7 +15,7 @@ In case you don't have a Vite project with React and TypeScript, check [Vite doc
 ### Installation
 
 ```shell
-pnpm add @generouted/react-router react-router-dom
+pnpm add @generouted/react-router react-router
 ```
 
 ### Setup
@@ -59,7 +59,7 @@ export default function Home() {
 ```tsx
 // src/pages/_app.tsx
 
-import { Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router'
 
 export default function App() {
   return (
@@ -134,7 +134,7 @@ To navigate to a modal use `useModals` hook exported from `src/router.ts`:
 ```tsx
 // src/pages/_app.tsx
 
-import { Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router'
 
 import { useModals } from '../router'
 

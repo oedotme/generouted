@@ -1,4 +1,4 @@
-import { generatePath, redirect } from 'react-router-dom'
+import { generatePath, redirect } from 'react-router'
 
 export const utils = <Path extends string, Params extends Record<string, any>>() => {
   type Init = number | ResponseInit
