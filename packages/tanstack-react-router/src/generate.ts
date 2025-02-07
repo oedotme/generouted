@@ -70,11 +70,12 @@ const generateRoutes = async () => {
 
       const components = [meta._component, meta._pendingComponent, meta._errorComponent].filter(Boolean)
       const options = [path ? `path: '${path}'` : `id: '${id}'`, meta._loader, meta._action].filter(Boolean)
+      const module = `const ${id} = createRoute({ getParentRoute: () => ${pid}, ${options.join(', ')} })`
 
       modules.push(
-        `const ${id} = createRoute({ getParentRoute: () => ${pid}, ${options.join(', ')} }).lazy(() =>
+        meta._module ? `${module}.lazy(() =>
            ${meta._module}.then((m) => createLazyRoute('${meta._path}')({ ${components.join(', ')} }))
-         )`,
+         )` : module,
       )
     }
 
