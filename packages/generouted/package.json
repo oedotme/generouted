@@ -88,17 +88,17 @@
     "type-check": "tsc --noEmit"
   },
   "devDependencies": {
-    "@solidjs/router": "^0.15.2",
+    "@solidjs/router": "^0.15.3",
     "@tanstack/react-location": "^3.7.4",
-    "@types/react": "^19.0.5",
+    "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-router-dom": "^6.27.0",
     "solid-js": "^1.9.4",
     "typescript": "^5.7.3",
-    "vite": "^6.0.7",
-    "vitest": "^2.1.8"
+    "vite": "^6.1.0",
+    "vitest": "^3.0.5"
   },
   "peerDependencies": {
     "vite": ">=3"
