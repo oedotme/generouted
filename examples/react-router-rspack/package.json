@@ -1,0 +1,30 @@
+{
+  "name": "@examples/react-router-webpack",
+  "private": true,
+  "description": "Generated file-based routes for React Router and Webpack example",
+  "author": "Omar Elhawary <oedotme@gmail.com> (https://omarelhawary.me)",
+  "license": "MIT",
+  "scripts": {
+    "dev": "rspack serve --config rspack.config.js",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@generouted/react-router": "^1.2.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router": "^7.1.5"
+  },
+  "devDependencies": {
+    "@rspack/cli": "^1.3.0",
+    "@rspack/core": "^1.3.0",
+    "@rspack/plugin-react-refresh": "^1.0.1",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "html-webpack-plugin": "^5.6.0",
+    "prettier": "^3.4.2",
+    "react-refresh": "^0.17.0",
+    "ts-loader": "^9.5.1",
+    "tsconfig-paths-webpack-plugin": "^3.0.2",
+    "typescript": "^5.7.3"
+  }
+}

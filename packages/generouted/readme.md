@@ -95,7 +95,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import generouted from '@generouted/react-router/plugin'
 
-export default defineConfig({ plugins: [react(), generouted()] })
+export default defineConfig({ plugins: [react(), generouted.vite()] })
 ```
 
 #### Usage
@@ -158,7 +158,7 @@ import { defineConfig } from 'vite'
 import solid from 'vite-plugin-solid'
 import generouted from '@generouted/solid-router/plugin'
 
-export default defineConfig({ plugins: [solid(), generouted()] })
+export default defineConfig({ plugins: [solid(), generouted.vite()] })
 ```
 
 #### Usage

@@ -4,7 +4,7 @@ import { solidPlugin as solid } from 'esbuild-plugin-solid'
 export default defineConfig([
   {
     entry: ['src/core.ts', 'src/index*', 'src/client'],
-    format: ['esm'],
+    format: ['cjs','esm'],
     dts: {
       entry: {
         core: './node_modules/generouted/dist/core.d.ts',

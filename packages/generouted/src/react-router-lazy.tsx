@@ -7,12 +7,53 @@ import { generateModalRoutes, generatePreservedRoutes, generateRegularRoutes } f
 type Element = () => JSX.Element
 type Module = { default: Element; Loader?: LoaderFunction; Action?: ActionFunction; Catch?: Element; Pending?: Element }
 
-const PRESERVED = import.meta.glob<Module>('/src/pages/(_app|404).{jsx,tsx}', { eager: true })
-const MODALS = import.meta.glob<Pick<Module, 'default'>>('/src/pages/**/[+]*.{jsx,tsx}', { eager: true })
-const ROUTES = import.meta.glob<Module>([
-  '/src/pages/**/[\\w[-]*.{jsx,tsx,mdx}',
-  '!/src/pages/**/(_!(layout)*(/*)?|_app|404)*',
-])
+let PRESERVED: Record<string, Module>
+let MODALS: Record<string, Module>
+let ROUTES: Record<string, () => Promise<Module>>
+
+if (typeof import.meta.env === 'object') {
+  PRESERVED = import.meta.glob<Module>('/src/pages/(_app|404).{jsx,tsx}', { eager: true })
+  MODALS = import.meta.glob<Pick<Module, 'default'>>('/src/pages/**/[+]*.{jsx,tsx}', { eager: true })
+  ROUTES = import.meta.glob<Module>([
+    '/src/pages/**/[\\w[-]*.{jsx,tsx,mdx}',
+    '!/src/pages/**/(_!(layout)*(/*)?|_app|404)*',
+  ])
+} else if (typeof __webpack_require__ === 'function') {
+  const preservedContext = import.meta.webpackContext('/src/pages/', {
+    regExp: /\/(_app|404)\.(jsx|tsx)$/i,
+    mode: 'sync'
+  })
+
+  PRESERVED = preservedContext.keys().reduce<Record<string, Module>>((acc, key) => {
+    acc[`/src/pages/${key.toString().replace('./', '')}`] = preservedContext(key) as Module;
+    return acc;
+  }, {})
+
+  const modalsContext = import.meta.webpackContext('/src/pages/', {
+    recursive: true,
+    regExp: /\/[+][^/]*\.(jsx|tsx)$/i,
+    mode: 'sync'
+  })
+
+  MODALS = modalsContext.keys().reduce<Record<string, Module>>((acc, key) => {
+    acc[`/src/pages/${key.toString().replace('./', '')}`] = modalsContext(key) as Module;
+    return acc;
+  }, {})
+
+  const routesContext = import.meta.webpackContext('/src/pages/', {
+    recursive: true,
+    regExp: /\/[\w[-][^/]*\.(jsx|tsx|mdx)$/i,
+    mode: 'lazy',
+    exclude: /\/((_(?!layout)|_app|404).*)\.(jsx|tsx|mdx)$/i
+  })
+
+  ROUTES = routesContext.keys().reduce<Record<string, () => Promise<Module>>>((acc, key) => {
+    acc[`/src/pages/${key.toString().replace('./', '')}`] = routesContext(key) as () => Promise<Module>;
+    return acc;
+  }, {})
+} else {
+  throw new Error('Current Bundler is not supported by Generouted. Please use Vite, Webpack or Rspack.')
+}
 
 const preservedRoutes = generatePreservedRoutes<Omit<Module, 'Action'>>(PRESERVED)
 const modalRoutes = generateModalRoutes<Element>(MODALS)

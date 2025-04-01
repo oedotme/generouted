@@ -99,10 +99,10 @@ const generateRoutes = async () => {
 
 let latestContent = ''
 
-export const generate = async (options: Options) => {
+export const generate = async (options: Options, logger: {info: (msg: string) => void}) => {
   const start = Date.now()
   const { content, count } = await generateRoutes()
-  console.log(`${new Date().toLocaleTimeString()} [generouted] ${count} routes in ${Date.now() - start} ms`)
+  logger.info(`${new Date().toLocaleTimeString()} [generouted] ${count} routes in ${Date.now() - start} ms`)
 
   if (latestContent === content) return
   latestContent = content

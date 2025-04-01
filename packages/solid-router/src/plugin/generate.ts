@@ -63,13 +63,12 @@ const generateRouteTypes = async (options: Options) => {
   return { content, count }
 }
 
-const logger = createLogger('info', { prefix: '[generouted]' })
 let latestContent = ''
 
-export const generate = async (options: Options) => {
+export const generate = async (options: Options, logger: {info: (msg: string) => void}) => {
   const start = Date.now()
   const { content, count } = await generateRouteTypes(options)
-  logger.info(`scanned ${count} routes in ${Date.now() - start} ms`, { timestamp: true })
+  logger.info(`scanned ${count} routes in ${Date.now() - start} ms`)
 
   if (latestContent === content) return
   latestContent = content
