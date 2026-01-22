@@ -6,10 +6,14 @@ import { generatePreservedRoutes, generateRegularRoutes } from './core'
 type Element = () => JSX.Element
 type Module = { default: Element; Loader: LoaderFn; Pending: Element; Catch: Element }
 
-const PRESERVED = import.meta.glob<Module>('/src/pages/(_app|404).{jsx,tsx}', { eager: true })
+// Avoid extglobs for rolldown-vite compatibility
+// ref: https://github.com/vitejs/rolldown-vite/issues/365
+const PRESERVED = import.meta.glob<Module>(['/src/pages/_app.{jsx,tsx}', '/src/pages/404.{jsx,tsx}'], { eager: true })
 const ROUTES = import.meta.glob<Module>([
   '/src/pages/**/[\\w[-]*.{jsx,tsx}',
-  '!/src/pages/**/(_!(layout)*(/*)?|_app|404)*',
+  '!/src/pages/**/_*.{jsx,tsx}',
+  '/src/pages/**/_layout.{jsx,tsx}',
+  '!/src/pages/**/404.{jsx,tsx}',
 ])
 
 const preservedRoutes = generatePreservedRoutes<Module>(PRESERVED)

@@ -4,11 +4,19 @@ import { Link, Location, RouteObject, useLocation } from 'react-router'
 import { Arrow, Directory, File } from '@/icons'
 import { classNames } from '@/utils'
 
-const PRESERVED = import.meta.glob('/src/pages/(_app|404).{jsx,tsx}', { eager: true })
+// Avoid extglobs for rolldown-vite compatibility
+// ref: https://github.com/vitejs/rolldown-vite/issues/365
+const PRESERVED = import.meta.glob(['/src/pages/_app.{jsx,tsx}', '/src/pages/404.{jsx,tsx}'], { eager: true })
 const MODALS = import.meta.glob('/src/pages/**/[+]*.{jsx,tsx}', { eager: true })
-const ROUTES = import.meta.glob(['/src/pages/**/[\\w[-]*.{jsx,tsx}', '!/src/pages/**/(_!(layout)*(/*)?|_app|404)*'], {
-  eager: true,
-})
+const ROUTES = import.meta.glob(
+  [
+    '/src/pages/**/[\\w[-]*.{jsx,tsx}',
+    '!/src/pages/**/_*.{jsx,tsx}',
+    '/src/pages/**/_layout.{jsx,tsx}',
+    '!/src/pages/**/404.{jsx,tsx}',
+  ],
+  { eager: true },
+)
 
 type Route = RouteObject & Partial<{ key: string; modal: boolean; pathname: string }>
 
