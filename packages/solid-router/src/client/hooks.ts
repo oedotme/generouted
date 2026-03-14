@@ -1,6 +1,12 @@
 import { Accessor } from 'solid-js'
-import { NavigateOptions as NavOptions, useLocation, useMatch, useNavigate, useParams } from '@solidjs/router'
-import { MatchFilters } from '@solidjs/router/dist/types'
+import {
+  NavigateOptions as NavOptions,
+  useLocation,
+  useMatch,
+  useNavigate,
+  useParams,
+  MatchFilters,
+} from '@solidjs/router'
 
 import { generatePath } from './utils'
 import { NavigateOptions } from './types'
