@@ -20,7 +20,7 @@ export const generateRegularRoutes = <T extends BaseRoute, M>(
   files: Record<string, any>,
   buildRoute: (module: M, key: string) => T,
 ) => {
-  const filteredRoutes = Object.keys(files).filter((key) => !key.includes('/_') || /_layout\.(jsx|tsx)$/.test(key))
+  const filteredRoutes = Object.keys(files).filter((key) => !key.includes('/_') || /_layout\.(jsx|tsx)$/.test(key)).sort()
   return filteredRoutes.reduce<T[]>((routes, key) => {
     const module = files[key]
     const route = { id: key.replace(...patterns.route), ...buildRoute(module, key) }
