@@ -46,6 +46,7 @@ test('regular routes generation', () => {
     '/src/pages/about.tsx': {},
     '/src/pages/blog.w.o.layout.tsx': {},
     '/src/pages/blog/-[...all].tsx': {},
+    '/src/pages/blog/[slug]/[lang].tsx': {},
     '/src/pages/blog/[slug].tsx': {},
     '/src/pages/blog/_layout.tsx': {},
     '/src/pages/blog/index.tsx': {},
@@ -81,15 +82,24 @@ test('regular routes generation', () => {
         { path: 'tags', id: 'blog/tags' },
         { path: '/', id: 'blog/index' },
         { path: '*?', id: 'blog/-[...all]' },
-        { path: ':slug', id: 'blog/[slug]' },
+        {
+          path: ':slug',
+          id: 'blog/[slug]',
+          children: [
+            {
+              id: 'blog/[slug]/[lang]',
+              path: ':lang',
+            },
+          ],
+        },
       ],
     },
     {
       id: '(auth)/_layout',
       children: [
         { path: 'register', id: '(auth)/register' },
-        { path: 'in', id: '(auth)/in/_layout', children: [{ path: '/', id: '(auth)/in/index' }] },
         { path: 'login', id: '(auth)/login/_layout', children: [{ path: '/', id: '(auth)/login/index' }] },
+        { path: 'in', id: '(auth)/in/_layout', children: [{ path: '/', id: '(auth)/in/index' }] },
       ],
     },
     {
