@@ -90,15 +90,15 @@
   "devDependencies": {
     "@solidjs/router": "^0.15.4",
     "@tanstack/react-location": "^3.7.4",
-    "@types/react": "^19.2.7",
+    "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3",
-    "react-router": "^7.11.0",
-    "solid-js": "^1.9.10",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-router": "^7.13.1",
+    "solid-js": "^1.9.11",
     "typescript": "^5.9.3",
-    "vite": "^7.3.0",
-    "vitest": "^4.0.16"
+    "vite": "^8.0.0",
+    "vitest": "^4.1.0"
   },
   "peerDependencies": {
     "vite": ">=5"
