@@ -4,16 +4,14 @@ import { Link, Location, RouteObject, useLocation } from 'react-router'
 import { Arrow, Directory, File } from '@/icons'
 import { classNames } from '@/utils'
 
-// Avoid extglobs for rolldown-vite compatibility
-// ref: https://github.com/vitejs/rolldown-vite/issues/365
-const PRESERVED = import.meta.glob(['/src/pages/_app.{jsx,tsx}', '/src/pages/404.{jsx,tsx}'], { eager: true })
+const PRESERVED = import.meta.glob('/src/pages/{_app,404}.{jsx,tsx}', { eager: true })
 const MODALS = import.meta.glob('/src/pages/**/[+]*.{jsx,tsx}', { eager: true })
 const ROUTES = import.meta.glob(
   [
-    '/src/pages/**/[\\w[-]*.{jsx,tsx}',
-    '!/src/pages/**/_*.{jsx,tsx}',
+    '/src/pages/**/[A-Za-z0-9[-]*.{jsx,tsx}',
     '/src/pages/**/_layout.{jsx,tsx}',
-    '!/src/pages/**/404.{jsx,tsx}',
+    '!/src/pages/404.{jsx,tsx}',
+    '!/src/pages/**/_*/**',
   ],
   { eager: true },
 )
@@ -48,7 +46,7 @@ const sort = (routes: Route[]) => [
 
 const Tree = ({ routes, depth, location }: { routes: Route[]; depth: number; location: Location }) => {
   return (
-    <ul className="flex select-none flex-col text-sm font-medium">
+    <ul className="flex flex-col text-sm font-medium select-none">
       {routes?.map((route) => {
         const pathname = route.pathname?.startsWith('/') ? route.pathname : `/${route.pathname}`
         const path = pathname!.replace(/\([\w-]+\)\/|\/?_layout/g, '').replace('?', '')
@@ -71,7 +69,7 @@ const Tree = ({ routes, depth, location }: { routes: Route[]; depth: number; loc
                   routes={sort(
                     route.pathname?.includes('_layout')
                       ? [{ id: route.key, pathname: route.pathname }, ...route.children]
-                      : route.children
+                      : route.children,
                   )}
                   depth={depth + 1}
                   location={location}
@@ -83,7 +81,7 @@ const Tree = ({ routes, depth, location }: { routes: Route[]; depth: number; loc
                 className={classNames(
                   'flex space-x-2 py-2.5',
                   location.pathname === path && !pathname.includes('_layout') ? 'bg-slate-50' : '',
-                  disabled ? 'pointer-events-none text-slate-300' : 'text-primary'
+                  disabled ? 'pointer-events-none text-slate-300' : 'text-primary',
                 )}
                 state={route.modal ? { modal: path } : null}
                 style={{ paddingLeft }}
@@ -108,7 +106,7 @@ export const Routes = () => {
   return (
     <header className="w-80">
       <nav className="h-full rounded-lg border border-dashed border-slate-500 bg-white py-6">
-        <section className="flex items-center space-x-3 px-6 pb-6 pt-1 text-primary">
+        <section className="text-primary flex items-center space-x-3 px-6 pt-1 pb-6">
           <img className="h-4 w-4" src="/favicon.svg" />
           <a
             className="flex items-center space-x-1 text-sm font-bold underline"
