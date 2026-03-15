@@ -6,10 +6,12 @@ import { generatePreservedRoutes, generateRegularRoutes } from './core'
 type Element = () => JSX.Element
 type Module = { default: Element; Loader: LoaderFn; Pending: Element; Catch: Element }
 
-const PRESERVED = import.meta.glob<Module>('/src/pages/(_app|404).{jsx,tsx}', { eager: true })
+const PRESERVED = import.meta.glob<Module>('/src/pages/{_app,404}.{jsx,tsx}', { eager: true })
 const ROUTES = import.meta.glob<Module>([
-  '/src/pages/**/[\\w[-]*.{jsx,tsx}',
-  '!/src/pages/**/(_!(layout)*(/*)?|_app|404)*',
+  '/src/pages/**/[A-Za-z0-9[-]*.{jsx,tsx}',
+  '/src/pages/**/_layout.{jsx,tsx}',
+  '!/src/pages/404.{jsx,tsx}',
+  '!/src/pages/**/_*/**',
 ])
 
 const preservedRoutes = generatePreservedRoutes<Module>(PRESERVED)

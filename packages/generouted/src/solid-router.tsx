@@ -8,10 +8,15 @@ type CatchProps = { error: any; reset: () => void }
 type Module = { default: Component; Loader?: RouteLoadFunc; Catch?: Component<CatchProps>; Pending?: Component }
 type RouteDef = { path?: string; component?: Component; children?: RouteDef[] }
 
-const PRESERVED = import.meta.glob<Module>('/src/pages/(_app|404).{jsx,tsx}', { eager: true })
+const PRESERVED = import.meta.glob<Module>('/src/pages/{_app,404}.{jsx,tsx}', { eager: true })
 const MODALS = import.meta.glob<Pick<Module, 'default'>>('/src/pages/**/[+]*.{jsx,tsx}', { eager: true })
 const ROUTES = import.meta.glob<Module>(
-  ['/src/pages/**/[\\w[-]*.{jsx,tsx,mdx}', '!/src/pages/**/(_!(layout)*(/*)?|_app|404)*'],
+  [
+    '/src/pages/**/[A-Za-z0-9[-]*.{jsx,tsx,mdx}',
+    '/src/pages/**/_layout.{jsx,tsx,mdx}',
+    '!/src/pages/404.{jsx,tsx,mdx}',
+    '!/src/pages/**/_*/**',
+  ],
   { eager: true },
 )
 

@@ -7,10 +7,15 @@ import { generateModalRoutes, generatePreservedRoutes, generateRegularRoutes } f
 type Element = () => JSX.Element
 type Module = { default: Element; Loader?: LoaderFunction; Action?: ActionFunction; Catch?: Element; Pending?: Element }
 
-const PRESERVED = import.meta.glob<Module>('/client/src/pages/(_app|404).{jsx,tsx}', { eager: true })
+const PRESERVED = import.meta.glob<Module>('/client/src/pages/{_app,404}.{jsx,tsx}', { eager: true })
 const MODALS = import.meta.glob<Pick<Module, 'default'>>('/client/src/pages/**/[+]*.{jsx,tsx}', { eager: true })
 const ROUTES = import.meta.glob<Module>(
-  ['/client/src/pages/**/[\\w[-]*.{jsx,tsx,mdx}', '!/client/src/pages/**/(_!(layout)*(/*)?|_app|404)*'],
+  [
+    '/client/src/pages/**/[A-Za-z0-9[-]*.{jsx,tsx,mdx}',
+    '/client/src/pages/**/_layout.{jsx,tsx,mdx}',
+    '!/client/src/pages/404.{jsx,tsx,mdx}',
+    '!/client/src/pages/**/_*/**',
+  ],
   { eager: true },
 )
 
