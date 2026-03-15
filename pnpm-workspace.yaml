@@ -1,3 +1,7 @@
+hoistWorkspacePackages: true
+linkWorkspacePackages: true
+managePackageManagerVersions: false
+
 packages:
   - examples/*
   - examples/react-location/*
