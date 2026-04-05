@@ -1,8 +1,9 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
 import generouted from '@generouted/react-router/plugin'
+import tailwind from '@tailwindcss/vite'
+import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  plugins: [react(), generouted()],
+  plugins: [tailwind(), react(), generouted()],
   resolve: { alias: { '@': '/src' } },
 })

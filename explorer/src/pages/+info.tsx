@@ -27,7 +27,7 @@ export default function Info() {
           target="_blank"
         >
           <span>Try it online via StackBlitz</span>
-          <Arrow className="h-3.5 -rotate-[135deg]" />
+          <Arrow className="h-3.5 -rotate-135" />
         </a>
         <a
           className="mt-3 flex items-center space-x-1 text-sm font-bold underline"
@@ -35,7 +35,7 @@ export default function Info() {
           target="_blank"
         >
           <span>Check out the repo</span>
-          <Arrow className="h-3.5 -rotate-[135deg]" />
+          <Arrow className="h-3.5 -rotate-135" />
         </a>
 
         <div className="mt-auto flex justify-end">

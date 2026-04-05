@@ -106,7 +106,7 @@ export const Routes = () => {
   return (
     <header className="w-80">
       <nav className="h-full rounded-lg border border-dashed border-slate-500 bg-white py-6">
-        <section className="text-primary flex items-center space-x-3 px-6 pt-1 pb-6">
+        <section className="flex items-center space-x-3 px-6 pt-1 pb-6 text-primary">
           <img className="h-4 w-4" src="/favicon.svg" />
           <a
             className="flex items-center space-x-1 text-sm font-bold underline"
@@ -114,7 +114,7 @@ export const Routes = () => {
             target="_blank"
           >
             <span>Generouted Explorer</span>
-            <Arrow className="h-3.5 -rotate-[135deg]" />
+            <Arrow className="h-3.5 -rotate-135" />
           </a>
         </section>
 

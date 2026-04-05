@@ -8,4 +8,5 @@ export default {
   trailingComma: 'all',
   useTabs: false,
   plugins: ['prettier-plugin-tailwindcss'],
+  tailwindStylesheet: './src/main.css',
 }
