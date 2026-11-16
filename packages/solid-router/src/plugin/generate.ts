@@ -22,7 +22,7 @@ const generateRouteTypes = async (options: Options) => {
       .replace(...patterns.splat)
       .replace(...patterns.param)
       .replace(/\([\w-]+\)\/|\/?_layout/g, '')
-      .replace(/\/?index|\./g, '/')
+      .replace(/(?:^|\/)index(?=\/|$)|\./g, '/')
       .replace(/(\w)\/$/g, '$1')
       .split('/')
       .map((segment) => segment.replace(...patterns.optional))
@@ -46,7 +46,7 @@ const generateRouteTypes = async (options: Options) => {
       `/${path
         .replace(...patterns.route)
         .replace(/\+|\([\w-]+\)\//g, '')
-        .replace(/(\/)?index/g, '')
+        .replace(/(?:^|\/)index(?=\/|$)/g, '')
         .replace(/\./g, '/')}`,
   )
 

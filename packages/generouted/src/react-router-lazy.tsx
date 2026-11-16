@@ -20,7 +20,7 @@ const preservedRoutes = generatePreservedRoutes<Omit<Module, 'Action'>>(PRESERVE
 const modalRoutes = generateModalRoutes<Element>(MODALS)
 
 const regularRoutes = generateRegularRoutes<RouteObject, () => Promise<Partial<Module>>>(ROUTES, (module, key) => {
-  const index = /index\.(jsx|tsx|mdx)$/.test(key) && !key.includes('pages/index') ? { index: true } : {}
+  const index = /\/pages\/.+\/index\.(jsx|tsx|mdx)$/.test(key) ? { index: true } : {}
 
   return {
     ...index,

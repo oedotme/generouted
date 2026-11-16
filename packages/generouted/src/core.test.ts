@@ -8,6 +8,8 @@ test('modal routes generation', () => {
     '/src/pages/+info.tsx': {},
     '/src/pages/+index.tsx': {},
     '/src/pages/+checkout/+index.tsx': {},
+    '/src/pages/+checkout/+reindex.tsx': {},
+    '/src/pages/+checkout/+indexes.tsx': {},
     '/src/pages/+checkout/+review.tsx': {},
   }
 
@@ -16,6 +18,8 @@ test('modal routes generation', () => {
     '/info': undefined,
     '/': undefined,
     '/checkout': undefined,
+    '/checkout/reindex': undefined,
+    '/checkout/indexes': undefined,
     '/checkout/review': undefined,
   })
 })

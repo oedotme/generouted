@@ -23,7 +23,7 @@ const preservedRoutes = generatePreservedRoutes<Omit<Module, 'Action'>>(PRESERVE
 const modalRoutes = generateModalRoutes<Element>(MODALS)
 
 const regularRoutes = generateRegularRoutes<RouteObject, Partial<Module>>(ROUTES, (module, key) => {
-  const index = /index\.(jsx|tsx|mdx)$/.test(key) && !key.includes('pages/index') ? { index: true } : {}
+  const index = /\/pages\/.+\/index\.(jsx|tsx|mdx)$/.test(key) ? { index: true } : {}
   const Default = module?.default || Fragment
   const Page = () => (module?.Pending ? <Suspense fallback={<module.Pending />} children={<Default />} /> : <Default />)
   return { ...index, Component: Page, ErrorBoundary: module?.Catch, loader: module?.Loader, action: module?.Action }

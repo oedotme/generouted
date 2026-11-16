@@ -29,7 +29,7 @@ const generateRoutes = async () => {
         .replace(...patterns.splat)
         .replace(...patterns.param)
         .replace(/\(|\)|\/?_layout/g, '')
-        .replace(/\/?index|\./g, '/')
+        .replace(/(?:^|\/)index(?=\/|$)|\./g, '/')
         .replace(/(\w)\/$/g, '$1')
         .split('/')
         .map((segment) => segment.replace(...patterns.optional))

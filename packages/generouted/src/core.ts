@@ -81,7 +81,7 @@ export const generateModalRoutes = <T>(files: Record<string, T | any>): Record<s
     const path = key
       .replace(...patterns.route)
       .replace(/\+|\([\w-]+\)\//g, '')
-      .replace(/(\/)?index/g, '')
+      .replace(/(?:^|\/)index(?=\/|$)/g, '')
       .replace(/\./g, '/')
 
     return { ...modals, [`/${path}`]: files[key]?.default }
