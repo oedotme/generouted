@@ -1,6 +1,6 @@
 hoistWorkspacePackages: true
 linkWorkspacePackages: true
-managePackageManagerVersions: false
+pmOnFail: ignore
 
 packages:
   - examples/*
@@ -8,3 +8,6 @@ packages:
   - explorer
   - packages/*
   - shared/*
+
+allowBuilds:
+  esbuild: false

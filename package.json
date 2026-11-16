@@ -1,6 +1,6 @@
 {
   "name": "@generouted/repo",
-  "packageManager": "pnpm@9.0.0",
+  "packageManager": "pnpm@12.21.0",
   "private": true,
   "type": "module",
   "description": "Generated client-side file-based routes for Vite",
@@ -39,14 +39,14 @@
     "prepare": "husky"
   },
   "devDependencies": {
-    "@commitlint/cli": "^20.5.0",
-    "@commitlint/config-conventional": "^20.5.0",
-    "@release-it-plugins/workspaces": "^5.0.3",
+    "@commitlint/cli": "^21.2.4",
+    "@commitlint/config-conventional": "^21.2.4",
+    "@release-it-plugins/workspaces": "^6.0.0",
     "husky": "^9.1.7",
-    "lint-staged": "^16.4.0",
-    "prettier": "^3.8.1",
-    "prettier-plugin-tailwindcss": "^0.7.2",
-    "release-it": "^19.2.4",
-    "turbo": "^2.8.17"
+    "lint-staged": "^17.6.0",
+    "prettier": "^3.10.1",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "release-it": "^21.1.2",
+    "turbo": "^2.11.11"
   }
 }
