@@ -54,6 +54,14 @@
     "./solid-router": {
       "types": "./src/solid-router.tsx",
       "import": "./src/solid-router.tsx"
+    },
+    "./preact-iso-lazy": {
+      "types": "./src/preact-iso-lazy.tsx",
+      "import": "./src/preact-iso-lazy.tsx"
+    },
+    "./preact-iso": {
+      "types": "./src/preact-iso.tsx",
+      "import": "./src/preact-iso.tsx"
     }
   },
   "typesVersions": {
@@ -75,6 +83,12 @@
       ],
       "solid-router": [
         "./src/solid-router.tsx"
+      ],
+      "preact-iso-lazy": [
+        "./src/preact-iso-lazy.tsx"
+      ],
+      "preact-iso": [
+        "./src/preact-iso.tsx"
       ]
     }
   },

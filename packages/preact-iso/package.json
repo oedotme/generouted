@@ -1,0 +1,91 @@
+{
+  "name": "@generouted/preact-iso",
+  "version": "1.20.0",
+  "description": "Generated file-based routes for Preact ISO and Vite",
+  "author": "Omar Elhawary <oedotme@gmail.com> (https://omarelhawary.me)",
+  "license": "MIT",
+  "repository": "https://github.com/oedotme/generouted",
+  "bugs": "https://github.com/oedotme/generouted/issues",
+  "homepage": "https://github.com/oedotme/generouted#readme",
+  "keywords": [
+    "file-based-routing",
+    "generate",
+    "nested-layouts",
+    "pages",
+    "preact",
+    "preact-iso",
+    "router",
+    "routes",
+    "typescript",
+    "vite"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./core": {
+      "types": "./dist/core.d.ts",
+      "import": "./dist/core.js"
+    },
+    "./lazy": {
+      "types": "./dist/index-lazy.d.ts",
+      "import": "./dist/index-lazy.js"
+    },
+    "./client": {
+      "types": "./dist/client/index.d.ts",
+      "import": "./dist/client/index.js"
+    },
+    "./plugin": {
+      "types": "./dist/plugin/index.d.ts",
+      "require": "./dist/plugin/index.cjs",
+      "import": "./dist/plugin/index.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/index.d.ts"
+      ],
+      "core": [
+        "./dist/core.d.ts"
+      ],
+      "lazy": [
+        "./dist/index-lazy.d.ts"
+      ],
+      "client": [
+        "./dist/client/index.d.ts"
+      ],
+      "plugin": [
+        "./dist/plugin/index.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup --clean",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "fast-glob": "^3.3.3",
+    "generouted": "^1.20.0"
+  },
+  "devDependencies": {
+    "@generouted/core": "workspace:*",
+    "@types/node": "^22.11.7",
+    "preact": "^10.25.3",
+    "preact-iso": "^2.6.3",
+    "tsup": "^8.3.6",
+    "typescript": "^5.7.3",
+    "vite": "^6.1.0"
+  },
+  "peerDependencies": {
+    "preact": ">=10",
+    "preact-iso": ">=2",
+    "vite": ">=5"
+  }
+} 
