@@ -10,7 +10,7 @@
     "type-check": "echo skipped"
   },
   "dependencies": {
-    "@generouted/tanstack-react-router": "^1.20.2",
+    "@generouted/tanstack-react-router": "^1.20.3",
     "@tanstack/react-router": "^1.170.46",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
